@@ -9,6 +9,9 @@ export default defineConfig({
       '@': '/src'
     }
   },
+  build: {
+    outDir: 'docs', // 1. 指定打包出口
+  },
   css: {
     //css预处理
     preprocessorOptions: {
