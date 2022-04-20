@@ -9,14 +9,11 @@ export default defineConfig({
       '@': '/src'
     }
   },
-  build: {
-    outDir: '.'
-  },
   css: {
     //css预处理
     preprocessorOptions: {
       scss: {
-        additionalData: '$textColor: pink;'
+        additionalData: `@import '@/style/main.scss';`
       }
     }
   }
