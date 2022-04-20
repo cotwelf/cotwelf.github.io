@@ -9,8 +9,9 @@ export default defineConfig({
       '@': '/src'
     }
   },
+  root: './src/',
   build: {
-    outDir: 'docs', // 1. 指定打包出口
+    outDir: '../', // 1. 指定打包出口
   },
   css: {
     //css预处理
