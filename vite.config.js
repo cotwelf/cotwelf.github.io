@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import Markdown from 'vite-plugin-md'
+import mdoc from 'vite-plugin-react-mdoc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,7 +8,7 @@ export default defineConfig({
     react({
       include: [/\.js$/, /\.jsx$/, /\.md$/]
     }),
-    Markdown(),
+    mdoc(options),
   ],
   resolve: {
     alias: {
