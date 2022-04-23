@@ -253,6 +253,15 @@ a {
 #home-posts .post a {
   text-decoration: none;
 }
+#home-posts .post .updated {
+  color: #ff4929;
+  transform: rotate(-20deg);
+  font-size: 16px;
+  position: relative;
+  left: -10px;
+  top: 0;
+  display: inline-block;
+}
 #home-posts .post .category-and-date {
   width: 100%;
   margin-top: 15px;
@@ -631,6 +640,14 @@ a {
 .menu-color a {
   color: menu-index-font !important;
 }
+.content blockquote {
+  padding: 1px 16px;
+  background-color: blockquote-bg;
+  display: block;
+  color: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  box-shadow: blockquote-shadow;
+}
 .content code {
   font-family: code-font-family;
   background: code-background;
@@ -647,6 +664,14 @@ a {
   border-radius: 15px;
   overflow: auto;
   position: relative;
+}
+.content pre blockquote {
+  padding: 1px 16px;
+  background-color: blockquote-bg;
+  display: block;
+  color: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  box-shadow: blockquote-shadow;
 }
 .content pre code {
   background: none;

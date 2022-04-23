@@ -161,7 +161,7 @@
         <span class="icon">
           <a-icon type="calendar" theme="filled" />
         </span>
-        2022/4/10
+        2022-04-10
       </span>
     
       
@@ -199,7 +199,7 @@
 <p><a href="#3-%E4%BB%80%E4%B9%88%E6%98%AF-BOM">3. 什么是 BOM</a></p>
 <p><a href="#4-%E5%9B%9B%E5%A4%A7%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8">*4. 四大浏览器内核</a></p>
 <p><a href="#5-JavaScript-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF">5. JavaScript 有哪些优势和劣势？</a></p>
-<p><a href="#6-%E4%BB%A5%E4%B8%8B%E5%AF%B9-JS-%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%AD%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">6. 以下对 JS 的理解中错误的是（）A. JScript 和 JS 是等价的；B. JS 脱离浏览器后就不能运行；C. JS 由 ECMAScript、DOM 和 BOM 组成；D. JS 是一门弱类型语言</a></p>
+<p><a href="#6-%E4%BB%A5%E4%B8%8B%E5%AF%B9-JS-%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%AD%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">6. 以下对 JS 的理解中错误的是（）</a>A. JScript 和 JS 是等价的；B. JS 脱离浏览器后就不能运行；C. JS 由 ECMAScript、DOM 和 BOM 组成；D. JS 是一门弱类型语言</p>
 <hr />
 
 <h4 id="1-请简单描述一下你对-JavaScript-的理解。"><a href="#1-请简单描述一下你对-JavaScript-的理解。" class="headerlink" title="1. 请简单描述一下你对 JavaScript 的理解。"></a>1. 请简单描述一下你对 JavaScript 的理解。</h4><p>JavaScript 是一种<code>解释执行</code>的高级编程语言，同时也是一门<code>动态、弱类型的直译脚本语言</code>，适合面向对象（基于原型）和函数式的编程风格。JavaScript 主要运行在一个内置 JavaScript 解释器的客户端中（例如 Web 浏览器），能够处理复杂的计算，操控文档的内容、样式和行为。能在客户端完成的操作（例如输入验证、日期计算等）尽量都由 JavaScript 完成，这样就能减少与服务器的通信，降低服务器的负载。完整的 JavaScript 由 3 部分组成：<code>ECMAScript（提供核心语言功能）</code>、<code>DOM（文档对象模型）</code> 和 <code>BOM（浏览器对象模型）</code>。</p>
@@ -260,7 +260,7 @@
 <li>2、Android4.4 之前的 Android 系统浏览器内核是 WebKit，Android4.4 系统浏览器切换到了 Chromium，内核是 Webkit 的分支 Blink</li>
 <li>3、WindowsPhone8 系统浏览器内核是 Trident。</li>
 </ul>
-<h4 id="5-JavaScript-有哪些优势和劣势？"><a href="#5-JavaScript-有哪些优势和劣势？" class="headerlink" title="5. JavaScript 有哪些优势和劣势？"></a><strong>5. JavaScript 有哪些优势和劣势？</strong></h4><p>【JS 的优势】</p>
+<h4 id="5-JavaScript-有哪些优势和劣势？"><a href="#5-JavaScript-有哪些优势和劣势？" class="headerlink" title="5. JavaScript 有哪些优势和劣势？"></a>5. JavaScript 有哪些优势和劣势？</h4><p>【JS 的优势】</p>
 <p>（1）JS 可在客户端替服务器分摊掉一些工作（例如数据验证、数学计算等），从而<code>减少了和服务器的交互次数，降低了服务器压力</code>。</p>
 <blockquote>
 <p>早期拨号上网速度很慢，与服务器数据交互很慢，比如表单提交，JS 可以在前端过滤掉一些基本错误，例如信息未填写完整等。</p>
@@ -292,12 +292,6 @@
 
     </div>
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <div id="comment">
-        <div id="gitalk-container">
-        </div>
-    </div>
     
 </div>
 
@@ -363,21 +357,6 @@
             }
         }
     })
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script>
-    const gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'cotwelf.github.io',      // The repository of store comments,
-        owner: 'cotwelf',
-        admin: ['cotwelf'],
-        language: 'en',
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: true  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
 </script>
 
 </body>

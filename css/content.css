@@ -1,3 +1,11 @@
+.content blockquote {
+  padding: 1px 16px;
+  background-color: blockquote-bg;
+  display: block;
+  color: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  box-shadow: blockquote-shadow;
+}
 .content code {
   font-family: code-font-family;
   background: code-background;
@@ -14,6 +22,14 @@
   border-radius: 15px;
   overflow: auto;
   position: relative;
+}
+.content pre blockquote {
+  padding: 1px 16px;
+  background-color: blockquote-bg;
+  display: block;
+  color: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  box-shadow: blockquote-shadow;
 }
 .content pre code {
   background: none;
