@@ -642,11 +642,11 @@ a {
 }
 .content blockquote {
   padding: 1px 16px;
-  background-color: blockquote-bg;
+  background-color: rgba(254,241,250,0.3);
   display: block;
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.322);
   border-radius: 6px;
-  box-shadow: blockquote-shadow;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.1);
 }
 .content code {
   font-family: CascadiaCode;
@@ -667,11 +667,11 @@ a {
 }
 .content pre blockquote {
   padding: 1px 16px;
-  background-color: blockquote-bg;
+  background-color: rgba(254,241,250,0.3);
   display: block;
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.322);
   border-radius: 6px;
-  box-shadow: blockquote-shadow;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.1);
 }
 .content pre code {
   background: none;
