@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/JavaScript" style=color:#879cff>
+              <a href="/tags/JavaScript" style=color:#1bccbc>
                   JavaScript
               </a>
           </span>
@@ -285,8 +285,7 @@ for (var i = 1; i &lt; 5; i++) &#123;
 <p><a href="#%E5%85%B3%E4%BA%8E%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86">关于垃圾收集</a></p>
 <h3 id="四、引用类型"><a href="#四、引用类型" class="headerlink" title="四、引用类型"></a>四、引用类型</h3><hr />
 
-
-<h4 id="请简单描述一下你对-JavaScript-的理解。"><a href="#请简单描述一下你对-JavaScript-的理解。" class="headerlink" title="请简单描述一下你对 JavaScript 的理解。"></a><a href="#%E4%B8%80js-%E7%AE%80%E4%BB%8B">请简单描述一下你对 JavaScript 的理解。</a></h4><p>JavaScript 是一种<code>解释执行</code>的高级编程语言，同时也是一门<code>动态、弱类型的直译脚本语言</code>，适合面向对象（基于原型）和函数式的编程风格。JavaScript 主要运行在一个内置 JavaScript 解释器的客户端中（例如 Web 浏览器），能够处理复杂的计算，操控文档的内容、样式和行为。能在客户端完成的操作（例如输入验证、日期计算等）尽量都由 JavaScript 完成，这样就能减少与服务器的通信，降低服务器的负载。完整的 JavaScript 由 3 部分组成：<code>ECMAScript（提供核心语言功能）</code>、<code>DOM（文档对象模型）</code> 和 <code>BOM（浏览器对象模型）</code>。</p>
+<h2 id="一、JS-简介-1"><a href="#一、JS-简介-1" class="headerlink" title="一、JS 简介"></a>一、JS 简介</h2><h4 id="请简单描述一下你对-JavaScript-的理解。"><a href="#请简单描述一下你对-JavaScript-的理解。" class="headerlink" title="请简单描述一下你对 JavaScript 的理解。"></a><a href="#%E4%B8%80js-%E7%AE%80%E4%BB%8B">请简单描述一下你对 JavaScript 的理解。</a></h4><p>JavaScript 是一种<code>解释执行</code>的高级编程语言，同时也是一门<code>动态、弱类型的直译脚本语言</code>，适合面向对象（基于原型）和函数式的编程风格。JavaScript 主要运行在一个内置 JavaScript 解释器的客户端中（例如 Web 浏览器），能够处理复杂的计算，操控文档的内容、样式和行为。能在客户端完成的操作（例如输入验证、日期计算等）尽量都由 JavaScript 完成，这样就能减少与服务器的通信，降低服务器的负载。完整的 JavaScript 由 3 部分组成：<code>ECMAScript（提供核心语言功能）</code>、<code>DOM（文档对象模型）</code> 和 <code>BOM（浏览器对象模型）</code>。</p>
 <blockquote>
 <p><code>解释型</code>语言：相对于编译型语言存在的，特点：源代码不是直接翻译成机器语言；运行：先翻译成中间代码，由<code>解释器</code>运行。比如 Python / JavaScript / Perl /Shell等都是解释型语言。 解释型语言：程序<code>不需要编译</code>，程序在<code>运行时</code>才翻译成机器语言，<code>每执行一次都要翻译一次</code>。 因此效率比较低。</p>
 </blockquote>
@@ -626,7 +625,7 @@ isEmpty(&#39;2333&#39;) === false;
 isEmpty([1, 2, 3]) === false;
 isEmpty(&#123; &#39;a&#39;: 1 &#125;) === false;
 </code></pre>
-<h4 id="以下是-JS-数据类型的有"><a href="#以下是-JS-数据类型的有" class="headerlink" title="以下是 JS 数据类型的有"></a><a href="#%E4%B8%89%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98">以下是 JS 数据类型的有</a></h4><p>A. int; B. string; C. boolean; D.object;</p>
+<h2 id="三、变量作用域和内存问题"><a href="#三、变量作用域和内存问题" class="headerlink" title="三、变量作用域和内存问题"></a>三、变量作用域和内存问题</h2><h4 id="以下是-JS-数据类型的有"><a href="#以下是-JS-数据类型的有" class="headerlink" title="以下是 JS 数据类型的有"></a><a href="#%E4%B8%89%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98">以下是 JS 数据类型的有</a></h4><p>A. int; B. string; C. boolean; D.object;</p>
 <p>BC（原始数据类型）,D（引用数据类型）。JS 中的数字类型是 number，支持十进制、八进制和十六进制整数，浮点数（双精度）、NaN 和 infinity。</p>
 <blockquote>
 <p>*双精度：占 8 字节，有效数字位数 16 位。单精度 4 字节，位数 8 位，CPU 处理单精度要快。</p>
@@ -781,6 +780,40 @@ element.someObject = null;
 </code></pre>
 <p>类似的有，setTimeout 和 setInterval 在页面销毁前也需要清理，即<code>将变量设置为 null</code>，这种做法叫做<code>解除引用</code>，其作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。</p>
 <p>JS 会定时清理不用的变量以释放内存，比如局部变量会在函数执行结束后清理。</p>
+<h1 id="四、引用类型-1"><a href="#四、引用类型-1" class="headerlink" title="四、引用类型"></a>四、引用类型</h1><h4 id="function-的返回值是"><a href="#function-的返回值是" class="headerlink" title="!function(){} 的返回值是"></a>!function(){} 的返回值是</h4><p>false。表达式中的叹号表示逻辑非。会将操作数转化为布尔值，再对其求反。由于 function(){} 是真值，因此对其进行取反后的结果为 false。在 JavaScript 中有 7 个假值：undefined、null、0、-0、NaN、”” 和 fale。</p>
+<blockquote>
+<p>为什么 function(){} 是真值？</p>
+</blockquote>
+<h4 id="编写一个函数，让两个并不大的小数正数相乘"><a href="#编写一个函数，让两个并不大的小数正数相乘" class="headerlink" title="编写一个函数，让两个并不大的小数正数相乘"></a>编写一个函数，让两个并不大的小数正数相乘</h4><pre><code class="JavaScript">const accMul = (arg1, arg2) =&gt; &#123;
+  let m = 0 // 存放小数位数
+  let s1 = arg1.toString()
+  let s2 = arg2.toString()
+  m = s1.split(&#39;.&#39;)[1].length + s2.split(&#39;.&#39;)[1].length
+  let result = Number(s1.replace(&#39;.&#39;, &#39;&#39;)) * Number(s2.replace(&#39;.&#39;, &#39;&#39;))
+  return result / Math.pow(10, m)
+&#125;
+accMul(0.03, 0.23)
+</code></pre>
+<p>由于 JavaScript 中的浮点数时基于 IEEE 754 标准来实现的，因此它的计算精度远远不如整数，例如 33.98 会显示成 33.9799999999。如果两个小数并不大，那么可以先将小数变成整数，再执行乘法运算，最后把小数点往左移动到指定位置，得到想要的结果。</p>
+<blockquote>
+<p>注意！！<code>Math.pow(base, exponent)</code> 中的 exponent 不能是负数！！！</p>
+</blockquote>
+<pre><code class="JavaScript">Math.pow(10, 4) // 输出：10000，正确
+Math.pow(10, -4) // 输出：0.00009999999999999999，错误，应该是 0.001，也是浮点数计算精度问题
+</code></pre>
+<blockquote>
+<p>计算中最好把小数运算都换成整数运算，然后通过除以 pow 正数次方位移</p>
+</blockquote>
+<h4 id="统计字符串“xxxxyydda”中每个字母出现的次数"><a href="#统计字符串“xxxxyydda”中每个字母出现的次数" class="headerlink" title="统计字符串“xxxxyydda”中每个字母出现的次数"></a>统计字符串“xxxxyydda”中每个字母出现的次数</h4><pre><code class="JavaScript">const counter = (string) =&gt; &#123;
+  let num = 1
+  const test = (str) =&gt; &#123;
+    const founded = str.indexOf(str[0]) !== -1
+    if (founded) &#123;
+      
+    &#125;
+  &#125;
+&#125;
+</code></pre>
 
     </div>
 
