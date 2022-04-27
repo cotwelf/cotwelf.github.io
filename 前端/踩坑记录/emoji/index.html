@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/编码" style=color:#ff7d73>
+              <a href="/tags/编码" style=color:#879cff>
                   编码
               </a>
           </span>
@@ -200,7 +200,6 @@
 &#39;😁❤️&#39;.length // 4
 &#39;😄2333&#39;.length // 6
 </code></pre>
-<p>如果要判断用户输入项的长度，一个 emoji 算 1 个字的话，就无法直接用 inputValue.length 来判断了。（摔！！！呜呜呜呜想让 ‘😄2333’.length === 5 怎么办 qwq</p>
 <p>那么，emoji 是什么呢？为什么会出现这种情况呢？emoji 不也是 unicode 编码吗？为什么和中文的编码方式不一样（）</p>
 <p>unicode(统一码) 里面包括字符集、编码方案等，国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。比如每一个中文都对应着一个 unicode，但！是！emoji 可能对应着 1 个或多个 unicode。</p>
 <pre><code class="JavaScript">unescape(&#39;\u4e2d&#39;.replace(/\\u/gi, &#39;%u&#39;)) === &#39;中&#39;
