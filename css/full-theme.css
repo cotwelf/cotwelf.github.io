@@ -776,6 +776,12 @@ a {
 .content .hljs .hljs-variable {
   color: #458;
 }
+.content .hljs .hljs-deletion {
+  background-color: #ffebe9;
+}
+.content .hljs .hljs-addition {
+  background-color: #e6ffec;
+}
 footer {
   position: relative;
   font-size: 14px;

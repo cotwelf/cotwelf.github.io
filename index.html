@@ -183,6 +183,113 @@
     
       <span class="updated">updated~</span>
     
+    <a href="/前端/踩坑记录/emoji/">
+        <h2>
+            关于 emoji 的二三事
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                前端
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022-04-27
+        </span>
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            
+            <p>问：’👩‍❤️‍💋‍👨木马~’.length 是多少呢？’😁❤️’.length 呢？’😄2333’.length 呢？</p>
+<p>答案是</p>
+<pre><code class="JavaScript">&#39;👩‍❤️‍💋‍👨木马~&#39;.length // 14
+&#39;😁❤️&#39;.length // 4
+&#39;😄2333&#39;.length // 6
+</code></pre>
+<p>如果要判断用户输入项的长度，一个 emoji 算 1 个字的话，就无法直接用 inputValue.length 来判断了。（摔！！！呜呜呜呜想让 ‘😄2333’.length === 5 怎么办 qwq</p>
+<p>那么，emoji 是什么呢？为什么会出现这种情况呢？emoji 不也是 unicode 编码吗？为什么和中文的编码方式不一样（）</p>
+<p>unicode(统一码) 里面包括字符集、编码方案等，国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。比如每一个中文都对应着一个 unicode，但！是！emoji 可能对应着 1 个或多个 unicode。</p>
+<pre><code class="JavaScript">unescape(&#39;\u4e2d&#39;.replace(/\\u/gi, &#39;%u&#39;)) === &#39;中&#39;
+unescape(&#39;\ud83d\ude04&#39;.replace(/\\u/gi, &#39;%u&#39;)) === &#39;😄&#39;
+unescape(&#39;\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68&#39;.replace(/\\u/gi, &#39;%u&#39;)) === &#39;👩‍❤️‍💋‍👨&#39;
+// 与此同时，拼音也会有多个 unicode 拼合而成的情况
+unescape(&#39;\u0101&#39;.replace(/\\u/gi, &#39;%u&#39;))
+&#39;ā&#39;
+</code></pre>
+<p>const regex = /\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|\p{Emoji_Presentation}|\p{Emoji}\uFE0F/gu<br>‘😄’.match(regex)<br>有些 emoji 是多个 emoji Unicode 的组合，比如 👩‍❤️‍💋‍👨 其实是 👩‍❤️‍💋👨 unicode 的组合</p>
+<p>组一：</p>
+<ul>
+<li>👩‍❤️‍💋‍👨 的 Unicode 是：\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d\udc8b<code>\u200d</code>\ud83d\udc68</li>
+<li>👩‍❤️‍💋👨 的 Unicode 是：\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d\udc8b\ud83d\udc68</li>
+</ul>
+<p>组二：</p>
+<ul>
+<li>🏳️‍🌈 的 unicode 是：\ud83c\udff3\ufe0f<code>\u200d</code>\ud83c\udf08</li>
+<li>🏳️🌈 的 Unicode 是：\ud83c\udff3\ufe0f\ud83c\udf08</li>
+<li>🏳️ 是：\ud83c\udff3\ufe0f</li>
+<li>🌈 是：\ud83c\udf08</li>
+</ul>
+<p>可以看出组合后的 emoji 相当于单独的多个 emoji 组合下最后一个 emoji 前多一个 <code>\u200d</code>。它是什么呢？</p>
+<h3 id="u200d"><a href="#u200d" class="headerlink" title="\u200d"></a><code>\u200d</code></h3><p>在 <a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/unicode.aspx">站长工具 Unicode 编码转换</a> 中打出来看起来像是个空格，但空格的 Unicode 编码应该是 <code>\u0020</code>。</p>
+<p>Zero Width Joiner，<a target="_blank" rel="noopener" href="https://unicodeplus.com/U+200D">unicodeplus</a> 中有介绍如何键入（但我失败了 qwq，成功的小伙伴可以戳我科普一下 orz）</p>
+<pre><code>Windows ?: Hold Alt, then type 2 0 0 D. Release Alt.
+Mac ?: Hold Alt ⌥, then type 2 0 0 D. Release Alt.
+</code></pre>
+<h3 id="如何判断带有-emoji-字符串的长度"><a href="#如何判断带有-emoji-字符串的长度" class="headerlink" title="如何判断带有 emoji 字符串的长度"></a>如何判断带有 emoji 字符串的长度</h3><p>需求是需要提示用户输入了多少字，其中一个 emoji 算 1 个字，但问下来后端同学，如果出现多个 emoji 组合的话，会算多个，也就是真 · 一个 emoji 算一个字</p>
+<p>大佬推荐了一种获取字符串内 emoji 个数的方法</p>
+<pre><code class="JavaScript">const text = &#39;😄23👩‍❤️‍💋‍👨33测试fsdsa&#39;
+const regex = /\p&#123;Emoji_Modifier_Base&#125;\p&#123;Emoji_Modifier&#125;?|\p&#123;Emoji_Presentation&#125;|\p&#123;Emoji&#125;\uFE0F/gu
+text.match(regex)
+</code></pre>
+<p>但感觉似乎略麻烦，这里有个个人感觉比较好理解的方案，但需要一个类似字典的东西存放 emoji 中的空白拼接字符（如 <code>\u200d</code> 和 <code>\ufe0f</code>），可以<a target="_blank" rel="noopener" href="https://unicode.org/emoji/charts/emoji-zwj-sequences.html">参考文档</a>。</p>
+<pre><code class="JavaScript">const text = &#39;😄23👩‍❤️‍💋‍👨33测👨🏼‍🦳试fsdsa&#39;
+const textArr = [...text].filter(i =&gt; &#123;
+  return !i.match(/\u200d|\ufe0f/)
+&#125;)
+console.log(textArr) // (19) [&#39;😄&#39;, &#39;2&#39;, &#39;3&#39;, &#39;👩&#39;, &#39;❤&#39;, &#39;💋&#39;, &#39;👨&#39;, &#39;3&#39;, &#39;3&#39;, &#39;测&#39;, &#39;👨&#39;, &#39;🏼&#39;, &#39;🦳&#39;, &#39;试&#39;, &#39;f&#39;, &#39;s&#39;, &#39;d&#39;, &#39;s&#39;, &#39;a&#39;]
+</code></pre>
+<p>看起来是把空字符串过滤出来了，但组合 emoji 无法用该方法区分，之后遇到会补充。（但目前后端同学的算法也是这样，所以先保持一致叭~</p>
+
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/编码" style=color:#ffa2c4>
+                编码
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/前端/踩坑记录/emoji/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    
     <a href="/碎碎念/2022/4/25/">
         <h2>
             只是一个误入三次元的 NPC 而已
@@ -230,7 +337,7 @@
 
 <div class="post">
     
-    <a href="/前端/记一次非常非常非常麻烦的浏览器兼容问题/">
+    <a href="/前端/踩坑记录/记一次非常非常非常麻烦的浏览器兼容问题/">
         <h2>
             记一次非常非常非常麻烦的浏览器兼容问题
         </h2>
@@ -274,21 +381,79 @@
         
         <span class="tag">
             
-            <a href="/tags/兼容" style=color:#00bcd4>
-                兼容
+            <a href="/tags/踩坑" style=color:#00bcd4>
+                踩坑
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/web" style=color:#00bcd4>
-                web
+            <a href="/tags/响应式" style=color:#ff7d73>
+                响应式
             </a>
         </span>
         
     </div>
 
-    <a href="/前端/记一次非常非常非常麻烦的浏览器兼容问题/ " class="go-post">
+    <a href="/前端/踩坑记录/记一次非常非常非常麻烦的浏览器兼容问题/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    
+    <a href="/前端/踩坑记录/test/">
+        <h2>
+            关于提示 React Hook useEffect has a missing dependency 的问题
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                前端
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022-04-24
+        </span>
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            React
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/React" style=color:#879cff>
+                React
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/前端/踩坑记录/test/ " class="go-post">
         阅读全文
     </a>
 </div>
@@ -444,7 +609,7 @@
         
         <span class="tag">
             
-            <a href="/tags/课堂笔记" style=color:#00bcd4>
+            <a href="/tags/课堂笔记" style=color:#1bccbc>
                 课堂笔记
             </a>
         </span>
@@ -502,7 +667,7 @@
         
         <span class="tag">
             
-            <a href="/tags/取经" style=color:#00bcd4>
+            <a href="/tags/取经" style=color:#1bccbc>
                 取经
             </a>
         </span>
@@ -510,64 +675,6 @@
     </div>
 
     <a href="/笔记/reply/ " class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    
-    <a href="/前端/关于你可能不知道的npm_i和npm_ci/">
-        <h2>
-            关于你可能不知道的 npm i 和 npm ci
-        </h2>
-    </a>
-
-    <div class="category-and-date">
-
-        
-        <span class="category">
-            <a href="/categories/前端">
-                <span class="icon">
-                    <a-icon type="book" theme="filled" /></span>
-                前端
-            </a>
-        </span>
-        
-
-        <span class="date">
-            <span class="icon">
-                <a-icon type="calendar" theme="filled" />
-            </span>
-            2022-04-10
-        </span>
-    </div>
-
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            因为 3 月底上海疫情，突然通知就封校了，导致公司电脑没背回来，自己电脑的环境是很久之前配的了，有些项目能跑，有些项目拉了最新代码之后会报错，于是开始配置环境。但依赖下起来有点慢，于是打开文档想找找之前写的代理。突然发现，之前文档里写的 npm i 变成了 npm ci，大概是同事改的，但该同事是大佬且是错别字警察，应该不会放任文档中有错别字的，于是我小小调查了下，什么是 npm ci。
-            
-            
-        </div>
-    </div>
-
-    <div class="post-tags">
-        
-        <span class="icon">
-            <a-icon type="tags" theme="filled" />
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/npm" style=color:#00bcd4>
-                npm
-            </a>
-        </span>
-        
-    </div>
-
-    <a href="/前端/关于你可能不知道的npm_i和npm_ci/ " class="go-post">
         阅读全文
     </a>
 </div>
@@ -618,7 +725,7 @@
         
         <span class="tag">
             
-            <a href="/tags/JavaScript" style=color:#ffa2c4>
+            <a href="/tags/JavaScript" style=color:#ff7d73>
                 JavaScript
             </a>
         </span>
@@ -626,6 +733,64 @@
     </div>
 
     <a href="/前端/前端芝士补完计划/javascript/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    
+    <a href="/前端/踩坑记录/关于你可能不知道的npm_i和npm_ci/">
+        <h2>
+            关于你可能不知道的 npm i 和 npm ci
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                前端
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022-04-10
+        </span>
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            因为 3 月底上海疫情，突然通知就封校了，导致公司电脑没背回来，自己电脑的环境是很久之前配的了，有些项目能跑，有些项目拉了最新代码之后会报错，于是开始配置环境。但依赖下起来有点慢，于是打开文档想找找之前写的代理。突然发现，之前文档里写的 npm i 变成了 npm ci，大概是同事改的，但该同事是大佬且是错别字警察，应该不会放任文档中有错别字的，于是我小小调查了下，什么是 npm ci。
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/npm" style=color:#1bccbc>
+                npm
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/前端/踩坑记录/关于你可能不知道的npm_i和npm_ci/ " class="go-post">
         阅读全文
     </a>
 </div>
