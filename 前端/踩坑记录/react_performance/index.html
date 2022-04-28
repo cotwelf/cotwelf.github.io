@@ -161,7 +161,7 @@
         <span class="icon">
           <a-icon type="calendar" theme="filled" />
         </span>
-        2022-04-10
+        2022-04-28
       </span>
     
       
@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/性能优化" style=color:#00bcd4>
+              <a href="/tags/性能优化" style=color:#879cff>
                   性能优化
               </a>
           </span>
@@ -194,9 +194,11 @@
   </div>
 
     <div class="content" v-pre>
-        <p>还记得我刚学会 React 做的第一个需求，上线当天，安卓还是 IOS 直接白屏了，但浏览器是正常的，当时我慌得一批，完全不知道咋回事，后来 tx 大佬帮我定位了问题，是这样的。</p>
-<p>首先，我在</p>
-
+        <p>关于目前为止我有遇到过的 React 的一些坑（可能是因为自己不够熟悉所以定位问题的时间比较长），这里做个备忘。另外大佬说的一句话很有意义，不论你对一个方法多熟悉，使用的时候一定看看文档，也许记忆会出现偏差。</p>
+<h2 id="constructor-的初始化，需要谨慎选择初始值"><a href="#constructor-的初始化，需要谨慎选择初始值" class="headerlink" title="constructor 的初始化，需要谨慎选择初始值"></a>constructor 的初始化，需要谨慎选择初始值</h2><p>众所周知 constructor 中的变量是初始化变量，也就是在整个生命周期的起始位置，componentDidMount 在其之后，当然也包括 useEffect。render 的第一次数据也是 constructor 里初始化的数据。那么这里就有 2 个可能出现的问题：</p>
+<h3 id="（1）依赖到-constructor-里变量的方法，有可能没有空防御，以至于报错"><a href="#（1）依赖到-constructor-里变量的方法，有可能没有空防御，以至于报错" class="headerlink" title="（1）依赖到 constructor 里变量的方法，有可能没有空防御，以至于报错"></a>（1）依赖到 constructor 里变量的方法，有可能没有空防御，以至于报错</h3><p>比如说，有个第三方的方法 A，需要你传进去一个对象 obj，然后对针对对象中的每个属性做一些事情。但它并没有空防御，比如说 obj?.a 或 obj &amp;&amp; obj.a。这时候如果 constructor 中初始化是 null 的话，调用方法就会报错了。所以在 render 里调用的方法，一定要看一下函数体中有没有考虑到传入参数可能出现的极端状况。</p>
+<h3 id="（2）条件渲染的元素可能出现闪跳"><a href="#（2）条件渲染的元素可能出现闪跳" class="headerlink" title="（2）条件渲染的元素可能出现闪跳"></a>（2）条件渲染的元素可能出现闪跳</h3><p>首次 render 的数据来源是 constructor，有个条件渲染，虽然初始化了一个值，挂载的时候修改那个值，有可能会出现问题（当然简单的判断是可以一眼看出来的，但如果说 constructor 的变量依赖了一个方法的返回值，其实就有可能忽视这个问题）。</p>
+<h2 id="其他显而易见的优化方法"><a href="#其他显而易见的优化方法" class="headerlink" title="其他显而易见的优化方法"></a>其他显而易见的优化方法</h2><h3 id="使用-React-Fragment-避免增加额外的-DOM"><a href="#使用-React-Fragment-避免增加额外的-DOM" class="headerlink" title="使用 React.Fragment 避免增加额外的 DOM"></a>使用 React.Fragment 避免增加额外的 DOM</h3><h3 id="使用-useCallback（但这里已知不能滥用-useCallback，具体之后会出一个文档"><a href="#使用-useCallback（但这里已知不能滥用-useCallback，具体之后会出一个文档" class="headerlink" title="使用 useCallback（但这里已知不能滥用 useCallback，具体之后会出一个文档"></a>使用 useCallback（但这里已知不能滥用 useCallback，具体之后会出一个文档</h3><h3 id="使用-useEffect-的第二个参数"><a href="#使用-useEffect-的第二个参数" class="headerlink" title="使用 useEffect 的第二个参数"></a>使用 useEffect 的第二个参数</h3>
     </div>
 
     

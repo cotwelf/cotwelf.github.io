@@ -733,8 +733,7 @@ for (var i = 1; i &lt; 5; i++) &#123;
 <h4 id="在执行时会发生异常的语句是"><a href="#在执行时会发生异常的语句是" class="headerlink" title="在执行时会发生异常的语句是"></a><a href="#%E4%B8%89%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98">在执行时会发生异常的语句是</a></h4><p>A.var obj = (); B. var obj = //; C. var obj = {}; D. var obj = []</p>
 <p>AB。A 括号内要有表达式，B // 是注释，会导致语句不完整。</p>
 <h4 id="void-0-得到的结果为（），NaN-4-得到的结果是（）"><a href="#void-0-得到的结果为（），NaN-4-得到的结果是（）" class="headerlink" title="void(0) 得到的结果为（），NaN * 4 得到的结果是（）"></a><a href="#%E4%B8%89%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98">void(0) 得到的结果为（），NaN * 4 得到的结果是（）</a></h4><p>undefined，NaN。void 运算符能忽略操作数的计算结果返回 undefined。NaN 表示不是数值，参与运算都是 NaN，注意 NaN != NaN。</p>
-<p>【数据类型】</p>
-<h4 id="封装一个-isInteger-函数，用于检测传入的值是否为整数"><a href="#封装一个-isInteger-函数，用于检测传入的值是否为整数" class="headerlink" title="封装一个 isInteger() 函数，用于检测传入的值是否为整数"></a><a href="#%E4%B8%89%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98">封装一个 isInteger() 函数，用于检测传入的值是否为整数</a></h4><p>整数（’number’ 类型，且不是 NaN, Infinity 和 -Infinity）</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h4 id="封装一个-isInteger-函数，用于检测传入的值是否为整数"><a href="#封装一个-isInteger-函数，用于检测传入的值是否为整数" class="headerlink" title="封装一个 isInteger() 函数，用于检测传入的值是否为整数"></a><a href="#%E4%B8%89%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98">封装一个 isInteger() 函数，用于检测传入的值是否为整数</a></h4><p>整数（’number’ 类型，且不是 NaN, Infinity 和 -Infinity）</p>
 <pre><code class="JavaScript">const isInteger = (value) =&gt; &#123;
   return typeof value === &#39;number&#39; &amp;&amp; isFinite(value) &amp;&amp; value % 1 === 0
 &#125;
@@ -780,7 +779,7 @@ element.someObject = null;
 </code></pre>
 <p>类似的有，setTimeout 和 setInterval 在页面销毁前也需要清理，即<code>将变量设置为 null</code>，这种做法叫做<code>解除引用</code>，其作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。</p>
 <p>JS 会定时清理不用的变量以释放内存，比如局部变量会在函数执行结束后清理。</p>
-<h1 id="四、引用类型-1"><a href="#四、引用类型-1" class="headerlink" title="四、引用类型"></a>四、引用类型</h1><h4 id="编写一个函数，让两个并不大的小数正数相乘"><a href="#编写一个函数，让两个并不大的小数正数相乘" class="headerlink" title="编写一个函数，让两个并不大的小数正数相乘"></a>编写一个函数，让两个并不大的小数正数相乘</h4><pre><code class="JavaScript">const accMul = (arg1, arg2) =&gt; &#123;
+<h4 id="编写一个函数，让两个并不大的小数正数相乘"><a href="#编写一个函数，让两个并不大的小数正数相乘" class="headerlink" title="编写一个函数，让两个并不大的小数正数相乘"></a>编写一个函数，让两个并不大的小数正数相乘</h4><pre><code class="JavaScript">const accMul = (arg1, arg2) =&gt; &#123;
   let m = 0 // 存放小数位数
   let s1 = arg1.toString()
   let s2 = arg2.toString()
@@ -882,6 +881,38 @@ console.log(a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3)
 console.log(a.valueOf())
 console.log(a.toString())
 </code></pre>
+<h4 id="false-“0”-得到的结果为（），false-“0”-得到的结果为"><a href="#false-“0”-得到的结果为（），false-“0”-得到的结果为" class="headerlink" title="false == “0” 得到的结果为（），false === “0” 得到的结果为"></a>false == “0” 得到的结果为（），false === “0” 得到的结果为</h4><p>true，false。== 不比较类型，=== 会比较类型。0 == “0”，但 0 !== “0”</p>
+<h4 id="在下面的表达式中，能返回-false-的是（）"><a href="#在下面的表达式中，能返回-false-的是（）" class="headerlink" title="在下面的表达式中，能返回 false 的是（）"></a>在下面的表达式中，能返回 false 的是（）</h4><p>A. 1 == true; B.”” == false; C. null == undefined; D. false == null;</p>
+<p>D。左边布尔值右边 null，左边会调用 Number() 转为数字，最终表达式变为 0 == null，数字不等于 null。</p>
+<h4 id="1-instanceof-Number-的返回值是（），2-in-1-2-的返回值是（）"><a href="#1-instanceof-Number-的返回值是（），2-in-1-2-的返回值是（）" class="headerlink" title="1 instanceof Number 的返回值是（），2 in [1, 2] 的返回值是（）"></a>1 instanceof Number 的返回值是（），2 in [1, 2] 的返回值是（）</h4><p>false,false.</p>
+<p>instanceof 运算符能检测对象之间的关联性，左侧对象，右侧构造函数，如果左侧不是对象，会直接返回 false。</p>
+<p>in 用于检测 <code>属性</code> 是否在 <code>对象</code> 中，数组的索引（index）就是它的属性。2 超过了 [1, 2] 的最大索引 1，所以返回 false。</p>
+<h4 id="typeof-undefined-的返回值是（），typeof-null-的返回值是（）"><a href="#typeof-undefined-的返回值是（），typeof-null-的返回值是（）" class="headerlink" title="typeof undefined 的返回值是（），typeof null 的返回值是（）"></a>typeof undefined 的返回值是（），typeof null 的返回值是（）</h4><p>‘undefined’，’object’。注意 typeof [1, 2] 也是 ‘object’，所以要使用判断数组要使用 Array.isArray([1, 2])</p>
+<h4 id="将-Object-的-toString-方法分别应用于-null-和-undefined-（如下所示），得到的结果为（）和（）。"><a href="#将-Object-的-toString-方法分别应用于-null-和-undefined-（如下所示），得到的结果为（）和（）。" class="headerlink" title="将 Object 的 toString() 方法分别应用于 null 和 undefined （如下所示），得到的结果为（）和（）。"></a>将 Object 的 toString() 方法分别应用于 null 和 undefined （如下所示），得到的结果为（）和（）。</h4><pre><code class="JavaScript">var toString = Object.prototype.toString;
+toString.call(null)
+toString.call(undefined)
+</code></pre>
+<p>“[object Null]”, “[object Undefined]”。Object 的 toString() 方法返回格式是 “[object Type]”，其中 Type 是对象类型。如果传入 null，Type 对应值为 “Null”，传入 undefined，Type 对应值为 “Undefined”。</p>
+<h4 id="执行下面的代码，调用-isPrototypeOf-方法得到的结果是（），执行-instanceof-运算符得到的结果是（）"><a href="#执行下面的代码，调用-isPrototypeOf-方法得到的结果是（），执行-instanceof-运算符得到的结果是（）" class="headerlink" title="执行下面的代码，调用 isPrototypeOf() 方法得到的结果是（），执行 instanceof 运算符得到的结果是（）"></a>执行下面的代码，调用 isPrototypeOf() 方法得到的结果是（），执行 instanceof 运算符得到的结果是（）</h4><pre><code class="JavaScript">function child() &#123;&#125;
+function ancestor() &#123;&#125;
+child.prototype = ancestor;
+var obj = new child()
+ancestor.isPrototypeOf(obj);
+obj instanceof ancestor;
+</code></pre>
+<p>isPrototypeOf() 方法用于检测【调用此方法的对象】是否存在于指定对象的原型链中，构造函数 child() 的原型指向构造函数 ancestor()，因此 ancestor() 在 obj 的原型链上，调用 isPrototypeOf() 方法得到的结果是 true。</p>
+<p>instanceof 运算符是用于检测【构造函数的原型】是否存在于指定对象的原型链中，查看代码可知 ancestor() 的原型并不在 obj 对象的原型链上，因此执行 instanceof 运算符得到的结果是 false。</p>
+<h4 id="封装一个函数，能将字符串-“abcdef”-逆序为-“fedcba”"><a href="#封装一个函数，能将字符串-“abcdef”-逆序为-“fedcba”" class="headerlink" title="封装一个函数，能将字符串 “abcdef” 逆序为 “fedcba”"></a>封装一个函数，能将字符串 “abcdef” 逆序为 “fedcba”</h4><pre><code class="JavaScript">function reverse(str) &#123;
+  var result = &quot;&quot;
+  var begin = str.length - 1
+  for (var i = begin; i &gt;= 0; i--) &#123;
+    result += str[i]
+  &#125;
+  return result
+&#125;
+</code></pre>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h4 id="以下选项中，能被-encodeURIComponent-函数编码的是"><a href="#以下选项中，能被-encodeURIComponent-函数编码的是" class="headerlink" title="以下选项中，能被 encodeURIComponent() 函数编码的是"></a>以下选项中，能被 encodeURIComponent() 函数编码的是</h4><p>A.*; B.~; C.$; D. -</p>
+<p>encodeURLComponent() 函数用于编码 URL 中的某一段，只有 9 个字符不会被编码 (!’()*-._~)。除了 C 之外都不能被编码。</p>
 
     </div>
 
