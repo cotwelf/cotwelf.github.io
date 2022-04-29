@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/React" style=color:#879cff>
+              <a href="/tags/React" style=color:#ff7d73>
                   React
               </a>
           </span>
@@ -252,6 +252,60 @@ React.useEffect(() =&gt; &#123;
   &#125;;
 &#125;, []);
 return &lt;div&gt;&#123;count&#125;&lt;/div&gt;;
+</code></pre>
+<pre><code class="JavaScript">import &#123; memo, useCallback, useReducer, useEffect &#125; from &quot;react&quot;;
+import &quot;./styles.css&quot;;
+
+export default function App() &#123;
+  const [i, inc] = useReducer((i) =&gt; i + 1, 0);
+
+  useEffect(() =&gt; &#123;
+    console.time(&quot;usage&quot;);
+  &#125;, []);
+
+  useEffect(() =&gt; &#123;
+    if (i &lt; 10 * 4) &#123;
+      inc();
+    &#125; else &#123;
+      console.timeEnd(&quot;usage&quot;);
+    &#125;
+  &#125;, [i]);
+
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;div&gt;i: &#123;i&#125;&lt;/div&gt;
+      &lt;Foo /&gt;
+    &lt;/div&gt;
+  );
+&#125;
+
+const list = Array.from(&#123; length: 1000 &#125;).map((_, i) =&gt; &#123;
+  return &lt;div key=&#123;i&#125;&gt;&#123;i&#125;&lt;/div&gt;;
+&#125;);
+
+const Bar = memo((&#123; fn &#125;) =&gt; &#123;
+  return &lt;div&gt;&#123;list&#125;&lt;/div&gt;;
+&#125;);
+
+const Foo = () =&gt; &#123;
+  const fn = useCallback(() =&gt; &#123;
+    console.log(&quot;1&quot;);
+    console.log(&quot;1&quot;);
+    console.log(&quot;1&quot;);
+    console.log(&quot;1&quot;);
+    console.log(&quot;1&quot;);
+  &#125;, []);
+  // const fn = () =&gt; &#123;
+  //   console.log(&quot;1&quot;);
+  //   console.log(&quot;1&quot;);
+  //   console.log(&quot;1&quot;);
+  //   console.log(&quot;1&quot;);
+  //   console.log(&quot;1&quot;);
+  // &#125;;
+
+  // return &lt;div&gt;foo&lt;/div&gt;;
+  return &lt;Bar fn=&#123;fn&#125; /&gt;;
+&#125;;
 </code></pre>
 
     </div>
