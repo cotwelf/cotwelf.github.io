@@ -913,6 +913,220 @@ obj instanceof ancestor;
 </code></pre>
 <h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h4 id="以下选项中，能被-encodeURIComponent-函数编码的是"><a href="#以下选项中，能被-encodeURIComponent-函数编码的是" class="headerlink" title="以下选项中，能被 encodeURIComponent() 函数编码的是"></a>以下选项中，能被 encodeURIComponent() 函数编码的是</h4><p>A.*; B.~; C.$; D. -</p>
 <p>encodeURLComponent() 函数用于编码 URL 中的某一段，只有 9 个字符不会被编码 (!’()*-._~)。除了 C 之外都不能被编码。</p>
+<h4 id="请说明-JS-中原生对象（native-objects）和宿主对象（host-objects）的区别"><a href="#请说明-JS-中原生对象（native-objects）和宿主对象（host-objects）的区别" class="headerlink" title="请说明 JS 中原生对象（native objects）和宿主对象（host objects）的区别"></a>请说明 JS 中原生对象（native objects）和宿主对象（host objects）的区别</h4><p>原生对象是由 ECMAScript 规范定义的对象，所有内置对象都是原生对象，例如 Array、Date 和 RegExp 等。</p>
+<p>宿主对象是由宿主环境（如浏览器）定义的对象，用于完善 ECMAScript 的执行环境，例如 Document、Location 和 Navigator 等。</p>
+<h4 id="全局函数-eval-有什么作用"><a href="#全局函数-eval-有什么作用" class="headerlink" title="全局函数 eval() 有什么作用"></a>全局函数 eval() 有什么作用</h4><p>eval() 可以执行一段字符串中的脚本，它只有一个参数，如果传入的参数是非字符串类型的值，那么就直接返回该值。如果传入字符串字面量，那么将被作为 JavaScript 代码进行编译。当编译失败时，抛出语法错误；编译成功时执行这段代码，最后返回一个表达式或语句的值。eval() 的具体用法如下所示</p>
+<pre><code class="JavaScript">eval(1); // 1
+var str = &quot;var total = 100; console.log(total)&quot;
+eval(str) // 100
+</code></pre>
+<p>在 eval() 中创建的变量或函数具有当前执行时所处的作用域，并且【声明不能被提升】，因此如果在调用 eval() 之前使用函数中创建的变量，将会抛出未定义的异常，如</p>
+<pre><code class="JavaScript">function sum() &#123;
+  var digit = 1;
+  console.log(total); // 抛出未定义异常
+  eval(&quot;var total = 100&quot;); // 定义变量
+  console.log(total); // total 和 digit 的作用域相同
+&#125;
+</code></pre>
+<p>在严格模式中，eval() 不能改变作用域，因此也就不能定义新的变量或函数，如</p>
+<pre><code class="JavaScript">function sun() &#123;
+  &quot;use strict&quot;;
+  eval(&quot;var total = 100&quot;); // 定义变量
+  console.log(total); // 抛出未定义的异常
+&#125;
+</code></pre>
+<p>eval() 能够编译代码字符串，它能力非常强大，同时也非常危险。如果传入的是恶意代码，将会威胁站点安全，造成不可估量的损失。（XSS 攻击？</p>
+<h4 id="下列选项中，属于-JS-内置对象的是（）"><a href="#下列选项中，属于-JS-内置对象的是（）" class="headerlink" title="下列选项中，属于 JS 内置对象的是（）"></a>下列选项中，属于 JS 内置对象的是（）</h4><p>A. String; B. Function; C. RegExp; D. Array;</p>
+<p>ABCD。当 JS 解释器启动（也就是浏览器加载新页面）时，会有一些可用的内置对象（built-in objects）被初始化，这些内置对象包括：全局对象、String、Boolean、Number、Object、Function、Array、Date、RegExp、Error、Math 和 JSON。</p>
+<h4 id="编写一个函数，它没有参数，返回值是一个数组，数组内是-8-个随机且不重复的整数，整数范围在-5-20-之间。"><a href="#编写一个函数，它没有参数，返回值是一个数组，数组内是-8-个随机且不重复的整数，整数范围在-5-20-之间。" class="headerlink" title="编写一个函数，它没有参数，返回值是一个数组，数组内是 8 个随机且不重复的整数，整数范围在 [5, 20] 之间。"></a>编写一个函数，它没有参数，返回值是一个数组，数组内是 8 个随机且不重复的整数，整数范围在 [5, 20] 之间。</h4><pre><code class="JavaScript">const randomArray = () =&gt; &#123;
+  const res = []
+  const pushNum = () =&gt; &#123;
+    // floor(5 + [0 ~ 16))
+    const num = Math.floor(Math.random() * 16 + 5)
+    if (res.includes(num)) &#123;
+      pushNum()
+    &#125; else &#123;
+      res.push(num)
+    &#125;
+  &#125;
+  for(let i = 0; i &lt; 8; i++) &#123;
+    // let newNum = getNum()
+    pushNum()
+  &#125;
+  return res
+&#125;
+console.log(randomArray())
+</code></pre>
+<p>教科书答案</p>
+<pre><code class="JavaScript">function getArray() &#123;
+  var arr = []
+  var number = 0
+  for (var i = 0; i &lt; 8; i++) &#123;
+    number = Math.round(Math.random() * 15);
+    number += 5;
+    if (arr.indexOf(number) &gt;= 0) &#123;
+      i--;
+    &#125; else &#123;
+      arr.push(number);
+    &#125;
+  &#125;
+  return arr;
+&#125;
+console.log(getArray())
+</code></pre>
+<h4 id="在以下选项中，表示全局函数的有（）"><a href="#在以下选项中，表示全局函数的有（）" class="headerlink" title="在以下选项中，表示全局函数的有（）"></a>在以下选项中，表示全局函数的有（）</h4><p>A. ceil(); B. parseInt(); C.stringify(); D. isNaN();</p>
+<p>Math.ceil(), JSON.stringify()</p>
+<h4 id="为数字添加两个方法：add-和-minus-，分别表示加法和剪发，例如下面的代码相当于表达式-1-2-3"><a href="#为数字添加两个方法：add-和-minus-，分别表示加法和剪发，例如下面的代码相当于表达式-1-2-3" class="headerlink" title="为数字添加两个方法：add() 和 minus()，分别表示加法和剪发，例如下面的代码相当于表达式 1+2-3"></a>为数字添加两个方法：add() 和 minus()，分别表示加法和剪发，例如下面的代码相当于表达式 1+2-3</h4><pre><code class="JavaScript">(1).add(2).minus(3)
+</code></pre>
+<pre><code class="JavaScript">Number.prototype.add = function (addNum) &#123;
+  return this.valueOf() + addNum
+&#125;
+Number.prototype.minus = function (minusNum) &#123;
+  return this.valueOf() - minusNum
+&#125;
+(1).add(2).minus(3) // 0
+</code></pre>
+<h4 id="请简单描述一下你所理解的原型链"><a href="#请简单描述一下你所理解的原型链" class="headerlink" title="请简单描述一下你所理解的原型链"></a>请简单描述一下你所理解的原型链</h4><p>对象之间通过原型关联到一起，就好比用一条锁链将一个个对象连接在一起，在将各个对象挂钩后，最终形成了一条原型链。在读取对象的一个属性时，会现在对象中查询自有属性，如果不存在，那么再沿着原型链向上搜索匹配的集成属性，直到找到或到达原型链的顶端，才停止搜索。</p>
+<p>// TODO: 待补充</p>
+<h4 id="执行下面的代码，得到的结果为"><a href="#执行下面的代码，得到的结果为" class="headerlink" title="执行下面的代码，得到的结果为"></a>执行下面的代码，得到的结果为</h4><pre><code class="JavaScript">Array.prototype.isPrototypeOf([1, 2])
+</code></pre>
+<p>true。isPrototypeOf() 方法用于判断调用此方法的对象是否存在于指定对象的原型链中。此处调用该方法的是数组的原型对象，而方法的实参是一个数组字面量，因此得到的结果为 true。</p>
+<h4 id="执行下面的代码后，对-name-属性的描述中，错误的是（）"><a href="#执行下面的代码后，对-name-属性的描述中，错误的是（）" class="headerlink" title="执行下面的代码后，对 name 属性的描述中，错误的是（）"></a>执行下面的代码后，对 name 属性的描述中，错误的是（）</h4><pre><code class="JavaScript">var obj = &#123;age: 18&#125;
+Object.defineProperty(obj, &quot;name&quot;, &#123;
+  configurable: false
+&#125;);
+Object.defineProperty(obj, &quot;age&quot;, &#123;
+  configurable: false
+&#125;);
+obj.hobby = &#39;anime&#39;
+obj.name // undefined
+obj.name = &#39;name&#39;
+obj.name // undefined
+</code></pre>
+<p>A. 可以用 delete 运算符删除该属性；B. 可以再把该属性的 configurable 特性设为 true；C. 可以再修改为可枚举特性（enumerable）；D. 可写特性（writable）只能从 true 改为 false。</p>
+<p>ABC。在 ECMAScript 5 中，属性能够设置自身的特性。当属性的 configuable 特性为 false 时，将会有以下五种限制：</p>
+<ul>
+<li>（1）不能用 delete 运算符删除此属性，如果强行删除，那么再严格模式中会抛出错误；</li>
+<li>（2）不能再变回可配置；</li>
+<li>（3）不能再修改成可枚举特性；</li>
+<li>（4）可写特性只能从 true 改为 false，不能从 false 改为 true。</li>
+<li>（5）不能变成访问器属性。</li>
+</ul>
+<blockquote>
+<p>某些属性不想被误删时，可以用这种方式。等于是常量了。</p>
+</blockquote>
+<h4 id="如何判断对象中的某个属性是继承而来的？"><a href="#如何判断对象中的某个属性是继承而来的？" class="headerlink" title="如何判断对象中的某个属性是继承而来的？"></a>如何判断对象中的某个属性是继承而来的？</h4><p>将 in 运算符和 Object 对象的 hasOwnProperty() 方法组合使用，能够检测一个属性是否是继承属性，它们的用法如下表所示。<br>|检测方式|描述|<br>|–|–|<br>|in 运算符|在对象的自有属性或继承属性中包含要匹配的属性时，就返回 true，否则返回 false|<br>|使用 Object 的 hasOwnProperty()|在对象的自有属性中包含要匹配的属性时，就返回 true，否则返回 false。|<br>只要 in 运算符返回 true，而 hasOwnProperty() 方法返回 false，就能确定这是个继承属性，代码如下所示。</p>
+<pre><code class="JavaScript">function isInheritProperty(obj, name) &#123;
+  return name in obj &amp;&amp; !obj.hasOwnProperty(name);
+&#125;
+var obj1 = &#123; name: &quot;strick&quot; &#125;
+var obj2 = Object.create(obj1);
+isInheritProperty(obj2, &quot;name&quot;);
+</code></pre>
+<blockquote>
+<p>另外，如果继承的对象上定义了被继承对象同样的属性，原被继承对象上的属性不会改变</p>
+</blockquote>
+<pre><code class="JavaScript">const otaku = &#123;
+  seikaku: &#39;okashii&#39;
+&#125;
+const xiuwen = Object.create(otaku)
+xiuwen.siekaku = &#39;kawaii =w=&#39;
+console.log(xiuwen)
+</code></pre>
+<p><img src="./%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%B1%9E%E6%80%A7%E6%98%AF%E7%BB%A7%E6%89%BF%E8%80%8C%E6%9D%A5%E7%9A%84.png"></p>
+<h4 id="用-new-运算符创建对象时，例如-new-Fn-，具体的创建过程"><a href="#用-new-运算符创建对象时，例如-new-Fn-，具体的创建过程" class="headerlink" title="用 new 运算符创建对象时，例如 new Fn()，具体的创建过程"></a>用 new 运算符创建对象时，例如 new Fn()，具体的创建过程</h4><p>大致可分为 4 步</p>
+<ul>
+<li>（1）一个新对象被创建，它继承自构造函数的原型，即 Fn.prototype。</li>
+<li>（2）将指定的参数传递给构造函数；</li>
+<li>（3）将执行上下文（this）绑定到新创建的对象中；</li>
+<li>（4）如果构造函数有返回值，那么这个返回值将取代第一步中新创建的对象。</li>
+</ul>
+<p>new 共经历了四个过程。</p>
+<pre><code class="javascript">var Otaku = function () &#123;
+  this.seikaku = &#39;okashii&#39;
+&#125;;
+Otaku.prototype.kareshi = &#39;nai&#39;;
+var xw = new Otaku();
+</code></pre>
+<pre><code class="javascript">// 我们先定义一个构造函数
+var Otaku = function () &#123;
+  this.seikaku = &#39;okashii&#39;
+&#125;;
+Otaku.prototype.kareshi = &#39;nai&#39;;
+
+// 创建我们自己的 new 方法
+const newObj = (constructorFn) =&gt; &#123;
+  // 1、创建了一个空对象
+  var obj = new object();
+
+  // 2、设置原型链
+  obj._proto_ = constructorFn.prototype;
+
+  // 3、让 constructorFn 的 this 指向 obj，并执行 constructorFn 的函数体
+  var result = constructorFn.call(obj);
+
+  // 4、判断fn的返回值类型，如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象。
+  if (typeof result == &quot;object&quot;)&#123;
+      xw = result;
+  &#125; else &#123;
+      xw = obj;
+  &#125;
+&#125;
+const xw = newObj(Otaku)
+</code></pre>
+<p>综上</p>
+<h4 id="下面代码最终的打印结果是"><a href="#下面代码最终的打印结果是" class="headerlink" title="下面代码最终的打印结果是"></a>下面代码最终的打印结果是</h4><pre><code class="JavaScript">var obj1 = &#123;
+  names: []
+&#125;;
+var obj2 = obj1.names;
+obj2.push(&quot;strick&quot;);
+console.log(obj1.names);
+</code></pre>
+<p>[“strick”]。obj1 中的 names 属性，它的值是一个空数组，数组也是一个对象。将 obj1 的 names 属性赋给 obj2 后，obj2 就能引用 names 的值（即数组），因为【数组方法 push() 能够改变原始数组】，所以 names 属性最终的值为 [“strick”]</p>
+<h4 id="下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。"><a href="#下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。" class="headerlink" title="下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。"></a>下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。</h4><pre><code class="JavaScript">function Super(age) &#123;
+  this.names = [];
+  this.age = age;
+&#125;
+function Sub(age) &#123;
+&#125;
+Sub.prototype = Super.prototype
+</code></pre>
+<p>继承是面向对象语言的三大特性之一，JS 只支持实现继承（而像 Java 那类语言还支持接口继承），并且主要依靠原型链来实现。代码中的继承有两个不足的地方，如下所列，每个不足之处都给出了相应的改进方法。</p>
+<ul>
+<li>（1）不能向超类 Super 的构造函数传递参数（超类中需要接收一个 age 参数），也不能使用超类中的自有属性（如 names 和 age）。改进的犯法就是在子类 Sub 的构造函数中，显式地调用超类的构造函数，如下所示。<pre><code class="JavaScript">function Sub(age) &#123;
+Super.call(this, age)
+&#125;
+</code></pre>
+</li>
+<li>（2）在子类 Sub 的原型中添加属性或方法会影响超类的原型，例如给子类添加一个 getShool() 方法，其实就是在超类的原型上定义这个方法。以下代码所示功能为创建一个超类的实例，也能成功调用 getShool() 方法。<pre><code class="JavaScript">Sub.prototype.getShool = function() &#123;
+return &quot;university&quot;;
+&#125;;
+var parent = new Super(30)
+parent.getShool() // &quot;university&quot;
+</code></pre>
+改进方法就是用一个空的函数 F() 做中介，然后将超类的原型赋给这个空函数的原型，子类的原型再指向这个空函数的实例，这样就能避免修改超类的原型，如下<pre><code class="JavaScript">function create(object) &#123;
+function F() &#123;&#125;
+F.prototype = object;
+return new F();
+&#125;
+Sub.prototype = create(Super.prototype);
+</code></pre>
+<h4 id="执行下面的代码，obj1-对象的-name-属性值为（）"><a href="#执行下面的代码，obj1-对象的-name-属性值为（）" class="headerlink" title="执行下面的代码，obj1 对象的 name 属性值为（）"></a>执行下面的代码，obj1 对象的 name 属性值为（）</h4><pre><code class="JavaScript">var obj1 = &#123; age: 10 &#125;;
+var obj2 = obj1;
+obj1.name = obj2 = &#123; age: 20 &#125;;
+</code></pre>
+{ age: 20 }。obj2 变量一开始被赋予的是 obj1 对象的指针，随后又指向了一个新的对象：{ age: 20 }。新对象的指针同时也赋给了 obj1 对象的 name 属性。</li>
+</ul>
+<pre><code class="javascript">function Car(make, model, year) &#123;
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  return &#39;1341232&#39;
+&#125;
+Car.prototype.
+const c = new Car()
+c.beep()
+</code></pre>
 
     </div>
 
