@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/工具" style=color:#ff7d73>
+              <a href="/tags/工具" style=color:#ffa2c4>
                   工具
               </a>
           </span>
@@ -267,7 +267,10 @@ RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&qu
 COPY ./install_imagick.sh ./
 RUN sh install_imagick.sh
 </code></pre>
-<p>所以现在看下来，最佳实践是：有可能出错的地方单独 RUN，创建文件夹跳转目录等行为，可以合并到一个 RUN 脚本里。</p>
+<p>所以我把有可能出错的地方单独 RUN，创建文件夹跳转目录等行为，可以合并到一个 RUN 脚本里。</p>
+<blockquote>
+<p>这里也有个坑 orz，可以先预测一下会出现什么问题。。。</p>
+</blockquote>
 <pre><code class="Dockerfile">FROM php:7.4-cli
 RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
 RUN cd &quot;$PHP_INI_DIR&quot; \
@@ -293,13 +296,14 @@ RUN pecl install memcached \
   &amp;&amp; pecl install redis \
     &amp;&amp; pecl install xdebug
 </code></pre>
+<p>没戳，聪明的你一定发现了，万一下载速度巨慢。。。（别问我怎么知道的，现在我还在下 imagick 和 ImageMagick QAQ，所以打算下载好之后放在目录里，运行 Dockerfile 的时候 copy 进去（反正也不大，15M 左右）</p>
 <p>保存 Dockerfile，在 /webserver 目录下执行</p>
 <pre><code class="bash">docker build -t webserver:v1 .
 </code></pre>
 <blockquote>
 <p>可以在 Docker 的镜像仓库 <a target="_blank" rel="noopener" href="https://hub.docker.com/search?q=&type=image">Docker Hub</a> 里找需要用的镜像。</p>
 </blockquote>
-<p>TODO</p>
+<p>TODO：UP 现在还在龟速下文件，明天继续更~ 灰灰</p>
 
     </div>
 
