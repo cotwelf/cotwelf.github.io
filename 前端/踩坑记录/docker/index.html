@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/工具" style=color:#00bcd4>
+              <a href="/tags/工具" style=color:#1bccbc>
                   工具
               </a>
           </span>
@@ -236,33 +236,11 @@ touch Dockerfile
 <pre><code class="Dockerfile">FROM php:7.4-cli
 RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot; \
   &amp;&amp; cd &quot;$PHP_INI_DIR&quot; \
-  &amp;&amp; curl -fsSL &#39;http://www.imagemagick.org/download/ImageMagick.tar.gz&#39; -o imagemagick.tar.gz \
-  &amp;&amp; mkdir -p imagemagick \
-  &amp;&amp; tar zxvf imagemagick.tar.gz imagemagick --strip-components=1 \
-  &amp;&amp; rm imagemagick.tar.gz \
-  &amp;&amp; ( \
-    cd imagemagick \
-    &amp;&amp; ./configure --prefix=. \
-    &amp;&amp; make &amp;&amp; make install \
-  ) \
-  &amp;&amp; cd &quot;$PHP_INI_DIR&quot; \
-  &amp;&amp; curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz \
+  (...略略略，全部脚本见文档末尾...）
   &amp;&amp; mkdir -p imagick \
-  &amp;&amp; tar zxvf imagick.tgz imagick --strip-components=1 \
-  &amp;&amp; rm imagick.tgz \
-  &amp;&amp; ( \
-    cd imagick \
-    &amp;&amp; phpize \
-  ) \
-  &amp;&amp; ln -s &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick-7&quot; &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick&quot; \
-  &amp;&amp; ./configure --with-php-config=&quot;$PHP_INI_DIR/bin/php-config&quot; --with-imagick=&quot;$PHP_INI_DIR/imagemagick&quot; \
-  &amp;&amp; make &amp;&amp; make install \
-  &amp;&amp; echo &quot;extensions=imagick.so&quot; &gt; &quot;$PHP_INI_DIR/php.ini&quot; \
-  &amp;&amp; pecl install memcached \
-  &amp;&amp; pecl install redis \
     &amp;&amp; pecl install xdebug
 </code></pre>
-<p>这里的坑就是，如果放到一个 RUN 里执行这么多指令，会不知道执行到哪里了（如下图<br><img src="./run.png"><br>（上述指令可以写成 shell 脚本，使用 <code>COPY ./install_imagick.sh ./</code> 放到 docker 镜像里，但依旧不会解决上述问题）</p>
+<p>这里的坑就是，如果所有的指令都放到一个 RUN 里执行，会不知道执行到哪里了（终端如下图<br><img src="./run.png"><br>（上述指令可以写成 shell 脚本，使用 <code>COPY ./install_imagick.sh ./</code> 放到 docker 镜像里，但依旧不会解决上述问题）</p>
 <pre><code class="Dockerfile">FROM php:7.4-cli
 COPY ./install_imagick.sh ./
 RUN sh install_imagick.sh
@@ -271,6 +249,15 @@ RUN sh install_imagick.sh
 <blockquote>
 <p>这里也有个坑 orz，可以先预测一下会出现什么问题。。。</p>
 </blockquote>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
+RUN cd &quot;$PHP_INI_DIR&quot; \
+  (...略略略，全部脚本见文档末尾...）
+  &amp;&amp; curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz \
+  &amp;&amp; mkdir -p imagick \
+  (...略略略，全部脚本见文档末尾...）
+</code></pre>
+<p>没戳，聪明的你一定发现了，万一下载速度巨慢。。。（别问我怎么知道的，现在我还在下 imagick 和 ImageMagick QAQ，所以打算下载好之后放在目录里，运行 Dockerfile 的时候 copy 进去（反正也不大，15M 左右）</p>
 <pre><code class="Dockerfile">FROM php:7.4-cli
 RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
 RUN cd &quot;$PHP_INI_DIR&quot; \
@@ -296,7 +283,6 @@ RUN pecl install memcached \
   &amp;&amp; pecl install redis \
     &amp;&amp; pecl install xdebug
 </code></pre>
-<p>没戳，聪明的你一定发现了，万一下载速度巨慢。。。（别问我怎么知道的，现在我还在下 imagick 和 ImageMagick QAQ，所以打算下载好之后放在目录里，运行 Dockerfile 的时候 copy 进去（反正也不大，15M 左右）</p>
 <p>保存 Dockerfile，在 /webserver 目录下执行</p>
 <pre><code class="bash">docker build -t webserver:v1 .
 </code></pre>
@@ -304,6 +290,30 @@ RUN pecl install memcached \
 <p>可以在 Docker 的镜像仓库 <a target="_blank" rel="noopener" href="https://hub.docker.com/search?q=&type=image">Docker Hub</a> 里找需要用的镜像。</p>
 </blockquote>
 <p>TODO：UP 现在还在龟速下文件，明天继续更~ 灰灰</p>
+<pre><code class="shell">mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
+cd &quot;$PHP_INI_DIR&quot;
+curl -fsSL &#39;http://www.imagemagick.org/download/ImageMagick.tar.gz&#39; -o imagemagick.tar.gz
+mkdir -p imagemagick
+tar zxvf imagemagick.tar.gz imagemagick --strip-components=1
+rm imagemagick.tar.gz
+cd imagemagick
+./configure --prefix=.
+make &amp;&amp; make install
+cd &quot;$PHP_INI_DIR&quot;
+curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz
+mkdir -p imagick
+tar zxvf imagick.tgz imagick --strip-components=1
+rm imagick.tgz
+magick
+phpize
+ln -s &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick-7&quot; &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick&quot;
+./configure --with-php-config=&quot;$PHP_INI_DIR/bin/php-config&quot; --with-imagick=&quot;$PHP_INI_DIR/imagemagick&quot;
+make &amp;&amp; make install
+echo &quot;extensions=imagick.so&quot; &gt; &quot;$PHP_INI_DIR/php.ini&quot;
+pecl install memcached
+pecl install redis
+pecl install xdebug
+</code></pre>
 
     </div>
 
