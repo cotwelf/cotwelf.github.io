@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 19 级毕业答辩旁听记录</title>
+    <title>Cotwelf&#39;s Life || Docker 使用指北</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -153,7 +153,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 <div class="article">
   <div>
-    <h1>19 级毕业答辩旁听记录 </h1>
+    <h1>Docker 使用指北 </h1>
   </div>
   <div class="info">
     
@@ -161,16 +161,16 @@
         <span class="icon">
           <a-icon type="calendar" theme="filled" />
         </span>
-        2022-04-22
+        2022-05-01
       </span>
     
       
       <span class="category">
-          <a href="/categories/笔记">
+          <a href="/categories/前端">
               <span class="icon">
                   <a-icon type="book" theme="filled" />
               </span>
-              笔记
+              前端
           </a>
       </span>
       
@@ -184,8 +184,8 @@
           
           <span class="tag">
               
-              <a href="/tags/取经" style=color:#00bcd4>
-                  取经
+              <a href="/tags/工具" style=color:#ff7d73>
+                  工具
               </a>
           </span>
           
@@ -194,16 +194,112 @@
   </div>
 
     <div class="content" v-pre>
-        <ul>
-<li>会议软件：腾讯会议</li>
-<li>答辩时间：（大概）个人讲解 10 分钟左右，老师评论 20 分钟左右。共计 30 分钟。<h1 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h1>每个人答辩时间在总半小时左右（自己讲 + 老师点评），PPT 尽量简短不要太长，所以大致就是自己讲 10 分钟左右（包括 PPT 论述与放片）</li>
+        <blockquote>
+<p>因为公司 Web 环境太难配了，萌新非常不友好，每次拿到新电脑之后环境要配好久，还容易出问题，因此打算试一下 Docker，看看能不能实现环境自由(bushi)~ 为什么要使用 Docker 而不用虚拟机呢？因为 Docker 更轻量，它并不是模拟完整的操作系统，而是提供一个最小限度的程序运行的虚拟环境，对于硬盘巨小星人非常友好。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/introduction">《Docker 中文文档》</a><br><a target="_blank" rel="noopener" href="https://docs.docker.com/">《Docker 官网》</a></p>
+<p>镜像和容器的关系，就像 <code>类</code> 和 <code>实例</code>，镜像是静态的定义，容器是运行的实体。</p>
+<h1 id="下载并运行-Docker"><a href="#下载并运行-Docker" class="headerlink" title="下载并运行 Docker"></a>下载并运行 Docker</h1><p><a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">官网下载</a></p>
+<h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2><p>运行一个 nginx 服务: <code>docker run -d -p 80:80 --name webserver nginx</code></p>
+<p>停止: <code>docker stop webserver</code></p>
+<p>删除: <code>docker rm webserver</code></p>
+<h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><p>拉取镜像: <code>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code></p>
+<blockquote>
+<p>如: <code>docker pull nginx:latest</code></p>
+</blockquote>
+<p>删除镜像: <code>docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...]</code></p>
+<blockquote>
+<p>可以通过 image ID 删除，如 <code>docker image rm 501</code>（501 是 id 前三位，能分辨就可），也可以通过 image name 删除，如 <code>docker image rm nginx</code><br>查看本地已下载镜像: <code>docker image ls</code></p>
+</blockquote>
+<p>删除虚悬镜像: <code>docker image prune</code> （使用 ls 查看时发现有些镜像名变成了 &lt; none &gt;，大概是由于官方维护，将镜像名转移到新下载的镜像上，虚悬镜像可以随意删除）</p>
+<blockquote>
+<p>如果在使用过程中发现拉取 Docker 镜像十分缓慢，可以配置 Docker <a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/mirror">镜像加速器</a></p>
+</blockquote>
+<h1 id="配置-Web-环境"><a href="#配置-Web-环境" class="headerlink" title="配置 Web 环境"></a>配置 Web 环境</h1><p>dependencies</p>
+<ul>
+<li>php: 7.2.* or higher version.</li>
+<li>NPM: 4.* or higher version.</li>
+<li>ImageMagick</li>
+<li>php-imagick</li>
+<li>php-redis</li>
+<li>php-memcached</li>
 </ul>
-<p>PPT 中出现的内容，一定要是自己充分理解的，而且是希望老师可以对此提出问题的内容。（有点像面试，不要放自己一知半解的内容，虽然可以充数，但如果老师问到就 gg）</p>
-<p>如果因为疫情关系改为线上了（可能 6 月的开题会是线上），一定要调整【腾讯会议】配置，让自己的视频能够播出声音！！！</p>
-<h1 id="老师们提出的意见"><a href="#老师们提出的意见" class="headerlink" title="老师们提出的意见"></a>老师们提出的意见</h1><h2 id="论文主题以跨学科角度挺好的"><a href="#论文主题以跨学科角度挺好的" class="headerlink" title="论文主题以跨学科角度挺好的"></a>论文主题以跨学科角度挺好的</h2><p>整个鸡冻！！那那那我用 unity 和动画结合是不是相当于程序和艺术结合了？感觉有戏耶~</p>
-<h2 id="逻辑支持需要参考文献"><a href="#逻辑支持需要参考文献" class="headerlink" title="逻辑支持需要参考文献"></a>逻辑支持需要参考文献</h2><p>在我理解就是，论文中出现的所有观点，都要有理论依据，比如我想做 unity 和动画结合，现在有哪些比较好的案例吗？我可以从案例中学到哪些经验，可以在此有何延伸，并运用到自己的毕设中去。</p>
-<h2 id="论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）"><a href="#论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）" class="headerlink" title="论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）"></a>论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）</h2><p>大致理解同上。</p>
-<h2 id="可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果"><a href="#可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果" class="headerlink" title="可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果"></a>可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果</h2><p>因为专硕的话还是以作品为主，研究为辅，所以尽量简短描述研究，最后要放自己的作品。<br>内容要紧密结合主题，可以放自己作品截图来支撑观点</p>
+<p>这里我们使用 Dockerfile 来定制镜像</p>
+<pre><code class="bash">mkdir webserver
+cd webserver
+touch Dockerfile
+</code></pre>
+<h2 id="指定基础镜像"><a href="#指定基础镜像" class="headerlink" title="指定基础镜像"></a>指定基础镜像</h2><p>可以看到，web 的大多数依赖都是 php 的，所以我们选择 <a target="_blank" rel="noopener" href="https://hub.docker.com/_/php">php 官方镜像</a> 作为基础镜像</p>
+<blockquote>
+<p>注意，下面这里有个坑，猜猜是什么坑呢？</p>
+</blockquote>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot; \
+  &amp;&amp; cd &quot;$PHP_INI_DIR&quot; \
+  &amp;&amp; curl -fsSL &#39;http://www.imagemagick.org/download/ImageMagick.tar.gz&#39; -o imagemagick.tar.gz \
+  &amp;&amp; mkdir -p imagemagick \
+  &amp;&amp; tar zxvf imagemagick.tar.gz imagemagick --strip-components=1 \
+  &amp;&amp; rm imagemagick.tar.gz \
+  &amp;&amp; ( \
+    cd imagemagick \
+    &amp;&amp; ./configure --prefix=. \
+    &amp;&amp; make &amp;&amp; make install \
+  ) \
+  &amp;&amp; cd &quot;$PHP_INI_DIR&quot; \
+  &amp;&amp; curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz \
+  &amp;&amp; mkdir -p imagick \
+  &amp;&amp; tar zxvf imagick.tgz imagick --strip-components=1 \
+  &amp;&amp; rm imagick.tgz \
+  &amp;&amp; ( \
+    cd imagick \
+    &amp;&amp; phpize \
+  ) \
+  &amp;&amp; ln -s &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick-7&quot; &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick&quot; \
+  &amp;&amp; ./configure --with-php-config=&quot;$PHP_INI_DIR/bin/php-config&quot; --with-imagick=&quot;$PHP_INI_DIR/imagemagick&quot; \
+  &amp;&amp; make &amp;&amp; make install \
+  &amp;&amp; echo &quot;extensions=imagick.so&quot; &gt; &quot;$PHP_INI_DIR/php.ini&quot; \
+  &amp;&amp; pecl install memcached \
+  &amp;&amp; pecl install redis \
+    &amp;&amp; pecl install xdebug
+</code></pre>
+<p>这里的坑就是，如果放到一个 RUN 里执行这么多指令，会不知道执行到哪里了（如下图<br><img src="./run.png"><br>（上述指令可以写成 shell 脚本，使用 <code>COPY ./install_imagick.sh ./</code> 放到 docker 镜像里，但依旧不会解决上述问题）</p>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+COPY ./install_imagick.sh ./
+RUN sh install_imagick.sh
+</code></pre>
+<p>所以现在看下来，最佳实践是：有可能出错的地方单独 RUN，创建文件夹跳转目录等行为，可以合并到一个 RUN 脚本里。</p>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
+RUN cd &quot;$PHP_INI_DIR&quot; \
+  &amp;&amp; curl -fsSL &#39;http://www.imagemagick.org/download/ImageMagick.tar.gz&#39; -o imagemagick.tar.gz
+RUN  mkdir -p imagemagick \
+  &amp;&amp; tar zxvf imagemagick.tar.gz imagemagick --strip-components=1 \
+  &amp;&amp; rm imagemagick.tar.gz \
+  &amp;&amp; cd imagemagick \
+  &amp;&amp; ./configure --prefix=.
+RUN make &amp;&amp; make install
+RUN cd &quot;$PHP_INI_DIR&quot; \
+  &amp;&amp; curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz \
+  &amp;&amp; mkdir -p imagick \
+  &amp;&amp; tar zxvf imagick.tgz imagick --strip-components=1 \
+  &amp;&amp; rm imagick.tgz \
+  &amp;&amp; cd imagick
+RUN phpize
+RUN ln -s &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick-7&quot; &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick&quot;
+RUN ./configure --with-php-config=&quot;$PHP_INI_DIR/bin/php-config&quot; --with-imagick=&quot;$PHP_INI_DIR/imagemagick&quot;
+RUN make &amp;&amp; make install
+RUN echo &quot;extensions=imagick.so&quot; &gt; &quot;$PHP_INI_DIR/php.ini&quot;
+RUN pecl install memcached \
+  &amp;&amp; pecl install redis \
+    &amp;&amp; pecl install xdebug
+</code></pre>
+<p>保存 Dockerfile，在 /webserver 目录下执行</p>
+<pre><code class="bash">docker build -t webserver:v1 .
+</code></pre>
+<blockquote>
+<p>可以在 Docker 的镜像仓库 <a target="_blank" rel="noopener" href="https://hub.docker.com/search?q=&type=image">Docker Hub</a> 里找需要用的镜像。</p>
+</blockquote>
+<p>TODO</p>
 
     </div>
 
