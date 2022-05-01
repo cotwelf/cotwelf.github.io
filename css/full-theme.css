@@ -646,7 +646,7 @@ a {
   display: block;
   color: blockquote-font;
   border-radius: 6px;
-  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.05);
 }
 .content code {
   font-family: CascadiaCode;
@@ -671,7 +671,7 @@ a {
   display: block;
   color: blockquote-font;
   border-radius: 6px;
-  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.05);
 }
 .content pre code {
   background: none;
