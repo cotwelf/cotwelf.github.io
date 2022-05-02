@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 兼容</title>
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript-日期和正则表达式</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -150,186 +150,129 @@
 
                 <div id="main">
                     
-<div class="categories-tags">
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+  <div>
+    <h1>前端芝士补完计划 之 JavaScript-日期和正则表达式 </h1>
+  </div>
+  <div class="info">
     
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/课堂笔记/" style=background:#1bccbc>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                课堂笔记
-            </a>
+      <span class="date">
+        <span class="icon">
+          <a-icon type="calendar" theme="filled" />
         </span>
-        
-        
-        
-        <span>
-            <a href="/tags/Algorithm/" style=background:#ff7d73>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                Algorithm
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/取经/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                取经
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/外语/" style=background:#ff7d73>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                外语
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/JavaScript/" style=background:#ff7d73>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                JavaScript
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/工具/" style=background:#ffa2c4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                工具
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/编码/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                编码
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/React/" style=background:#879cff>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                React
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/npm/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                npm
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/兼容/" style='background:linear-gradient(to right, #fbc2eb 0%, #bbd4ff 100%)'>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                兼容
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/响应式/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                响应式
-            </a>
-        </span>
-        
-        
-    </div>
-    <div id="archives">
-        
-        <a-timeline>
-            <a-timeline-item color="#a5c2f5">
-                <a-card hoverable>
-                    <div class="item-time">2022-04-24</div>
-                    <a href="/前端/踩坑记录/记一次非常非常非常麻烦的浏览器兼容问题/">
-                        <h3>记一次非常非常非常麻烦的浏览器兼容问题</h3>
-                    </a>
-                    <div class="info">
-                        
-                        <span class="category">
-                            <a href="/categories/前端">
-                                <span class="icon">
-                                    <a-icon type="book" theme="filled" />
-                                </span>
-                                前端
-                            </a>
-                        </span>
-                        
+        2022-05-02
+      </span>
+    
+      
+      <span class="category">
+          <a href="/categories/前端">
+              <span class="icon">
+                  <a-icon type="book" theme="filled" />
+              </span>
+              前端
+          </a>
+      </span>
+      
 
-                        
-                        <span class="tags">
-                            <span class="icon">
-                                <a-icon type="tags" theme="filled" />
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/兼容" style=color:#879cff>
-                                    兼容
-                                </a>
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/响应式" style=color:#ff7d73>
-                                    响应式
-                                </a>
-                            </span>
-                            
-                        </span>
-                        
-                    </div>
-                </a-card>
-            </a-timeline-item>
-        </a-timeline>
-        
+      
+
+      <span class="tags">
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#ffa2c4>
+                  JavaScript
+              </a>
+          </span>
+          
+      </span>
+      
+  </div>
+
+    <div class="content" v-pre>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="Date-now-、-new-Date-以及-Date-创建的实例的-valueOf"><a href="#Date-now-、-new-Date-以及-Date-创建的实例的-valueOf" class="headerlink" title="[Date.now()、+new Date() 以及 Date 创建的实例的 valueOf()]"></a>[Date.now()、+new Date() 以及 Date 创建的实例的 valueOf()]</h3><pre><code class="javascript">let a = Date.now()
+let b = +new Date()
+let c = new Date()
+let d = c.valueOf()
+</code></pre>
+<p>其中，abd 是相等的。因为 Date 实例的 valueOf 返回的是 <code>1970 年 1 月 1 日午夜（零时）</code> 开始经过的毫秒数，所以 Date 实例之间是可以比较的（不用转毫秒数）</p>
+<p>支持 Date.now()方法的浏览器包括 IE9+、Firefox 3+、Safari 3+、Opera 10.5 和 Chrome。在不支持它的浏览器中，使用 + 操作符把 Date 对象转换成字符串，也可以达到同样的目的。</p>
+<h3 id="常用的-Date-方法"><a href="#常用的-Date-方法" class="headerlink" title="常用的 Date 方法"></a>常用的 Date 方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getFullYear()</td>
+<td>取得4位数的年份</td>
+</tr>
+<tr>
+<td>getMonth()</td>
+<td>返回日期中的月份，其中0表示一月，11表示十二月</td>
+</tr>
+<tr>
+<td>getDate()</td>
+<td>返回日期月份中的天数（1到31）</td>
+</tr>
+<tr>
+<td>getDay()</td>
+<td>返回日期中星期的星期几（其中0表示星期日，6表示星期六）</td>
+</tr>
+<tr>
+<td>getHours()</td>
+<td>返回日期中的小时数（0到23）</td>
+</tr>
+<tr>
+<td>getMinutes()</td>
+<td>返回日期中的分钟数（0到59）</td>
+</tr>
+<tr>
+<td>getSeconds()</td>
+<td>返回日期中的秒数（0到59）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>原生 Date 方法不多，比如无法格式化日期、计算两个时间的时间差等，如果想用更多的方法可以使用第三方库，比如 moment 和 dayjs 都很不错，dayjs 相比 moment 更轻量，但功能没有 moment 强大，不过基本常用的方法还是有的，可以根据项目需要进行选择。</p>
+</blockquote>
+<h3 id="请用多种方式获取当前时间的毫秒数"><a href="#请用多种方式获取当前时间的毫秒数" class="headerlink" title="请用多种方式获取当前时间的毫秒数"></a>请用多种方式获取当前时间的毫秒数</h3><h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><h4 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h4><p>g：全局；i：不区分大小写；m：多行</p>
+<p>例如：/at/gi</p>
+<h4 id="需要转义的元字符："><a href="#需要转义的元字符：" class="headerlink" title="需要转义的元字符：( [ { \ ^ $ | ) ? * + .]}"></a>需要转义的元字符：( [ { \ ^ $ | ) ? * + .]}</h4><pre><code class="javascript">// 匹配所有以&quot;at&quot;结尾的 3 个字符的组合，不区分大小写
+var pattern1 = /.at/gi;
+
+// 匹配所有&quot;.at&quot;，不区分大小写
+var pattern2 =  new RegExp(&quot;\\.at&quot;, &quot;gi&quot;); // 不能把正则表达式字面量传递给 RegExp 构造函数
+&#39;cat.at&#39;.match(pattern1) // [&#39;cat&#39;, &#39;.at&#39;]
+&#39;cat.at&#39;.match(pattern2) // [&#39;.at&#39;]
+</code></pre>
+<pre><code class="javascript">// 加了全局匹配 g 的话会循环，最后一次是 null，之后又会重头开始
+var pattern2 =  new RegExp(&quot;at&quot;, &quot;gi&quot;);
+
+// 若不设置全局则始终返回第一个匹配项
+pattern2.exec(&#39;cat.at&#39;) // [&#39;at&#39;, index: 1, input: &#39;cat.at&#39;, groups: undefined]
+pattern2.exec(&#39;cat.at&#39;) // [&#39;at&#39;, index: 4, input: &#39;cat.at&#39;, groups: undefined]
+pattern2.exec(&#39;cat.at&#39;) // null
+pattern2.exec(&#39;cat.at&#39;) // [&#39;at&#39;, index: 1, input: &#39;cat.at&#39;, groups: undefined]
+
+pattern2.test(&#39;cat.at&#39;) // true
+pattern2.test(&#39;cat.at&#39;) // true
+pattern2.test(&#39;cat.at&#39;) // false
+
+// match 方法例外，不论是否全局都会返回所有匹配项
+&#39;cat.at&#39;.match(pattern2) // [&#39;at&#39;, &#39;at&#39;]
+&#39;cat.at&#39;.match(pattern2) // [&#39;at&#39;, &#39;at&#39;]
+&#39;cat.at&#39;.match(pattern2) // [&#39;at&#39;, &#39;at&#39;]
+
+</code></pre>
+
     </div>
-    <script>
-        new Vue({
-            el: '#archives'
-        })
-    </script>
+
+    
 </div>
 
                      

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 兼容</title>
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript-函数</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -150,186 +150,76 @@
 
                 <div id="main">
                     
-<div class="categories-tags">
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+  <div>
+    <h1>前端芝士补完计划 之 JavaScript-函数 </h1>
+  </div>
+  <div class="info">
     
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/课堂笔记/" style=background:#1bccbc>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                课堂笔记
-            </a>
+      <span class="date">
+        <span class="icon">
+          <a-icon type="calendar" theme="filled" />
         </span>
-        
-        
-        
-        <span>
-            <a href="/tags/Algorithm/" style=background:#ff7d73>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                Algorithm
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/取经/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                取经
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/外语/" style=background:#ff7d73>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                外语
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/JavaScript/" style=background:#ff7d73>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                JavaScript
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/工具/" style=background:#ffa2c4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                工具
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/编码/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                编码
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/React/" style=background:#879cff>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                React
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/npm/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                npm
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/兼容/" style='background:linear-gradient(to right, #fbc2eb 0%, #bbd4ff 100%)'>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                兼容
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/响应式/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                响应式
-            </a>
-        </span>
-        
-        
-    </div>
-    <div id="archives">
-        
-        <a-timeline>
-            <a-timeline-item color="#a5c2f5">
-                <a-card hoverable>
-                    <div class="item-time">2022-04-24</div>
-                    <a href="/前端/踩坑记录/记一次非常非常非常麻烦的浏览器兼容问题/">
-                        <h3>记一次非常非常非常麻烦的浏览器兼容问题</h3>
-                    </a>
-                    <div class="info">
-                        
-                        <span class="category">
-                            <a href="/categories/前端">
-                                <span class="icon">
-                                    <a-icon type="book" theme="filled" />
-                                </span>
-                                前端
-                            </a>
-                        </span>
-                        
+        2022-05-02
+      </span>
+    
+      
+      <span class="category">
+          <a href="/categories/前端">
+              <span class="icon">
+                  <a-icon type="book" theme="filled" />
+              </span>
+              前端
+          </a>
+      </span>
+      
 
-                        
-                        <span class="tags">
-                            <span class="icon">
-                                <a-icon type="tags" theme="filled" />
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/兼容" style=color:#879cff>
-                                    兼容
-                                </a>
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/响应式" style=color:#ff7d73>
-                                    响应式
-                                </a>
-                            </span>
-                            
-                        </span>
-                        
-                    </div>
-                </a-card>
-            </a-timeline-item>
-        </a-timeline>
-        
+      
+
+      <span class="tags">
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#879cff>
+                  JavaScript
+              </a>
+          </span>
+          
+      </span>
+      
+  </div>
+
+    <div class="content" v-pre>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="定义函数的方法"><a href="#定义函数的方法" class="headerlink" title="定义函数的方法"></a>定义函数的方法</h3><pre><code class="javascript">function fn() &#123;&#125;
+const fn = function() &#123;&#125;
+</code></pre>
+<p>函数实际上也是对象，而函数名实际上是指向对象的指针</p>
+<blockquote>
+<p>怎样判断一个变量是否是对象，在我看来，可以 new 出来的都是对象</p>
+</blockquote>
+<h3 id="函数声明与函数表达式的区别"><a href="#函数声明与函数表达式的区别" class="headerlink" title="函数声明与函数表达式的区别"></a>函数声明与函数表达式的区别</h3><pre><code class="javascript">fn1() // 2233
+fn2() // Uncaught TypeError: fn2 is not a function
+
+function fn1 () &#123;
+  console.log(&#39;fn1&#39;) // fn1
+  fn3() //fn3
+&#125;
+var fn2 = function () &#123;
+  console.log(&#39;fn2&#39;)
+&#125;
+function fn3() &#123;
+  console.log(&#39;fn3&#39;)
+&#125;
+</code></pre>
+<p>在代码开始执行之前，解析器就已经通过一个名为 <code>函数声明提升（function declaration hoisting）</code> 的过程，读取并将函数声明添加到执行环境中。对代码求值时，JS 引擎在第一遍会声明函数并将它们放到源代码树的顶部，变量提升结束之后才会开始执行。执行到函数所在的语句之前，变量 fn2 中不会保存有对函数的引用。</p>
+
     </div>
-    <script>
-        new Vue({
-            el: '#archives'
-        })
-    </script>
+
+    
 </div>
 
                      

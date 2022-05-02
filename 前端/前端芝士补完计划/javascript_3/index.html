@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript-对象</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                    
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+  <div>
+    <h1>前端芝士补完计划 之 JavaScript-对象 </h1>
+  </div>
+  <div class="info">
+    
+      <span class="date">
+        <span class="icon">
+          <a-icon type="calendar" theme="filled" />
+        </span>
+        2022-04-10
+      </span>
+    
+      
+      <span class="category">
+          <a href="/categories/前端">
+              <span class="icon">
+                  <a-icon type="book" theme="filled" />
+              </span>
+              前端
+          </a>
+      </span>
+      
+
+      
+
+      <span class="tags">
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#ff7d73>
+                  JavaScript
+              </a>
+          </span>
+          
+      </span>
+      
+  </div>
+
+    <div class="content" v-pre>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="以下选项中，能被-encodeURIComponent-函数编码的是"><a href="#以下选项中，能被-encodeURIComponent-函数编码的是" class="headerlink" title="以下选项中，能被 encodeURIComponent() 函数编码的是"></a>以下选项中，能被 encodeURIComponent() 函数编码的是</h3><p>A.*; B.~; C.$; D. -</p>
+<p>encodeURLComponent() 函数用于编码 URL 中的某一段，只有 9 个字符不会被编码 (!’()*-._~)。除了 C 之外都不能被编码。</p>
+<h3 id="请说明-JS-中原生对象（native-objects）和宿主对象（host-objects）的区别"><a href="#请说明-JS-中原生对象（native-objects）和宿主对象（host-objects）的区别" class="headerlink" title="请说明 JS 中原生对象（native objects）和宿主对象（host objects）的区别"></a>请说明 JS 中原生对象（native objects）和宿主对象（host objects）的区别</h3><p>原生对象是由 ECMAScript 规范定义的对象，所有内置对象都是原生对象，例如 Array、Date 和 RegExp 等。</p>
+<p>宿主对象是由宿主环境（如浏览器）定义的对象，用于完善 ECMAScript 的执行环境，例如 Document、Location 和 Navigator 等。</p>
+<h3 id="全局函数-eval-有什么作用"><a href="#全局函数-eval-有什么作用" class="headerlink" title="全局函数 eval() 有什么作用"></a>全局函数 eval() 有什么作用</h3><p>eval() 可以执行一段字符串中的脚本，它只有一个参数，如果传入的参数是非字符串类型的值，那么就直接返回该值。如果传入字符串字面量，那么将被作为 JavaScript 代码进行编译。当编译失败时，抛出语法错误；编译成功时执行这段代码，最后返回一个表达式或语句的值。eval() 的具体用法如下所示</p>
+<pre><code class="JavaScript">eval(1); // 1
+var str = &quot;var total = 100; console.log(total)&quot;
+eval(str) // 100
+</code></pre>
+<p>在 eval() 中创建的变量或函数具有当前执行时所处的作用域，并且【声明不能被提升】，因此如果在调用 eval() 之前使用函数中创建的变量，将会抛出未定义的异常，如</p>
+<pre><code class="JavaScript">function sum() &#123;
+  var digit = 1;
+  console.log(total); // 抛出未定义异常
+  eval(&quot;var total = 100&quot;); // 定义变量
+  console.log(total); // total 和 digit 的作用域相同
+&#125;
+</code></pre>
+<p>在严格模式中，eval() 不能改变作用域，因此也就不能定义新的变量或函数，如</p>
+<pre><code class="JavaScript">function sun() &#123;
+  &quot;use strict&quot;;
+  eval(&quot;var total = 100&quot;); // 定义变量
+  console.log(total); // 抛出未定义的异常
+&#125;
+</code></pre>
+<p>eval() 能够编译代码字符串，它能力非常强大，同时也非常危险。如果传入的是恶意代码，将会威胁站点安全，造成不可估量的损失。（XSS 攻击？</p>
+<h3 id="下列选项中，属于-JS-内置对象的是（）"><a href="#下列选项中，属于-JS-内置对象的是（）" class="headerlink" title="下列选项中，属于 JS 内置对象的是（）"></a>下列选项中，属于 JS 内置对象的是（）</h3><p>A. String; B. Function; C. RegExp; D. Array;</p>
+<p>ABCD。当 JS 解释器启动（也就是浏览器加载新页面）时，会有一些可用的内置对象（built-in objects）被初始化，这些内置对象包括：全局对象、String、Boolean、Number、Object、Function、Array、Date、RegExp、Error、Math 和 JSON。</p>
+<h3 id="编写一个函数，它没有参数，返回值是一个数组，数组内是-8-个随机且不重复的整数，整数范围在-5-20-之间。"><a href="#编写一个函数，它没有参数，返回值是一个数组，数组内是-8-个随机且不重复的整数，整数范围在-5-20-之间。" class="headerlink" title="编写一个函数，它没有参数，返回值是一个数组，数组内是 8 个随机且不重复的整数，整数范围在 [5, 20] 之间。"></a>编写一个函数，它没有参数，返回值是一个数组，数组内是 8 个随机且不重复的整数，整数范围在 [5, 20] 之间。</h3><pre><code class="JavaScript">const randomArray = () =&gt; &#123;
+  const res = []
+  const pushNum = () =&gt; &#123;
+    // floor(5 + [0 ~ 16))
+    const num = Math.floor(Math.random() * 16 + 5)
+    if (res.includes(num)) &#123;
+      pushNum()
+    &#125; else &#123;
+      res.push(num)
+    &#125;
+  &#125;
+  for(let i = 0; i &lt; 8; i++) &#123;
+    // let newNum = getNum()
+    pushNum()
+  &#125;
+  return res
+&#125;
+console.log(randomArray())
+</code></pre>
+<p>教科书答案</p>
+<pre><code class="JavaScript">function getArray() &#123;
+  var arr = []
+  var number = 0
+  for (var i = 0; i &lt; 8; i++) &#123;
+    number = Math.round(Math.random() * 15);
+    number += 5;
+    if (arr.indexOf(number) &gt;= 0) &#123;
+      i--;
+    &#125; else &#123;
+      arr.push(number);
+    &#125;
+  &#125;
+  return arr;
+&#125;
+console.log(getArray())
+</code></pre>
+<h3 id="在以下选项中，表示全局函数的有（）"><a href="#在以下选项中，表示全局函数的有（）" class="headerlink" title="在以下选项中，表示全局函数的有（）"></a>在以下选项中，表示全局函数的有（）</h3><p>A. ceil(); B. parseInt(); C.stringify(); D. isNaN();</p>
+<p>Math.ceil(), JSON.stringify()</p>
+<h3 id="为数字添加两个方法：add-和-minus-，分别表示加法和剪发，例如下面的代码相当于表达式-1-2-3"><a href="#为数字添加两个方法：add-和-minus-，分别表示加法和剪发，例如下面的代码相当于表达式-1-2-3" class="headerlink" title="为数字添加两个方法：add() 和 minus()，分别表示加法和剪发，例如下面的代码相当于表达式 1+2-3"></a>为数字添加两个方法：add() 和 minus()，分别表示加法和剪发，例如下面的代码相当于表达式 1+2-3</h3><pre><code class="JavaScript">(1).add(2).minus(3)
+</code></pre>
+<pre><code class="JavaScript">Number.prototype.add = function (addNum) &#123;
+  return this.valueOf() + addNum
+&#125;
+Number.prototype.minus = function (minusNum) &#123;
+  return this.valueOf() - minusNum
+&#125;
+(1).add(2).minus(3) // 0
+</code></pre>
+<h3 id="请简单描述一下你所理解的原型链"><a href="#请简单描述一下你所理解的原型链" class="headerlink" title="请简单描述一下你所理解的原型链"></a>请简单描述一下你所理解的原型链</h3><p>对象之间通过原型关联到一起，就好比用一条锁链将一个个对象连接在一起，在将各个对象挂钩后，最终形成了一条原型链。在读取对象的一个属性时，会现在对象中查询自有属性，如果不存在，那么再沿着原型链向上搜索匹配的集成属性，直到找到或到达原型链的顶端，才停止搜索。</p>
+<p>// TODO: 待补充</p>
+<h3 id="执行下面的代码，得到的结果为"><a href="#执行下面的代码，得到的结果为" class="headerlink" title="执行下面的代码，得到的结果为"></a>执行下面的代码，得到的结果为</h3><pre><code class="JavaScript">Array.prototype.isPrototypeOf([1, 2])
+</code></pre>
+<p>true。isPrototypeOf() 方法用于判断调用此方法的对象是否存在于指定对象的原型链中。此处调用该方法的是数组的原型对象，而方法的实参是一个数组字面量，因此得到的结果为 true。</p>
+<h3 id="执行下面的代码后，对-name-属性的描述中，错误的是（）"><a href="#执行下面的代码后，对-name-属性的描述中，错误的是（）" class="headerlink" title="执行下面的代码后，对 name 属性的描述中，错误的是（）"></a>执行下面的代码后，对 name 属性的描述中，错误的是（）</h3><pre><code class="JavaScript">var obj = &#123;age: 18&#125;
+Object.defineProperty(obj, &quot;name&quot;, &#123;
+  configurable: false
+&#125;);
+Object.defineProperty(obj, &quot;age&quot;, &#123;
+  configurable: false
+&#125;);
+obj.hobby = &#39;anime&#39;
+obj.name // undefined
+obj.name = &#39;name&#39;
+obj.name // undefined
+</code></pre>
+<p>A. 可以用 delete 运算符删除该属性；B. 可以再把该属性的 configurable 特性设为 true；C. 可以再修改为可枚举特性（enumerable）；D. 可写特性（writable）只能从 true 改为 false。</p>
+<p>ABC。在 ECMAScript 5 中，属性能够设置自身的特性。当属性的 configuable 特性为 false 时，将会有以下五种限制：</p>
+<ul>
+<li>（1）不能用 delete 运算符删除此属性，如果强行删除，那么再严格模式中会抛出错误；</li>
+<li>（2）不能再变回可配置；</li>
+<li>（3）不能再修改成可枚举特性；</li>
+<li>（4）可写特性只能从 true 改为 false，不能从 false 改为 true。</li>
+<li>（5）不能变成访问器属性。</li>
+</ul>
+<blockquote>
+<p>某些属性不想被误删时，可以用这种方式。等于是常量了。</p>
+</blockquote>
+<h3 id="如何判断对象中的某个属性是继承而来的？"><a href="#如何判断对象中的某个属性是继承而来的？" class="headerlink" title="如何判断对象中的某个属性是继承而来的？"></a>如何判断对象中的某个属性是继承而来的？</h3><p>将 in 运算符和 Object 对象的 hasOwnProperty() 方法组合使用，能够检测一个属性是否是继承属性，它们的用法如下表所示。<br>|检测方式|描述|<br>|–|–|<br>|in 运算符|在对象的自有属性或继承属性中包含要匹配的属性时，就返回 true，否则返回 false|<br>|使用 Object 的 hasOwnProperty()|在对象的自有属性中包含要匹配的属性时，就返回 true，否则返回 false。|<br>只要 in 运算符返回 true，而 hasOwnProperty() 方法返回 false，就能确定这是个继承属性，代码如下所示。</p>
+<pre><code class="JavaScript">function isInheritProperty(obj, name) &#123;
+  return name in obj &amp;&amp; !obj.hasOwnProperty(name);
+&#125;
+var obj1 = &#123; name: &quot;strick&quot; &#125;
+var obj2 = Object.create(obj1);
+isInheritProperty(obj2, &quot;name&quot;);
+</code></pre>
+<blockquote>
+<p>另外，如果继承的对象上定义了被继承对象同样的属性，原被继承对象上的属性不会改变</p>
+</blockquote>
+<pre><code class="JavaScript">const otaku = &#123;
+  seikaku: &#39;okashii&#39;
+&#125;
+const xiuwen = Object.create(otaku)
+xiuwen.siekaku = &#39;kawaii =w=&#39;
+console.log(xiuwen)
+</code></pre>
+<p><img src="./%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%B1%9E%E6%80%A7%E6%98%AF%E7%BB%A7%E6%89%BF%E8%80%8C%E6%9D%A5%E7%9A%84.png"></p>
+<h3 id="用-new-运算符创建对象时，例如-new-Fn-，具体的创建过程"><a href="#用-new-运算符创建对象时，例如-new-Fn-，具体的创建过程" class="headerlink" title="用 new 运算符创建对象时，例如 new Fn()，具体的创建过程"></a>用 new 运算符创建对象时，例如 new Fn()，具体的创建过程</h3><p>大致可分为 4 步</p>
+<ul>
+<li>（1）一个新对象被创建，它继承自构造函数的原型，即 Fn.prototype。</li>
+<li>（2）将指定的参数传递给构造函数；</li>
+<li>（3）将执行上下文（this）绑定到新创建的对象中；</li>
+<li>（4）如果构造函数有返回值，那么这个返回值将取代第一步中新创建的对象。</li>
+</ul>
+<p>new 共经历了四个过程。</p>
+<pre><code class="javascript">var Otaku = function () &#123;
+  this.seikaku = &#39;okashii&#39;
+&#125;;
+Otaku.prototype.kareshi = &#39;nai&#39;;
+var xw = new Otaku();
+</code></pre>
+<pre><code class="javascript">// 我们先定义一个构造函数
+var Otaku = function () &#123;
+  this.seikaku = &#39;okashii&#39;
+&#125;;
+Otaku.prototype.kareshi = &#39;nai&#39;;
+
+// 创建我们自己的 new 方法
+const newObj = (constructorFn) =&gt; &#123;
+  // 1、创建了一个空对象
+  var obj = new Object();
+
+  // 2、设置原型链
+  obj._proto_ = constructorFn.prototype;
+
+  // 3、让 constructorFn 的 this 指向 obj，并执行 constructorFn 的函数体
+  var result = constructorFn.call(obj);
+
+  // 4、判断fn的返回值类型，如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象。这里是构造函数的特性
+  var obj1 = null
+  if (typeof result == &quot;object&quot;)&#123;
+      obj1 = result;
+  &#125; else &#123;
+      obj1 = obj;
+  &#125;
+  return obj1
+&#125;
+const xw = newObj(Otaku)
+</code></pre>
+<p>具体可以看官方文档 <a target="_blank" rel="noopener" href="https://262.ecma-international.org/6.0/#sec-evaluatenew">Runtime Semantics: EvaluateNew(constructProduction, arguments)</a></p>
+<h3 id="下面代码最终的打印结果是"><a href="#下面代码最终的打印结果是" class="headerlink" title="下面代码最终的打印结果是"></a>下面代码最终的打印结果是</h3><pre><code class="JavaScript">var obj1 = &#123;
+  names: []
+&#125;;
+var obj2 = obj1.names;
+obj2.push(&quot;strick&quot;);
+console.log(obj1.names);
+</code></pre>
+<p>[“strick”]。数组方法 push() 能够改变原始数组。</p>
+<blockquote>
+<p>obj1 中的 names 属性，它的值是一个空数组，数组也是一个对象。将 obj1 的 names 属性赋给 obj2 后，obj2 就能引用 names 的值（即数组），因为【数组方法 push() 能够改变原始数组】，所以 names 属性最终的值为 [“strick”]</p>
+</blockquote>
+<h3 id="下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。"><a href="#下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。" class="headerlink" title="下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。"></a>下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。</h3><pre><code class="JavaScript">function Super(age) &#123;
+  this.names = [];
+  this.age = age;
+&#125;
+function Sub(age) &#123;
+&#125;
+Sub.prototype = Super.prototype
+</code></pre>
+<p>继承是面向对象语言的三大特性之一，JS 只支持实现继承（而像 Java 那类语言还支持接口继承），并且主要依靠原型链来实现。代码中的继承有两个不足的地方，如下所列，每个不足之处都给出了相应的改进方法。</p>
+<ul>
+<li>（1）不能向超类 Super 的构造函数传递参数（超类中需要接收一个 age 参数），也不能使用超类中的自有属性（如 names 和 age）。改进的犯法就是在子类 Sub 的构造函数中，显式地调用超类的构造函数，如下所示。<pre><code class="JavaScript">function Sub(age) &#123;
+Super.call(this, age)
+&#125;
+</code></pre>
+</li>
+<li>（2）在子类 Sub 的原型中添加属性或方法会影响超类的原型，例如给子类添加一个 getShool() 方法，其实就是在超类的原型上定义这个方法。以下代码所示功能为创建一个超类的实例，也能成功调用 getShool() 方法。<pre><code class="JavaScript">Sub.prototype.getShool = function() &#123;
+return &quot;university&quot;;
+&#125;;
+var parent = new Super(30)
+parent.getShool() // &quot;university&quot;
+</code></pre>
+改进方法就是用一个空的函数 F() 做中介，然后将超类的原型赋给这个空函数的原型，子类的原型再指向这个空函数的实例，这样就能避免修改超类的原型，如下<pre><code class="JavaScript">function create(object) &#123;
+function F() &#123;&#125;
+F.prototype = object;
+return new F();
+&#125;
+Sub.prototype = create(Super.prototype);
+</code></pre>
+<h3 id="执行下面的代码，obj1-对象的-name-属性值为（）"><a href="#执行下面的代码，obj1-对象的-name-属性值为（）" class="headerlink" title="*执行下面的代码，obj1 对象的 name 属性值为（）"></a>*执行下面的代码，obj1 对象的 name 属性值为（）</h3><pre><code class="JavaScript">var obj1 = &#123; age: 10 &#125;;
+var obj2 = obj1;
+obj1.name = obj2 = &#123; age: 20 &#125;;
+</code></pre>
+{ age: 20 }。obj2 变量一开始被赋予的是 obj1 对象的指针，随后又指向了一个新的对象：{ age: 20 }。新对象的指针同时也赋给了 obj1 对象的 name 属性。</li>
+</ul>
+<h3 id="给定两个字符串，检测是否是改变字母顺序而得到的字符串，例如-“mena”-是打乱的-“name”-中的字母得到的"><a href="#给定两个字符串，检测是否是改变字母顺序而得到的字符串，例如-“mena”-是打乱的-“name”-中的字母得到的" class="headerlink" title="给定两个字符串，检测是否是改变字母顺序而得到的字符串，例如 “mena” 是打乱的 “name” 中的字母得到的"></a>给定两个字符串，检测是否是改变字母顺序而得到的字符串，例如 “mena” 是打乱的 “name” 中的字母得到的</h3><pre><code class="javascript">const stringTest = (str1, str2) =&gt; &#123;
+  const arr1 = str1.split(&#39;&#39;)
+  const arr2 = str2.split(&#39;&#39;)
+  if (arr1.length !== arr2.length) &#123;
+    return false
+  &#125;
+  arr1.forEach(i =&gt; &#123;
+    if(arr2.includes(i)) &#123;
+      arr2.splice(arr2.indexOf(i), 1)
+    &#125;
+  &#125;)
+  console.log(arr2)
+  if (arr2.length === 0) &#123;
+    return true
+  &#125;
+  return false
+&#125;
+</code></pre>
+<p>教科书答案（牛蛙！！！！！全然没想到</p>
+<pre><code class="javascript">function isEqual(str1, str2) &#123;
+  str1 = str1.split(&#39;&#39;).sort().join(&quot;&quot;)
+  str2 = str2.split(&#39;&#39;).sort().join(&quot;&quot;)
+  return str1 = str2
+&#125;
+</code></pre>
+<h3 id="JSON-格式的数据与-XML-格式的数据相比，有哪些优势？"><a href="#JSON-格式的数据与-XML-格式的数据相比，有哪些优势？" class="headerlink" title="*JSON 格式的数据与 XML 格式的数据相比，有哪些优势？"></a>*JSON 格式的数据与 XML 格式的数据相比，有哪些优势？</h3><p>JSON 格式的数据主要有如下 4 个优势：</p>
+<ul>
+<li>（1）语法格式更简单；</li>
+<li>（2）层次结构更清晰；</li>
+<li>（3）所用字符数更少；</li>
+<li>（4）数据解析更直接。</li>
+</ul>
+<h3 id="下面是一段-JSON-格式的数据，符合-JSON-规范的属性是（）"><a href="#下面是一段-JSON-格式的数据，符合-JSON-规范的属性是（）" class="headerlink" title="下面是一段 JSON 格式的数据，符合 JSON 规范的属性是（）"></a>下面是一段 JSON 格式的数据，符合 JSON 规范的属性是（）</h3><pre><code class="JSON">&#123;
+  &quot;age&quot;: 010,
+  &quot;height&quot;: 1.,
+  &quot;name&quot;: &#39;xiuwen&#39;,
+  &quot;weight&quot;: 20
+&#125;
+</code></pre>
+<p>weight。JSON 的数字和字符串规范:</p>
+<ul>
+<li>数字: 不能有前导零，不能省略浮点数整数部分和小数部分的 0</li>
+<li>字符串: 必须用双引号包裹，可以使用任意数量的 Unicode 字符（不包含 “ \ 及转义字符，如 \n）</li>
+</ul>
+<h3 id="将下面的对象序列化为-JSON-字符串，在序列化时去除-name-属性，并将数组的第一个元素变为-null"><a href="#将下面的对象序列化为-JSON-字符串，在序列化时去除-name-属性，并将数组的第一个元素变为-null" class="headerlink" title="将下面的对象序列化为 JSON 字符串，在序列化时去除 name 属性，并将数组的第一个元素变为 null"></a>将下面的对象序列化为 JSON 字符串，在序列化时去除 name 属性，并将数组的第一个元素变为 null</h3><pre><code class="javascript">var json = &#123;
+  &quot;name&quot;: &quot;xiuwen&quot;,
+  &quot;age&quot;: 18,
+  &quot;like&quot;: [&quot;anime&quot;, &quot;game&quot;, &quot;music&quot;]
+&#125;;
+JSON.stringify(json, (key, value) =&gt; &#123;
+  if(key === &#39;name&#39;) &#123;
+    return undefined;
+  &#125;
+  if (key === &quot;0&quot;) &#123;
+    return undefined; // 数组中第一个值将变为 null
+  &#125;
+  return value
+&#125;)
+</code></pre>
+<p>关于 <code>JSON.stringify(value[, replacer [, space]])</code> 中的后两个参数</p>
+<h4 id="replacer"><a href="#replacer" class="headerlink" title="replacer"></a>replacer</h4><pre><code class="javascript">var json = &#123;
+  &quot;name&quot;: &quot;xiuwen&quot;,
+  &quot;age&quot;: 18,
+  &quot;like&quot;: [&quot;anime&quot;, &quot;game&quot;, &quot;music&quot;]
+&#125;;
+</code></pre>
+<p>replacer 是 function：</p>
+<ul>
+<li>如果返回一个 Number, 转换成相应的字符串作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;name&#39;) &#123;
+  return 2333
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:2333,&quot;age&quot;:18,&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回一个 String, 该字符串作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;name&#39;) &#123;
+  return &#39;xiuxiuxiu&#39;
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuxiuxiu&quot;,&quot;age&quot;:18,&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回一个 Boolean, “true” 或者 “false” 作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return false
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;age&quot;:18,&quot;like&quot;:false&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回任何其他对象，该对象递归地序列化成 JSON 字符串，对每个属性调用 replacer 方法。除非该对象是一个函数，这种情况将不会被序列化成 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return [&quot;code&quot;, &quot;eiga&quot;]
+&#125;
+if (key === &quot;1&quot;) &#123;
+  return undefined // 因为上面的 like 的每个属性也调用 replacer 方法，所以 like[1] 变为 null
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;age&quot;:18,&quot;like&quot;:[&quot;code&quot;,null]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回 undefined，该属性值不会在 JSON 字符串中输出。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return [&quot;code&quot;, &quot;eiga&quot;]
+&#125;
+if (key === &quot;age&quot;) &#123;
+  return undefined // 注意这里，key 非数组 index 的时候返回 undefined 才会删除属性，否则只会置 arr[index] 为 null
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;like&quot;:[&quot;code&quot;,&quot;eiga&quot;]&#125;&#39;
+</code></pre>
+replacer 是 arr<pre><code class="javascript">let replacer = [&quot;like&quot;]
+JSON.stringify(json, replacer) // &#39;&#123;&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+JSON.stringify() 一般和 JSON.parse() 结合 localstorage 使用，注意在 JSON.parse() 的 value 是 undefined、NaN、Infinity、函数、对象实例、变量或正则表达式时会报错，可以用 try catch。</li>
+</ul>
+<p>另外，JSON 可以实现简单数据类型的深拷贝</p>
+<pre><code class="javascript">function deepCopy(obj) &#123;
+  return JSON.parse(JSON.stringify(obj));
+&#125;
+const obj1 = &#123;
+  a: 1,
+  b: &#39;test&#39;,
+  c: &#123;
+    d: [1, 2],
+    e: () =&gt; &#123;&#125;, // 这里 e 并没有被拷贝
+  &#125;
+&#125;
+let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] &#125;&#125;
+</code></pre>
+
+    </div>
+
+    
+</div>
+
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            var that = this
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+
+</body>
+
+</html>
