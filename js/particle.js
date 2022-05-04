@@ -1,4 +1,5 @@
 var barLocal = document.documentElement.scrollTop
+window.isRelease = false
 window.addEventListener('scroll', function (e) {
     var newLocal = document.documentElement.scrollTop
     var menu = document.getElementById("menu")
@@ -34,4 +35,3 @@ for (var i = 0; i < pre_blocks.length; i++) {
     var language_html = "<div class='language'>" + language + "</div>"
     pre_blocks[i].innerHTML += language_html
 }
-

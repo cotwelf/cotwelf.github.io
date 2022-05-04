@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>关于提示 React Hook useEffect has a missing dependency 的问题 </h1>
   </div>
@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/React" style=color:#ff7d73>
+              <a href="/tags/React" style=color:#1bccbc>
                   React
               </a>
           </span>
@@ -193,8 +193,8 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <p>假设我们有个需求，页面刚进入的时候放个定时器，1s 后 count + 1。我是这么干的</p>
+
+    <div class="content" v-if="release"><p>假设我们有个需求，页面刚进入的时候放个定时器，1s 后 count + 1。我是这么干的</p>
 <pre><code class="JavaScript">import React, &#123; useEffect, useState &#125; from &#39;react&#39;
 import * as ReactDOM from &#39;react-dom&#39;
 
@@ -307,7 +307,13 @@ const Foo = () =&gt; &#123;
   return &lt;Bar fn=&#123;fn&#125; /&gt;;
 &#125;;
 </code></pre>
-
+</div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -338,16 +344,47 @@ const Foo = () =&gt; &#123;
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -367,15 +404,30 @@ const Foo = () =&gt; &#123;
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

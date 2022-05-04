@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>准备正儿八经（大概）学英语惹！ </h1>
   </div>
@@ -193,8 +193,8 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <p>up 开始学英语了（正经脸）~ 之前三天打鱼两天晒网，现在要认真起来了！！也不多，每天半小时，毕竟前端还是我的心头好，外语只是调味品 =w=，但还是有必要学一下的，万一就想去外企了呢诶嘿</p>
+
+    <div class="content" v-if="release"><p>up 开始学英语了（正经脸）~ 之前三天打鱼两天晒网，现在要认真起来了！！也不多，每天半小时，毕竟前端还是我的心头好，外语只是调味品 =w=，但还是有必要学一下的，万一就想去外企了呢诶嘿</p>
 <p>今天和英语大佬聊了一会儿，大佬传授了一些方法，怕忘记，先记下来</p>
 <h2 id="听真题听力，做一遍，不要看答案，听写"><a href="#听真题听力，做一遍，不要看答案，听写" class="headerlink" title="听真题听力，做一遍，不要看答案，听写"></a>听真题听力，做一遍，不要看答案，听写</h2><p>可能会很困难，但是据说很有效，这里准备还是一天半小时，能听多少是多少，先试一下水~</p>
 <h2 id="和小伙伴一起搭伴练习口语"><a href="#和小伙伴一起搭伴练习口语" class="headerlink" title="和小伙伴一起搭伴练习口语"></a>和小伙伴一起搭伴练习口语</h2><p>可以一周一次，一次一个话题。题目可以准备【雅思哥】-【练习】里的题库，每周不同类型，可以按照这种方式准备。</p>
@@ -222,7 +222,13 @@
 <h3 id="step2：根据关键词去油管上查老外的说法，记录下来自己觉得有用的句子。"><a href="#step2：根据关键词去油管上查老外的说法，记录下来自己觉得有用的句子。" class="headerlink" title="step2：根据关键词去油管上查老外的说法，记录下来自己觉得有用的句子。"></a>step2：根据关键词去油管上查老外的说法，记录下来自己觉得有用的句子。</h3><p>准备工作完成~</p>
 <h3 id="step3：初期每周一次口语对话"><a href="#step3：初期每周一次口语对话" class="headerlink" title="step3：初期每周一次口语对话"></a>step3：初期每周一次口语对话</h3><p>录音。最好可以找一个比自己厉害的大佬，可以指出语法错误（抱紧魏魏大腿.jpg)</p>
 <p>TODO：明天完成一个完整的素材准备</p>
-
+</div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -253,16 +259,47 @@
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -282,15 +319,30 @@
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

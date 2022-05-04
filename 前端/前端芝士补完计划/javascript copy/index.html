@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>前端芝士补完计划 之 JavaScript【Part1】 </h1>
   </div>
@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/JavaScript" style=color:#1bccbc>
+              <a href="/tags/JavaScript" style=color:#ffa2c4>
                   JavaScript
               </a>
           </span>
@@ -193,8 +193,8 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="一、JS-简介"><a href="#一、JS-简介" class="headerlink" title="一、JS 简介"></a>一、JS 简介</h3><p><a href="#%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">请简单描述一下你对 JavaScript 的理解。</a></p>
+
+    <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="一、JS-简介"><a href="#一、JS-简介" class="headerlink" title="一、JS 简介"></a>一、JS 简介</h3><p><a href="#%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">请简单描述一下你对 JavaScript 的理解。</a></p>
 <p><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-dom">什么是 DOM</a></p>
 <p><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-bom">什么是 BOM</a></p>
 <p><a href="#%E5%9B%9B%E5%A4%A7%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8">*四大浏览器内核</a></p>
@@ -920,7 +920,7 @@ obj instanceof ancestor;
 var str = &quot;var total = 100; console.log(total)&quot;
 eval(str) // 100
 </code></pre>
-<p>在 eval() 中创建的变量或函数具有当前执行时所处的作用域，并且【声明不能被提升】，因此如果在调用 eval() 之前使用函数中创建的变量，将会抛出未定义的异常，如</p>
+<p>在 eval() 中创建的任何变量或函数都不会被提升，因为在解析代码的时候，它们被包含在一个字符串中；它们只在 eval() 执行的时候创建。因此如果在调用 eval() 之前使用函数中创建的变量，将会抛出未定义的异常，如</p>
 <pre><code class="JavaScript">function sum() &#123;
   var digit = 1;
   console.log(total); // 抛出未定义异常
@@ -1259,7 +1259,13 @@ const obj1 = &#123;
 &#125;
 let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] &#125;&#125;
 </code></pre>
-<h1 id="3-4-日期和正则表达式"><a href="#3-4-日期和正则表达式" class="headerlink" title="3.4 日期和正则表达式"></a>3.4 日期和正则表达式</h1><h4 id="请用多种方式获取当前时间的毫秒数"><a href="#请用多种方式获取当前时间的毫秒数" class="headerlink" title="请用多种方式获取当前时间的毫秒数"></a>请用多种方式获取当前时间的毫秒数</h4>
+<h1 id="3-4-日期和正则表达式"><a href="#3-4-日期和正则表达式" class="headerlink" title="3.4 日期和正则表达式"></a>3.4 日期和正则表达式</h1><h4 id="请用多种方式获取当前时间的毫秒数"><a href="#请用多种方式获取当前时间的毫秒数" class="headerlink" title="请用多种方式获取当前时间的毫秒数"></a>请用多种方式获取当前时间的毫秒数</h4></div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -1290,16 +1296,47 @@ let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] 
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -1319,15 +1356,30 @@ let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] 
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

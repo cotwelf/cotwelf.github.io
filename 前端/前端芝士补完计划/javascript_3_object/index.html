@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>前端芝士补完计划 之 JavaScript-对象 </h1>
   </div>
@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/JavaScript" style=color:#1bccbc>
+              <a href="/tags/JavaScript" style=color:#ffa2c4>
                   JavaScript
               </a>
           </span>
@@ -193,17 +193,20 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="以下选项中，能被-encodeURIComponent-函数编码的是"><a href="#以下选项中，能被-encodeURIComponent-函数编码的是" class="headerlink" title="以下选项中，能被 encodeURIComponent() 函数编码的是"></a>以下选项中，能被 encodeURIComponent() 函数编码的是</h3><p>A.*; B.~; C.$; D. -</p>
+
+    <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="#1-%E4%BB%A5%E4%B8%8B%E9%80%89%E9%A1%B9%E4%B8%AD%E8%83%BD%E8%A2%AB-encodeURIComponent()-%E5%87%BD%E6%95%B0%E7%BC%96%E7%A0%81%E7%9A%84%E6%98%AF">1. 以下选项中，能被 encodeURIComponent() 函数编码的是</a></p>
+<h3 id="1-以下选项中，能被-encodeURIComponent-函数编码的是"><a href="#1-以下选项中，能被-encodeURIComponent-函数编码的是" class="headerlink" title="1. 以下选项中，能被 encodeURIComponent() 函数编码的是"></a>1. 以下选项中，能被 encodeURIComponent() 函数编码的是</h3><p>A.*; B.~; C.$; D. -</p>
 <p>encodeURLComponent() 函数用于编码 URL 中的某一段，只有 9 个字符不会被编码 (!’()*-._~)。除了 C 之外都不能被编码。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="请说明-JS-中原生对象（native-objects）和宿主对象（host-objects）的区别"><a href="#请说明-JS-中原生对象（native-objects）和宿主对象（host-objects）的区别" class="headerlink" title="请说明 JS 中原生对象（native objects）和宿主对象（host objects）的区别"></a>请说明 JS 中原生对象（native objects）和宿主对象（host objects）的区别</h3><p>原生对象是由 ECMAScript 规范定义的对象，所有内置对象都是原生对象，例如 Array、Date 和 RegExp 等。</p>
 <p>宿主对象是由宿主环境（如浏览器）定义的对象，用于完善 ECMAScript 的执行环境，例如 Document、Location 和 Navigator 等。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="全局函数-eval-有什么作用"><a href="#全局函数-eval-有什么作用" class="headerlink" title="全局函数 eval() 有什么作用"></a>全局函数 eval() 有什么作用</h3><p>eval() 可以执行一段字符串中的脚本，它只有一个参数，如果传入的参数是非字符串类型的值，那么就直接返回该值。如果传入字符串字面量，那么将被作为 JavaScript 代码进行编译。当编译失败时，抛出语法错误；编译成功时执行这段代码，最后返回一个表达式或语句的值。eval() 的具体用法如下所示</p>
 <pre><code class="JavaScript">eval(1); // 1
 var str = &quot;var total = 100; console.log(total)&quot;
 eval(str) // 100
 </code></pre>
-<p>在 eval() 中创建的变量或函数具有当前执行时所处的作用域，并且【声明不能被提升】，因此如果在调用 eval() 之前使用函数中创建的变量，将会抛出未定义的异常，如</p>
+<p>在 eval() 中创建的任何变量或函数都不会被提升，因为在解析代码的时候，它们被包含在一个字符串中；它们只在 eval() 执行的时候创建。因此如果在调用 eval() 之前使用函数中创建的变量，将会抛出未定义的异常，如</p>
 <pre><code class="JavaScript">function sum() &#123;
   var digit = 1;
   console.log(total); // 抛出未定义异常
@@ -219,8 +222,10 @@ eval(str) // 100
 &#125;
 </code></pre>
 <p>eval() 能够编译代码字符串，它能力非常强大，同时也非常危险。如果传入的是恶意代码，将会威胁站点安全，造成不可估量的损失。（XSS 攻击？</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="下列选项中，属于-JS-内置对象的是（）"><a href="#下列选项中，属于-JS-内置对象的是（）" class="headerlink" title="下列选项中，属于 JS 内置对象的是（）"></a>下列选项中，属于 JS 内置对象的是（）</h3><p>A. String; B. Function; C. RegExp; D. Array;</p>
 <p>ABCD。当 JS 解释器启动（也就是浏览器加载新页面）时，会有一些可用的内置对象（built-in objects）被初始化，这些内置对象包括：全局对象、String、Boolean、Number、Object、Function、Array、Date、RegExp、Error、Math 和 JSON。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="编写一个函数，它没有参数，返回值是一个数组，数组内是-8-个随机且不重复的整数，整数范围在-5-20-之间。"><a href="#编写一个函数，它没有参数，返回值是一个数组，数组内是-8-个随机且不重复的整数，整数范围在-5-20-之间。" class="headerlink" title="编写一个函数，它没有参数，返回值是一个数组，数组内是 8 个随机且不重复的整数，整数范围在 [5, 20] 之间。"></a>编写一个函数，它没有参数，返回值是一个数组，数组内是 8 个随机且不重复的整数，整数范围在 [5, 20] 之间。</h3><pre><code class="JavaScript">const randomArray = () =&gt; &#123;
   const res = []
   const pushNum = () =&gt; &#123;
@@ -257,8 +262,10 @@ console.log(randomArray())
 &#125;
 console.log(getArray())
 </code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="在以下选项中，表示全局函数的有（）"><a href="#在以下选项中，表示全局函数的有（）" class="headerlink" title="在以下选项中，表示全局函数的有（）"></a>在以下选项中，表示全局函数的有（）</h3><p>A. ceil(); B. parseInt(); C.stringify(); D. isNaN();</p>
 <p>Math.ceil(), JSON.stringify()</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="为数字添加两个方法：add-和-minus-，分别表示加法和剪发，例如下面的代码相当于表达式-1-2-3"><a href="#为数字添加两个方法：add-和-minus-，分别表示加法和剪发，例如下面的代码相当于表达式-1-2-3" class="headerlink" title="为数字添加两个方法：add() 和 minus()，分别表示加法和剪发，例如下面的代码相当于表达式 1+2-3"></a>为数字添加两个方法：add() 和 minus()，分别表示加法和剪发，例如下面的代码相当于表达式 1+2-3</h3><pre><code class="JavaScript">(1).add(2).minus(3)
 </code></pre>
 <pre><code class="JavaScript">Number.prototype.add = function (addNum) &#123;
@@ -269,11 +276,14 @@ Number.prototype.minus = function (minusNum) &#123;
 &#125;
 (1).add(2).minus(3) // 0
 </code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="请简单描述一下你所理解的原型链"><a href="#请简单描述一下你所理解的原型链" class="headerlink" title="请简单描述一下你所理解的原型链"></a>请简单描述一下你所理解的原型链</h3><p>对象之间通过原型关联到一起，就好比用一条锁链将一个个对象连接在一起，在将各个对象挂钩后，最终形成了一条原型链。在读取对象的一个属性时，会现在对象中查询自有属性，如果不存在，那么再沿着原型链向上搜索匹配的集成属性，直到找到或到达原型链的顶端，才停止搜索。</p>
 <p>// TODO: 待补充</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="执行下面的代码，得到的结果为"><a href="#执行下面的代码，得到的结果为" class="headerlink" title="执行下面的代码，得到的结果为"></a>执行下面的代码，得到的结果为</h3><pre><code class="JavaScript">Array.prototype.isPrototypeOf([1, 2])
 </code></pre>
 <p>true。isPrototypeOf() 方法用于判断调用此方法的对象是否存在于指定对象的原型链中。此处调用该方法的是数组的原型对象，而方法的实参是一个数组字面量，因此得到的结果为 true。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="执行下面的代码后，对-name-属性的描述中，错误的是（）"><a href="#执行下面的代码后，对-name-属性的描述中，错误的是（）" class="headerlink" title="执行下面的代码后，对 name 属性的描述中，错误的是（）"></a>执行下面的代码后，对 name 属性的描述中，错误的是（）</h3><pre><code class="JavaScript">var obj = &#123;age: 18&#125;
 Object.defineProperty(obj, &quot;name&quot;, &#123;
   configurable: false
@@ -295,9 +305,56 @@ obj.name // undefined
 <li>（4）可写特性只能从 true 改为 false，不能从 false 改为 true。</li>
 <li>（5）不能变成访问器属性。</li>
 </ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="数据属性和访问器属性"><a href="#数据属性和访问器属性" class="headerlink" title="数据属性和访问器属性"></a>数据属性和访问器属性</h3><p>对象的属性和方法创建时都会有一些特征值，JS 是通过这些特征值来定义它们的行为的。ECMA-262 定义这些特性是为了实现 JS 引擎用的，因此在 JS 中不能直接访问它们。ECMA 中有两种属性：数据属性和访问器属性。</p>
+<h4 id="（1）数据属性"><a href="#（1）数据属性" class="headerlink" title="（1）数据属性"></a>（1）数据属性</h4><p>数据属性有 4 个描述其行为的特性<br>|特性|默认值|说明|<br>|–|–|–|<br>|configurable|true|表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。|<br>|enumerable|true|表示能否通过 for-in 循环返回属性。|<br>|writable|true|表示能否修改属性的值。|<br>|value|undefined|包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。|</p>
+<pre><code class="javascript">var person = &#123;
+ name: &quot;cotwelf&quot;
+&#125;;
+</code></pre>
+<p>这里创建了一个名为 name 的属性，为它指定的值是 <code>&quot;cotwelf&quot;</code>。也就是说，[[Value]]特性将被设置为 <code>&quot;cotwelf&quot;</code>，其余特性被设置为 true。要修改属性默认的特性，必须使用 ES5 的 Object.defineProperty() 方法（IE8 不支持）。</p>
+<pre><code class="javascript">Object.defineProperty(person, &quot;name&quot;, &#123; // 老版本浏览器不支持
+ writable: false,
+ value: &quot;sylvia&quot;
+&#125;);
+console.log(person.name) // sylvia
+person.name = &quot;xiuxiuxiu&quot; // 严格模式下会报错
+console.log(person.name) // sylvia（这里可以看到，并没有修改成功
+var descriptor = Object.getOwnPropertyDescriptor(person, &quot;name&quot;); // 读取特性
+descriptor.writable // false
+descriptor.value // &#39;sylvia&#39;
+</code></pre>
 <blockquote>
 <p>某些属性不想被误删时，可以用这种方式。等于是常量了。</p>
 </blockquote>
+<h4 id="（2）访问器属性"><a href="#（2）访问器属性" class="headerlink" title="（2）访问器属性"></a>（2）访问器属性</h4><p>设置一个属性的值会导致其他属性发生变化，这是使用访问器属性的常见方式。<br>|特性|默认值|说明|<br>|–|–|–|<br>|configurable|true|表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。|<br>|enumerable|true|表示能否通过 for-in 循环返回属性。|<br>|get|undefined|在读取访问器属性时调用，该函数负责返回有效的值。|<br>|set|undefined|在写入访问器属性时调用，该函数负责决定如何处理数据。|</p>
+<blockquote>
+<p>get 与 set 一般成对出现，但非强制，如果只有其中一个特性，尝试另一个特性（get/set）的时候会报错。</p>
+</blockquote>
+<pre><code class="javascript">var book = &#123;&#125;;
+Object.defineProperties(book, &#123; // defineProperties() 定义多个属性，老版本浏览器不支持。
+  _year: &#123;
+    value: 2004
+  &#125;,
+  edition: &#123;
+    value: 1
+  &#125;,
+  year: &#123;
+    get: function()&#123;
+      return this._year; // book.year 会返回 book._year 的值
+    &#125;,
+    set: function(newValue)&#123;
+      if (newValue &gt; 2004) &#123;
+        this._year = newValue; // 重新赋值 book._year
+        this.edition += newValue - 2004; // 重新赋值 book.edition
+      &#125;
+    &#125;
+  &#125;
+&#125;);
+book.year = 2005;
+console.log(book.edition); // 2
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="如何判断对象中的某个属性是继承而来的？"><a href="#如何判断对象中的某个属性是继承而来的？" class="headerlink" title="如何判断对象中的某个属性是继承而来的？"></a>如何判断对象中的某个属性是继承而来的？</h3><p>将 in 运算符和 Object 对象的 hasOwnProperty() 方法组合使用，能够检测一个属性是否是继承属性，它们的用法如下表所示。<br>|检测方式|描述|<br>|–|–|<br>|in 运算符|在对象的自有属性或继承属性中包含要匹配的属性时，就返回 true，否则返回 false|<br>|使用 Object 的 hasOwnProperty()|在对象的自有属性中包含要匹配的属性时，就返回 true，否则返回 false。|<br>只要 in 运算符返回 true，而 hasOwnProperty() 方法返回 false，就能确定这是个继承属性，代码如下所示。</p>
 <pre><code class="JavaScript">function isInheritProperty(obj, name) &#123;
   return name in obj &amp;&amp; !obj.hasOwnProperty(name);
@@ -317,60 +374,41 @@ xiuwen.siekaku = &#39;kawaii =w=&#39;
 console.log(xiuwen)
 </code></pre>
 <p><img src="./%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%B1%9E%E6%80%A7%E6%98%AF%E7%BB%A7%E6%89%BF%E8%80%8C%E6%9D%A5%E7%9A%84.png"></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="用-new-运算符创建对象时，例如-new-Fn-，具体的创建过程"><a href="#用-new-运算符创建对象时，例如-new-Fn-，具体的创建过程" class="headerlink" title="用 new 运算符创建对象时，例如 new Fn()，具体的创建过程"></a>用 new 运算符创建对象时，例如 new Fn()，具体的创建过程</h3><p>大致可分为 4 步</p>
 <ul>
-<li>（1）一个新对象被创建，它继承自构造函数的原型，即 Fn.prototype。</li>
-<li>（2）将指定的参数传递给构造函数；</li>
-<li>（3）将执行上下文（this）绑定到新创建的对象中；</li>
-<li>（4）如果构造函数有返回值，那么这个返回值将取代第一步中新创建的对象。</li>
-</ul>
-<p>new 共经历了四个过程。</p>
-<pre><code class="javascript">var Otaku = function () &#123;
-  this.seikaku = &#39;okashii&#39;
+<li>(1) 创建一个新的空对象；</li>
+<li>(2) 将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）；</li>
+<li>(3) 执行构造函数中的代码（为这个新对象添加属性）；</li>
+<li>(4) 返回新对象。<br>new 共经历了四个过程。<pre><code class="javascript">var Otaku = function () &#123;
+this.seikaku = &#39;okashii&#39;
 &#125;;
 Otaku.prototype.kareshi = &#39;nai&#39;;
 var xw = new Otaku();
 </code></pre>
-<pre><code class="javascript">// 我们先定义一个构造函数
-var Otaku = function () &#123;
-  this.seikaku = &#39;okashii&#39;
-&#125;;
-Otaku.prototype.kareshi = &#39;nai&#39;;
+```javascript<br>// 我们先定义一个构造函数<br>var Otaku = function () {<br>this.seikaku = ‘okashii’<br>};<br>Otaku.prototype.kareshi = ‘nai’;</li>
+</ul>
+<p>// 创建我们自己的 new 方法<br>const newObj = (constructorFn) =&gt; {<br>  // 1、创建了一个空对象<br>  var obj = new Object();</p>
+<p>  // 2、设置原型链<br>  obj.<em>proto</em> = constructorFn.prototype;</p>
+<p>  // 3、让 constructorFn 的 this 指向 obj，并执行 constructorFn 的函数体<br>  var result = constructorFn.call(obj);</p>
+<p>  // 4、判断fn的返回值类型，如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象。这里是构造函数的特性<br>  var obj1 = null<br>  if (typeof result == “object”){<br>      obj1 = result;<br>  } else {<br>      obj1 = obj;<br>  }<br>  return obj1<br>}<br>const xw = newObj(Otaku)</p>
+<pre><code>具体可以看官方文档 [Runtime Semantics: EvaluateNew(constructProduction, arguments)](https://262.ecma-international.org/6.0/#sec-evaluatenew)
 
-// 创建我们自己的 new 方法
-const newObj = (constructorFn) =&gt; &#123;
-  // 1、创建了一个空对象
-  var obj = new Object();
-
-  // 2、设置原型链
-  obj._proto_ = constructorFn.prototype;
-
-  // 3、让 constructorFn 的 this 指向 obj，并执行 constructorFn 的函数体
-  var result = constructorFn.call(obj);
-
-  // 4、判断fn的返回值类型，如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象。这里是构造函数的特性
-  var obj1 = null
-  if (typeof result == &quot;object&quot;)&#123;
-      obj1 = result;
-  &#125; else &#123;
-      obj1 = obj;
-  &#125;
-  return obj1
-&#125;
-const xw = newObj(Otaku)
-</code></pre>
-<p>具体可以看官方文档 <a target="_blank" rel="noopener" href="https://262.ecma-international.org/6.0/#sec-evaluatenew">Runtime Semantics: EvaluateNew(constructProduction, arguments)</a></p>
-<h3 id="下面代码最终的打印结果是"><a href="#下面代码最终的打印结果是" class="headerlink" title="下面代码最终的打印结果是"></a>下面代码最终的打印结果是</h3><pre><code class="JavaScript">var obj1 = &#123;
+[&gt;&gt; 返回目录](#目录)
+### 下面代码最终的打印结果是
+```JavaScript
+var obj1 = &#123;
   names: []
 &#125;;
 var obj2 = obj1.names;
 obj2.push(&quot;strick&quot;);
 console.log(obj1.names);
 </code></pre>
-<p>[“strick”]。数组方法 push() 能够改变原始数组。</p>
+<p><code>[&quot;strick&quot;]</code>。数组方法 push() 能够改变原始数组。</p>
 <blockquote>
-<p>obj1 中的 names 属性，它的值是一个空数组，数组也是一个对象。将 obj1 的 names 属性赋给 obj2 后，obj2 就能引用 names 的值（即数组），因为【数组方法 push() 能够改变原始数组】，所以 names 属性最终的值为 [“strick”]</p>
+<p>obj1 中的 names 属性，它的值是一个空数组，数组也是一个对象。将 obj1 的 names 属性赋给 obj2 后，obj2 就能引用 names 的值（即数组），因为【数组方法 push() 能够改变原始数组】，所以 names 属性最终的值为 <code>[&quot;strick&quot;]</code></p>
 </blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。"><a href="#下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。" class="headerlink" title="下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。"></a>下面是一段用于对象继承的代码，请指出其中的不足，并提出改进建议。</h3><pre><code class="JavaScript">function Super(age) &#123;
   this.names = [];
   this.age = age;
@@ -542,7 +580,224 @@ const obj1 = &#123;
 &#125;
 let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] &#125;&#125;
 </code></pre>
+<h3 id="什么是基本包装类型"><a href="#什么是基本包装类型" class="headerlink" title="什么是基本包装类型"></a>什么是基本包装类型</h3><p>为了便于操作基本类型值，ES 提供了 3 个特殊引用类型：Boolean、Number 和 String。这些类型与 Object、Function 等引用类型类似，但也有基本类型特有的行为。</p>
+<pre><code class="javascript">var s1 = &quot;some text&quot;;
+var s2 = s1.substring(2);
+</code></pre>
+<p>s1 是基本类型，并不是对象（引用类型），逻辑上讲它不应该有方法。其实在调用 String 相关方法的同时，后台自动完成了一系列处理。</p>
+<p>当第二行代码访问 s1 时，访问过程处于一种【读取模式】，也就是要从内存中读取这个字符串的值。在【读取模式】中访问字符串时，后台会自动完成下列处理。</p>
+<pre><code class="javascript">// 1. 创建 String 类型的一个实例
+var s1 = new String(&quot;some text&quot;);
 
+// 2. 在实例上调用指定的方法；
+var s2 = s1.substring(2);
+
+// 3. 销毁这个实例
+s1 = null;
+</code></pre>
+<blockquote>
+<p>经过此番处理，基本的字符串值就变得和对象一样了。Boolean 和 Number 同理。</p>
+</blockquote>
+<p>【引用类型】与【基本包装类型】的主要区别就是【对象的生存期】。使用 new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而【自动创建】的基本包装类型的对象，则只存在于一行代码执行的瞬间，然后立即被销毁。</p>
+<blockquote>
+<p>这意味着我们不能在运行时为基本类型值添加属性和方法。</p>
+</blockquote>
+<pre><code class="javascript">// 通过字面量方式创建的基本类型，推荐
+var s1 = &quot;some text&quot;;
+
+// 显式地创建基本包装类型的对象，不推荐
+// 容易分不清自己在处理基本类型还是引用类型，且 typeof 会返回 object。
+
+var s2 = new String(&quot;some text&quot;);
+console.log(typeof s1, typeof s2) // string object
+
+s1.color = &quot;red&quot;;
+s2.color = &quot;blue&quot;;
+console.log(s1.color, s2.color) // undefined &#39;blue&#39;
+</code></pre>
+<p>另一个坏的例子</p>
+<pre><code class="javascript">var falseValue = false;
+var falseObject = new Boolean(false);
+console.log(falseObject &amp;&amp; true); // true
+console.log(falseValue &amp;&amp; true); // false
+// 永远不要使用 Boolean 对象球球了 orz
+</code></pre>
+<p>综上，肥肠不建议自行实例化 String、Boolean 和 Number 类型。</p>
+<h3 id="toFixed"><a href="#toFixed" class="headerlink" title="toFixed()"></a>toFixed()</h3><p>此方法很适合处理货币值。但需要注意的是，不同浏览器给这个方法设定的舍入规则可能会有所不同。（IE8 无法正确舍入）</p>
+<h3 id="常见-String-方法"><a href="#常见-String-方法" class="headerlink" title="常见 String 方法"></a>常见 String 方法</h3><pre><code class="javascript">var str = &quot;hello world &quot;
+str.length // &quot;11&quot;
+str.charAt(1) // &quot;e&quot;
+// 以下方法不改变 str，返回一个基本类型的字符串值，str === &quot;hello world &quot;
+str.concat(&quot;! &quot;, &quot;yeah&quot;) // &quot;hello world ! yeah&quot;
+str.slice(3, 7) // &quot;lo w&quot;（截取 index 3-7
+str.substirng(3, 7) // &quot;lo w&quot;（截取 index 3-7
+str.substr(3, 7) // &quot;lo worl&quot; （从 index 3 开始截取 7 个
+// 上面 3 个如果不传第二个参数，都是截取 index 到末尾
+str.indexOf(&#39;o&#39;) // 4
+str.indexOf(&#39;o&#39;, 5) // 7（从 index 5 开始搜索
+str.trim() // &quot;hello world&quot;（删除前后所有空格
+str.toLocaleUpperCase() // &#39;HELLO WORLD &#39;（相当于 toUpperCase()
+str.toLocaleUpperCase().toLocaleLowerCase() // &quot;hello world &quot;（toLowerCase()
+// 如果不知道代码将在哪种语言环境中运行，使用针对地区的方法更稳妥。toLocalUpperCase() 和 toLocaleLowerCase()
+str.split(&quot; &quot;); // [&#39;hello&#39;, &#39;world&#39;, &#39;&#39;]（因为这里最后一位是空格，一般可以 str.trim().split(&quot; &quot;) [&#39;hello&#39;, &#39;world&#39;]
+str.split(/o/); // [&#39;hell&#39;, &#39; w&#39;, &#39;rld &#39;]（不同浏览器对 split 正则的支持有差异
+str.replace(&quot; &quot;, &quot;&quot;); // &#39;helloworld &#39;(只会替换第一个匹配到的)
+str.replace(/\s/g, &quot;&quot;); // &#39;helloworld&#39; (正则全局匹配的话可以全部替换)
+</code></pre>
+<p>replace() 的应用，htmlEscape。一般为了防止 XSS 攻击，比如禁止用户提交 html 从而更改页面</p>
+<pre><code class="javascript">function htmlEscape(text)&#123;
+ return text.replace(/[&lt;&gt;&quot;&amp;]/g, function(match, index, originalText)&#123;
+   /*
+    * match: 匹配到的字符串；
+    * index: 匹配到的字符串在原始字符串中的位置；（在 escape 方法里没啥用目前
+    * originalText: 原始字符串（在 escape 方法里没啥用目前
+    */
+    switch(match)&#123;
+      case &quot;&lt;&quot;:
+        return &quot;&amp;lt;&quot;;
+      case &quot;&gt;&quot;:
+        return &quot;&amp;gt;&quot;;
+      case &quot;&amp;&quot;:
+        return &quot;&amp;amp;&quot;;
+      case &quot;\&quot;&quot;:
+        return &quot;&amp;quot;&quot;;
+    &#125;
+ &#125;);
+&#125;
+console.log(htmlEscape(&quot;&lt;p class=\&quot;greeting\&quot;&gt;Hello world!&lt;/p&gt;&quot;));
+//&amp;lt;p class=&amp;quot;greeting&amp;quot;&amp;gt;Hello world!&amp;lt;/p&amp;gt;
+</code></pre>
+<h3 id="encodeURIComponent-和-decodeURIComponent"><a href="#encodeURIComponent-和-decodeURIComponent" class="headerlink" title="encodeURIComponent() 和 decodeURIComponent()"></a>encodeURIComponent() 和 decodeURIComponent()</h3><p>统一资源标识符 (URI) 。</p>
+<p>一般来说，我们使用 encodeURIComponent() 方法的时候要比使用 encodeURI() 更多，因为在实践中更常见的是对【查询字符串参数】而不是对基础 URI 进行编码。</p>
+<pre><code class="javascript">var uri = &quot;http://www.wrox.com/illegal value.htm#start&quot;;
+encodeURI(uri) // 只会将空格替换为 %20，即 &#39;http://www.wrox.com/illegal%20value.htm#start&#39;
+encodeURIComponent(uri) // &#39;http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start&#39;
+</code></pre>
+<p>可以解码 URL 中的查询字符串参数</p>
+<pre><code class="javascript">let href = new URL(window.location.href)
+decodeURIComponent(href.search)
+// 或者解码其他被进行 URL 编码后的字符串
+decodeURIComponent(href.pathname)
+</code></pre>
+<h3 id="Math-对象"><a href="#Math-对象" class="headerlink" title="Math 对象"></a>Math 对象</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Math.floor(1.6)</td>
+<td>向下取整。1</td>
+</tr>
+<tr>
+<td>Math.ceil(1.6)</td>
+<td>向上取整。2</td>
+</tr>
+<tr>
+<td>Math.round(1.6)</td>
+<td>四舍五入。2</td>
+</tr>
+<tr>
+<td>Math.random()</td>
+<td>[0, 1) 任意一个随机数</td>
+</tr>
+<tr>
+<td>Math.abs(-1.6)</td>
+<td>绝对值。1.6</td>
+</tr>
+<tr>
+<td>Math.pow(2, 3)</td>
+<td>2 的 3 次方。8</td>
+</tr>
+</tbody></table>
+<h3 id="构造函数和普通函数的区别"><a href="#构造函数和普通函数的区别" class="headerlink" title="构造函数和普通函数的区别"></a>构造函数和普通函数的区别</h3><p>构造函数与其他函数的唯一区别，就在于调用它们的方式不同。任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数；而任何函数，如果不通过 new 操作符来调用，那它跟普通函数也不会有什么两样。</p>
+<pre><code class="javascript">// 定义一个函数
+function Otaku(name, like) &#123;
+  this.name = name;
+  this.like = like;
+  this.sayHi = function() &#123;
+    console.log(`Hi, I&#39;m $&#123;this.name&#125;, and I like $&#123;this.like&#125;~`)
+  &#125;
+&#125;
+
+// 当作构造函数使用
+var person = new Otaku(&quot;cotwelf&quot;, &quot;anime&quot;);
+person.sayHi(); // Hi, I&#39;m cotwelf, and I like anime~
+
+// 作为普通函数调用
+Otaku(&quot;xiuwen&quot;, &quot;eiga&quot;); // 添加到 window
+window.sayHi(); // Hi, I&#39;m xiuwen, and I like eiga~
+
+// 在另一个对象的作用域中调用
+var obj = &#123;&#125;
+Otaku.call(obj, &quot;xiuxiuxiu&quot;, &quot;game&quot;);
+obj.sayHi() // Hi, I&#39;m xiuxiuxiu, and I like game~
+</code></pre>
+<blockquote>
+<p>构造函数毕竟也是函数，不存在定义构造函数的特殊语法。</p>
+</blockquote>
+<h3 id="构造函数模式创建对象的问题"><a href="#构造函数模式创建对象的问题" class="headerlink" title="构造函数模式创建对象的问题"></a>构造函数模式创建对象的问题</h3><p>构造函数内定义的方法，每次实例化对象的同时也会实例化新的函数对象（因为 JS 中 function 也是对象，创建 function 相当于 new Function()。如果对象需要定义很多方法，那么就要定义很多个全局函数，于是我们这个自定义的引用类型就丝毫没有封装性可言了。所以我们一般使用原型模式（prototype）。</p>
+<pre><code class="javascript">function Otaku(name, like) &#123;
+  this.name = name;
+  this.like = like;
+  this.sayName = function() &#123; // 相当于 new Function(console.log(`My name is $&#123;this.name&#125;`))
+    console.log(`$&#123;this.constructor.name&#125; | My name is $&#123;this.name&#125;`)
+  &#125;
+  this.sayHello = () =&gt; &#123;
+    console.log(`$&#123;this.constructor.name&#125; | Hello, I&#39;m $&#123;this.name&#125;`)
+  &#125;
+  this.sayHi1 = sayHi1
+  this.sayHi2 = sayHi2
+&#125;
+// 箭头函数不能改变 this 指向，所以这个 this 不论在哪里都是 window
+const sayHi1 = () =&gt; &#123;
+  console.log(`$&#123;this.constructor.name&#125; | Hi1, I&#39;m $&#123;this.name&#125;`)
+&#125;
+function sayHi2() &#123;
+  console.log(`$&#123;this.constructor.name&#125; | Hi2, I&#39;m $&#123;this.name&#125;`)
+&#125;
+sayHi1() // function Window() &#123; [native code] &#125; | Hi1, I&#39;m
+sayHi2() // function Window() &#123; [native code] &#125; | Hi2, I&#39;m
+
+// 实例化对象
+var person1 = new Otaku(&#39;xiuwen&#39;, &#39;anime&#39;);
+person1.sayName() // Otaku | My name is xiuwen
+person1.sayHello() // Otaku | Hello, I&#39;m xiuwen
+person1.sayHi1() // Window | Hi1, I&#39;m
+person1.sayHi2() // Otaku | Hi2, I&#39;m xiuwen
+
+var person2 = new Otaku(&#39;cotwelf&#39;, &#39;eiga&#39;);
+person1.sayName === person2.sayName // false
+person1.sayHello === person2.sayHello // false
+person1.sayHi2 === person2.sayHi2 // true
+
+sayHi1.prototype; // undefined
+sayHi2.prototype instanceof Object; // true
+</code></pre>
+<h3 id="什么是-prototype"><a href="#什么是-prototype" class="headerlink" title="什么是 prototype"></a>什么是 prototype</h3><p>我们创建的所有函数都有 prototype，它是指向一个对象的指针，这个对象可以让所有对象实例共享它所包含的属性和方法。我们称该对象是函数的原型对象。所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性包含一个指向 prototype 属性所在函数的指针。（至于原型对象上除了 constructor 外的其他方法，则都是从 Object 继承而来的。）</p>
+<p>当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性），指向构造函数的原型对象。（无法通过脚本获得该属性，但浏览器中每个对象都支持 <code>__proto__</code>）虽然是不可见的，但这个连接存在于【实例】与【构造函数的原型对象】之间。<del>而不是存在于【实例】与【构造函数】之间。</del><br><img src="./prototype.png"></p>
+<pre><code class="javascript">function Otaku(name) &#123;
+  this.name = name
+&#125;
+Otaku.prototype.like = &#39;anime&#39;
+Otaku.prototype.sayHi = function() &#123;
+  console.log(`Hi, I&#39;m $&#123;this.name&#125;, I like $&#123;this.like&#125;`)
+&#125;
+
+var person1 = new Otaku(&#39;cotwelf&#39;);
+var person2 = new Otaku(&#39;sylvia&#39;);
+
+person1.sayHi() // Hi, I&#39;m cotwelf, I like anime
+person1.sayHi === person2.sayHi // true
+</code></pre>
+</div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -573,16 +828,47 @@ let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] 
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -602,15 +888,30 @@ let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] 
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

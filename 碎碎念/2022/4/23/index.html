@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>突然觉得，做志愿者还是有意义的 </h1>
   </div>
@@ -178,8 +178,8 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <p>今天上午我发了个票圈，大概是酱紫的</p>
+
+    <div class="content" v-if="release"><p>今天上午我发了个票圈，大概是酱紫的</p>
 <pre><code>【疫情封校之前到封校两周内】世界很美好大家都是好人所以要尽量不给别人添麻烦同时尽可能帮助有困难的人想让大家都喜欢我～所有人，至少身边我认为“友善”的人都是这样想
 【封校两周后】好绝望，不论对社会还是人类，以后到底该怎样面对这个世界，到处都漆黑一片看不到阳光qwq触发了怕黑星人刻在DNA里的恐惧
 【现在】我tm又不是哆啦A梦为什么要对所有人友善地伸出圆手哈哈哈哈哈哈没错咱就是恶女2333，对世界以及人类的期待值降到有生以来最低，世界怎样已经与我无关了反正无法改变，但还是要做自己认为对的事情，否则不会遇到阳光，比如“15舍中心组”的人现在就是我的阳光，之前的原则虽然不再适用于整个世界了，但适用于阳光～毕竟谁不喜欢阳光呢
@@ -187,7 +187,13 @@
 </code></pre>
 <p>emmm 具体的嘛，现在有点晚了，可以明天早上继续 =w=</p>
 <p>今天晚上学校发物资，因为比较多，所以我们在群里召集了一下，毫无任何悬念的依旧是一群麻木的人类，但有四位同学愿意帮忙~ 而且还有个小朋友居然认得我（因为最近我早上一般会在洗手台那边跳槽。。嗯？你问我为啥不在走道的阳台？别问，问就是槐花过敏 QAQ）</p>
-
+</div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -218,16 +224,47 @@
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'true' || 'true' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -247,15 +284,30 @@
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

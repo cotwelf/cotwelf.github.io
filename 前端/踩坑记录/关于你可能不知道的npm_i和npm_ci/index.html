@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>关于你可能不知道的 npm i 和 npm ci </h1>
   </div>
@@ -193,8 +193,8 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <h1 id="先说结论："><a href="#先说结论：" class="headerlink" title="先说结论："></a>先说结论：</h1><p><code>npm i</code> 和 <code>npm ci</code> 差不多，都是根据 <code>package-lock.json</code> &gt; <code>package.json</code> 优先级安装。日常使用中比较大的差异：</p>
+
+    <div class="content" v-if="release"><h1 id="先说结论："><a href="#先说结论：" class="headerlink" title="先说结论："></a>先说结论：</h1><p><code>npm i</code> 和 <code>npm ci</code> 差不多，都是根据 <code>package-lock.json</code> &gt; <code>package.json</code> 优先级安装。日常使用中比较大的差异：</p>
 <p><code>npm i</code> 可以安装单个依赖。</p>
 <p><code>npm ci</code> 可以自动删除 <code>node_modules</code> 目录，且不会改变 <code>package-lock.json</code> 文件，但执行时 <code>package-lock.json</code> 必须存在且版本号与 <code>package.json</code> 要求一致。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="先看文档"><a href="#先看文档" class="headerlink" title="先看文档"></a>先看文档</h2><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bee041a4e08742cd847a5ec744d4bf6b~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
@@ -298,7 +298,13 @@
 <li><p><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/configuring-npm/package-locks">package-locks | npm Docs</a></p>
 </li>
 </ol>
-
+</div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -329,16 +335,47 @@
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -358,15 +395,30 @@
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

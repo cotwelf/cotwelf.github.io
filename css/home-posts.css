@@ -12,6 +12,10 @@
   background: #fff;
   margin: auto;
 }
+#home-posts .hightlight {
+  color: rgba(255,114,139,0.8);
+  margin: 0 0.2rem;
+}
 #home-posts h2 {
   text-align: center;
   color: posts-title;
@@ -106,6 +110,7 @@
 }
 #home-posts .page-current .current {
   color: current-color;
+  background: rgba(254,142,162,0.2);
 }
 #home-posts .page-current a {
   color: #999;
@@ -124,5 +129,5 @@
 }
 #home-posts .page-current .page-num:hover {
   background: page-index-active;
-  color: #fff;
+  color: rgba(254,142,162,0.6);
 }

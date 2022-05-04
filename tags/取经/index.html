@@ -156,11 +156,22 @@
         
         
         <span>
-            <a href="/tags/课堂笔记/" style=background:#ffa2c4>
+            <a href="/tags/课堂笔记/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
                 课堂笔记
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/外语/" style=background:#ff7d73>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                外语
             </a>
         </span>
         
@@ -178,18 +189,29 @@
         
         
         <span>
-            <a href="/tags/外语/" style=background:#00bcd4>
+            <a href="/tags/Algorithm/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
-                外语
+                Algorithm
             </a>
         </span>
         
         
         
         <span>
-            <a href="/tags/工具/" style=background:#879cff>
+            <a href="/tags/JavaScript/" style=background:#ff7d73>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                JavaScript
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/工具/" style=background:#1bccbc>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -200,18 +222,7 @@
         
         
         <span>
-            <a href="/tags/React/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                React
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/编码/" style=background:#ffa2c4>
+            <a href="/tags/编码/" style=background:#879cff>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -222,7 +233,18 @@
         
         
         <span>
-            <a href="/tags/npm/" style=background:#1bccbc>
+            <a href="/tags/React/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                React
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/npm/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -244,33 +266,11 @@
         
         
         <span>
-            <a href="/tags/响应式/" style=background:#ff7d73>
+            <a href="/tags/响应式/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
                 响应式
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/Algorithm/" style=background:#ffa2c4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                Algorithm
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/JavaScript/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                JavaScript
             </a>
         </span>
         
@@ -317,6 +317,45 @@
             </a-timeline-item>
         </a-timeline>
         
+        <a-timeline>
+            <a-timeline-item color="#a5c2f5">
+                <a-card hoverable>
+                    <div class="item-time">2022-05-02</div>
+                    <a href="/笔记/thesis/">
+                        <h3>每天 1 篇论文</h3>
+                    </a>
+                    <div class="info">
+                        
+                        <span class="category">
+                            <a href="/categories/笔记">
+                                <span class="icon">
+                                    <a-icon type="book" theme="filled" />
+                                </span>
+                                笔记
+                            </a>
+                        </span>
+                        
+
+                        
+                        <span class="tags">
+                            <span class="icon">
+                                <a-icon type="tags" theme="filled" />
+                            </span>
+                            
+                            <span class="tag">
+                                
+                                <a href="/tags/取经" style=color:#ff7d73>
+                                    取经
+                                </a>
+                            </span>
+                            
+                        </span>
+                        
+                    </div>
+                </a-card>
+            </a-timeline-item>
+        </a-timeline>
+        
     </div>
     <script>
         new Vue({
@@ -350,16 +389,47 @@
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -379,15 +449,30 @@
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

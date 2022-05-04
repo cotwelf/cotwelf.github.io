@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>前端芝士补完计划 之 JavaScript-数据类型 </h1>
   </div>
@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/JavaScript" style=color:#ff7d73>
+              <a href="/tags/JavaScript" style=color:#ffa2c4>
                   JavaScript
               </a>
           </span>
@@ -193,8 +193,8 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="1-封装一个-isInteger-函数，用于检测传入的值是否为整数"><a href="#1-封装一个-isInteger-函数，用于检测传入的值是否为整数" class="headerlink" title="1. 封装一个 isInteger() 函数，用于检测传入的值是否为整数"></a><a href="#%E7%9B%AE%E5%BD%95">1. 封装一个 isInteger() 函数，用于检测传入的值是否为整数</a></h3><p>整数（’number’ 类型，且不是 NaN, Infinity 和 -Infinity）</p>
+
+    <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="1-封装一个-isInteger-函数，用于检测传入的值是否为整数"><a href="#1-封装一个-isInteger-函数，用于检测传入的值是否为整数" class="headerlink" title="1. 封装一个 isInteger() 函数，用于检测传入的值是否为整数"></a><a href="#%E7%9B%AE%E5%BD%95">1. 封装一个 isInteger() 函数，用于检测传入的值是否为整数</a></h3><p>整数（’number’ 类型，且不是 NaN, Infinity 和 -Infinity）</p>
 <pre><code class="JavaScript">const isInteger = (value) =&gt; &#123;
   return typeof value === &#39;number&#39; &amp;&amp; isFinite(value) &amp;&amp; value % 1 === 0
 &#125;
@@ -372,7 +372,13 @@ obj instanceof ancestor;
   return result
 &#125;
 </code></pre>
-
+</div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -403,16 +409,47 @@ obj instanceof ancestor;
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -432,15 +469,30 @@ obj instanceof ancestor;
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 

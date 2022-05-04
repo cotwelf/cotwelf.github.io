@@ -39,7 +39,8 @@ h1 {
 h2 {
   font-size: 27px;
 }
-h3 {
+h3,
+.content h3 > code {
   font-size: 24px;
 }
 h4 {
@@ -234,6 +235,10 @@ a {
   background: #fff;
   margin: auto;
 }
+#home-posts .hightlight {
+  color: rgba(255,114,139,0.8);
+  margin: 0 0.2rem;
+}
 #home-posts h2 {
   text-align: center;
   color: #000;
@@ -328,6 +333,7 @@ a {
 }
 #home-posts .page-current .current {
   color: #4387c1;
+  background: rgba(254,142,162,0.2);
 }
 #home-posts .page-current a {
   color: #999;
@@ -346,7 +352,7 @@ a {
 }
 #home-posts .page-current .page-num:hover {
   background: #24292e;
-  color: #fff;
+  color: rgba(254,142,162,0.6);
 }
 #home-card {
   position: relative;
@@ -781,6 +787,54 @@ a {
 }
 .content .hljs .hljs-addition {
   background-color: #e6ffec;
+}
+.release-tip {
+  text-align: center;
+  font-size: 2rem;
+  margin: 10rem 0 5rem;
+  color: #fba5b5;
+}
+#release-value {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 20rem;
+  height: 4rem;
+  outline: none;
+  border: 1.5px dashed #fba5b5;
+  border-radius: 1rem;
+}
+#release-value::placeholder {
+  color: rgba(158,158,158,0.69);
+}
+.release-err {
+  text-align: center;
+  position: relative;
+  top: 1rem;
+  color: rgba(135,156,255,0.8);
+}
+#release-btn {
+  margin: 2rem auto 1rem;
+  display: block;
+  background: rgba(251,165,181,0.18);
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  width: 20rem;
+  height: 3rem;
+  color: #fba5b5;
+  border-radius: 25px;
+  border: 1.5px solid #fba5b5;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+#release-btn:hover {
+  box-shadow: 0 2px 6px 0 rgba(135,156,255,0.6);
+}
+.tips {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(158,158,158,0.69);
 }
 footer {
   position: relative;

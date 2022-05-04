@@ -151,7 +151,7 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article">
+<div class="article" id="article">
   <div>
     <h1>前端芝士补完计划 之 JavaScript-日期和正则表达式 </h1>
   </div>
@@ -193,8 +193,8 @@
       
   </div>
 
-    <div class="content" v-pre>
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="Date-now-、-new-Date-以及-Date-创建的实例的-valueOf"><a href="#Date-now-、-new-Date-以及-Date-创建的实例的-valueOf" class="headerlink" title="[Date.now()、+new Date() 以及 Date 创建的实例的 valueOf()]"></a>[Date.now()、+new Date() 以及 Date 创建的实例的 valueOf()]</h3><pre><code class="javascript">let a = Date.now()
+
+    <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="Date-now-、-new-Date-以及-Date-创建的实例的-valueOf"><a href="#Date-now-、-new-Date-以及-Date-创建的实例的-valueOf" class="headerlink" title="[Date.now()、+new Date() 以及 Date 创建的实例的 valueOf()]"></a>[Date.now()、+new Date() 以及 Date 创建的实例的 valueOf()]</h3><pre><code class="javascript">let a = Date.now()
 let b = +new Date()
 let c = new Date()
 let d = c.valueOf()
@@ -244,11 +244,13 @@ let d = c.valueOf()
 <p>例如：/at/gi</p>
 <h4 id="需要转义的元字符："><a href="#需要转义的元字符：" class="headerlink" title="需要转义的元字符：( [ { \ ^ $ | ) ? * + .]}"></a>需要转义的元字符：( [ { \ ^ $ | ) ? * + .]}</h4><pre><code class="javascript">// 匹配所有以&quot;at&quot;结尾的 3 个字符的组合，不区分大小写
 var pattern1 = /.at/gi;
+&#39;cat.at&#39;.match(pattern1) // [&#39;cat&#39;, &#39;.at&#39;]
+&#39;cat.at&#39;.search(pattern1) // 0 （匹配到了 cat
 
 // 匹配所有&quot;.at&quot;，不区分大小写
 var pattern2 =  new RegExp(&quot;\\.at&quot;, &quot;gi&quot;); // 不能把正则表达式字面量传递给 RegExp 构造函数
-&#39;cat.at&#39;.match(pattern1) // [&#39;cat&#39;, &#39;.at&#39;]
 &#39;cat.at&#39;.match(pattern2) // [&#39;.at&#39;]
+&#39;cat.at&#39;.search(pattern2) // 3
 </code></pre>
 <pre><code class="javascript">// 加了全局匹配 g 的话会循环，最后一次是 null，之后又会重头开始
 var pattern2 =  new RegExp(&quot;at&quot;, &quot;gi&quot;);
@@ -269,7 +271,13 @@ pattern2.test(&#39;cat.at&#39;) // false
 &#39;cat.at&#39;.match(pattern2) // [&#39;at&#39;, &#39;at&#39;]
 
 </code></pre>
-
+</div>
+    <div class="content" v-if="!release">
+      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
     </div>
 
     
@@ -300,16 +308,47 @@ pattern2.test(&#39;cat.at&#39;) // false
     </div>
 
     <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
     new Vue({
         el: "#layout",
         data: {
             show_page: false,
             onload_menu: false,
             menu_show: false,
-            card_top: 100
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
         },
         created: function () {
             var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
@@ -329,15 +368,30 @@ pattern2.test(&#39;cat.at&#39;) // false
             })
         },
         methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
             }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
         }
     })
 </script>
+
 
 </body>
 
