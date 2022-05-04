@@ -184,7 +184,7 @@
           
           <span class="tag">
               
-              <a href="/tags/编码" style=color:#879cff>
+              <a href="/tags/编码" style=color:#00bcd4>
                   编码
               </a>
           </span>
@@ -200,16 +200,16 @@
 &#39;😁❤️&#39;.length // 4
 &#39;😄2333&#39;.length // 6
 </code></pre>
-<p>那么，emoji 是什么呢？为什么会出现这种情况呢？emoji 不也是 unicode 编码吗？为什么和中文的编码方式不一样（）</p>
-<p>unicode(统一码) 里面包括字符集、编码方案等，国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。比如每一个中文都对应着一个 unicode，但！是！emoji 可能对应着 1 个或多个 unicode。</p>
+<p>那么，emoji 是什么呢？为什么会出现这种情况呢？emoji 不也是 Unicode 编码吗？为什么和中文的编码方式不一样（）</p>
+<p>Unicode(统一码) 里面包括字符集、编码方案等，国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。比如每一个中文都对应着一个 unicode，但！是！emoji 可能对应着 1 个或多个 unicode。</p>
 <pre><code class="JavaScript">unescape(&#39;\u4e2d&#39;.replace(/\\u/gi, &#39;%u&#39;)) === &#39;中&#39;
 unescape(&#39;\ud83d\ude04&#39;.replace(/\\u/gi, &#39;%u&#39;)) === &#39;😄&#39;
 unescape(&#39;\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68&#39;.replace(/\\u/gi, &#39;%u&#39;)) === &#39;👩‍❤️‍💋‍👨&#39;
-// 与此同时，拼音也会有多个 unicode 拼合而成的情况
+// 与此同时，拼音也会有多个 Unicode 拼合而成的情况
 unescape(&#39;\u0101&#39;.replace(/\\u/gi, &#39;%u&#39;))
 &#39;ā&#39;
 </code></pre>
-<p>const regex = /\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|\p{Emoji_Presentation}|\p{Emoji}\uFE0F/gu<br>‘😄’.match(regex)<br>有些 emoji 是多个 emoji Unicode 的组合，比如 👩‍❤️‍💋‍👨 其实是 👩‍❤️‍💋👨 unicode 的组合</p>
+<p>const regex = /\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|\p{Emoji_Presentation}|\p{Emoji}\uFE0F/gu<br>‘😄’.match(regex)<br>有些 emoji 是多个 emoji Unicode 的组合，比如 👩‍❤️‍💋‍👨 其实是 👩‍❤️‍💋👨 Unicode 的组合</p>
 <p>组一：</p>
 <ul>
 <li>👩‍❤️‍💋‍👨 的 Unicode 是：\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d\udc8b<code>\u200d</code>\ud83d\udc68</li>
@@ -217,7 +217,7 @@ unescape(&#39;\u0101&#39;.replace(/\\u/gi, &#39;%u&#39;))
 </ul>
 <p>组二：</p>
 <ul>
-<li>🏳️‍🌈 的 unicode 是：\ud83c\udff3\ufe0f<code>\u200d</code>\ud83c\udf08</li>
+<li>🏳️‍🌈 的 Unicode 是：\ud83c\udff3\ufe0f<code>\u200d</code>\ud83c\udf08</li>
 <li>🏳️🌈 的 Unicode 是：\ud83c\udff3\ufe0f\ud83c\udf08</li>
 <li>🏳️ 是：\ud83c\udff3\ufe0f</li>
 <li>🌈 是：\ud83c\udf08</li>
