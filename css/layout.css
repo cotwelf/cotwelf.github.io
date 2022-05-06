@@ -101,13 +101,13 @@
     width: 350px;
     height: 350px;
   }
-  #home-head .home-info .loop {
+  #home-head .loop {
     position: absolute;
     width: 350px;
     height: 350px;
     display: none;
   }
-  #home-head .home-info .info {
+  #home-head .loop .info {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,20 +117,20 @@
     background: rgba(255,255,255,0.651);
     padding: 25px;
   }
-  #home-head .home-info .info .wrap {
+  #home-head .loop .info .wrap {
     padding: 25px;
   }
-  #home-head .home-info .info .wrap h1 {
+  #home-head .loop .info .wrap h1 {
     font-size: 46px;
     font-weight: bold;
     font-family: default-font-family;
     margin-bottom: 10px;
   }
-  #home-head .home-info .info .wrap h3 {
+  #home-head .loop .info .wrap h3 {
     font-size: 20px;
     margin: 10px 0;
   }
-  #home-head .home-info .info .wrap h5 {
+  #home-head .loop .info .wrap h5 {
     font-size: 14px;
     margin: 20px 0;
   }
@@ -166,7 +166,7 @@
     padding: 20px 0;
   }
   .article {
-    width: 85%;
+    width: 96%;
   }
   .content .language {
     right: 10%;

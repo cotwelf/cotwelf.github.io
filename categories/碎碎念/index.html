@@ -156,7 +156,7 @@
         
         
         <span>
-          <a href="/categories/笔记/" style=background:#1bccbc>
+          <a href="/categories/笔记/" style=background:#ffa2c4>
             <span class="icon">
               <a-icon type="book" theme="filled" /></span>
               笔记
@@ -189,11 +189,11 @@
     <div id="archives">
         
         <a-timeline>
-            <a-timeline-item timestamp="2022-04-23" placement="top" color="#a5c2f5">
+            <a-timeline-item timestamp="2022-04-25" placement="top" color="#a5c2f5">
                 <a-card hoverable>
-                    <div class="item-time">2022-04-23</div>
-                    <a href="/碎碎念/2022/4/23/">
-                        <h3>突然觉得，做志愿者还是有意义的</h3>
+                    <div class="item-time">2022-04-25</div>
+                    <a href="/碎碎念/2022/4/25/">
+                        <h3>只是一个误入三次元的 NPC 而已</h3>
                     </a>
                     <div class="info">
                         
@@ -214,11 +214,11 @@
         </a-timeline>
         
         <a-timeline>
-            <a-timeline-item timestamp="2022-04-25" placement="top" color="#a5c2f5">
+            <a-timeline-item timestamp="2022-04-23" placement="top" color="#a5c2f5">
                 <a-card hoverable>
-                    <div class="item-time">2022-04-25</div>
-                    <a href="/碎碎念/2022/4/25/">
-                        <h3>只是一个误入三次元的 NPC 而已</h3>
+                    <div class="item-time">2022-04-23</div>
+                    <a href="/碎碎念/2022/4/23/">
+                        <h3>突然觉得，做志愿者还是有意义的</h3>
                     </a>
                     <div class="info">
                         
@@ -340,6 +340,7 @@
             var that = this
             var currentData = JSON.parse(data).map(i => {
               var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay
               var currentItems = i.items.map(j => {
                 j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
                 j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false

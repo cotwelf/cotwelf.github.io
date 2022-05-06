@@ -164,6 +164,7 @@
     <div>
       <div class="project" v-for="plan in planList" :key="plan.name">
         <div class="plan-title">{{ plan.name }}</div>
+        <div class="during-day">{{ plan.end_at }} 结束，还有 {{ plan.duringDay }} 天</div>
         <div>
           <div v-bind:class="[{delay: item.isDelay}, 'plan-box']" v-for="item in plan.items">
             <div class="subtitle">
@@ -171,7 +172,7 @@
               <a v-if="!!item.href" v-bind:href="item.href" target="_blank">{{ item.name }}</a>
               <span v-if="item.start_at">每天 <span v-bind:class="[{delay: item.isDelay}, 'highlight']">{{ item.isDelay ? item.currentPer : item.per }}</span> {{ item.unit }}</span>
               <span>，该看第 <span class="highlight">{{item.done + 1}}</span> {{ item.unit }}啦~ 还剩 <span class="highlight">{{item.total - item.done}}</span> {{ item.unit }}</span>
-              <span v-if="!item.start_at" style="color: rgb(211, 211, 211)">  还没有开始哦~</span>
+              <span v-if="!item.start_at" style="opacity: 0.6">  还没有开始哦~</span>
             </div>
             <!-- {{{ item.memo }}} -->
 
@@ -255,7 +256,7 @@
             } else {
               that.release = true
             }
-            that.setPlanList('[{"name":"前端","end_at":"2022/6/10","items":[{"name":"红宝书","unit":"页","total":750,"weekly":5,"done":196,"per":20,"start_at":"2022/4/1","finish_at":""},{"name":"前端基础之 JS","unit":"题","total":194,"weekly":5,"done":0,"per":0,"start_at":"","finish_at":""}]},{"name":"暴风式摄入游戏芝士_(:з」∠)_","end_at":"2022/5/19","items":[{"name":"Unity独立游戏开发基础入门全流程(2D)","href":"https://www.bilibili.com/video/BV1F3411Y72v/","unit":"课","total":53,"weekly":5,"done":7,"per":5,"start_at":"2022/5/6","finish_at":""}]}]')
+            that.setPlanList('[{"name":"前端","end_at":"2022/6/1","items":[{"name":"红宝书","unit":"页","total":750,"weekly":5,"done":264,"per":20,"start_at":"2022/4/1","finish_at":""},{"name":"前端基础之 JS","unit":"题","total":194,"weekly":5,"done":0,"per":0,"start_at":"","finish_at":""}]},{"name":"暴风式摄入游戏芝士_(:з」∠)_","end_at":"2022/5/19","items":[{"name":"Unity独立游戏开发基础入门全流程(2D)","href":"https://www.bilibili.com/video/BV1F3411Y72v/","unit":"课","total":53,"weekly":5,"done":11,"per":5,"start_at":"2022/5/6","finish_at":""},{"name":"从零开始的完整的编曲教程","href":"https://www.bilibili.com/video/BV1Hx411S7zm","unit":"课","total":273,"weekly":5,"done":14,"per":5,"start_at":"2022/5/6","finish_at":""}]}]')
             that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
@@ -283,6 +284,7 @@
             var that = this
             var currentData = JSON.parse(data).map(i => {
               var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay
               var currentItems = i.items.map(j => {
                 j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
                 j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false

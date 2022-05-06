@@ -27,17 +27,21 @@
 .about .plan-box .progress-box .progress .end-img {
   width: 40px;
   height: 40px;
-  background-image: url("../images/face/mm.webp");
+  background-image: url("../images/face/hs.webp");
   background-size: contain;
   position: absolute;
   right: -30px;
-  top: -200%;
+  top: -20px;
+  opacity: 0.7;
 }
 .about .plan-box .progress-box .progress .end-img.doing {
+  background-image: url("../images/face/mm.webp");
   animation: 1.5s linear infinite kawai;
+  opacity: 1;
 }
 .about .plan-box.delay .progress-box .progress .end-img {
   background-image: url("../images/face/th.webp");
+  opacity: 1;
 }
 .about .plan-box.delay .progress {
   background-color: #ff5776;
@@ -48,7 +52,10 @@
 }
 .about .plan-title {
   font-size: 30px;
+}
+.about .during-day {
   margin-bottom: 2rem;
+  opacity: 0.6;
 }
 .about .plan-title::before {
   content: '';

@@ -176,7 +176,7 @@
           
           <span class="tag">
               
-              <a href="/tags/JavaScript" style=color:#879cff>
+              <a href="/tags/JavaScript" style=color:#00bcd4>
                   JavaScript
               </a>
           </span>
@@ -217,9 +217,31 @@
 <blockquote>
 <p>DOM 兼容性：不同浏览器对 DOM 的兼容性不一，比如 IE8 只支持 1 级，IE9 才开始支持到 3 级，而且某些浏览器只支持某级的【<code>部分</code>】，在开发过程中可能需要做兼容。例如 IE8 之前可能只能通过操作 BOM 的方式（<code>window.innerHeight</code>）获取到视口高度，所以获取视口高度的兼容性写法最好是 <code>const seeHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight</code></p>
 </blockquote>
+<blockquote>
+<p>更详细一些的写法是这样的</p>
+</blockquote>
+<pre><code class="javascript">var pageWidth = window.innerWidth
+var pageHeight = window.innerHeight;
+if (typeof pageWidth != &quot;number&quot;) &#123;
+  if (document.compatMode == &quot;CSS1Compat&quot;)&#123;
+    pageWidth = document.documentElement.clientWidth;
+    pageHeight = document.documentElement.clientHeight;
+  &#125; else &#123;
+    pageWidth = document.body.clientWidth;
+    pageHeight = document.body.clientHeight;
+  &#125;
+&#125;
+</code></pre>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h3 id="3-什么是-BOM"><a href="#3-什么是-BOM" class="headerlink" title="3. 什么是 BOM"></a>3. 什么是 BOM</h3><p>BOM（浏览器对象模型），它指的是把浏览器当做一个对象来对待，这个对象主要定义了与浏览器进行交互的方法和接口。BOM 的核心是 window，而 window 对象具有双重角色，它既是通过 js 访问浏览器窗口的一个接口，又是一个 Global（全局）对象。这意味着在网页中定义的任何对象，变量和函数，都作为全局对象的一个属性或者方法存在。window 对象含有<code>location</code>（浏览器所加载页面的详细信息，比如可以通过 window.location.href 获取到 url 等）、<code>navigator</code>（浏览器详细信息，比如 <code>window.navigator.userAgent</code> 获取当前设备（mac 还是 Windows）当前浏览器信息（Firefox 还是 Chrome，及其版本号）之类的）、screen 对象、history对象等子对象，并且 DOM 的最根本的对象 document 对象也是 BOM 的 window 对象的子对象。</p>
-<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-什么是-BOM"><a href="#3-什么是-BOM" class="headerlink" title="3. 什么是 BOM"></a>3. 什么是 BOM</h3><p>BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象</p>
+<p>BOM（浏览器对象模型），它指的是把浏览器当做一个对象来对待，这个对象主要定义了与浏览器进行交互的方法和接口。BOM 的核心是 window，而 window 对象具有双重角色，它既是通过 js 访问浏览器窗口的一个接口，又是一个 Global（全局）对象。这意味着在网页中定义的任何对象，变量和函数，都作为全局对象的一个属性或者方法存在。window 对象含有<code>location</code>（浏览器所加载页面的详细信息，比如可以通过 window.location.href 获取到 url 等）、<code>navigator</code>（浏览器详细信息，比如 <code>window.navigator.userAgent</code> 获取当前设备（mac 还是 Windows）当前浏览器信息（Firefox 还是 Chrome，及其版本号）之类的）、screen 对象、history对象等子对象，并且 DOM 的最根本的对象 document 对象也是 BOM 的 window 对象的子对象。</p>
+<p>还记得 standalone 古老活动的代码吗？因为当时 standalone 是嵌套在 web 的 iframe，所以在 iframe 中和 window 通信需要加 top，已调用最顶层（也就是 web 项目中 window）上的方法。</p>
+<pre><code class="javascript">window.top.postMessage(&#123;
+  type: &#39;updateHeight&#39;,
+  height: &#39;calc(100vh + 40px)&#39;,
+&#125;, &#39;*&#39;)
+</code></pre>
+<p>另外有时需要获取浏览器和操作系统信息，以便对低版本浏览器抛出提示，可以通过 ua 判断，具体代码可以看红宝书第 9 章-客户端检测-用户代理检测-9.3.3（完整代码P242）<br><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="4-四大浏览器内核"><a href="#4-四大浏览器内核" class="headerlink" title="*4. 四大浏览器内核"></a>*4. 四大浏览器内核</h3><p>Webkit，Blink，Trident（也称IE内核），Gecko<br><strong>【常用浏览器所使用的内核。】</strong></p>
 <blockquote>
 <p>主要看 IE 和 Chrome 即可</p>
@@ -777,6 +799,7 @@ for (var i = 1; i &lt; 5; i++) &#123;
             var that = this
             var currentData = JSON.parse(data).map(i => {
               var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay
               var currentItems = i.items.map(j => {
                 j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
                 j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
