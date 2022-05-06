@@ -188,3 +188,9 @@
   font-size: 1rem;
   color: rgba(158,158,158,0.69);
 }
+.divider {
+  width: 60vw;
+  max-width: 600px;
+  min-width: 300px;
+  margin-bottom: 4rem;
+}

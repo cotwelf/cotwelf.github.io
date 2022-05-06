@@ -156,7 +156,7 @@
         
         
         <span>
-            <a href="/tags/课堂笔记/" style=background:#00bcd4>
+            <a href="/tags/课堂笔记/" style=background:#ff7d73>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -167,7 +167,7 @@
         
         
         <span>
-            <a href="/tags/外语/" style=background:#1bccbc>
+            <a href="/tags/外语/" style=background:#ff7d73>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -200,7 +200,7 @@
         
         
         <span>
-            <a href="/tags/JavaScript/" style=background:#ffa2c4>
+            <a href="/tags/JavaScript/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -211,7 +211,7 @@
         
         
         <span>
-            <a href="/tags/工具/" style=background:#879cff>
+            <a href="/tags/工具/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -222,7 +222,7 @@
         
         
         <span>
-            <a href="/tags/编码/" style=background:#879cff>
+            <a href="/tags/编码/" style=background:#ff7d73>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -233,7 +233,7 @@
         
         
         <span>
-            <a href="/tags/React/" style=background:#ff7d73>
+            <a href="/tags/React/" style=background:#879cff>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -255,7 +255,7 @@
         
         
         <span>
-            <a href="/tags/兼容/" style=background:#1bccbc>
+            <a href="/tags/兼容/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -266,7 +266,7 @@
         
         
         <span>
-            <a href="/tags/响应式/" style=background:#879cff>
+            <a href="/tags/响应式/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -305,7 +305,7 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/npm" style=color:#00bcd4>
+                                <a href="/tags/npm" style=color:#ff7d73>
                                     npm
                                 </a>
                             </span>
@@ -380,6 +380,7 @@
             release: false,
             releaseVal: '',
             releaseErr: '',
+            planList: [],
         },
         created: function () {
             var that = this
@@ -390,6 +391,7 @@
             } else {
               that.release = true
             }
+            that.setPlanList('')
             that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
@@ -410,6 +412,24 @@
             })
         },
         methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+            console.log(currentData)
+          },
           home_click: function () {
             window.scrollTo({
               top: window.innerHeight - 80,

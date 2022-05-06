@@ -156,14 +156,6 @@
     <h1>前端芝士补完计划 之 JavaScript-对象 </h1>
   </div>
   <div class="info">
-    
-      <span class="date">
-        <span class="icon">
-          <a-icon type="calendar" theme="filled" />
-        </span>
-        2022-04-10
-      </span>
-    
       
       <span class="category">
           <a href="/categories/前端">
@@ -184,7 +176,7 @@
           
           <span class="tag">
               
-              <a href="/tags/JavaScript" style=color:#1bccbc>
+              <a href="/tags/JavaScript" style=color:#879cff>
                   JavaScript
               </a>
           </span>
@@ -1097,6 +1089,7 @@ person1.constructor === Otaku
             release: false,
             releaseVal: '',
             releaseErr: '',
+            planList: [],
         },
         created: function () {
             var that = this
@@ -1107,6 +1100,7 @@ person1.constructor === Otaku
             } else {
               that.release = true
             }
+            that.setPlanList('')
             that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
@@ -1127,6 +1121,24 @@ person1.constructor === Otaku
             })
         },
         methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+            console.log(currentData)
+          },
           home_click: function () {
             window.scrollTo({
               top: window.innerHeight - 80,

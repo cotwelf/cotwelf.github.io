@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 关于我</title>
+    <title>Cotwelf&#39;s Life || about</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -151,30 +151,42 @@
                 <div id="main">
                     
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
+<div class="article about" id="article">
   <div>
-    <h1>关于我 </h1>
-  </div>
-  <div class="info">
-    
-      
-
-      
+    <h1>关于我寄几</h1>
   </div>
 
 
-    <div class="content" v-if="release"><br />
+    <div class="content"><br />
 主人太懒，还没有更新_(:з」∠)_
 </div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+    <img class="divider" src="/images/divider/2233.webp" />
+    <div>
+      <div class="project" v-for="plan in planList" :key="plan.name">
+        <div class="plan-title">{{ plan.name }}</div>
+        <div>
+          <div v-bind:class="[{delay: item.isDelay}, 'plan-box']" v-for="item in plan.items">
+            <div class="subtitle">
+              <span v-if="!item.href">{{ item.name }}</span>
+              <a v-if="!!item.href" v-bind:href="item.href" target="_blank">{{ item.name }}</a>
+              <span v-if="item.start_at" v-bind:class="{delay: item.isDelay}">每天 {{ item.isDelay ? item.currentPer : item.per }} {{ item.unit }}</span>
+              <span>，该看第 {{item.done + 1}} {{ item.unit }}啦~ 还剩 {{item.total - item.done}} {{ item.unit }}</span>
+              <span v-if="!item.start_at" style="color: rgb(211, 211, 211)">  还没有开始哦~</span>
+            </div>
+            <!-- {{{ item.memo }}} -->
 
-    
+            <div class="delay-tip" v-if="item.isDelay">大...大佬你延期啦😱 原计划是每天 {{ item.per }} 的说！！！</div>
+            <div class="progress-box">
+              <div class="progress" v-bind:style="{width: item.percent}">
+                <div v-bind:class="[{doing: item.start_at && !item.finish_at}, 'end-img']"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
 </div>
 
                      
@@ -232,6 +244,7 @@
             release: false,
             releaseVal: '',
             releaseErr: '',
+            planList: [],
         },
         created: function () {
             var that = this
@@ -242,6 +255,7 @@
             } else {
               that.release = true
             }
+            that.setPlanList('[{"name":"前端","end_at":"2022/6/10","items":[{"name":"红宝书","unit":"页","total":750,"weekly":5,"done":196,"per":20,"start_at":"2022/4/1","finish_at":""},{"name":"前端基础之 JS","unit":"题","total":194,"weekly":5,"done":0,"per":0,"start_at":"","finish_at":""}]},{"name":"暴风式摄入游戏芝士_(:з」∠)_","end_at":"2022/5/19","items":[{"name":"Unity独立游戏开发基础入门全流程(2D)","href":"https://www.bilibili.com/video/BV1F3411Y72v/","unit":"课","total":53,"weekly":5,"done":7,"per":5,"start_at":"2022/5/6","finish_at":""}]}]')
             that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
@@ -262,6 +276,24 @@
             })
         },
         methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+            console.log(currentData)
+          },
           home_click: function () {
             window.scrollTo({
               top: window.innerHeight - 80,
