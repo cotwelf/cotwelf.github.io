@@ -257,7 +257,7 @@
         },
         created: function () {
             var that = this
-            var isPrivate = !!'true' || 'true' === 'true'
+            var isPrivate = !!'' || '' === 'true'
             var releaseObj = getRelease()
             if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
               localStorage.clear('release')

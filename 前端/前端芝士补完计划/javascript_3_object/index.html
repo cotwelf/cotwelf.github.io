@@ -776,7 +776,8 @@ sayHi1.prototype; // undefined
 sayHi2.prototype instanceof Object; // true
 </code></pre>
 <h3 id="什么是-prototype"><a href="#什么是-prototype" class="headerlink" title="什么是 prototype"></a>什么是 prototype</h3><p>我们创建的所有函数都有 prototype，它是指向一个对象的指针，这个对象可以让所有对象实例共享它所包含的属性和方法。我们称该对象是函数的原型对象。所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性包含一个指向 prototype 属性所在函数的指针。（至于原型对象上除了 constructor 外的其他方法，则都是从 Object 继承而来的。）</p>
-<p>当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性），指向构造函数的原型对象。（无法通过脚本获得该属性，但浏览器中每个对象都支持 <code>__proto__</code>）虽然是不可见的，但这个连接存在于【实例】与【构造函数的原型对象】之间。<del>而不是存在于【实例】与【构造函数】之间。</del><br><img src="./prototype.png"></p>
+<p>当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性），指向构造函数的原型对象。（无法通过脚本获得该属性，但浏览器中每个对象都支持 <code>__proto__</code>）虽然是不可见的，但这个连接存在于【实例】与【构造函数的原型对象】之间（可以通过 Person.prototype.isPrototypeOf(person1) 验证）。<del>而不是存在于【实例】与【构造函数】之间。</del></p>
+<p><img src="./prototype.png"></p>
 <pre><code class="javascript">function Otaku(name) &#123;
   this.name = name
 &#125;
@@ -790,7 +791,191 @@ var person2 = new Otaku(&#39;sylvia&#39;);
 
 person1.sayHi() // Hi, I&#39;m cotwelf, I like anime
 person1.sayHi === person2.sayHi // true
+Object.getPrototypeOf(person1) === Otaku.prototype
+Object.getPrototypeOf(person1).name // undefined
+Object.getPrototypeOf(person1).like // &#39;anime&#39;
 </code></pre>
+<p>对原型对象所做的任何修改都能够立即从实例上反映出来。【重写】原型对象切断了现有原型与任何之前已经存在的对象实例之间的联系；它们引用的仍然是最初的原型。</p>
+<pre><code class="javascript">function Otaku(name) &#123;
+  this.name = name
+&#125;
+Otaku.prototype.like = &#39;anime&#39;
+var person = new Otaku(&#39;cotwelf&#39;)
+// person.like // &#39;anime&#39;
+Otaku.prototype = &#123;
+  constructor: Otaku,
+  like: &#39;anime&#39;,
+  seikaku: &#39;kawaii&#39;
+&#125;
+person.seikaku // undefined
+</code></pre>
+<h3 id="什么是原型链"><a href="#什么是原型链" class="headerlink" title="什么是原型链"></a>什么是原型链</h3><p>每当代码读取某个对象的某个属性时，都会执行一次搜索，目标是具有给定名字的属性。搜索首先从对象实例本身开始。如果在实例中找到了具有给定名字的属性，则返回该属性的值；如果没有找到，则继续搜索指针指向的原型对象，在原型对象中查找具有给定名字的属性。如果在原型对象中找到了这个属性，则返回该属性的值。</p>
+<p>当为对象实例添加一个属性时，这个属性就会屏蔽原型对象中保存的同名属性。</p>
+<p>用 hasOwnProperty()方法可以检测一个属性是存在于实例中，还是存在于原型中。</p>
+<pre><code class="javascript">function Otaku(name) &#123;
+  this.name = name
+&#125;
+Otaku.prototype.like = &#39;anime&#39;
+const person = new Otaku(&#39;cotwelf&#39;)
+person.seikaku = &#39;kawaii&#39;
+person.hasOwnProperty(&quot;like&quot;) // false 在原型上
+person.hasOwnProperty(&quot;name&quot;) // true 在实例上
+person.hasOwnProperty(&quot;seikaku&quot;) // true 在实例上
+
+&quot;like&quot; in person // true 在原型对象上
+&quot;name&quot; in person // true 在实例上
+</code></pre>
+<h3 id="使用如下方式设置原型会有什么问题"><a href="#使用如下方式设置原型会有什么问题" class="headerlink" title="使用如下方式设置原型会有什么问题"></a>使用如下方式设置原型会有什么问题</h3><pre><code class="javascript">var Otaku = function(name) &#123;
+  this.name = name
+&#125;
+Otaku.prototype = &#123;
+  like: &#39;anime&#39;,
+  sayHi: function() &#123;
+    console.log(`Hi, I&#39;m $&#123;this.name&#125;, I like $&#123;this.like&#125;`)
+  &#125;
+&#125;
+var person1 = new Otaku(&#39;cotwelf&#39;)
+
+// 以下是推荐做法
+var Person = function(name) &#123;
+  this.name = name
+&#125;
+Person.prototype.like = &#39;anime&#39;;
+Person.prototype.sayHi = function() &#123;
+  console.log(`Hi, I&#39;m $&#123;this.name&#125;, I like $&#123;this.like&#125;`)
+&#125;
+var person2 = new Person(&#39;cotwelf&#39;)
+// 尽管下面两个看起来并没有什么不同，Hi, I&#39;m cotwelf, I like anime
+person2.sayHi()
+person1.sayHi()
+person2 instanceof Person // true
+person1 instanceof Otaku // true
+
+// 但是
+person2.constructor === Person // true
+person1.constructor === Otaku // false
+</code></pre>
+<p>每创建一个函数，就会同时创建它的 prototype 对象，这个对象也会自动获得 constructor 属性。而我们在这里使用的语法，本质上完全重写了默认的 prototype 对象，因此 constructor 属性也就变成了新对象的 constructor 属性（指向 Object 构造函数），不再指向 Person 函数。此时，尽管 instanceof 操作符还能返回正确的结果，但通过 constructor 已经无法确定对象的类型了.</p>
+<p>另外，原型对象最大的问题是由其共享的本性所导致的。如果通过实例修改并不存在于实例上的属性，而是存在于原型上的属性的话，prototype 就会被修改，那么所有实例访问到的对应属性都会被修改。</p>
+<pre><code class="javascript">var Otaku = function(name) &#123;
+  this.name = name
+&#125;
+Otaku.prototype.like = [&#39;anime&#39;]
+Otaku.prototype.seikaku = &#39;yasashii&#39;
+var person1 = new Otaku(&#39;cotwelf&#39;)
+var person2 = new Otaku(&#39;sylvia&#39;)
+person1.name = &#39;xiuxiuxiu&#39;
+person2.name // sylvia 因为是在实例上
+person1.seikaku = &#39;okashii&#39;
+person2.seikaku // yasashii 因为是基本类型，会直接覆盖内存
+person1.like.push(&#39;eiga&#39;)
+person2.like // [&#39;anime&#39;, &#39;eiga&#39;] 因为 like 是在原型上，且是引用类型，指针没有变，只是在向相应的栈内存中 push 新元素
+</code></pre>
+<h3 id="如何实现继承"><a href="#如何实现继承" class="headerlink" title="如何实现继承"></a>如何实现继承</h3><p>什么是继承：简单来说就是构造函数 A 的原型是另一个构造函数 B 的实例（<code>Otaku.prototype = new Person()</code>），于是 A 就继承了 B 的属性和方法。</p>
+<h4 id="原型链方式"><a href="#原型链方式" class="headerlink" title="原型链方式"></a>原型链方式</h4><pre><code class="javascript">function Person() &#123;
+  this.like = &#39;eat&#39;
+&#125;
+Person.prototype.sayLike = function() &#123;
+  console.log(`I like $&#123;this.like&#125;`)
+&#125;
+
+function Otaku() &#123;
+  this.name = &#39;cotwelf&#39;
+&#125;
+Otaku.prototype = new Person(); // 我们没有使用 Otaku 默认提供的原型，而是给它换了一个新原型，即 Person 实例
+// 所以 Otaku 的原型就拥有了 Person 原型上的所有属性和方法，而且其内部还有一个指针，指向了 Person 的原型
+console.log(Otaku.prototype) // Person &#123;like: &#39;eat&#39;, sayName: ƒ&#125;
+Otaku.prototype.sayName = function() &#123;
+  console.log(`I&#39;m $&#123;this.name&#125;`)
+&#125;
+var person = new Otaku()
+person.sayName() // I&#39;m cotwelf
+person.sayLike() // I like eat
+person.constructor // Person
+
+// 所有函数的默认原型都是 Object 的实例，因此默认原型都会包含一个内部指针，指向 Object.prototypej（所以都可以使用 Object 原型对象上的方法，如 toString()
+person.toString() // &#39;[object Object]&#39;
+// 注意：以下需要使用 chrome 控制台才能看到
+person.__proto__.__proto__.__proto__.constructor // ƒ Object()
+person.__proto__.__proto__.constructor === person.__proto__.constructor // ƒ Person()
+person.constructor // ƒ Person()
+
+var people = new Person()
+people.__proto__.__proto__.constructor // ƒ Object()
+people.__proto__.constructor === people.constructor // ƒ Person()
+
+// 这里注意，原型的 constructor 是构造函数
+Person.prototype.constructor // ƒ Person()
+
+// 宇宙的尽头是 null
+person.__proto__.__proto__.__proto__.__proto__  === null // true
+person.__proto__.__proto__.__proto__ === Object.prototype // ture
+person.__proto__.__proto__ === Person.prototype // true
+person.__proto__ === Otaku.prototype // true
+</code></pre>
+<p>person 指向 Otaku 的原型， Otaku 的原型又指向 Person 的原型。 sayLike() 方法仍然还在 Person.prototype 中，但 name 则位于 Otaku.prototype 中。这是因为 name 是一个实例属性，而 sayLike()则是一个原型方法。既然 Otaku.prototype 现在是 Person 的实例，那么 property 当然就位于该实例中了。此外，要注意 person.constructor 现在指向的是 Person，这是因为原来 Otaku.prototype 中的 constructor 指向了另一个对象的缘故。</p>
+<p>一句话，Otaku 继承了 Person，而 Person 继承了 Object。当调用 person.toString()时，实际上调用的是保存在 Object.prototype 中的那个方法。</p>
+<blockquote>
+<p>承接上一段代码</p>
+</blockquote>
+<pre><code class="javascript">// 由于原型链的关系，我们可以说 person 是 Object、Person 或 Otaku 中任何一个类型的实例。
+person instanceof Object // true，同理 Object.prototype.isPrototypeOf(person)
+person instanceof Person // true，同理 Person.prototype.isPrototypeOf(person)
+person instanceof Otaku // true，同理 Otaku.prototype.isPrototypeOf(person)
+</code></pre>
+<p>在通过原型链实现继承时，不能使用对象字面量创建原型方法。因为这样做就会重写原型链（可以这样理解，原先的原型链是 Otaku 继承了 Person 继承了 Object 的属性和方法（最后一个是 null，木有属性和方法））但假如通过字面量创建原型</p>
+<pre><code class="javascript">function Person()&#123;&#125;
+Person.prototype.like = &#39;anime&#39;
+function Otaku()&#123;&#125;
+Otaku.prototype = new Person()
+var people1 = new Otaku()
+// 这里原本应该是
+people1.like // &#39;anime&#39;
+Otaku.prototype = &#123;
+  name: &#39;cotwelf&#39;
+&#125;
+// 原型链就断掉了
+var people2 = new Otaku()
+people2.like // undefined，因为这里的原型已经指向了新的对象
+people1.like // &#39;anime&#39; 因为 people1 是在原型修改前 new 出来的，它的 __proto__ 和原本 Otaku.prototype 绑定，虽然指针换了，但对象还是存在在栈里的，而且 people1 有引用，不会被清除，因此还是可以访问到的
+</code></pre>
+<p>原型链虽然很强大，可以用它来实现继承，但它也存在一些问题。包含引用类型值的原型属性会被所有实例共享，所以引用类型属性应该定义在【构造函数】里，而不是在【原型】上，同时超类中的引用类型也会被共享。</p>
+<h4 id="借用构造函数的方式"><a href="#借用构造函数的方式" class="headerlink" title="借用构造函数的方式"></a>借用构造函数的方式</h4><p>即在子类型构造函数的内部调用超类型构造函数，并绑定当前（子类的）作用域。好处是引用类型不会被实例修改，但坏处是方法并没有被复用。</p>
+<pre><code class="javascript">function Person(name) &#123;
+  this.name = name
+  this.like = [&#39;anime&#39;]
+&#125;
+function Otaku(name) &#123;
+  Person.call(this, name)
+&#125;
+var person1 = new Person(&#39;cotwelf&#39;)
+var person2 = new Person(&#39;sylvia&#39;)
+person1.like.push(&#39;eiga&#39;)
+person1.like // [&#39;anime&#39;, &#39;eiga&#39;]
+person2.like // [&#39;anime&#39;]
+</code></pre>
+<h4 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h4><p>组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为 JS 中最常用的继承模式。而且，instanceof 和 isPrototypeOf() 也能够用于识别基于组合继承创建的对象。</p>
+<pre><code class="javascript">function Person(name) &#123;
+  this.name = name
+&#125;
+function Otaku(name) &#123;
+  Person.call(this, name) // 第一次调用 Person
+  this.like = [&#39;anime&#39;]
+&#125;
+Otaku.prototype = new Person() // 第二次调用 Person。因为这里丢掉了 prototype 初始的指向对象指针（初始构造函数的 prototype.constructor 指向构造函数寄几），如果没有下面一行，constructor 将会是 Person
+Otaku.prototype.constructor = Otaku // 这里为了让原型的 constructor 依旧指向 Otaku
+var people1 = new Otaku(&#39;cotwelf&#39;)
+var people2 = new Otaku(&#39;sylvia&#39;)
+people1.like.push(&#39;eiga&#39;)
+
+people1.like // [&#39;anime&#39;, &#39;eiga&#39;]
+people2.like // [&#39;anime&#39;]
+
+people1 instanceof Otaku // true
+Otaku.prototype.isPrototypeOf(people1) // true
+people1.constructor // Otaku。如果上面没有重新指向的话，这里会是 Person
+</code></pre>
+<p>组合继承最大的问题就是无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。</p>
 </div>
     <div class="content" v-if="!release">
       <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
