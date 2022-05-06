@@ -1003,6 +1003,13 @@ footer .footer-icon {
   animation: 1.5s linear infinite kawai;
   opacity: 1;
 }
+.about .plan-box a {
+  color: #00bcd4;
+  transition: 0.1s color;
+}
+.about .plan-box a:hover {
+  color: #879cff;
+}
 .about .plan-box.delay .progress-box .progress .end-img {
   background-image: url("../images/face/th.webp");
   opacity: 1;
@@ -1089,46 +1096,46 @@ footer .footer-icon {
 }
 @-moz-keyframes kawai {
   0% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
   50% {
-    transform: rotate(-20deg);
+    transform: rotate(-10deg);
   }
   100% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
 }
 @-webkit-keyframes kawai {
   0% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
   50% {
-    transform: rotate(-20deg);
+    transform: rotate(-10deg);
   }
   100% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
 }
 @-o-keyframes kawai {
   0% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
   50% {
-    transform: rotate(-20deg);
+    transform: rotate(-10deg);
   }
   100% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
 }
 @keyframes kawai {
   0% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
   50% {
-    transform: rotate(-20deg);
+    transform: rotate(-10deg);
   }
   100% {
-    transform: rotate(20deg);
+    transform: rotate(10deg);
   }
 }
 @media (min-width: 900px) {
