@@ -40,11 +40,11 @@
   opacity: 1;
 }
 .about .plan-box a {
-  color: #00bcd4;
+  color: #879cff;
   transition: 0.1s color;
 }
 .about .plan-box a:hover {
-  color: #879cff;
+  color: #00bcd4;
 }
 .about .plan-box.delay .progress-box .progress .end-img {
   background-image: url("../images/face/th.webp");
