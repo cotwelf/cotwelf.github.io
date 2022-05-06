@@ -176,7 +176,7 @@
             </div>
             <!-- {{{ item.memo }}} -->
 
-            <div class="delay-tip" v-if="item.isDelay">大...大佬你延期啦😱 原计划是每天 {{ item.per }} 的说！！！</div>
+            <div class="delay-tip" v-if="item.isDelay">大...大佬你延期啦😱 原计划是每天 {{ item.per }} {{ item.unit }}的说！！！</div>
             <div class="progress-box">
               <div class="progress" v-bind:style="{width: item.percent}">
                 <div v-bind:class="[{doing: item.start_at && !item.finish_at}, 'end-img']"></div>
