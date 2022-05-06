@@ -67,7 +67,10 @@
   content: unset;
 }
 .about .plan-box {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+.about .plan-box .subtitle .highlight {
+  color: #879cff;
 }
 @-moz-keyframes transBg {
   0% {

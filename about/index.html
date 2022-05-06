@@ -169,8 +169,8 @@
             <div class="subtitle">
               <span v-if="!item.href">{{ item.name }}</span>
               <a v-if="!!item.href" v-bind:href="item.href" target="_blank">{{ item.name }}</a>
-              <span v-if="item.start_at" v-bind:class="{delay: item.isDelay}">每天 {{ item.isDelay ? item.currentPer : item.per }} {{ item.unit }}</span>
-              <span>，该看第 {{item.done + 1}} {{ item.unit }}啦~ 还剩 {{item.total - item.done}} {{ item.unit }}</span>
+              <span v-if="item.start_at">每天 <span v-bind:class="[{delay: item.isDelay}, 'highlight']">{{ item.isDelay ? item.currentPer : item.per }}</span> {{ item.unit }}</span>
+              <span>，该看第 <span class="highlight">{{item.done + 1}}</span> {{ item.unit }}啦~ 还剩 <span class="highlight">{{item.total - item.done}}</span> {{ item.unit }}</span>
               <span v-if="!item.start_at" style="color: rgb(211, 211, 211)">  还没有开始哦~</span>
             </div>
             <!-- {{{ item.memo }}} -->
