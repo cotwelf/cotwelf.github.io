@@ -56,6 +56,12 @@ p {
 a {
   text-decoration: none;
 }
+hr {
+  border: 0;
+  background-image: url("../images/divider/2233.png");
+  height: 40px;
+  background-size: contain;
+}
 .icon {
   margin-right: 5px;
   color: label-color;
