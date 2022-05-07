@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || about</title>
+    <title>Cotwelf&#39;s Life || 游戏</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -150,44 +150,99 @@
 
                 <div id="main">
                     
-<link rel="stylesheet" href="/css/post-body.css">
-<div class="article about" id="article">
-  <div>
-    <h1>关于我寄几</h1>
-  </div>
-
-
-    <div class="content"><!-- 主人太懒，还没有更新_(:з」∠)_ -->
-</div>
-    <img class="divider" src="/images/divider/2233.webp" />
-    <div>
-      <div class="project" v-for="plan in planList" :key="plan.name">
-        <div class="plan-title">{{ plan.name }}</div>
-        <div class="during-day">{{ plan.end_at }} 结束，还有 {{ plan.duringDay }} 天</div>
-        <div>
-          <div v-bind:class="[{delay: item.isDelay}, 'plan-box']" v-for="item in plan.items">
-            <div class="subtitle">
-              <span v-if="!item.href" class="highlight">{{ item.name }}</span>
-              <a v-if="!!item.href" v-bind:href="item.href" target="_blank">{{ item.name }}</a>
-              <span>该看第 <span class="highlight">{{item.done + 1}}</span> {{ item.unit }}啦~ </span>
-              <span v-if="item.start_at">每天 <span v-bind:class="[{delay: item.isDelay}, 'highlight']">{{ item.isDelay ? item.currentPer : item.per }}</span> {{ item.unit }}，</span>
-              <span>还剩 <span class="highlight">{{item.total - item.done}}</span> {{ item.unit }}</span>
-              <span v-if="!item.start_at" style="opacity: 0.6">  还没有开始哦~</span>
-            </div>
-            <!-- {{{ item.memo }}} -->
-
-            <div class="delay-tip" v-if="item.isDelay">大...大佬你延期啦😱 原计划是每天 {{ item.per }} {{ item.unit }}的说！！！</div>
-            <div class="progress-box">
-              <div class="progress" v-bind:style="{width: item.percent}">
-                <div v-bind:class="[{doing: item.start_at && !item.finish_at}, 'end-img']"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="categories-tags">
+    
+      <div class="all-s">
+        
+        
+        <span>
+          <a href="/categories/笔记/" style=background:#ff7d73>
+            <span class="icon">
+              <a-icon type="book" theme="filled" /></span>
+              笔记
+          </a>
+        </span>
+        
+        
+        
+        <span>
+          <a href="/categories/前端/" style=background:#ffa2c4>
+            <span class="icon">
+              <a-icon type="book" theme="filled" /></span>
+              前端
+          </a>
+        </span>
+        
+        
+        
+        <span>
+          <a href="/categories/游戏/" style='background:linear-gradient(to right, #fbc2eb 0%, #bbd4ff 100%)'>
+            <span class="icon">
+              <a-icon type="book" theme="filled" /></span>
+              游戏
+          </a>
+        </span>
+        
+        
+        
+        <span>
+          <a href="/categories/碎碎念/" style=background:#ff7d73>
+            <span class="icon">
+              <a-icon type="book" theme="filled" /></span>
+              碎碎念
+          </a>
+        </span>
+        
+        
       </div>
 
+    <div id="archives">
+        
+        <a-timeline>
+            <a-timeline-item timestamp="2022-05-07" placement="top" color="#a5c2f5">
+                <a-card hoverable>
+                    <div class="item-time">2022-05-07</div>
+                    <a href="/游戏/digital-art/pixel/">
+                        <h3>像素画学习轨迹</h3>
+                    </a>
+                    <div class="info">
+                        
+                        <span class="category">
+                            <a href="/categories/游戏">
+                                <span class="icon">
+                                    <a-icon type="book" theme="filled" />
+                                </span>
+                                游戏
+                            </a>
+                        </span>
+                        
 
+                        
+                        <span class="tags">
+                            <span class="icon">
+                                <a-icon type="tags" />
+                            </span>
+                            
+                            <span class="tag">
+                                
+                                <a href="/tags/画画" style=color:#00bcd4>
+                                    画画
+                                </a>
+                            </span>
+                            
+                        </span>
+                        
+                    </div>
+                </a-card>
+            </a-timeline-item>
+        </a-timeline>
+        
     </div>
+    <script>
+        new Vue({
+            el: '#archives'
+        })
+    </script>
 </div>
 
                      
@@ -256,7 +311,7 @@
             } else {
               that.release = true
             }
-            that.setPlanList('[{"name":"前端","end_at":"2022/6/1","items":[{"name":"红宝书","unit":"页","total":750,"weekly":5,"done":304,"per":20,"start_at":"2022/4/1","finish_at":""},{"name":"前端基础之 JS","unit":"题","total":194,"weekly":5,"done":0,"per":0,"start_at":"","finish_at":""}]},{"name":"暴风式摄入游戏芝士_(:з」∠)_","end_at":"2022/5/19","items":[{"name":"C#初级编程","href":"https://learn.u3d.cn/tutorial/beginner-gameplay-scripting#","unit":"课","total":27,"weekly":5,"done":9,"per":3,"start_at":"2022/5/6","finish_at":""},{"name":"Unity独立游戏开发基础入门全流程(2D)","href":"https://www.bilibili.com/video/BV1F3411Y72v/","unit":"课","total":53,"weekly":5,"done":11,"per":5,"start_at":"2022/5/6","finish_at":""},{"name":"从零开始的完整的编曲教程","href":"https://www.bilibili.com/video/BV1Hx411S7zm","unit":"课","total":273,"weekly":5,"done":14,"per":5,"start_at":"2022/5/6","finish_at":""}]}]')
+            that.setPlanList('')
             that.release = releaseObj && releaseObj.status || !isPrivate
             window.onload = function () {
                 that.show_page = true
