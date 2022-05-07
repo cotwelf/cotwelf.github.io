@@ -305,7 +305,7 @@
             var that = this
             var currentData = JSON.parse(data).map(i => {
               var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
-              i.duringDay = duringDay
+              i.duringDay = duringDay - 1
               var currentItems = i.items.map(j => {
                 j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
                 j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
