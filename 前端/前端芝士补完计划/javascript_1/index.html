@@ -176,7 +176,7 @@
           
           <span class="tag">
               
-              <a href="/tags/JavaScript" style=color:#879cff>
+              <a href="/tags/JavaScript" style=color:#1bccbc>
                   JavaScript
               </a>
           </span>
@@ -251,11 +251,17 @@ if (typeof pageWidth != &quot;number&quot;) &#123;
 <pre><code class="javascript">// 常用
 var html = document.documentElement; // 获得 html 节点的引用，所有浏览器都支持
 var body = document.body; // 获得 body 节点的引用，所有浏览器都支持
+console.log(html.contains(body)); // true。说明 html 节点包含着 body 子节点
 var nodeA = document.createElement(&#39;div&#39;)
 var nodeB = document.createElement(&#39;span&#39;)
 nodeB.setAttibute(&#39;class&#39;)
-nodeB.classList.add(&#39;node-b&#39;) // 为 nodeB 添加一个 class（不覆盖之前已有的 class
-nodeB.getAttribute(&#39;class&#39;) // &#39;node-b&#39;。setAttriubte 可以设置一些自定义属性，比如 nodeA.setAttriubte(&#39;cotwelf&#39;, &#39;xiu&#39;) &lt;div cotwelf=&quot;xiu&quot;&gt;&lt;/div&gt;
+if (!nodeB.classList.contain(&#39;node-b&#39;)) &#123; // 如果 nodeB 的 class 不包含 &#39;node-b&#39;，为其添加该类
+  nodeB.classList.add(&#39;node-b&#39;) // 为 nodeB 添加一个 class（不覆盖之前已有的 class。删除用 classList.remove()，切换用 clssList.toggle()
+&#125;
+// 注意：只有 Firefox 和 chrome 浏览器支持 classList
+nodeB.getAttribute(&#39;class&#39;) // &#39;node-b&#39;。
+nodeA.setAttriubte(&#39;cotwelf&#39;, &#39;xiu&#39;) // setAttriubte 可以设置一些自定义属性，比如 &lt;div cotwelf=&quot;xiu&quot;&gt;&lt;/div&gt;
+nodeB.dataset.cotwelf // &#39;xiu&#39;。dataset 用于访问自定义属性的值，当然也可以用 nodeB.getAttribute(&#39;cotwelf&#39;)
 nodeA.appendChild(nodeB) // 添加子节点 B 到节点 A 末尾
 var deepList = nodeA.cloneNode(true) // 包括子节点的深拷贝
 var shallowList = nodeA.cloneNode(false) // 不包括子节点的浅拷贝
@@ -275,8 +281,10 @@ var textNode1 = document.createTextNode(&quot;呢&quot;);
 var textNode2 = document.createTextNode(&quot;~&quot;);
 div.appendChild(textNode1)
 div.appendChild(textNode2)
-var len = div.childNodes.length
+var len = div.childNodes.length // childNodes 包括所有类型的节点，如文本节点、注释节点等
+var len2 = div.children.length // children 只包含元素节点
 console.log(len) // 5
+console.log(len2) // 1 也就是 &lt;span&gt; 标签
 for (let i = 0; i &lt; len; i++)&#123;
   console.log(div.childNodes[i], div.childNodes[i].nodeType)
   // &quot;这里有&quot;            3
@@ -349,7 +357,43 @@ ul.appendChild(fragment);
 <td></td>
 </tr>
 </tbody></table>
+<p>其他 api</p>
+<pre><code class="javascript">// Selectors API: querySelector() 和 querySelectorAll() 致力于让浏览器原生支持 CSS 查询（低版本浏览器不支持
+var selected = document.querySelector(&quot;.selected&quot;); // 取得类为&quot;selected&quot;的第一个元素
+var selecteds = document.querySelectorAll(&quot;.selected&quot;); // 取得类为&quot;selected&quot;的所有元素
+var strongs = document.querySelectorAll(&quot;p strong&quot;) // 取得所有&lt;p&gt;元素中的所有&lt;strong&gt;元素
+// document.activeElement 引用 DOM 中当前获得了焦点的元素。文档加载期间，document.activeElement 的值为 null
+var button = document.getElementById(&quot;myButton&quot;);
+button.focus();
+console.log(document.activeElement === button); //true
+console.log(document.hasFocus()) // true. 通过检测文档是否获得了焦点，可以知道用户是不是正在与页面交互。
+
+// 查询文档获知哪个元素获得了焦点，以及确定文档是否获得了焦点，这两个功能最重要的用途是提高 Web 应用的无障碍性。
+
+// document.readyState: &#39;loading&#39; 正在加载，&#39;conplete&#39; 加载完成
+if (document.readyState == &quot;complete&quot;)&#123;
+ document.getElementById(&#39;app&#39;).scrollIntoView(); // 让 #app 元素可见
+ /** 如果给 scrollIntoView() 方法传入 true 作为参数，或者不传入任何参数，
+  * 那么窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐。
+  * 如果传入 false 作为参数，调用元素会尽可能全部出现在视口中，（可能的话，调用元素的底部会与视口顶部平齐。）
+  * 不过顶部不一定平齐
+  **/
+&#125;
+</code></pre>
 <p>理解 DOM 的关键，就是理解 DOM 对性能的影响。DOM 操作往往是 JS 程序中开销最大的部分，而因访问 NodeList 导致的问题为最多。NodeList 对象都是“动态的”，这就意味着每次访问 NodeList 对象，都会运行一次查询。有鉴于此，最好的办法就是尽量减少 DOM 操作。</p>
+<p>DOM3 级引入了两个辅助比较节点的方法：isSameNode()和 isEqualNode()。这两个方法都接受一个节点参数，并在传入节点与引用的节点相同或相等时返回 true。所谓相同，指的是两个节点引用的是同一个对象。所谓相等，指的是两个节点是相同的类型，具有相等的属性（nodeName、nodeValue，等等），而且它们的 attributes 和 childNodes 属性也相等（相同位置包含相同的值）</p>
+<pre><code class="javascript">var div1 = document.createElement(&quot;div&quot;);
+div1.setAttribute(&quot;class&quot;, &quot;box&quot;);
+var div2 = document.createElement(&quot;div&quot;);
+div2.setAttribute(&quot;class&quot;, &quot;box&quot;);
+alert(div1.isSameNode(div1)); //true
+alert(div1.isEqualNode(div2)); //true
+alert(div1.isSameNode(div2)); //false
+// DOM2 级样式新增
+div1.style.backgroundColor = &#39;pink&#39;; // 为元素设置 style
+result = getComputedStyle(div, &#39;::after&#39;).content // 查询伪类的style
+div.currentStyle.width // currentStyle 包含元素全部计算后的样式。所有计算的样式都是只读的；不能修改计算后样式对象中的 CSS 属性
+</code></pre>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="3-什么是-BOM"><a href="#3-什么是-BOM" class="headerlink" title="3. 什么是 BOM"></a>3. 什么是 BOM</h3><p>BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象</p>
 <p>BOM（浏览器对象模型），它指的是把浏览器当做一个对象来对待，这个对象主要定义了与浏览器进行交互的方法和接口。BOM 的核心是 window，而 window 对象具有双重角色，它既是通过 js 访问浏览器窗口的一个接口，又是一个 Global（全局）对象。这意味着在网页中定义的任何对象，变量和函数，都作为全局对象的一个属性或者方法存在。window 对象含有<code>location</code>（浏览器所加载页面的详细信息，比如可以通过 window.location.href 获取到 url 等）、<code>navigator</code>（浏览器详细信息，比如 <code>window.navigator.userAgent</code> 获取当前设备（mac 还是 Windows）当前浏览器信息（Firefox 还是 Chrome，及其版本号）之类的）、screen 对象、history对象等子对象，并且 DOM 的最根本的对象 document 对象也是 BOM 的 window 对象的子对象。</p>
