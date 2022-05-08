@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,63 +145,66 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>像素画学习轨迹 </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/游戏">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              游戏
-          </a>
-      </span>
-      
 
-      
+  <div class="article" id="article">
+    <div>
+      <h1>像素画学习轨迹 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/游戏">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                游戏
+            </a>
+        </span>
+        
 
-      <span class="tags">
-          <span class="icon">
-              <a-icon type="tags" theme="filled" />
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/画画" style=color:#00bcd4>
-                  画画
-              </a>
-          </span>
-          
-      </span>
-      
-  </div>
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/画画" style=color:#879cff>
+                    画画
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
 
 
-    <div class="content" v-if="release"><h1 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h1><h4 id="Aseprite-教程合集（像素艺术）bilibili"><a href="#Aseprite-教程合集（像素艺术）bilibili" class="headerlink" title="Aseprite 教程合集（像素艺术）bilibili"></a>Aseprite 教程合集（像素艺术）<code>bilibili</code></h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=2">02角色设计实现教程</a> 手把手教你画一只小跳蛙~（包括如何找素材，如何根据素材设计角色，如何调整角色等一整个设计流程，可以说是非常详细了，必须马住！！！</p>
+      <div class="content" v-if="release"><h1 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h1><h4 id="Aseprite-教程合集（像素艺术）bilibili"><a href="#Aseprite-教程合集（像素艺术）bilibili" class="headerlink" title="Aseprite 教程合集（像素艺术）bilibili"></a>Aseprite 教程合集（像素艺术）<code>bilibili</code></h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=2">02角色设计实现教程</a> 手把手教你画一只小跳蛙~（包括如何找素材，如何根据素材设计角色，如何调整角色等一整个设计流程，可以说是非常详细了，必须马住！！！</p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=3">03像素艺术动画教程（动画教程的12条原则）</a>、<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=4">04像素艺术动画教程</a> 以及 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=5">05简单的步行循环动画</a> 介绍了一些简单的运动规律，如何让角色动起来。并非完全像 CG 动画那么复杂，像素画会简化很多，只要简单掌握基本规律即可。</p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=6">06背景制作教程</a> 介绍了如何绘制游戏场景，以及视角的选择，很受用</p>
 </div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
 
-    
-</div>
+      
+  </div>
 
-                     
-<footer id="footer">
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -215,16 +217,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

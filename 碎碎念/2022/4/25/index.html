@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,32 +145,33 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>只是一个误入三次元的 NPC 而已 </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/碎碎念">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              碎碎念
-          </a>
-      </span>
-      
 
-      
-  </div>
+  <div class="article" id="article">
+    <div>
+      <h1>只是一个误入三次元的 NPC 而已 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/碎碎念">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                碎碎念
+            </a>
+        </span>
+        
+
+        
+    </div>
 
 
-    <div class="content" v-if="release"><p>当前我们 15 舍的情况是这样的，整个楼封闭，共 6 层，12 层男生，3456 层女生，相互不能串层，避免交叉感染，因为上周 1 楼有确诊阳性 1 例，5 楼也有疑似确诊被拉去隔离了，所以 5 楼的志愿者不能下楼取饭，只能阿姨送上来，1 楼同 5 楼一样，其他楼层由志愿者去一楼取饭并拿到相应楼层，我在六楼。</p>
+      <div class="content" v-if="release"><p>当前我们 15 舍的情况是这样的，整个楼封闭，共 6 层，12 层男生，3456 层女生，相互不能串层，避免交叉感染，因为上周 1 楼有确诊阳性 1 例，5 楼也有疑似确诊被拉去隔离了，所以 5 楼的志愿者不能下楼取饭，只能阿姨送上来，1 楼同 5 楼一样，其他楼层由志愿者去一楼取饭并拿到相应楼层，我在六楼。</p>
 <p>每人每次只能拿两袋，因为真的太重了，楼里出阳之前，一般都是 1、2 楼男生帮忙拿上来，但现在 1 楼阳了，所以不便送饭上楼，我们需要下去自己取。</p>
 <p>昨天中午下去拿午饭的时候，看到阿姨正在往五楼搬饭。于是顺手帮了阿姨一下。</p>
 <p>出于好心，我是这样想的，我们六楼反正要经过 5 楼，那么我们上来的时候可以帮阿姨拿一袋，再拿一袋我们六楼自己的，经过五楼的时候放到门口，感觉还行，因为我们一般会下去三个志愿者，我们六楼有 4 袋饭，可以帮阿姨拿 2 袋。于是提议我们帮一下阿姨，上六楼的时候带上来。</p>
@@ -200,19 +200,21 @@
 <p>所以我硬气了起来，拒绝发饭，如果让我做除了拿饭上楼以外的工作，我就退出，让其他人来做吧，毕竟我还有比服务一群 SB 更重要的事，哪怕只是坐着看番，优先级都比这高，毕竟只是一群 SB 而已。而且我已经为这个集体服务了一段时间，如果工作量按人平分的话，早就够了。</p>
 <p>自此之后，解封之前，谁也不欠我，我也不欠谁。</p>
 </div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
 
-    
-</div>
+      
+  </div>
 
-                     
-<footer id="footer">
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -225,16 +227,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

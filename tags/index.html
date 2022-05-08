@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,17 +145,39 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <div class="categories-tags">
     
     <div class="all-s">
         
         
         <span>
-            <a href="/tags/课堂笔记/" style=background:#1bccbc>
+            <a href="/tags/像素/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                像素
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/phaser/" style=background:#1bccbc>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                phaser
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/课堂笔记/" style=background:#879cff>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -178,11 +199,33 @@
         
         
         <span>
-            <a href="/tags/取经/" style=background:#ff7d73>
+            <a href="/tags/取经/" style=background:#1bccbc>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
                 取经
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/Algorithm/" style=background:#ff7d73>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                Algorithm
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/JavaScript/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                JavaScript
             </a>
         </span>
         
@@ -200,29 +243,7 @@
         
         
         <span>
-            <a href="/tags/Algorithm/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                Algorithm
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/JavaScript/" style=background:#ff7d73>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                JavaScript
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/工具/" style=background:#00bcd4>
+            <a href="/tags/工具/" style=background:#ffa2c4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -244,7 +265,7 @@
         
         
         <span>
-            <a href="/tags/React/" style=background:#ff7d73>
+            <a href="/tags/React/" style=background:#879cff>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -255,7 +276,7 @@
         
         
         <span>
-            <a href="/tags/npm/" style=background:#879cff>
+            <a href="/tags/npm/" style=background:#ff7d73>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -266,7 +287,7 @@
         
         
         <span>
-            <a href="/tags/兼容/" style=background:#00bcd4>
+            <a href="/tags/兼容/" style=background:#879cff>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -277,7 +298,7 @@
         
         
         <span>
-            <a href="/tags/响应式/" style=background:#ffa2c4>
+            <a href="/tags/响应式/" style=background:#879cff>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -297,8 +318,9 @@
     </script>
 </div>
 
-                     
-<footer id="footer">
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -311,16 +333,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,23 +145,13 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <div class="categories-tags">
     
       <div class="all-s">
-        
-        
-        <span>
-          <a href="/categories/笔记/" style=background:#ffa2c4>
-            <span class="icon">
-              <a-icon type="book" theme="filled" /></span>
-              笔记
-          </a>
-        </span>
-        
         
         
         <span>
@@ -176,7 +165,17 @@
         
         
         <span>
-          <a href="/categories/前端/" style=background:#ff7d73>
+          <a href="/categories/笔记/" style=background:#00bcd4>
+            <span class="icon">
+              <a-icon type="book" theme="filled" /></span>
+              笔记
+          </a>
+        </span>
+        
+        
+        
+        <span>
+          <a href="/categories/前端/" style=background:#ffa2c4>
             <span class="icon">
               <a-icon type="book" theme="filled" /></span>
               前端
@@ -186,7 +185,7 @@
         
         
         <span>
-          <a href="/categories/碎碎念/" style=background:#1bccbc>
+          <a href="/categories/碎碎念/" style=background:#879cff>
             <span class="icon">
               <a-icon type="book" theme="filled" /></span>
               碎碎念
@@ -198,44 +197,96 @@
 
     <div id="archives">
         
-        <a-timeline>
-            <a-timeline-item timestamp="2022-05-07" placement="top" color="#a5c2f5">
-                <a-card hoverable>
-                    <div class="item-time">2022-05-07</div>
-                    <a href="/游戏/digital-art/pixel/">
-                        <h3>像素画学习轨迹</h3>
-                    </a>
-                    <div class="info">
-                        
-                        <span class="category">
-                            <a href="/categories/游戏">
-                                <span class="icon">
-                                    <a-icon type="book" theme="filled" />
-                                </span>
-                                游戏
-                            </a>
-                        </span>
-                        
+          
+            <a-timeline>
+              <a-timeline-item timestamp="2022-05-08" placement="top" color="#a5c2f5">
+                  <a-card hoverable>
+                      <div class="item-time">2022-05-08</div>
+                      <a href="/游戏/first-game/">
+                          <h3>是时候养一只电子宠物了~</h3>
+                      </a>
+                      <div class="info">
+                          
+                          <span class="category">
+                              <a href="/categories/游戏">
+                                  <span class="icon">
+                                      <a-icon type="book" theme="filled" />
+                                  </span>
+                                  游戏
+                              </a>
+                          </span>
+                          
 
-                        
-                        <span class="tags">
-                            <span class="icon">
-                                <a-icon type="tags" />
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/画画" style=color:#1bccbc>
-                                    画画
-                                </a>
-                            </span>
-                            
-                        </span>
-                        
-                    </div>
-                </a-card>
-            </a-timeline-item>
-        </a-timeline>
+                          
+                          <span class="tags">
+                              <span class="icon">
+                                  <a-icon type="tags" />
+                              </span>
+                              
+                              <span class="tag">
+                                  
+                                  <a href="/tags/像素" style=color:#879cff>
+                                      像素
+                                  </a>
+                              </span>
+                              
+                              <span class="tag">
+                                  
+                                  <a href="/tags/phaser" style=color:#00bcd4>
+                                      phaser
+                                  </a>
+                              </span>
+                              
+                          </span>
+                          
+                      </div>
+                  </a-card>
+              </a-timeline-item>
+          </a-timeline>
+          
+        
+          
+            <a-timeline>
+              <a-timeline-item timestamp="2022-05-07" placement="top" color="#a5c2f5">
+                  <a-card hoverable>
+                      <div class="item-time">2022-05-07</div>
+                      <a href="/游戏/digital-art/pixel/">
+                          <h3>像素画学习轨迹</h3>
+                      </a>
+                      <div class="info">
+                          
+                          <span class="category">
+                              <a href="/categories/游戏">
+                                  <span class="icon">
+                                      <a-icon type="book" theme="filled" />
+                                  </span>
+                                  游戏
+                              </a>
+                          </span>
+                          
+
+                          
+                          <span class="tags">
+                              <span class="icon">
+                                  <a-icon type="tags" />
+                              </span>
+                              
+                              <span class="tag">
+                                  
+                                  <a href="/tags/画画" style=color:#00bcd4>
+                                      画画
+                                  </a>
+                              </span>
+                              
+                          </span>
+                          
+                      </div>
+                  </a-card>
+              </a-timeline-item>
+          </a-timeline>
+          
+        
+          
         
     </div>
     <script>
@@ -245,8 +296,9 @@
     </script>
 </div>
 
-                     
-<footer id="footer">
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -259,16 +311,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

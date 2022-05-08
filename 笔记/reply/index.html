@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,47 +145,48 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>19 级毕业答辩旁听记录 </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/笔记">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              笔记
-          </a>
-      </span>
-      
 
-      
+  <div class="article" id="article">
+    <div>
+      <h1>19 级毕业答辩旁听记录 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                笔记
+            </a>
+        </span>
+        
 
-      <span class="tags">
-          <span class="icon">
-              <a-icon type="tags" theme="filled" />
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/取经" style=color:#00bcd4>
-                  取经
-              </a>
-          </span>
-          
-      </span>
-      
-  </div>
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/取经" style=color:#1bccbc>
+                    取经
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
 
 
-    <div class="content" v-if="release"><ul>
+      <div class="content" v-if="release"><ul>
 <li>会议软件：腾讯会议</li>
 <li>答辩时间：（大概）个人讲解 10 分钟左右，老师评论 20 分钟左右。共计 30 分钟。<h1 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h1>每个人答辩时间在总半小时左右（自己讲 + 老师点评），PPT 尽量简短不要太长，所以大致就是自己讲 10 分钟左右（包括 PPT 论述与放片）</li>
 </ul>
@@ -197,19 +197,21 @@
 <h2 id="论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）"><a href="#论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）" class="headerlink" title="论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）"></a>论文是提出一个观点，再用证据支撑这个观点是站得住脚的（而不是纯粹使用自己的作品，可以使用经典案例作为支撑）</h2><p>大致理解同上。</p>
 <h2 id="可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果"><a href="#可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果" class="headerlink" title="可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果"></a>可以在答辩结尾放一下自己的作品（可以是片段），展示自己的研究成果</h2><p>因为专硕的话还是以作品为主，研究为辅，所以尽量简短描述研究，最后要放自己的作品。<br>内容要紧密结合主题，可以放自己作品截图来支撑观点</p>
 </div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
 
-    
-</div>
+      
+  </div>
 
-                     
-<footer id="footer">
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -222,16 +224,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,47 +145,48 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>前端芝士补完计划 之 JavaScript【Part1】 </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/前端">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              前端
-          </a>
-      </span>
-      
 
-      
+  <div class="article" id="article">
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript【Part1】 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
 
-      <span class="tags">
-          <span class="icon">
-              <a-icon type="tags" theme="filled" />
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/JavaScript" style=color:#1bccbc>
-                  JavaScript
-              </a>
-          </span>
-          
-      </span>
-      
-  </div>
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#879cff>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
 
 
-    <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="一、JS-简介"><a href="#一、JS-简介" class="headerlink" title="一、JS 简介"></a>一、JS 简介</h3><p><a href="#%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">请简单描述一下你对 JavaScript 的理解。</a></p>
+      <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="一、JS-简介"><a href="#一、JS-简介" class="headerlink" title="一、JS 简介"></a>一、JS 简介</h3><p><a href="#%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">请简单描述一下你对 JavaScript 的理解。</a></p>
 <p><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-dom">什么是 DOM</a></p>
 <p><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-bom">什么是 BOM</a></p>
 <p><a href="#%E5%9B%9B%E5%A4%A7%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8">*四大浏览器内核</a></p>
@@ -1252,19 +1252,21 @@ const obj1 = &#123;
 let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] &#125;&#125;
 </code></pre>
 <h1 id="3-4-日期和正则表达式"><a href="#3-4-日期和正则表达式" class="headerlink" title="3.4 日期和正则表达式"></a>3.4 日期和正则表达式</h1><h4 id="请用多种方式获取当前时间的毫秒数"><a href="#请用多种方式获取当前时间的毫秒数" class="headerlink" title="请用多种方式获取当前时间的毫秒数"></a>请用多种方式获取当前时间的毫秒数</h4></div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
 
-    
-</div>
+      
+  </div>
 
-                     
-<footer id="footer">
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -1277,16 +1279,16 @@ let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] 
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,54 +145,55 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>记一次非常非常非常麻烦的浏览器兼容问题 </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/前端">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              前端
-          </a>
-      </span>
-      
 
-      
+  <div class="article" id="article">
+    <div>
+      <h1>记一次非常非常非常麻烦的浏览器兼容问题 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
 
-      <span class="tags">
-          <span class="icon">
-              <a-icon type="tags" theme="filled" />
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/兼容" style=color:#879cff>
-                  兼容
-              </a>
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/响应式" style=color:#00bcd4>
-                  响应式
-              </a>
-          </span>
-          
-      </span>
-      
-  </div>
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/兼容" style=color:#ff7d73>
+                    兼容
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/响应式" style=color:#ffa2c4>
+                    响应式
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
 
 
-    <div class="content" v-if="release"><h1 id="先说总结"><a href="#先说总结" class="headerlink" title="先说总结"></a>先说总结</h1><p>检查设计稿检查设计稿检查设计稿！！！（重要的事情说三遍！）</p>
+      <div class="content" v-if="release"><h1 id="先说总结"><a href="#先说总结" class="headerlink" title="先说总结"></a>先说总结</h1><p>检查设计稿检查设计稿检查设计稿！！！（重要的事情说三遍！）</p>
 <p>如果设计说，【一屏显示，不允许滑动。】，那么拿到图之后：</p>
 <p>step1：<strong>看 web 设计稿尺寸是否是 1920 * 1080。</strong>是：转到 step2，否：计算下宽度，宽高比最好是 1.78 - 1.96 左右（<code>1920 * 978</code>），否则可能要考虑字体大小的问题；</p>
 <p>step2：<strong>检查页面上最小字体是否小于等于 14px。（小于等于 12px 可以怼更狠一点）</strong>是：转到 step4，否：转到 step3；</p>
@@ -215,19 +215,21 @@
 <p><strong><code>好么，小丑竟是我寄几 QAQQAQQAQ</code></strong></p>
 <p>如果再遇到一屏展示，需要设计稿的同时，还要字体包（因为有些设备字体不同，不同字体可能会出现同 size 但大小不一的状况），不要用 rem 了，按设计稿来，多少 px 就多少 px，js 判断视口宽高 scale 缩放（字体小就小吧，设计稿就这样的（叉腰））</p>
 </div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
 
-    
-</div>
+      
+  </div>
 
-                     
-<footer id="footer">
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -240,16 +242,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

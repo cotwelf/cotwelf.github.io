@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,47 +145,48 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>关于你可能不知道的 npm i 和 npm ci </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/前端">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              前端
-          </a>
-      </span>
-      
 
-      
+  <div class="article" id="article">
+    <div>
+      <h1>关于你可能不知道的 npm i 和 npm ci </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
 
-      <span class="tags">
-          <span class="icon">
-              <a-icon type="tags" theme="filled" />
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/npm" style=color:#ffa2c4>
-                  npm
-              </a>
-          </span>
-          
-      </span>
-      
-  </div>
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/npm" style=color:#00bcd4>
+                    npm
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
 
 
-    <div class="content" v-if="release"><h1 id="先说结论："><a href="#先说结论：" class="headerlink" title="先说结论："></a>先说结论：</h1><p><code>npm i</code> 和 <code>npm ci</code> 差不多，都是根据 <code>package-lock.json</code> &gt; <code>package.json</code> 优先级安装。日常使用中比较大的差异：</p>
+      <div class="content" v-if="release"><h1 id="先说结论："><a href="#先说结论：" class="headerlink" title="先说结论："></a>先说结论：</h1><p><code>npm i</code> 和 <code>npm ci</code> 差不多，都是根据 <code>package-lock.json</code> &gt; <code>package.json</code> 优先级安装。日常使用中比较大的差异：</p>
 <p><code>npm i</code> 可以安装单个依赖。</p>
 <p><code>npm ci</code> 可以自动删除 <code>node_modules</code> 目录，且不会改变 <code>package-lock.json</code> 文件，但执行时 <code>package-lock.json</code> 必须存在且版本号与 <code>package.json</code> 要求一致。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="先看文档"><a href="#先看文档" class="headerlink" title="先看文档"></a>先看文档</h2><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bee041a4e08742cd847a5ec744d4bf6b~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
@@ -291,19 +291,21 @@
 </li>
 </ol>
 </div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
 
-    
-</div>
+      
+  </div>
 
-                     
-<footer id="footer">
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -316,16 +318,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

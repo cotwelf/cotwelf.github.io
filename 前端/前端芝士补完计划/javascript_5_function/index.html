@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,47 +145,48 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>前端芝士补完计划 之 JavaScript-函数 </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/前端">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              前端
-          </a>
-      </span>
-      
 
-      
+  <div class="article" id="article">
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript-函数 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
 
-      <span class="tags">
-          <span class="icon">
-              <a-icon type="tags" theme="filled" />
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/JavaScript" style=color:#ffa2c4>
-                  JavaScript
-              </a>
-          </span>
-          
-      </span>
-      
-  </div>
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#00bcd4>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
 
 
-    <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="定义函数的方式"><a href="#定义函数的方式" class="headerlink" title="定义函数的方式"></a>定义函数的方式</h3><pre><code class="javascript">fn1() // fn1, fn2
+      <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="定义函数的方式"><a href="#定义函数的方式" class="headerlink" title="定义函数的方式"></a>定义函数的方式</h3><pre><code class="javascript">fn1() // fn1, fn2
 fn3() // Uncaught TypeError: fn3 is not a function
 // 函数声明：创建了名为 fn1 的函数，fn1.name === &#39;fn1&#39;
 function fn1() &#123;
@@ -359,19 +359,21 @@ var objectSayColor = sayColor.bind(o)
 objectSayColor() // blue
 </code></pre>
 </div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
-    </div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
 
-    
-</div>
+      
+  </div>
 
-                     
-<footer id="footer">
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -384,16 +386,16 @@ objectSayColor() // blue
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {

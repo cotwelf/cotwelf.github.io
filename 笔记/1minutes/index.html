@@ -19,7 +19,6 @@
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
     <div id="loading"
         style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
         <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
@@ -38,12 +37,12 @@
             </div>
         </div>
     </div>
-
     <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -146,62 +145,65 @@
     </div>
 
 </nav>
-                </div>
-
-                <div id="main">
-                    
+              </div>
+            
+              <div id="main">
+                  
 <link rel="stylesheet" href="/css/post-body.css">
-<div class="article" id="article">
-  <div>
-    <h1>一分钟影像 </h1>
-  </div>
-  <div class="info">
-      
-      <span class="category">
-          <a href="/categories/笔记">
-              <span class="icon">
-                  <a-icon type="book" theme="filled" />
-              </span>
-              笔记
-          </a>
-      </span>
-      
 
-      
+  <div class="article" id="article">
+    <div>
+      <h1>一分钟影像 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                笔记
+            </a>
+        </span>
+        
 
-      <span class="tags">
-          <span class="icon">
-              <a-icon type="tags" theme="filled" />
-          </span>
-          
-          <span class="tag">
-              
-              <a href="/tags/课堂笔记" style=color:#ff7d73>
-                  课堂笔记
-              </a>
-          </span>
-          
-      </span>
-      
-  </div>
+        
 
-
-    <div class="content" v-if="release"><h2 id="2022-04-22"><a href="#2022-04-22" class="headerlink" title="2022-04-22"></a>2022-04-22</h2><p>作品主题选择：关于自己的现状，表达自己最想表达的东西，最好诗意化一下，就可以了</p>
-<p>一个可爱的动画：<a target="_blank" rel="noopener" href="https://zoeken.beeldengeluid.nl/program/urn:vme:default:program:2101608160142576431?ac=dgtl&mfs=(titles:the+one+minutes)">《Vesper》</a></p>
-</div>
-    <div class="content" v-if="!release">
-      <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
-      <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
-      <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
-      <button id="release-btn" v-on:click="onRelease()">封印解除</button>
-      <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/课堂笔记" style=color:#1bccbc>
+                    课堂笔记
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
 
-    
-</div>
 
-                     
-<footer id="footer">
+      <div class="content" v-if="release"><h2 id="2022-04-22"><a href="#2022-04-22" class="headerlink" title="2022-04-22"></a>2022-04-22</h2><p>作品主题选择：关于自己的现状，表达自己最想表达的东西，最好诗意化一下，就可以了</p>
+<p>一个可爱的动画：<a target="_blank" rel="noopener" href="https://zoeken.beeldengeluid.nl/program/urn:vme:default:program:2101608160142576431?ac=dgtl&mfs=(titles:the+one+minutes)">《Vesper》</a></p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
     <div class="footer-wrap">
         <div>
             © 2022 - 2022 Cotwelf&#39;s Life
@@ -214,16 +216,16 @@
                 target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
         
     </div>
+  </footer>
 
-</footer>
 
 <script src="/js/highlight.min.js"></script>
 <script src="/js/particle.js"></script>
-                </div>
-            </div>
-        </transition>
-    </div>
 
+              </div>
+          </div>
+      </transition>
+    </div>
     <script>
   var setRelease = function(status){
     var release = {
