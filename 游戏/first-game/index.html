@@ -176,14 +176,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/像素" style=color:#1bccbc>
+                <a href="/tags/像素" style=color:#00bcd4>
                     像素
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/phaser" style=color:#1bccbc>
+                <a href="/tags/phaser" style=color:#00bcd4>
                     phaser
                 </a>
             </span>
@@ -206,7 +206,23 @@
 <h3 id="9-运行环境"><a href="#9-运行环境" class="headerlink" title="9. 运行环境"></a>9. 运行环境</h3><p>Web 浏览器，手机浏览器（其中只有手机浏览器可分享）</p>
 <h3 id="10-游戏背景故事"><a href="#10-游戏背景故事" class="headerlink" title="10. 游戏背景故事"></a>10. 游戏背景故事</h3><p>以疫情期间被封印在家里我和身边的朋友同事为原型，以一种半真实，戏谑的方式记录这段时间大家的各种遭遇以及见闻。</p>
 <h3 id="11-游戏概述"><a href="#11-游戏概述" class="headerlink" title="11. 游戏概述"></a>11. 游戏概述</h3><p>【每天登录】及【随机用户交互】触发事件。包括但不限于每日核酸、抢菜、吃饭、学习、追剧、被公司或小区投喂蔬菜包、在群里和志愿者吵了一架、楼上半夜跳健身操被打扰到（之后遇到奇葩事情可能会相应添加游戏事件）</p>
-<h3 id="12-游戏过程"><a href="#12-游戏过程" class="headerlink" title="12. 游戏过程"></a>12. 游戏过程</h3><h4 id="10-1-创建人物"><a href="#10-1-创建人物" class="headerlink" title="10.1. 创建人物"></a>10.1. 创建人物</h4><p>基于疫情封楼期间每天做的事情，生成随机事件</p>
+<h3 id="12-人物设定"><a href="#12-人物设定" class="headerlink" title="12. 人物设定"></a>12. 人物设定</h3><p>二选一，宅家期间，可能会不修边幅一点。<br><img src="./hito.jpeg" style="width: 600px;" /><br>原本衣服采用条纹（有种被监禁的感觉），但碍于本次像素画尺寸较小，无法呈现条纹（需要尺寸稍大点吗？但可能会失去电子宠物的感觉）</p>
+<div style="text-align: center;">
+  <img style="display: inline-block; margin: 50px;" src="./girl.gif" />
+  <img style="display: inline-block; margin: 50px;" src="./boy.gif" />
+</div>
+
+<h3 id="13-游戏过程"><a href="#13-游戏过程" class="headerlink" title="13. 游戏过程"></a>13. 游戏过程</h3><h4 id="10-1-初始页"><a href="#10-1-初始页" class="headerlink" title="10.1. 初始页"></a>10.1. 初始页</h4><img src="./page0.jpeg" style="width: 750px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<h4 id="10-2-创建人物"><a href="#10-2-创建人物" class="headerlink" title="10.2. 创建人物"></a>10.2. 创建人物</h4><img src="./create.jpeg" style="width: 600px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<h4 id="10-3-确定初始数据"><a href="#10-3-确定初始数据" class="headerlink" title="10.3. 确定初始数据"></a>10.3. 确定初始数据</h4><img src="./set.jpeg" style="width: 600px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<h4 id="10-4-日常状态"><a href="#10-4-日常状态" class="headerlink" title="10.4. 日常状态"></a>10.4. 日常状态</h4><img src="./status.jpeg" style="width: 750px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<h4 id="10-5-（非）随机事件"><a href="#10-5-（非）随机事件" class="headerlink" title="10.5. （非）随机事件"></a>10.5. （非）随机事件</h4><img src="./random.jpeg" style="width: 750px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+基于疫情封楼期间每天做的事情，生成随机事件
+
 <hr>
 <h1 id="三、技术选型"><a href="#三、技术选型" class="headerlink" title="三、技术选型"></a>三、技术选型</h1><p>技术选型之类的，比较投机取巧了，直接问了B站首页风叶穿行游戏的制作者 D 大。主要是 unity 学习成本比较高，另外自己还不会 C#，从零开始会有点困难。如果用 js 游戏引擎，基本上就看看文档就行，不用学习新的语言。</p>
 <p>大佬推荐了 <a target="_blank" rel="noopener" href="https://phaser.io/">phaser</a>（内部是用 pixi 渲染的），这种封装好的游戏引擎对萌新友好，但它相对 unity 来说比较简陋，没有编辑器，没有官方支持的 ecs 架构，主要是用来渲染雪碧图的 2d 游戏引擎，因此可能需要接入一些第三方库（比如物理引擎的话可以用 matter.js，另外可能还需要各种模型文件、动画格式的支持。</p>
