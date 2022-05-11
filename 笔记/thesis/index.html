@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 
   <div class="article" id="article">
+    
     <div>
       <h1>每天 1 篇论文 </h1>
     </div>
@@ -176,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/取经" style=color:#1bccbc>
+                <a href="/tags/取经" style=color:#ffa2c4>
                     取经
                 </a>
             </span>
@@ -184,7 +185,7 @@
         </span>
         
     </div>
-
+    
 
       <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#%E3%80%8A%E5%9F%BA%E4%BA%8E%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B4%E7%9A%84%E6%95%99%E8%82%B2%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6%E3%80%8B">《基于设计思维的教育游戏设计方法研究》</a> 2022-05-02<br><a href="#%E3%80%8A%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E6%9E%81%E7%AE%80%E4%B8%BB%E4%B9%89%E3%80%8B">《游戏设计中的极简主义》</a> 2022-05-04<br><a href="#%E3%80%8A%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%BF%83%E7%90%86%E5%AD%A6%E7%A0%94%E7%A9%B6%E3%80%8B">《游戏设计中的设计心理学研究》</a> 2022-05-07</p>
 <hr>
@@ -382,6 +383,8 @@
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
                     document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
                 }, 300)
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
@@ -389,6 +392,7 @@
             }
         },
         mounted: function () {
+
             var that = this
             window.addEventListener('scroll', function (e) {
                 that.menu_show = false

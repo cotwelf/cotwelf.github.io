@@ -694,8 +694,26 @@ hr {
 .content h3,
 .content h4,
 .content h5 {
+  position: relative;
   text-align: left !important;
   margin: 18px 0;
+}
+.content h1:hover .headerlink,
+.content h2:hover .headerlink,
+.content h3:hover .headerlink,
+.content h4:hover .headerlink,
+.content h5:hover .headerlink {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 25px;
+  height: 22px;
+  background: url("../images/icons/link.svg") no-repeat left;
+  background-size: contain;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
 }
 .content a {
   color: default-link;
@@ -847,6 +865,9 @@ hr {
   max-width: 600px;
   min-width: 300px;
   margin-bottom: 4rem;
+}
+iframe {
+  border: none;
 }
 footer {
   position: relative;

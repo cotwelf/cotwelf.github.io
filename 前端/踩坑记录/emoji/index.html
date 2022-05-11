@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 
   <div class="article" id="article">
+    
     <div>
       <h1>关于 emoji 的二三事 </h1>
     </div>
@@ -176,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/编码" style=color:#ff7d73>
+                <a href="/tags/编码" style=color:#00bcd4>
                     编码
                 </a>
             </span>
@@ -184,7 +185,7 @@
         </span>
         
     </div>
-
+    
 
       <div class="content" v-if="release"><p>问：’👩‍❤️‍💋‍👨木马~’.length 是多少呢？’😁❤️’.length 呢？’😄2333’.length 呢？</p>
 <p>答案是</p>
@@ -322,6 +323,8 @@ console.log(textArr) // (19) [&#39;😄&#39;, &#39;2&#39;, &#39;3&#39;, &#39;�
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
                     document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
                 }, 300)
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
@@ -329,6 +332,7 @@ console.log(textArr) // (19) [&#39;😄&#39;, &#39;2&#39;, &#39;3&#39;, &#39;�
             }
         },
         mounted: function () {
+
             var that = this
             window.addEventListener('scroll', function (e) {
                 that.menu_show = false

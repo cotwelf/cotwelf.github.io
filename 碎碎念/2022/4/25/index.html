@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 
   <div class="article" id="article">
+    
     <div>
       <h1>只是一个误入三次元的 NPC 而已 </h1>
     </div>
@@ -169,7 +170,7 @@
 
         
     </div>
-
+    
 
       <div class="content" v-if="release"><p>当前我们 15 舍的情况是这样的，整个楼封闭，共 6 层，12 层男生，3456 层女生，相互不能串层，避免交叉感染，因为上周 1 楼有确诊阳性 1 例，5 楼也有疑似确诊被拉去隔离了，所以 5 楼的志愿者不能下楼取饭，只能阿姨送上来，1 楼同 5 楼一样，其他楼层由志愿者去一楼取饭并拿到相应楼层，我在六楼。</p>
 <p>每人每次只能拿两袋，因为真的太重了，楼里出阳之前，一般都是 1、2 楼男生帮忙拿上来，但现在 1 楼阳了，所以不便送饭上楼，我们需要下去自己取。</p>
@@ -287,6 +288,8 @@
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
                     document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
                 }, 300)
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
@@ -294,6 +297,7 @@
             }
         },
         mounted: function () {
+
             var that = this
             window.addEventListener('scroll', function (e) {
                 that.menu_show = false

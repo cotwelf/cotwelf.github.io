@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 
   <div class="article" id="article">
+    
     <div>
       <h1>前端芝士补完计划 之 JavaScript-简介及基本语法 </h1>
     </div>
@@ -176,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#ffa2c4>
+                <a href="/tags/JavaScript" style=color:#1bccbc>
                     JavaScript
                 </a>
             </span>
@@ -184,7 +185,7 @@
         </span>
         
     </div>
-
+    
 
       <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#1-%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">1. 请简单描述一下你对 JavaScript 的理解。</a><br><a href="#5-JavaScript-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF">5. JavaScript 有哪些优势和劣势</a><br><a href="#6-%E4%BB%A5%E4%B8%8B%E5%AF%B9-JS-%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%AD%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">6. 以下对 JS 的理解中错误的是</a><br><a href="#7-script-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">*7. script 标签的常用属性</a><br><a href="#8-%E4%BB%A5%E4%B8%8B%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA%E5%8F%98%E9%87%8F%E5%90%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF">8. 以下可以作为变量名使用的是</a><br><a href="#9-%E5%9C%A8%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%AD%E4%BC%9A%E6%8A%9B%E5%87%BA%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">9. 在严格模式中会抛出错误的是</a><br><a href="#10-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-x-%E5%92%8C-y-%E5%88%86%E5%88%AB%E4%B8%BA">10. 执行下面的代码，在控制台输出的 x 和 y 分别为</a><br><a href="#11-%E8%B0%83%E7%94%A8%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9C%80%E7%BB%88%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA">11. 调用下面代码中的函数，最终返回的结果为</a><br><a href="#12-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-y-%E4%B8%BA">12. 执行下面的代码后，在控制台输出的 y 为</a><br><a href="#13-2-true-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-6-quot-9-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">13. <code>2 + true</code> 等于（），<code>&quot;6&quot; + 9</code> 等于（）</a><br><a href="#14-4-3-2-quot-1-quot-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-1-quot-2-4-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">14. <code>4 + 3 + 2 + &quot;1&quot;</code> 等于（），<code>&quot;1&quot; + 2 + 4</code> 等于（）</a></p>
 <h3 id="1-请简单描述一下你对-JavaScript-的理解"><a href="#1-请简单描述一下你对-JavaScript-的理解" class="headerlink" title="1. 请简单描述一下你对 JavaScript 的理解"></a>1. 请简单描述一下你对 JavaScript 的理解</h3><p>JavaScript 是一种<code>解释执行</code>的高级编程语言，同时也是一门<code>动态、弱类型的直译脚本语言</code>，适合面向对象（基于原型）和函数式的编程风格。JavaScript 主要运行在一个内置 JavaScript 解释器的客户端中（例如 Web 浏览器），能够处理复杂的计算，操控文档的内容、样式和行为。能在客户端完成的操作（例如输入验证、日期计算等）尽量都由 JavaScript 完成，这样就能减少与服务器的通信，降低服务器的负载。完整的 JavaScript 由 3 部分组成：<code>ECMAScript（提供核心语言功能）</code>、<code>DOM（文档对象模型）</code> 和 <code>BOM（浏览器对象模型）</code>。</p>
@@ -721,6 +722,8 @@ for (var i = 1; i &lt; 5; i++) &#123;
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
                     document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
                 }, 300)
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
@@ -728,6 +731,7 @@ for (var i = 1; i &lt; 5; i++) &#123;
             }
         },
         mounted: function () {
+
             var that = this
             window.addEventListener('scroll', function (e) {
                 that.menu_show = false

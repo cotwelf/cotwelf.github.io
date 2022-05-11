@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 
   <div class="article" id="article">
+    
     <div>
       <h1>前端芝士补完计划 之 数据结构和算法 </h1>
     </div>
@@ -176,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Algorithm" style=color:#00bcd4>
+                <a href="/tags/Algorithm" style=color:#879cff>
                     Algorithm
                 </a>
             </span>
@@ -184,7 +185,7 @@
         </span>
         
     </div>
-
+    
 
       <div class="content" v-if="release"><h1 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h1><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yD4y127vy">【JavaScript】数据结构与算法</a></p>
 <h2 id="栈-stack-结构"><a href="#栈-stack-结构" class="headerlink" title="栈(stack)结构"></a>栈(stack)结构</h2><p>函数的调用栈：先进后出。一个栈只有一个出入口，先压栈必定后出栈</p>
@@ -280,6 +281,8 @@
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
                     document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
                 }, 300)
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
@@ -287,6 +290,7 @@
             }
         },
         mounted: function () {
+
             var that = this
             window.addEventListener('scroll', function (e) {
                 that.menu_show = false

@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 
   <div class="article" id="article">
+    
     <div>
       <h1>前端芝士补完计划 之 JavaScript【Part1】 </h1>
     </div>
@@ -184,7 +185,7 @@
         </span>
         
     </div>
-
+    
 
       <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="一、JS-简介"><a href="#一、JS-简介" class="headerlink" title="一、JS 简介"></a>一、JS 简介</h3><p><a href="#%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">请简单描述一下你对 JavaScript 的理解。</a></p>
 <p><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-dom">什么是 DOM</a></p>
@@ -1339,6 +1340,8 @@ let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] 
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
                     document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
                 }, 300)
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
@@ -1346,6 +1349,7 @@ let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] 
             }
         },
         mounted: function () {
+
             var that = this
             window.addEventListener('scroll', function (e) {
                 that.menu_show = false

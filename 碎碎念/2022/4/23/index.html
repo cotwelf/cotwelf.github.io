@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="/css/post-body.css">
 
   <div class="article" id="article">
+    
     <div>
       <h1>突然觉得，做志愿者还是有意义的 </h1>
     </div>
@@ -169,7 +170,7 @@
 
         
     </div>
-
+    
 
       <div class="content" v-if="release"><p>今天上午我发了个票圈，大概是酱紫的</p>
 <pre><code>【疫情封校之前到封校两周内】世界很美好大家都是好人所以要尽量不给别人添麻烦同时尽可能帮助有困难的人想让大家都喜欢我～所有人，至少身边我认为“友善”的人都是这样想
@@ -267,6 +268,8 @@
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
                     document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
                 }, 300)
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
@@ -274,6 +277,7 @@
             }
         },
         mounted: function () {
+
             var that = this
             window.addEventListener('scroll', function (e) {
                 that.menu_show = false
