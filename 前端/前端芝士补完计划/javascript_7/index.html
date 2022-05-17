@@ -229,6 +229,7 @@ function scrollToTop(element)&#123;
 <h3 id="JS-Node-的常用方法"><a href="#JS-Node-的常用方法" class="headerlink" title="JS Node 的常用方法"></a>JS Node 的常用方法</h3><p>JS 中的所有节点类型都继承自 Node 类型，每个节点都有一个 childNodes 属性，保存着一个 NodeList 对象（它是类数组，用于保存一组有序节点，并非真的 Array 实例）。NodeList 是基于 DOM 结构动态执行查询的结果，因此 DOM 结构的变化能够自动反映在 NodeList 对象中。而 NodeList 的 length 属性只是访问 NodeList 的那一刻，其中包含的节点数量。下面介绍如何将 NodeList 转为数组进行操作</p>
 <pre><code class="javascript">function convertToArray(nodes) &#123;
   var array = null;
+  // try-catch 最适合处理那些我们无法控制的错误。
   try &#123; // 这里用 try-catch 的原因是 IE8 不支持
     array = Array.prototype.slice.call(nodes, 0); // 针对非 IE 浏览器
   &#125; catch (e) &#123;

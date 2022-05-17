@@ -221,7 +221,8 @@ document.body.appendChild(divNode)
 <p>注意，IE 的事件对象有所不同，如果用打包工具的话需要安装 babel-polyfill，可兼容 IE。但如果纯手写的话需要搜一下了，这里不做过多介绍因为不常用</p>
 </blockquote>
 <h3 id="3-常用事件"><a href="#3-常用事件" class="headerlink" title="3. 常用事件"></a>3. 常用事件</h3><p>load：当页面完全加载后在 window 上面触发，当所有框架都加载完毕时在框架集上面触发，<br>当图像加载完毕时在<img>元素上面触发，或者当嵌入的内容加载完毕时在<object>元素上面<br>触发。</p>
-<pre><code class="html">&lt;img src=&quot;smile.gif&quot; onload=&quot;alert(&#39;Image loaded.&#39;)&quot;&gt;
+<pre><code class="html">&lt;img src=&quot;smile.gif&quot; draggable=&quot;false&quot; onload=&quot;alert(&#39;Image loaded.&#39;)&quot;&gt;
+&lt;!-- draggable 元素是否可拖动 --&gt;
 &lt;!--
   在创建新的&lt;img&gt;元素时，可以为其指定一个事件处理程序，以便图像加载完毕后给出提示。
   此时，最重要的是要在指定 src 属性之前先指定事件，
