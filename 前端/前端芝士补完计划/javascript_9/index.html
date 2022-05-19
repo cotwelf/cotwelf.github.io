@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 错误处理与调试</title>
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 错误处理与调试、JSON</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -154,7 +154,7 @@
   <div class="article" id="article">
     
     <div>
-      <h1>前端芝士补完计划 之 JavaScript - 错误处理与调试 </h1>
+      <h1>前端芝士补完计划 之 JavaScript - 错误处理与调试、JSON </h1>
     </div>
     <div class="info">
         
@@ -187,7 +187,91 @@
     </div>
     
 
-      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-throw-new-Error-“Something-bad-happened-”"><a href="#1-throw-new-Error-“Something-bad-happened-”" class="headerlink" title="1. throw new Error(“Something bad happened.”);"></a>1. throw new Error(“Something bad happened.”);</h3></div>
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>错误处理的核心，是首先要知道代码里会发生什么错误。由于 JS 是松散类型的，而且也不会验证函数的参数，因此错误只会在代码运行期间出现。一般来说需要关注以下三种，它们可能会在特定模式下、或是没有充分检查备操作值的情况下出现。</p>
+<ol>
+<li>类型转换错误<ul>
+<li>使用全等 <code>===</code> 判断，避免比较前自动类型转换；</li>
+<li>控制流程语句前手动将条件转为 boolean（即使用 if(<code>!!a</code>){} 或者 if(<code>typeof a !== undefined</code>){} 代替 if(<code>a</code>){}）避免自动转换出现问题</li>
+</ul>
+</li>
+<li>数据类型错误<ul>
+<li>用到处理特定类型值的函数之前，需要判断一下被处理值的类型，如<pre><code class="javascript">function getQueryString(url) &#123;
+  if (typeof url === &#39;string&#39;) &#123; // 这里如果不加判断，indexOf 可能会报错。
+    var index = url.indexOf(&#39;?&#39;);
+    if (index &gt; -1) &#123;
+      return url.substring(index + 1)
+    &#125;
+  &#125;
+  return &#39;&#39;;
+&#125;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>通信错误<br>```javascript<br>try {</li>
+</ol>
+<p>} catch(error) {<br>  // 可以对 catch 到 error 进行处理<br>  if (xxx) {<br>    return {error: ‘xxx’, message: ‘xxxx’}<br>  }<br>  // 也可以抛出错误<br>  throw new Error(“Something bad happened.”);<br>}</p>
+<pre><code>
+### 2. 常见 IE 错误
+#### 操作终止（如 appendChild
+JS 只能修改已经加载完毕的元素，要避免这个问题，可以换成使用 `insertBefore()` 方法
+```diff
+- document.body.appendChild(document.createElement(&quot;div&quot;));
++ document.body.insertBefore(document.createElement(&quot;div&quot;), document.body.firstChild);
+</code></pre>
+<h4 id="无效字符"><a href="#无效字符" class="headerlink" title="无效字符"></a>无效字符</h4><h4 id="未找到成员"><a href="#未找到成员" class="headerlink" title="未找到成员"></a>未找到成员</h4><p>即对象被销毁后被赋值</p>
+<h4 id="未知运行时错误"><a href="#未知运行时错误" class="headerlink" title="未知运行时错误"></a>未知运行时错误</h4><p>比如给 <code>&lt;span&gt;</code> 内添加了 <code>&lt;div&gt;</code>，如： <code>span.innerHTML = &quot;&lt;div&gt;Hi&lt;/div&gt;&quot;;</code></p>
+<h4 id="语法错误"><a href="#语法错误" class="headerlink" title="语法错误"></a>语法错误</h4><p>比如 <code>&lt;script&gt;</code> 元素的 src 特性指向了一个 HTML 文件，就会导致语法错误。</p>
+<h4 id="系统无法找到制定资源"><a href="#系统无法找到制定资源" class="headerlink" title="系统无法找到制定资源"></a>系统无法找到制定资源</h4><p>URL 长度超限</p>
+<h3 id="JSON-对象与-JS-对象的不同之处"><a href="#JSON-对象与-JS-对象的不同之处" class="headerlink" title="JSON 对象与 JS 对象的不同之处"></a>JSON 对象与 JS 对象的不同之处</h3><p>JSON 只是一种数据格式，不从属于 JS，很多语言都有针对 JSON 的解释器。JSON 中不支持保存 undefined，其余和 JS 类似。</p>
+<p>对象和数组通常是 JSON 数据结构的最外层形式（当然，这不是强制规定的），利用它们能够创造出各种各样的数据结构。</p>
+<p>JSON 对象相比较 JS 对象有以下不同点：</p>
+<ul>
+<li>键值对中的 key 要加引号；</li>
+<li>string 需要用双引号包裹；</li>
+<li>对象最后一个字段后不能加逗号；</li>
+<li>对象末尾不能加分号。</li>
+</ul>
+<pre><code class="javascript">var obj = &#123;
+  &quot;a&quot;: 1, // 单双引号或不加引号均可
+  &#39;b&#39;: &#123;
+    name: &#39;cotwelf&#39; // string 也可以使用单引号或双引号包裹
+  &#125;,
+  c: 3, // 最后一个键值对之后可以加逗号也可以不加
+&#125;; // 末尾可加分号可不加分号
+</code></pre>
+<pre><code class="JSON">&#123;
+  &quot;a&quot;: 1, // 属性必须用双引号
+  &quot;b&quot;: &#123;
+    &quot;name&quot;: &quot;cotwelf&quot; // string 只能用双引号
+  &#125;,
+  &quot;c&quot;: 3
+&#125; // 末尾没有分号
+</code></pre>
+<h3 id="JSON-stringify-与-JSON-parse-使用过程中应该注意什么"><a href="#JSON-stringify-与-JSON-parse-使用过程中应该注意什么" class="headerlink" title="JSON.stringify() 与 JSON.parse() 使用过程中应该注意什么"></a>JSON.stringify() 与 JSON.parse() 使用过程中应该注意什么</h3><p>在序列化 JS 对象时，所有函数的原型成员都会被忽略，不体现在结果中。值为 undefined 的属性也会被跳过。</p>
+<p>注意，如果传给 JSON.parse() 的字符串不是有效的 JSON，该方法会抛出错误。</p>
+<pre><code class="javascript">// 1. 简单值
+JSON.parse(&quot;test&quot;) // Uncaught SyntaxError: Unexpected token e in JSON at position 1
+JSON.stringify(&quot;test&quot;) // &#39;&quot;test&quot;&#39;
+JSON.parse(&#39;&quot;test&quot;&#39;) // &#39;test&#39;
+JSON.parse(1) // 1
+JSON.parse(&quot;null&quot;) // null
+JSON.parse(&quot;true&quot;) // true
+// 2. 对象
+var obj = &#123;
+  &quot;a&quot;: 1,
+  &#39;b&#39;: &#123;
+    name: &#39;cotwelf&#39;
+  &#125;,
+  c: 3,
+&#125;;
+// 外面的单引号是为了不影响 JSON 内双引号的闭合
+JSON.stringify(obj) // &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:&#123;&quot;name&quot;:&quot;cotwelf&quot;&#125;,&quot;c&quot;:3&#125;&#39;
+// 3. 数组
+JSON.stringify([233, &quot;hi&quot;, true]) // &#39;[233,&quot;hi&quot;,true]&#39;
+</code></pre>
+<p>JSON.stringify() 除了要序列化的 JS 对象外，还可接收两个参数，第一个参数是个过滤器，可以是一个数组，也可以是一个函数；第二个参数是一个选项，表示是否在 JSON 字符串中保留缩进。单独或组合使用这两个参数，可以更全面深入地控制 JSON 的序列化。</p>
+</div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
         <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>

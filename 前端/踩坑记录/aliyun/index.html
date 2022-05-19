@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 数据结构和算法</title>
+    <title>Cotwelf&#39;s Life || 快速搭建网站</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -154,7 +154,7 @@
   <div class="article" id="article">
     
     <div>
-      <h1>前端芝士补完计划 之 数据结构和算法 </h1>
+      <h1>快速搭建网站 </h1>
     </div>
     <div class="info">
         
@@ -177,8 +177,8 @@
             
             <span class="tag">
                 
-                <a href="/tags/Algorithm" style=color:#879cff>
-                    Algorithm
+                <a href="/tags/工具" style=color:#1bccbc>
+                    工具
                 </a>
             </span>
             
@@ -187,140 +187,27 @@
     </div>
     
 
-      <div class="content" v-if="release"><h1 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h1><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yD4y127vy">【JavaScript】数据结构与算法</a></p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="1-删除排序数组中的重复项"><a href="#1-删除排序数组中的重复项" class="headerlink" title="1. 删除排序数组中的重复项"></a>1. 删除排序数组中的重复项</h2><ul>
-<li>入参是一个【升序】数组 <code>nums</code></li>
-<li>【原地】【修改】输入数组，删除重复出现的元素，使每个元素只出现 1 次（注意，不要使用额外的空间）；</li>
-<li>【返回】删除后数组的新长度</li>
-</ul>
-<p>系统会用下面的代码测试题解：</p>
-<pre><code class="javascript">int[] nums = [...] // 输入数组
-int[] expectedNums = [...] // 长度正确的期望答案
-int k = removeDuplicates(nums) // 调用
-assert k == expectedNums.length
-for (int i = 0; i &lt; k; i++) &#123;
-  assert nums[i] == expectedNums[i]
-&#125;
+      <div class="content" v-if="release"><h1 id="1-登录云服务器"><a href="#1-登录云服务器" class="headerlink" title="1. 登录云服务器"></a>1. 登录云服务器</h1><p>终端中输入命令：<code>ssh root@[ipaddress]</code>。其中，ipaddress 为云服务器的公网 IP</p>
+<pre><code class="terminal">ssh root@123.123.123.123
 </code></pre>
-<p>如果所有断言通过，那么题解将被 <code>通过</code>。</p>
-<blockquote>
-<p>提示：<br><code>0 &lt;= nums.length &lt;= 3 * 10 ^ 4</code><br><code>-10 ^ 4 &lt;= num[i] &lt;= 10 ^ 4</code><br><code>nums</code> 已按 <code>升序</code> 排列</p>
-</blockquote>
-<pre><code class="javascript">function removeDuplicates(nums) &#123;
-  let n = nums.length
-  for(let i = 0; i &lt; n - 1; i++) &#123;
-    if (nums[i] === nums[i + 1]) &#123;
-      nums.splice(i + 1, 1)
-      i--
-      n--
-    &#125;
-  &#125;
-  return nums.length
-&#125;
+<p>根据提示输入 yes、输入密码，回车后看到 <code>Welcome to Alibaba Cloud Elastic Compute Service !</code> 则链接成功。撒花✿✿ヽ(°▽°)ノ✿</p>
+<p>此时用户应该显示的是 <code>root/ ECS服务器实例名称</code>，说明你已经进入 ECS 服务器了。</p>
+<h1 id="2-安装Apache及其扩展包"><a href="#2-安装Apache及其扩展包" class="headerlink" title="2. 安装Apache及其扩展包"></a>2. 安装Apache及其扩展包</h1><p>在 ECS 服务器上执行</p>
+<pre><code class="terminal">yum -y install httpd httpd-manual mod_ssl mod_perl mod_auth_mysql
 </code></pre>
-<blockquote>
-<p>以下是官方答案，双指针，有点抽象orz</p>
-<pre><code class="javascript">function removeDuplicates(nums) &#123;
-  const n = nums.length
-  if (n === 0) &#123;
-    return 0;
-  &#125;
-  let fast = 1
-  let slow = 1
-  while (fast &lt; n) &#123;
-    if (nums[fast] !== nums[fast - 1]) &#123;
-      nums[slow] = nums[fast];
-      ++slow;
-    &#125;
-    ++fast;
-  &#125;
-  return slow
-&#125;
+<p>啊哦，出现了一条错误 <code>没有任何匹配: mod_auth_mysql</code></p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>step1: 先安装除 <code>mod_auth_mysql</code> 之外的依赖</p>
+<pre><code class="terminal">yum -y install httpd httpd-manual mod_ssl mod_perl
 </code></pre>
-</blockquote>
-<h2 id="2-买卖股票的最佳时机"><a href="#2-买卖股票的最佳时机" class="headerlink" title="2. 买卖股票的最佳时机"></a>2. 买卖股票的最佳时机</h2><ul>
-<li>给你一个整数数组 <code>prices</code>，其中 <code>prices[i]</code> 表示某支股票第 <code>i</code> 天的价格</li>
-<li>在每一天，你可以决定是否购买/出售股票。在任何时候【最多】只能持有【一股】股票。你也可以先购买，然后在【同一天】出售。</li>
-<li>返回你能获得的【最大】利润。<blockquote>
-<p>示例<br /><br /><br>输入：prices = [7, 1, 5, 3, 6, 4]<br /><br>输出：7<br /><br>解释：第 2 天（价格 1）的时候买入，第三天卖出，这笔交易所得利润为 5 - 1 = 4。随后，在第 4 天买入，第 5 天卖出，这笔交易获得利润为 6 - 3 = 3。总利润为 4 + 3 = 7。</p>
-</blockquote>
-</li>
-</ul>
-<pre><code class="javascript">var maxProfit = function(prices) &#123;
-  let n = prices.length
-  let sum = 0
-  let minIndex = 0
-  for (let i = 0; i &lt; n; i++) &#123;
-    // 左边比自己大，右边不小于自己，买入
-    if ((prices[i] &lt; prices[minIndex]) &amp;&amp; (prices[i] &lt;= prices[i + 1])) &#123;
-      minIndex = i
-    &#125; else if ((prices[i] &gt; prices[i - 1]) &amp;&amp; (prices[i] &gt;= prices[i + 1]) &amp;&amp; (i!== n - 1)) &#123;
-      // 左边比自己小，右边不大于自己，卖出，卖出后继续判断是否需要买入，minIndex 清零
-      sum += (prices[i] - prices[minIndex])
-      minIndex = i + 1
-      i ++
-    &#125;
-    // 如果最后了，还没有卖出，则卖出
-    if ((i === n - 1) &amp;&amp; minIndex &lt;= i) &#123;
-      // 如果亏了，那就归零，假装当初没有买入orz
-      sum += (prices[i] - prices[minIndex]) &gt; 0 ? (prices[i] - prices[minIndex]) : 0
-    &#125;
-  &#125;
-  return sum
-&#125;
+<p>安装 mod_auth_mysql 和 apache22.diff 补丁</p>
+<pre><code class="terminal">wget https://nchc.dl.sourceforge.net/project/modauthmysql/modauthmysql/3.0.0/mod_auth_mysql-3.0.0.tar.gz
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]), maxProfit([1, 2, 3, 4, 5]), maxProfit([3, 2, 1]))
-/**
- * 执行用时：68ms（击败 39.91% JS 用户
- * 内存消耗：41.3M（击败 67.33% JS 用户
- **/
+wget https://sourceforge.net/p/modauthmysql/patches/_discuss/thread/efda3a06/c5a7/attachment/apache22.diff
 </code></pre>
-<p>以下是官方答案，牛蛙好简单！！</p>
-<pre><code class="javascript">// 贪心
-var maxProfit = function(prices) &#123;
-  let ans = 0;
-  let n = prices.length;
-  for(let i = 1; i &lt; n; i++) &#123;
-    // 是不是可以理解为，我每天都卖出一次，买入一次，看看是否有利润，若有，本次买卖生效，没有则取消？（假装没有发生
-    ans += Math.max(0, prices[i] - prices[i - 1]);
-  &#125;
-  return ans;
-&#125;
-</code></pre>
-<h2 id="3-旋转数组"><a href="#3-旋转数组" class="headerlink" title="3. 旋转数组"></a>3. 旋转数组</h2><ul>
-<li>给一个数组，将数组中的元素右轮转 k 个位置，其中 k 是非负数</li>
-</ul>
-<blockquote>
-<p>示例 <br /><br>输入：nums = [1, 2, 3, 4, 5, 6, 7], k = 3 <br /><br>输出：[5, 6, 7, 1, 2, 3, 4]</p>
-</blockquote>
-<pre><code class="javascript">var rotate = function(nums, k) &#123;
-  let n = nums.length
-  let fixK = k &gt; n ? k % n : k
-  let tempNums = nums.splice(n - fixK, n)
-  nums.unshift(...tempNums)
-&#125;
-rotate([-1, -100, 3, 99], 2) // [3, 99, -1, -100]
-rotate([1, 2, 3, 4, 5, 6, 7], 3) // [5, 6, 7, 1, 2, 3, 4]
-rotate([1, 2], 1) // [2, 1]
-/**
- * 执行用时：92ms（击败 56.86% JS 用户
- * 内存消耗：49.9M（击败 86.70% JS 用户
- **/
-</code></pre>
-<p>以下是官方答案</p>
-<pre><code class="javascript">var rotate = function(nums, k) &#123;
-  const n = nums.length
-  const newArr = new Array(n)
-  for (let i = 0; i &lt; n; ++i) &#123;
-    // 右移 k，为什么不是 newArr[i + k] = nums[i]？
-    newArr[(i + k) % n] = nums[i]
-  &#125;
-  for (let i = 0; i &lt; n; ++i) &#123;
-    nums[i] = newArr[i]
-  &#125;
-&#125;
-rotate([1, 2, 3, 4, 5, 6, 7], 3) // [5, 6, 7, 1, 2, 3, 4]
-</code></pre>
+<p>如果命令行安装 mod_auth_mysql 遇到问题，可以先用浏览器下载到本地，然后上传到云服务器</p>
+<h3 id="关于本地文件上传至云服务器"><a href="#关于本地文件上传至云服务器" class="headerlink" title="关于本地文件上传至云服务器"></a>关于本地文件上传至云服务器</h3><p>可以下载 <a target="_blank" rel="noopener" href="https://filezilla-project.org/?spm=a2c4g.11186623.0.0.3cec2a22jjXOFR">FileZilla</a></p>
+<p>安装打开后，选择 <code>文件-站点管理器</code> 手动配置新站点信息（注意不要快速链接</p>
+<p>协议选择 <code>SFTP</code>，主机(H): <code>云服务器 ECS 的公网 IP</code>，输入阿里云服务器的用户名和密码即可</p>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
