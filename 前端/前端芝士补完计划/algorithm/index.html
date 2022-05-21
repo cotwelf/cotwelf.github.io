@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Algorithm" style=color:#ff7d73>
+                <a href="/tags/Algorithm" style=color:#1bccbc>
                     Algorithm
                 </a>
             </span>
@@ -188,9 +188,9 @@
     
 
       <div class="content" v-if="release"><h1 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h1><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yD4y127vy">【JavaScript】数据结构与算法</a></p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>数组</p>
-<p><a href="#1-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9">1. 删除排序数组中的重复项</a></p>
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="1-删除排序数组中的重复项"><a href="#1-删除排序数组中的重复项" class="headerlink" title="1. 删除排序数组中的重复项"></a>1. 删除排序数组中的重复项</h3><ul>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p><a href="#1-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9">1. 删除排序数组中的重复项</a><br><a href="#2-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA">2. 买卖股票的最佳时机</a><br><a href="#3-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84">3. 旋转数组</a><br><a href="#4-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0">4. 存在重复元素</a><br><a href="#5-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97">5. 只出现一次的数字</a><br><a href="#6-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86">6. 两个数组的交集</a><br><a href="#7-%E5%8A%A0%E4%B8%80">7. 加一</a><br><a href="#8-%E7%A7%BB%E5%8A%A8%E9%9B%B6">8. 移动零</a><br><a href="#9-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">9. 两数之和</a><br><a href="#10-%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC">10. 有效的数独</a><br><a href="#11-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F">11. 旋转图像</a></p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p><a href="#1-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2">1. 反转字符串</a><br><a href="#9-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">9. 两数之和</a><br><a href="#9-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">9. 两数之和</a></p>
+<h1 id="数组-1"><a href="#数组-1" class="headerlink" title="数组"></a>数组</h1><h3 id="1-删除排序数组中的重复项"><a href="#1-删除排序数组中的重复项" class="headerlink" title="1. 删除排序数组中的重复项"></a>1. 删除排序数组中的重复项</h3><ul>
 <li>入参是一个【升序】数组 <code>nums</code></li>
 <li>【原地】【修改】输入数组，删除重复出现的元素，使每个元素只出现 1 次（注意，不要使用额外的空间）；</li>
 <li>【返回】删除后数组的新长度</li>
@@ -539,17 +539,334 @@ return digits
 </ul>
 <pre><code class="javascript">var moveZeroes = function(nums) &#123;
   let n = nums.length
+  let index = 0
   for (let i = 0; i &lt; n; i++) &#123;
-    console.log(i)
-    if(nums[i] === 0) &#123;
-      nums.splice(i, 1)
+    if(nums[index] === 0) &#123;
+      nums.splice(index, 1)
       nums.push(0)
+      continue
     &#125;
+      index += 1
   &#125;
   return nums
 &#125;
-// console.log(moveZeroes([0]))
-moveZeroes([0, 0, 1])
+/**
+ * 执行用时：312ms（击败 9.63% JS 用户
+ * 内存消耗：45.8M（击败 46.55% JS 用户
+ **/
+var moveZeroes = function(nums) &#123;
+  let n = nums.length
+  let tempNum = nums.filter(i =&gt; i !== 0)
+  let zeros = new Array(n - tempNum.length).fill(0)
+  tempsNum = [...tempNum, ...zeros]
+  nums.push(...tempsNum)
+  nums.splice(0, n)
+  return nums
+&#125;
+/**
+ * 执行用时：68ms（击败 99.36% JS 用户
+ * 内存消耗：48.4M（击败 5.01% JS 用户
+ **/
+</code></pre>
+<p>官方思路：双指针。右指针不断向右移动，每次右指针指向非零数，则将左右指针对应的数交换，同时左指针右移。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="9-两数之和"><a href="#9-两数之和" class="headerlink" title="9. 两数之和"></a>9. 两数之和</h3><ul>
+<li>给一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code></li>
+<li>在该数组中找出 <strong>和为目标值</strong> <code>target</code> 的那 <strong>两个</strong> 整数，并返回他们的数组下标</li>
+<li>顺序不限</li>
+</ul>
+<blockquote>
+<p>示例 <br /><br>输入：nums1 = [2, 7, 11, 15], target = 9 <br /><br>输出：[0, 1] <br /><br>解释：因为 nums[0] + nums[1] === 9</p>
+</blockquote>
+<pre><code class="javascript">var twoSum = function(nums, target) &#123;
+  for (let i = 0; i &lt; nums.length; i++) &#123;
+    let next = nums.slice(i + 1, nums.length).indexOf(target - nums[i])
+    if (next !== -1) &#123;
+      return [i, next + i + 1]
+    &#125;
+  &#125;
+&#125;
+/**
+ * 执行用时：136ms（击败 19.46% JS 用户
+ * 内存消耗：47.1M（击败 5.02% JS 用户
+ **/
+twoSum([-1, -2, -3, -4, -5], -8)
+</code></pre>
+<p>官方推荐使用哈希表（以上解法相当于暴力枚举，哈希表还不会 qwq，之后补上哈希表解法</p>
+<h3 id="10-有效的数独"><a href="#10-有效的数独" class="headerlink" title="10. 有效的数独"></a>10. 有效的数独</h3><p>判断一个 <code>9 * 9</code> 的数独是否有效。需要以下规则验证已经填入的数字是否有效即可</p>
+<ul>
+<li>数字 <code>1-9</code> 在每一行只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一列只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一个 <code>3 * 3</code> 宫格内只能出现一次</li>
+</ul>
+<p>注意</p>
+<ul>
+<li>一个有效的数独（部分已被填充）不一定有解</li>
+<li>只需要根据以上规则验证已经填入的数字是否有效</li>
+<li>空白格用 <code>&#39;.&#39;</code> 表示。</li>
+</ul>
+<blockquote>
+<p>示例 <br /><br>输入：board =<br>[[“8”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”]<br>,[“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”]<br>,[“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”]<br>,[“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”]<br>,[“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”]<br>,[“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”]<br>,[“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”]<br>,[“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”]<br>,[“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]] <br /><br>输出：false <br /><br>解释：因为左上角的 3*3 内有两个 8 存在，所以这个数独无效。</p>
+</blockquote>
+<pre><code class="javascript">var isValidSudoku = function(board) &#123;
+  let n = board.length
+  let row = []
+  let column = []
+  let tempGe = [[], [], []]
+  for (let i = 0; i &lt; n; i++) &#123;
+    // 判断行是否有效
+    row = board[i]
+    for (let j = 0; j &lt; n; j++) &#123;
+      // 顺便取出第 i 列准备检查的数据
+      column.push(board[j][i])
+      // 第 i 行的 0， 1， 2 列填入 ge 的 0 个数组，3， 4， 5 填入第 1 个数组
+      tempGe[Math.floor(j / 3)].push(board[i][j])
+      if (tempGe[2].length === 9) &#123;
+        for (let m = 0; m &lt; 3; m++) &#123;
+          for (let k = 0; k &lt; 3; k++) &#123;
+            let tempArr = tempGe[m].join(&#39;&#39;).replaceAll(&#39;.&#39;, &#39;&#39;).split(&#39;&#39;)
+            let dup = tempArr.slice(k + 1, tempArr.length).includes(tempArr[k])
+            if(dup) &#123;
+              return false
+            &#125;
+          &#125;
+        &#125;
+        tempGe = [[], [], []]
+      &#125;
+      let tempArr = row.join(&#39;&#39;).replaceAll(&#39;.&#39;, &#39;&#39;).split(&#39;&#39;)
+      let dup = tempArr.slice(j + 1, tempArr.length).includes(tempArr[j])
+      if(dup) &#123;
+        return false
+      &#125;
+    &#125;
+    // 判断列是否有效
+    for (let j = 0; j &lt; n; j++) &#123;
+      let tempArr = column.join(&#39;&#39;).replaceAll(&#39;.&#39;, &#39;&#39;).split(&#39;&#39;)
+      let dup = tempArr.slice(j + 1, tempArr.length).includes(tempArr[j])
+      if(dup) &#123;
+        return false
+      &#125;
+    &#125;
+    column = []
+  &#125;
+
+  return true
+&#125;
+/**
+ * 执行用时：100ms（击败 15.28% JS 用户
+ * 内存消耗：47.5M（击败 13.56% JS 用户
+ **/
+let board =
+[[&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;]
+,[&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;]
+,[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;]
+,[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;]
+,[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]
+isValidSudoku(board)
+</code></pre>
+<p>人要没了qwq，来看看官方解答，使用哈希表记录每一行每一列每一小宫格中，每个数字出现的次数。</p>
+<pre><code class="javascript">var isValidSudoku = function(board) &#123;
+  const rows = new Array(9).fill(0).map(() =&gt; new Array(9).fill(0));
+  const columns = new Array(9).fill(0).map(() =&gt; new Array(9).fill(0));
+  const subboxes = new Array(3).fill(0).map(() =&gt; new Array(3).fill(0).map(() =&gt; new Array(9).fill(0)));
+  for (let i = 0; i &lt; 9; i++) &#123;
+    for (let j = 0; j &lt; 9; j++) &#123;
+      const c = board[i][j];
+      if (c !== &#39;.&#39;) &#123;
+        const index = c.charCodeAt() - &#39;0&#39;.charCodeAt() - 1;
+        rows[i][index]++;
+        columns[j][index]++;
+        subboxes[Math.floor(i / 3)][Math.floor(j / 3)][index]++;
+        if (rows[i][index] &gt; 1 || columns[j][index] &gt; 1 || subboxes[Math.floor(i / 3)][Math.floor(j / 3)][index] &gt; 1) &#123;
+          return false;
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+  return true;
+&#125;;
+let board =
+[[&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;]
+,[&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;]
+,[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;]
+,[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;]
+,[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]
+isValidSudoku(board)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="11-旋转图像"><a href="#11-旋转图像" class="headerlink" title="11. 旋转图像"></a>11. 旋转图像</h3><ul>
+<li>给一个 n * n 的二维矩阵 <code>matrix</code> 表示一个图像。</li>
+<li><code>原地</code> 将图像顺时针旋转 90 度。请不要用另一个矩阵来旋转图像</li>
+</ul>
+<p>示例：</p>
+<p>输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]</p>
+<p>输出：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p>
+<pre><code class="javascript">var rotate = function(matrix) &#123;
+  // 横的向量变为竖的，且数组取反
+  let tempArr = [...matrix]
+  let n = tempArr.length // 3
+  let c = []
+  for (let i = 0; i &lt; n; i++) &#123;
+    for (let j = 0; j &lt; n; j++) &#123;
+      c.push(tempArr[j][i])
+    &#125;
+    matrix[i] = c.reverse()
+    c = []
+  &#125;
+&#125;
+/**
+ * 执行用时：56ms（击败 89.33% JS 用户
+ * 内存消耗：41M（击败 81.34% JS 用户
+ **/
+rotate([[1,2,3],[4,5,6],[7,8,9]])
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h1 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h1><h3 id="1-反转字符串"><a href="#1-反转字符串" class="headerlink" title="1. 反转字符串"></a>1. 反转字符串</h3><ul>
+<li>将输入的字符串数组 <code>s</code> 反转过来</li>
+<li><code>原地</code> 修改输入数组，不要给另外的数组分配额外空间</li>
+</ul>
+<p>示例：</p>
+<p>输入：s = [“h”, “e”, “l”, “l”, “o”]</p>
+<p>输出：[“o”, “l”, “l”, “e”, “h”]</p>
+<pre><code class="javascript">var reverseString = function(s) &#123;
+  return s.reverse()
+&#125;
+/**
+ * 执行用时：76ms（击败 95.95% JS 用户
+ * 内存消耗：48MB（击败 57.54% JS 用户
+ **/
+reverseString([&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;])
+</code></pre>
+<p>官方使用双指针解法</p>
+<pre><code class="javascript">var reverseString = function(s) &#123;
+  const n = s.length
+  for(let left = 0, right = n - 1; left &lt; right; left++, right--) &#123;
+    [s[left], s[right]] = [s[right], s[left]]
+  &#125;
+&#125;
+/**
+ * 执行用时：80ms（击败 89.13% JS 用户
+ * 内存消耗：47.8MB（击败 79.88% JS 用户
+ **/
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-整数反转"><a href="#2-整数反转" class="headerlink" title="2. 整数反转"></a>2. 整数反转</h3><ul>
+<li>给一个 32 位有符号整数 x，返回将 x 中的数字部分反转后的结果</li>
+<li>如果反转后整数超过 32 位的有符号整数的范围 [-2^31, 2^31 - 1] 就返回 0</li>
+</ul>
+<p>示例 1：</p>
+<p>输入：x = 120；输出：21</p>
+<p>示例 2：</p>
+<p>输入：x = -123；输出：x = -321</p>
+<pre><code class="javascript">var reverse = function(x) &#123;
+  let numFix = &#39;&#39;
+  let numArr = x.toString().split(&#39;&#39;)
+  if (numArr[0] === &#39;-&#39;) &#123;
+    numFix = &#39;-&#39;
+    numArr.splice(0, 1)
+  &#125;
+  let result = Number(`$&#123;numFix&#125;$&#123;numArr.reverse().join(&#39;&#39;)&#125;`)
+  if (result &lt;= Math.pow(-2,31) || result &gt;= (Math.pow(2, 31) - 1)) &#123;
+    result = 0
+  &#125;
+  return result
+&#125;
+/**
+ * 执行用时：64ms（击败 88.76% JS 用户
+ * 内存消耗：42.6MB（击败 66.77% JS 用户
+ **/
+reverse(-123)
+</code></pre>
+<p>官方解答太难懂了 q’w’q，菜鸡的我放弃学习 orz</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-字符串中的第一个唯一字符"><a href="#3-字符串中的第一个唯一字符" class="headerlink" title="3. 字符串中的第一个唯一字符"></a>3. 字符串中的第一个唯一字符</h3><ul>
+<li>给一个字符串 <code>s</code>，找到它的第一个不重复的字符，并返回它的索引，如果不存在，则返回 <code>-1</code></li>
+</ul>
+<p>示例：</p>
+<p>输入：s = “leetcode”；输出：0</p>
+<p>输入：s = “aabb”；输出：-1</p>
+<pre><code class="javascript">var firstUniqChar = function(s) &#123;
+  let sMap = []
+  let n = s.length
+  for (let i = 0; i &lt; s.length; i++) &#123;
+    let obj = &#123;
+      str: s[i],
+      index: i
+    &#125;
+    sMap.push(obj)
+  &#125;
+  while(sMap.length &gt; 0) &#123;
+    let str = sMap[0]
+    let tempArr = sMap.filter(i =&gt; i.str === str.str)
+    if (tempArr.length &gt; 1) &#123;
+      // 有重复，去掉重复项，进行下一循环
+      sMap = sMap.filter(i =&gt; i.str !== str.str)
+      continue
+    &#125;
+    return tempArr[0].index
+  &#125;
+  return -1
+&#125;
+/**
+ * 执行用时：376ms（击败 5.15% JS 用户
+ * 内存消耗：62.4MB（击败 5.02% JS 用户
+ **/
+</code></pre>
+<p>哈希表存储索引，那么我们顺便了解一下 Map</p>
+<blockquote>
+<p>Map 对象保存键值对，并且能够记住键的原始插入顺序。<br>Map 和 Object 有些区别，如果不要求用到 Object 原型上的方法的话，只是对键值对的增删改查，那么 Map 的表现会更出色。</p>
+</blockquote>
+<p>下面我们尝试改一下上面的辣鸡代码</p>
+<pre><code class="javascript">var firstUniqChar = function(s) &#123;
+  let sMap = new Map()
+  let n = s.length
+  let repeat = []
+  for (let i = 0; i &lt; n; i++) &#123;
+    if (repeat.includes(s[i])) &#123;
+      continue
+    &#125;
+    if (sMap.has(s[i])) &#123;
+      repeat.push(s[i])
+      sMap.delete(s[i])
+    &#125; else &#123;
+      sMap.set(s[i], i)
+    &#125;
+  &#125;
+  for (const [key, value] of sMap) &#123;
+    return value
+  &#125;
+  return -1
+&#125;
+/**
+ * 执行用时：108ms（击败 43.00% JS 用户
+ * 内存消耗：44.9MB（击败 37.17% JS 用户
+ **/
+</code></pre>
+<p>emmm 至少比官方数值优秀一丢丢~ 所以就不贴官方啦</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-有效的字母异位词"><a href="#4-有效的字母异位词" class="headerlink" title="4. 有效的字母异位词"></a>4. 有效的字母异位词</h3><ul>
+<li>给定两个字符串 <code>s</code> 和 <code>t</code>，编写一个函数判断 <code>t</code> 是否是 <code>s</code> 的字母异位词。</li>
+</ul>
+<p>示例</p>
+<p>输入：s = “anagram”, t = “nagaram”<br>输出：true</p>
+<p>输入：s = “rat”, t = “car”; 输出：false</p>
+<pre><code class="javascript">var isAnagram = function(s, t) &#123;
+  let temps = s.split(&#39;&#39;).sort().join(&#39;&#39;)
+  let tempt = t.split(&#39;&#39;).sort().join(&#39;&#39;)
+  return temps === tempt
+&#125;
+/**
+ * 执行用时：104ms（击败 16.72% JS 用户
+ * 内存消耗：48.2MB（击败 17.52% JS 用户
+ **/
 </code></pre>
 </div>
       <div class="content" v-if="!release">
