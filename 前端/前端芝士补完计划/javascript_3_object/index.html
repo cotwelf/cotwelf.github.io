@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#00bcd4>
+                <a href="/tags/JavaScript" style=color:#ffa2c4>
                     JavaScript
                 </a>
             </span>
@@ -933,6 +933,35 @@ people2.like // undefined，因为这里的原型已经指向了新的对象
 people1.like // &#39;anime&#39; 因为 people1 是在原型修改前 new 出来的，它的 __proto__ 和原本 Otaku.prototype 绑定，虽然指针换了，但对象还是存在在栈里的，而且 people1 有引用，不会被清除，因此还是可以访问到的
 </code></pre>
 <p>原型链虽然很强大，可以用它来实现继承，但它也存在一些问题。包含引用类型值的原型属性会被所有实例共享，所以引用类型属性应该定义在【构造函数】里，而不是在【原型】上，同时超类中的引用类型也会被共享。</p>
+<h5 id="作用域安全构造函数"><a href="#作用域安全构造函数" class="headerlink" title="作用域安全构造函数"></a>作用域安全构造函数</h5><p>上面的代码有点问题，不知道细心的你有没有发现</p>
+<pre><code class="javascript">function Otaku(like) &#123;
+  console.log(this) // Window
+  this.name = &#39;cotwelf&#39;
+  this.like = like
+&#125;
+/** 当我们用 new 创建 Otaku 实例的时候，会创建一个新的 Otaku 对象，并给它分配 name 属性
+ * 但由于该 this 对象是运行时绑定的，如果直接调用 Otaku()，this 会映射到全局对象 window 上
+ **/
+var person = Otaku(&#39;anime&#39;)
+console.log(person) // undefined.因为 Otaku 作为函数的话，并没有返回任何数据
+console.log(window.name, window.like) // cotwelf，anime
+</code></pre>
+<p>解决方法是创建一个 <code>作用域安全的构造函数</code>。它首先要确认 this 对象是正确类型的实例，如果不是，创建新实例并返回</p>
+<pre><code class="javascript">function Otaku(like) &#123;
+  if(this instanceof Otaku) &#123;
+    this.name = &#39;cotwelf&#39;
+    this.like = like
+  &#125; else &#123;
+    // 如果直接调用 Otaku() 的话，这里的 this 是 Window
+    return new Otaku(like)
+  &#125;
+
+&#125;
+
+var person = Otaku(&#39;anime&#39;)
+console.log(person) // undefined.因为 Otaku 作为函数的话，并没有返回任何数据
+console.log(window.name, window.like) // cotwelf，anime
+</code></pre>
 <h4 id="借用构造函数的方式"><a href="#借用构造函数的方式" class="headerlink" title="借用构造函数的方式"></a>借用构造函数的方式</h4><p>即在子类型构造函数的内部调用超类型构造函数，并绑定当前（子类的）作用域。好处是引用类型不会被实例修改，但坏处是方法并没有被复用。</p>
 <pre><code class="javascript">function Person(name) &#123;
   this.name = name

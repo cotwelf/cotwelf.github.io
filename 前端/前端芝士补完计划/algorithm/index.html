@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Algorithm" style=color:#00bcd4>
+                <a href="/tags/Algorithm" style=color:#ff7d73>
                     Algorithm
                 </a>
             </span>
@@ -188,9 +188,182 @@
     
 
       <div class="content" v-if="release"><h1 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h1><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yD4y127vy">【JavaScript】数据结构与算法</a></p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p><a href="#1-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9">1. 删除排序数组中的重复项</a><br><a href="#2-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA">2. 买卖股票的最佳时机</a><br><a href="#3-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84">3. 旋转数组</a><br><a href="#4-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0">4. 存在重复元素</a><br><a href="#5-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97">5. 只出现一次的数字</a><br><a href="#6-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86">6. 两个数组的交集</a><br><a href="#7-%E5%8A%A0%E4%B8%80">7. 加一</a><br><a href="#8-%E7%A7%BB%E5%8A%A8%E9%9B%B6">8. 移动零</a><br><a href="#9-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">9. 两数之和</a><br><a href="#10-%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC">10. 有效的数独</a><br><a href="#11-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F">11. 旋转图像</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="一、前端八股文-之-算法"><a href="#一、前端八股文-之-算法" class="headerlink" title="一、前端八股文 之 算法"></a>一、前端八股文 之 算法</h2><h2 id="二、《前端通关手册：JavaScript》-07-算法"><a href="#二、《前端通关手册：JavaScript》-07-算法" class="headerlink" title="二、《前端通关手册：JavaScript》- 07 算法"></a>二、《前端通关手册：JavaScript》- 07 算法</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><a href="#1-%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0">1. 去除数组中的指定元素</a><br><a href="#2-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95">2. 数组去重方法</a></p>
+<h2 id="三、《初级算法》"><a href="#三、《初级算法》" class="headerlink" title="三、《初级算法》"></a>三、《初级算法》</h2><h3 id="数组-1"><a href="#数组-1" class="headerlink" title="数组"></a>数组</h3><p><a href="#1-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9">1. 删除排序数组中的重复项</a><br><a href="#2-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA">2. 买卖股票的最佳时机</a><br><a href="#3-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84">3. 旋转数组</a><br><a href="#4-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0">4. 存在重复元素</a><br><a href="#5-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97">5. 只出现一次的数字</a><br><a href="#6-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86">6. 两个数组的交集</a><br><a href="#7-%E5%8A%A0%E4%B8%80">7. 加一</a><br><a href="#8-%E7%A7%BB%E5%8A%A8%E9%9B%B6">8. 移动零</a><br><a href="#9-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">9. 两数之和</a><br><a href="#10-%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC">10. 有效的数独</a><br><a href="#11-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F">11. 旋转图像</a></p>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p><a href="#1-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2">1. 反转字符串</a><br><a href="#2-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC">2. 整数反转</a><br><a href="#3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6">3. 字符串中的第一个唯一字符</a><br><a href="#4-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D">4. 有效的字母异位词</a></p>
-<h1 id="数组-1"><a href="#数组-1" class="headerlink" title="数组"></a>数组</h1><h3 id="1-删除排序数组中的重复项"><a href="#1-删除排序数组中的重复项" class="headerlink" title="1. 删除排序数组中的重复项"></a>1. 删除排序数组中的重复项</h3><ul>
+<h1 id="一、前端八股文-之-算法-1"><a href="#一、前端八股文-之-算法-1" class="headerlink" title="一、前端八股文 之 算法"></a>一、前端八股文 之 算法</h1><h2 id="逻辑题"><a href="#逻辑题" class="headerlink" title="逻辑题"></a>逻辑题</h2><h3 id="1-一个三角形-3-个定点有-3-只老鼠，一声枪响，3-只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？"><a href="#1-一个三角形-3-个定点有-3-只老鼠，一声枪响，3-只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？" class="headerlink" title="1. 一个三角形 3 个定点有 3 只老鼠，一声枪响，3 只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？"></a>1. 一个三角形 3 个定点有 3 只老鼠，一声枪响，3 只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？</h3><p>每只老鼠都有顺时针、逆时针两种运动方向。3 只老鼠共有 8 种运动情况（即 3^2）只有当 3 只老鼠都为顺时针或逆时针时，它们才不会相遇，剩余 6 种情况都会相遇，所以相遇的概率是 6 / 8 = 75%</p>
+<h3 id="2-在一天的-24-小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的"><a href="#2-在一天的-24-小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的" class="headerlink" title="2. 在一天的 24 小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的"></a>2. 在一天的 24 小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的</h3><h1 id="二、《前端通关手册：JavaScript》-07-算法-1"><a href="#二、《前端通关手册：JavaScript》-07-算法-1" class="headerlink" title="二、《前端通关手册：JavaScript》- 07 算法"></a>二、《前端通关手册：JavaScript》- 07 算法</h1><h2 id="位运算"><a href="#位运算" class="headerlink" title="*位运算"></a>*位运算</h2><h3 id="1-什么是原码、反码、补码？"><a href="#1-什么是原码、反码、补码？" class="headerlink" title="*1. 什么是原码、反码、补码？"></a>*1. 什么是原码、反码、补码？</h3><p>面试高频指数：star x 3</p>
+<p>原码、反码和补码，均有 <code>符号位</code> 和 <code>数值位</code> 两部分。</p>
+<p>符号位：用 0 表示正，用 1 表示负</p>
+<p>在计算机系统中，数值一律用补码来表示和存储，好处：1）符号位和数值位统一处理；2）加法和减法统一处理。</p>
+<h2 id="数组-2"><a href="#数组-2" class="headerlink" title="数组"></a>数组</h2><h3 id="1-去除数组中的指定元素"><a href="#1-去除数组中的指定元素" class="headerlink" title="1. 去除数组中的指定元素"></a>1. 去除数组中的指定元素</h3><p>面试高频指数：star x 3</p>
+<p>输入：a = [‘1’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’], target = ‘4’</p>
+<p>输出：a = [‘1’, ‘2’, ‘3’, ‘5’, ‘6’]</p>
+<pre><code class="javascript">// 方法 1
+const removeByValue = (a, target) =&gt; &#123;
+  a.forEach((i, index) =&gt; &#123;
+    if(i === target) &#123;
+      a.splice(index, 1)
+    &#125;
+  &#125;)
+  return a
+&#125;
+
+// 方法 2
+const removeByValue = (a, target) =&gt; &#123;
+  let index = a.findIndex(i =&gt; i === target)
+  if (index !== -1) &#123;
+    a.splice(a.findIndex(i =&gt; i === target), 1)
+  &#125;
+  /**
+   * Array.prototype.findIndex 返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回 -1。
+   * arr.findIndex(callback[, thisArg])
+   *
+   * 类似于 &#123;Array | String&#125;.prototype.indexOf
+   * &#123;arr | string&#125;.indexOf(element, [fromIndex])
+   * indexOf 的参数是要查找的元素（以及可选的开始查找位置），而 findIndex 的参数是过滤条件
+   **/
+  return a
+&#125;
+
+const a = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;]
+console.log(removeByValue(a, &#39;9&#39;)) // [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;5&#39;, &#39;6&#39;]
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-数组去重方法"><a href="#2-数组去重方法" class="headerlink" title="2. 数组去重方法"></a>2. 数组去重方法</h3><p>面试高频指数：star x 4</p>
+<p>输入：a = [‘1’, ‘2’, ‘3’, ‘2’, ‘3’]</p>
+<p>输出：a = [‘1’, ‘2’, ‘3’]</p>
+<pre><code class="javascript">// 方法 1：set 去重
+function unique(arr) &#123;
+  // const tempSet = new Set(arr)
+  const tempSet = new Map(arr)
+  const tempArr = Array.from(tempSet)
+  tempSet.set(&#39;0&#39;, 0)
+  console.log(tempSet, tempArr)
+  // Array.from() 方法对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
+  return [...new Set(arr)]
+&#125;
+
+unique([&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;2&#39;, &#39;3&#39;])
+</code></pre>
+<h4 id="这里我们大致补充一下什么是-Set，以及它和-Map-的异同"><a href="#这里我们大致补充一下什么是-Set，以及它和-Map-的异同" class="headerlink" title="这里我们大致补充一下什么是 Set，以及它和 Map 的异同"></a>这里我们大致补充一下什么是 Set，以及它和 Map 的异同</h4><ul>
+<li>Set<ul>
+<li>集合</li>
+<li>常用方法<pre><code class="javascript">// 创建
+let set = new Set() // Set(0) &#123;size: 0&#125;
+set = new Set([1, 2, 2, 1, 3]) // Set(3) &#123;1, 2, 3&#125;
+// 添加：Set 中可以存放任意类型的值，故存入时不会进行数据类型转换。
+set.add(&#39;2&#39;) // Set(4) &#123;1, 2, 3, &#39;2&#39;&#125;。set 末尾添加一个元素 &#39;2&#39;
+// 查询
+set.has(1) // true。set 中是否有元素 1
+// 删除
+set.delete(&#39;2&#39;) // Set(3) &#123;1, 2, 3&#125;。删除 set 中值为 4 的元素。当 delete 的元素并不在 set 中时也不会报错，而是不改变 set，比如 set.delete(6)，set 并不会改变
+// 长度
+set.size // 3。set 的长度
+// 转数组
+var arr = Array.from(set) // [1, 2, 3]。使用 Array.from 转换 Set 为 Array
+//  用...(展开操作符)操作符将 Set 转换为Array
+var arr = [...set]
+// set 可以用来保存 dom 节点，可以遍历
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Map<ul>
+<li>字典，特点：查找速度极快</li>
+<li>常用方法<pre><code class="javascript">// 创建
+let map = new Map() // Map(0) &#123;size: 0&#125;
+map = new Map([
+  [1, &#39;one&#39;],
+  [2, &#39;two&#39;],
+  [3, &#39;three&#39;],
+]); // Map(3) &#123;1 =&gt; &#39;one&#39;, 2 =&gt; &#39;two&#39;, 3 =&gt; &#39;three&#39;&#125;
+// 添加：Set 中可以存放任意类型的值，故存入时不会进行数据类型转换。
+map.set(&#39;4&#39;, &#39;four&#39;) // Map(4) &#123;1 =&gt; &#39;one&#39;, 2 =&gt; &#39;two&#39;, 3 =&gt; &#39;three&#39;, &#39;4&#39; =&gt; &#39;four&#39;&#125;。map 末尾添加一个 &#123; key: &quot;4&quot;, value: &quot;four&quot; &#125;元素
+// 查询
+map.has(&#39;4&#39;) // true。map 中是否有 key 为 &#39;4&#39; 的键值对
+// 删除——@return &#123;boolean&#125;。表示是否删除成功
+map.delete(&#39;4&#39;) // 删除 map 中 key 为 &#39;4&#39; 的键值对。当 delete 的元素并不在 map 中时也不会报错，但会返回 false，map 并不会改变
+// 长度
+set.size // 3。map 的长度
+// 转数组
+var arr = Array.from(map) // [[1, &#39;one&#39;], [2, &#39;two&#39;], [3, &#39;three&#39;]]。使用 Array.from 转换 Set 为 Array
+</code></pre>
+</li>
+</ul>
+</li>
+<li>相同点<ul>
+<li>都可以用作数组去重</li>
+<li>它们都是有序的</li>
+</ul>
+</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-判断一个对象是不是数组-Array"><a href="#3-判断一个对象是不是数组-Array" class="headerlink" title="3. 判断一个对象是不是数组 Array"></a>3. 判断一个对象是不是数组 Array</h3><p>面试高频指数：star x 4</p>
+<pre><code class="javascript">let arr = [1, 2, 3]
+// 方法 1：instanceof
+arr instanceof Array // true
+
+// 方法 2：Array.isArray()
+Array.isArray(arr) // true
+
+// 方法 3：Array 的原型是否在 arr 的原型链上
+Array.prototype.isPrototypeOf(arr) // true
+
+// *方法 4：Object.prototype.toString
+Object.prototype.toString.call(arr) // &#39;[object Array]&#39;
+// 可以封装个方法
+function isArray(value)&#123;
+ return Object.prototype.toString.call(value) == &quot;[object Array]&quot;;
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-移动零"><a href="#4-移动零" class="headerlink" title="4. 移动零"></a>4. 移动零</h3><p>面试高频指数：star x 3</p>
+<p><a href="#8-%E7%A7%BB%E5%8A%A8%E9%9B%B6">请戳《初级算法》</a></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="1-求最大公约数"><a href="#1-求最大公约数" class="headerlink" title="1. 求最大公约数"></a>1. 求最大公约数</h3><p>面试高频指数：star x 3</p>
+<blockquote>
+<p>社畜太久已经忘记最大公约数是什么了 qwq，我们来回忆一下</p>
+<ul>
+<li>最大公因数，也称最大公约数、最大公因子，指 <code>两个或多个整数</code> <code>共有约数</code> 中 <code>最大</code> 的一个。</li>
+<li>举个栗子：12、16 的公约数有 1、2、4，因为 12 和 16 都能分别被 1、2、4 整除，而这几个数字里，4 最大，所以 <code>12、16 的最大公约数是 4</code></li>
+</ul>
+</blockquote>
+<pre><code class="javascript">// 方法 1：递归。辗转相除法（欧几里得算法）
+function gcd(a, b) &#123;
+  const t = a % b // 12 % 16 === 4
+  if (t === 0) &#123;
+    return b
+  &#125;
+  return gcd(b, t) // 16, 4
+&#125;
+// round 1: b = 16, t = 4
+// round 2: b = 4, t === 0
+// 惊了这是个数学问题啊感觉。。。然鹅我数学辣鸡的一匹 qwq。。。嘛。。。知道递归就行了吧。。。
+gcd(1, 3)
+
+// 方法 2：迭代。
+function gcd(a, b) &#123;
+  let t
+  while (t = a % b) &#123;
+    a = b
+    b = t
+  &#125;
+  return b
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="1-插入排序"><a href="#1-插入排序" class="headerlink" title="1. 插入排序"></a>1. 插入排序</h3><p>面试高频指数：star x 3</p>
+<pre><code class="javascript">const sort = (a) =&gt; &#123;
+  for (let i = 0; i &lt; a.length; i++) &#123;
+    for (let j = i; j-- &amp;&amp; a[j + 1] &lt; a[j];) &#123;
+      [a[j + 1], a[j]] = [a[j], a[j + 1]]
+    &#125;
+  &#125;
+  return a
+&#125;
+</code></pre>
+<h1 id="二、《初级算法》"><a href="#二、《初级算法》" class="headerlink" title="二、《初级算法》"></a>二、《初级算法》</h1><h2 id="数组-3"><a href="#数组-3" class="headerlink" title="数组"></a>数组</h2><h3 id="1-删除排序数组中的重复项"><a href="#1-删除排序数组中的重复项" class="headerlink" title="1. 删除排序数组中的重复项"></a>1. 删除排序数组中的重复项</h3><ul>
 <li>入参是一个【升序】数组 <code>nums</code></li>
 <li>【原地】【修改】输入数组，删除重复出现的元素，使每个元素只出现 1 次（注意，不要使用额外的空间）；</li>
 <li>【返回】删除后数组的新长度</li>
@@ -569,6 +742,18 @@ var moveZeroes = function(nums) &#123;
  **/
 </code></pre>
 <p>官方思路：双指针。右指针不断向右移动，每次右指针指向非零数，则将左右指针对应的数交换，同时左指针右移。</p>
+<p>另外 JS 通关手册中还有一种排序解法，但它似乎无法保证排序的时间和空间复杂性</p>
+<pre><code class="javascript">const moveZeros = (a) =&gt; a.sort((a, b) =&gt; -(b === 0 ^ 0))
+</code></pre>
+<p>我们顺便复习一下 Array.prototype.sort([compareFunc]) 方法，其中，compareFunc 是可选的，对于 compareFunc(a, b)</p>
+<ul>
+<li>a 是 arr[i+1]，b 是 arr[i]</li>
+<li>compareFunc(a, b) &lt; 0，a 会被排到 b 前</li>
+<li>compareFunc(a, b) = 0, a、b 顺序不变</li>
+<li>compareFunc(a, b) &gt; 0，b 会被排到 a 前</li>
+</ul>
+<p>sort() 会改变原数组，且会返回改变后的数组，直接使用 arr.sort() 会进行类型转换，也就是说 <code>[2, &#39;1&#39;, 3].sort()</code> 的结果会是 <code>[&#39;1&#39;, 2, 3]</code></p>
+<p><a href="#4-%E7%A7%BB%E5%8A%A8%E9%9B%B6">&gt;&gt; 返回 《JS 通关手册》</a></p>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="9-两数之和"><a href="#9-两数之和" class="headerlink" title="9. 两数之和"></a>9. 两数之和</h3><ul>
 <li>给一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code></li>
@@ -729,7 +914,7 @@ isValidSudoku(board)
 rotate([[1,2,3],[4,5,6],[7,8,9]])
 </code></pre>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h1 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h1><h3 id="1-反转字符串"><a href="#1-反转字符串" class="headerlink" title="1. 反转字符串"></a>1. 反转字符串</h3><ul>
+<h2 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h2><h3 id="1-反转字符串"><a href="#1-反转字符串" class="headerlink" title="1. 反转字符串"></a>1. 反转字符串</h3><ul>
 <li>将输入的字符串数组 <code>s</code> 反转过来</li>
 <li><code>原地</code> 修改输入数组，不要给另外的数组分配额外空间</li>
 </ul>
@@ -1024,8 +1209,67 @@ if (match) &#123;
 </li>
 <li><p>内存消耗：45.3MB（击败 5.01% JS 用户</p>
 </li>
-<li><p>*/<br>longestCommonPrefix([“flower”, “flow”, “flourish”]) // “flo”<br>```</p>
+<li><p>*/<br>longestCommonPrefix([“flower”, “flow”, “flourish”]) // “flo”<br>```<br><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 </li>
+</ul>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="1-删除链表中的节点"><a href="#1-删除链表中的节点" class="headerlink" title="1. 删除链表中的节点"></a>1. 删除链表中的节点</h3><ul>
+<li>编写一个函数，用于 <code>删除单链表中某个特定节点</code></li>
+<li>在设计函数时，无法访问链表的 head，只能直接访问要被删除的节点。</li>
+<li>题目数据保证需要删除的节点 <code>不是末尾节点</code></li>
+</ul>
+<p>示例：</p>
+<p>输入：head = [4, 5, 1, 9], node = 5；</p>
+<p>输出：[4, 1, 9];</p>
+<p>解释：指定链表中值为 5 的第二个节点，那么在调用了函数之后，该链表应变为 4 -&gt; 1 -&gt; 9</p>
+<p>以下是官方解法，微微有些奇怪，不知道为什么输入只有一个 node 可以得到输出，而且输入的 node 看起来像一个对象</p>
+<pre><code class="javascript">/**
+ * Definition for singly-linked list
+ * function ListNode(val) &#123;
+ *   this.val = val;
+ *   this.next = null
+ * &#125;
+ * @param &#123;ListNode&#125; node
+ * @return &#123;void&#125; Do not return anything, modify node in-place instead.
+ **/
+var deleteNode = function(node) &#123;
+  node.val = node.next.val;
+  node.next = node.next.next;
+&#125;
+</code></pre>
+<h3 id="2-删除链表中的倒数第-N-个节点"><a href="#2-删除链表中的倒数第-N-个节点" class="headerlink" title="2. 删除链表中的倒数第 N 个节点"></a>2. 删除链表中的倒数第 N 个节点</h3><ul>
+<li>给一个链表，删除倒数第 n 个节点，并返回链表的头节点</li>
+</ul>
+<pre><code class="javascript">function ListNode(val, next) &#123;
+  this.val = (val === undefined ? 0: val)
+  this.next = (next === undefined ? null : next)
+&#125;
+let myHead = [1, 2, 3, 4, 5]
+myHead = myHead.map((i, index) =&gt; &#123;
+  return new ListNode(i, myHead[index+1])
+&#125;)
+
+var removeNthFromEnd = function (head, n) &#123;
+  console.log(head)
+  head.splice(head.length - n, 1)
+  return head
+&#125;
+removeNthFromEnd(myHead,2)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<blockquote>
+<p>这里突然意识到，前端可能需要的更多是前端相关的算法，所以我们先放一放《初级算法》，还是先掌握《前端通关手册：JavaScript》中的算法叭~</p>
+</blockquote>
+<h2 id="数组-4"><a href="#数组-4" class="headerlink" title="数组"></a>数组</h2><h3 id="1-合并两个有序数组"><a href="#1-合并两个有序数组" class="headerlink" title="1. 合并两个有序数组"></a>1. 合并两个有序数组</h3><ul>
+<li>给两个按 <code>非递减顺序</code> 排列的整数数组 <code>muns1</code> 和 <code>nums2</code>，另有两个整数 <code>m</code> 和 <code>n</code>，分别表示 <code>nums1</code> 和 <code>nums2</code> 中的元素数目。</li>
+<li>合并 nums2 到 nums1 中，使合并后数组同样按照 <code>非递减顺序</code><br>```javascript<br>/**</li>
+</ul>
+<ul>
+<li>@param {number[]} nums1</li>
+<li>@param {number} m</li>
+<li>@param {number[]} nums2</li>
+<li>@param {number} n</li>
+<li>@return {void} Do not return anything, modify nums1 in-place instead.</li>
+<li>/<br>var merge = function(nums1, m, nums2, n) {<br>nums1 = nums1.splice(m, nums1.length - m, …nums2)<br>nums1.sort((a, b) =&gt; a - b)<br>}<br>merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)<br>```<br><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></li>
 </ul>
 </div>
       <div class="content" v-if="!release">
