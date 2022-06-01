@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - Web 性能和安全</title>
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 Web 性能和安全</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -154,7 +154,7 @@
   <div class="article" id="article">
     
     <div>
-      <h1>前端芝士补完计划 之 JavaScript - Web 性能和安全 </h1>
+      <h1>前端芝士补完计划 之 Web 性能和安全 </h1>
     </div>
     <div class="info">
         
@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/性能" style=color:#ff7d73>
+                <a href="/tags/性能" style=color:#ffa2c4>
                     性能
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#879cff>
+                <a href="/tags/基础" style=color:#ffa2c4>
                     基础
                 </a>
             </span>
@@ -370,38 +370,12 @@ Access-Control-Allow-Origin: &#123;发起请求所在页面的协议和域名，
 <pre><code>Access to fetch at &#39;https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png&#39; from origin &#39;https://www.bilibili.com&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. If an opaque response serves your needs, set the request&#39;s mode to &#39;no-cors&#39; to fetch the resource with CORS disabled.
 </code></pre>
 <h4 id="jsonp：JSON-with-Padding"><a href="#jsonp：JSON-with-Padding" class="headerlink" title="jsonp：JSON with Padding"></a>jsonp：JSON with Padding</h4><p><code>&lt;script&gt;</code> 标签没有同源限制，不可靠，且无法确定请求是否失败</p>
-<h4 id="Web-Sockets"><a href="#Web-Sockets" class="headerlink" title="Web Sockets"></a>Web Sockets</h4><p>JS 中创建 Web Socket 之后，会有一个 HTTP 请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会从 HTTP 协议交换为 Web Socket 协议，也就是说，使用标准 HTTP 服务器无法实现 Web Sockets，只有支持这种协议的专门服务器才能正常工作。</p>
-<ul>
-<li>未加密连接：ws://</li>
-<li>加密连接：wss://<br>```javascript<br>// 创建一个 WebSocket 实例，并传入 URL<br>var socket = new WebSocket(“ws://<a target="_blank" rel="noopener" href="http://www.example.com/server.php&quot;">www.example.com/server.php&quot;</a>)<br>// 注意，必须给 WebSocket 构造函数传入绝对 URL。同源策略对 Web Sockets 不适用，因此可以通过它打开到任何站点的连接。至于是否会与某个域中的页面通信，则完全取决于服务器。<br>var message = {<br>time: Date.now(),<br>text: “Hello world!”<br>}<br>socket.send(JSON.stringify(message));<br>// Web Sockets 只能通过连接发送纯文本数据，所以对于复杂的数据结构，在通过连接发送之前，必须进行序列化。</li>
-</ul>
-<p>// 当服务器向客户端发来消息时，WebSocket 对象就会触发 message 事件。这个 message 事件与其他传递消息的协议类似，也是把返回的数据保存在 event.data 属性中。<br>socket.onmessage = function(event){<br> var data = ‘’;<br> try {<br>   data = JSON.parse(event.data) // event.data 中返回的数据也是字符串。<br> } catch {<br>   // PASS<br> }<br> //处理数据<br>};<br>socket.close()</p>
-<pre><code>WebSocket 对象的事件
-|事件|触发阶段|
-|--|--|
-|open|成功建立连接时|
-|message|服务器向客户端发来消息时|
-|error|发生错误时触发，连接中断|
-|close|连接关闭时|
-
-&gt; socket.io 是个将 WebSocket 做了封装的第三方库，虽然还没看，但之后用到的话可以了解一下
-
-[&gt;&gt; 返回目录](#目录)
-
-### 9. 惰性载入函数
-惰性载入表示函数执行的分支仅会发生一次，避免没必要的重复执行代码。
-
-适用场景：只有页面首次载入需要判断，之后的任何操作都不会对判断结果产生影响。（比如我们判断当前客户端是否是手机浏览器，那么只要在页面载入的时候判断一次就好，没必要之后每项操作都判断一下）
-
-有两种实现惰性载入的方式：
-#### 方法一：函数被调用时重新处理函数。
-即第一次调用的过程中，该函数会被覆盖为另一个按合适方式执行的函数，这样任何对原函数的调用都不会经过其他分支了。
-
-
-
-比如为 dom 添加方法，js 加载之后，浏览器版本其实是不会变的，所以没必要每次执行 addHandler 添加监听事件的时候都判断一下浏览器是否支持，所以可以这样修改：
-```diff
-function addHandler(element, type, handler) &#123;
+<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><h3 id="9-惰性载入函数"><a href="#9-惰性载入函数" class="headerlink" title="9. 惰性载入函数"></a>9. 惰性载入函数</h3><p>惰性载入表示函数执行的分支仅会发生一次，避免没必要的重复执行代码。</p>
+<p>适用场景：只有页面首次载入需要判断，之后的任何操作都不会对判断结果产生影响。（比如我们判断当前客户端是否是手机浏览器，那么只要在页面载入的时候判断一次就好，没必要之后每项操作都判断一下）</p>
+<p>有两种实现惰性载入的方式：</p>
+<h4 id="方法一：函数被调用时重新处理函数。"><a href="#方法一：函数被调用时重新处理函数。" class="headerlink" title="方法一：函数被调用时重新处理函数。"></a>方法一：函数被调用时重新处理函数。</h4><p>即第一次调用的过程中，该函数会被覆盖为另一个按合适方式执行的函数，这样任何对原函数的调用都不会经过其他分支了。</p>
+<p>比如为 dom 添加方法，js 加载之后，浏览器版本其实是不会变的，所以没必要每次执行 addHandler 添加监听事件的时候都判断一下浏览器是否支持，所以可以这样修改：</p>
+<pre><code class="diff">function addHandler(element, type, handler) &#123;
   if (element.addEventListener) &#123; // 所有主流浏览器，除了 IE 8 及更早 IE版本
 -   element.addEventListener(type, handler, false)
 +   addHandler = function(element, type, handler) &#123;

@@ -177,7 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#ff7d73>
+                <a href="/tags/基础" style=color:#1bccbc>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#1bccbc>
                     JavaScript
                 </a>
             </span>
@@ -245,21 +252,18 @@ btn.addEventListener(&quot;click&quot;, handle.handleClick.bind(handler)) // 这
   let args = Array.prototype.slice.call(arguments)
   let inner = function() &#123;
     args.push(...arguments)
-
-    return inner //  确保可以一直调用下去
+    return inner
   &#125;
-  inner.toString = function () &#123;
-    return args.reduce(function(prev, cur) &#123;
-      return prev + cur
-    &#125;)
-  &#125;
-  console.log(inner.toString())
+  // inner.toString = function () &#123;
+  //   return args.reduce(function(prev, cur) &#123;
+  //     return prev + cur
+  //   &#125;)
+  // &#125;
   return inner
 &#125;
 console.log(add(1, 2)) // 3
 console.log(add(1, 2, 3)) // 6
 console.log(add(1)(2)) // 3
-console.log(add(1)(2)(3)) // 6
 </code></pre>
 <p>柯里化（currying）也叫不完全函数，是一种部分求值的技术，能把一个完整的函数调用分解成多次函数调用，每次只传入部分函数，返回一个接受剩下参数的函数，如此循环往复，直将所有参数传递过去，最后得出结果。</p>
 </div>
