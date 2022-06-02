@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 像素画学习轨迹</title>
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 数据存储</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -154,16 +154,16 @@
   <div class="article" id="article">
     
     <div>
-      <h1>像素画学习轨迹 </h1>
+      <h1>前端芝士补完计划 之 JavaScript - 数据存储 </h1>
     </div>
     <div class="info">
         
         <span class="category">
-            <a href="/categories/游戏">
+            <a href="/categories/前端">
                 <span class="icon">
                     <a-icon type="book" theme="filled" />
                 </span>
-                游戏
+                前端
             </a>
         </span>
         
@@ -177,8 +177,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/画画" style=color:#00bcd4>
-                    画画
+                <a href="/tags/基础" style=color:#ffa2c4>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#879cff>
+                    JavaScript
                 </a>
             </span>
             
@@ -187,9 +194,111 @@
     </div>
     
 
-      <div class="content" v-if="release"><h1 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h1><h4 id="Aseprite-教程合集（像素艺术）bilibili"><a href="#Aseprite-教程合集（像素艺术）bilibili" class="headerlink" title="Aseprite 教程合集（像素艺术）bilibili"></a>Aseprite 教程合集（像素艺术）<code>bilibili</code></h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=2">02角色设计实现教程</a> 手把手教你画一只小跳蛙~（包括如何找素材，如何根据素材设计角色，如何调整角色等一整个设计流程，可以说是非常详细了，必须马住！！！</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=3">03像素艺术动画教程（动画教程的12条原则）</a>、<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=4">04像素艺术动画教程</a> 以及 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=5">05简单的步行循环动画</a> 介绍了一些简单的运动规律，如何让角色动起来。并非完全像 CG 动画那么复杂，像素画会简化很多，只要简单掌握基本规律即可。</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ty4y1L7yC?p=6">06背景制作教程</a> 介绍了如何绘制游戏场景，以及视角的选择，很受用</p>
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-对比-Cookie、LocalStorage、SessionStorage、Session、Token"><a href="#1-对比-Cookie、LocalStorage、SessionStorage、Session、Token" class="headerlink" title="1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token"></a>1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token</h3><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保存位置</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>生命周期</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>存储大小</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>特点</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>保存位置</th>
+<th>生命周期</th>
+<th>存储大小</th>
+<th>数据类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cookie</td>
+<td>客户端</td>
+<td>expires 前有效，若不设置 expires 则会话期间有效</td>
+<td>4KB</td>
+<td>字符串</td>
+<td>请求头 cookie，同域名每次请求都附加；响应头 set-cookie 设置 cookie</td>
+</tr>
+<tr>
+<td>LocalStorage</td>
+<td>客户端</td>
+<td>不清空缓存，则一直有效</td>
+<td>5MB</td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>SessionStorage</td>
+<td>客户端</td>
+<td>不清空缓存，则一直有效</td>
+<td>5MB</td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>Session</td>
+<td>服务端，sessionid 存在 cookie 或跟在 URL 后</td>
+<td>默认 20 分钟，可更改。清空 cookie 或更改 URL 传参，影响 Session</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Token</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>

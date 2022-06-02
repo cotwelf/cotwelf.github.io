@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#00bcd4>
+                <a href="/tags/基础" style=color:#ff7d73>
                     基础
                 </a>
             </span>
@@ -194,7 +194,7 @@
     </div>
     
 
-      <div class="content" v-if="release"><h3 id="1-Event-Loop-的执行顺序"><a href="#1-Event-Loop-的执行顺序" class="headerlink" title="1. Event Loop 的执行顺序"></a>1. Event Loop 的执行顺序</h3><p>&emsp;&emsp;JS 是单线程语言，同一时间只能做一件事，不能有多个线程。所有在主线程上的任务都需要排队依次执行。可以把 JS 想象成在时间线上运行的。</p>
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-Event-Loop-的执行顺序"><a href="#1-Event-Loop-的执行顺序" class="headerlink" title="1. Event Loop 的执行顺序"></a>1. Event Loop 的执行顺序</h3><p>&emsp;&emsp;JS 是单线程语言，同一时间只能做一件事，不能有多个线程。所有在主线程上的任务都需要排队依次执行。可以把 JS 想象成在时间线上运行的。</p>
 <p>Event Loop (事件循环)，是指浏览器或 Node 环境的一种解决 JS 单线程运行时不会阻塞的一种机制，也就是异步的原理，作为单线程语言，JS 本身没有异步这一说法，是其宿主环境提供的。</p>
 <ul>
 <li>解释器判断一行 JS 代码是同步还是异步，同步则进入 <code>主线程</code>，异步进入 event table;</li>
@@ -326,7 +326,173 @@ console.log(&#39;13&#39;)
 <p>宏任务和微任务是相对而言的，根据代码执时循环的先后，将代码执行分层理解，在每一层（一次）的事件循环中，首先整体代码块看作一个宏任务，宏任务中的 Promise（then、catch、finally）、MutationObserver、Process.nextTick就是该宏任务层的微任务；宏任务中的同步代码进入主线程中立即执行的，宏任务中的非微任务异步执行代码将作为下一次循环的宏任务时进入调用栈等待执行的；此时，调用栈中等待执行的队列分为两种，优先级较高先执行的本层循环微任务队列（MicroTask Queue），和优先级低的下层循环执行的宏任务队列（MacroTask Queue）！</p>
 </blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31967985/article/details/110310685">【js进阶】全面理解Event Loop这一篇就够了</a></p>
-<p>定时器对队列的工作方式是，当特定时间过去后将代码插入。注意，给队列添加代码并不意味着对它立刻执行，而只能表示它会尽快执行。设定一个 150ms 后执行的定时器不代表到了 150ms 代码就立刻执行，它表示代码会在 150ms 后被加入到队列中。如果在这个时间点上，队列中没有其他东西，那么这段代码就会被执行，表面上看上去好像代码就在精确指定的时间点上执行了。其他情况下，代码可能明显地等待更长时间才执行。</p>
+<p>&emsp;&emsp;需要注意，定时器对队列的工作方式是，当特定时间过去后 <code>将代码插入</code>。注意，给队列添加代码并不意味着对它立刻执行，而只能表示它会尽快执行。设定一个 150ms 后执行的定时器不代表到了 150ms 代码就立刻执行，它表示代码会 <code>在 150ms 后被加入到队列中</code>。如果在这个时间点上，队列中没有其他东西，那么这段代码就会被执行，表面上看上去好像代码就在精确指定的时间点上执行了。其他情况下，代码可能明显地等待更长时间才执行。</p>
+<p>&emsp;&emsp;这也就是为什么客户端计时和服务端返回的时间总会出现误差的原因之一。另外网络请求也是存在时间差的。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-防抖和节流"><a href="#2-防抖和节流" class="headerlink" title="2. 防抖和节流"></a>2. 防抖和节流</h3><p>&emsp;&emsp;浏览器中某些计算和处理要比其他的昂贵很多。例如，DOM 操作比起非 DOM 交互需要更多的内存和 CPU 时间。连续尝试进行过多的 DOM 相关操作可能会导致浏览器挂起，有时候甚至会崩溃。</p>
+<p>&emsp;&emsp;防抖和节流背后的基本思想是指，某些代码不可以在没有间断的情况连续重复执行。。</p>
+<ul>
+<li><p>防抖：一个函数连续多次触发，我们只 <code>执行最后一次</code>。</p>
+<ul>
+<li>使用场景：一个按钮被点击时，会发送网络请求。为了防止用户无意多次点击，或有人恶意连续发送请求，我们不希望按钮连续被点击时，每次都发送网络请求。而是过一定时间没有再点击时，我们才发送请求—即只执行最后一次。</li>
+</ul>
+</li>
+<li><p>节流：一个函数连续多次触发，我们 <code>按照一定的时间间隔多次执行</code>。</p>
+<ul>
+<li>使用场景：滚动事件中会触发网络请求，但是我们不希望在滚动时一直发送网络请求，而是隔一定时间发起一次。</li>
+</ul>
+</li>
+</ul>
+<h4 id="（1）防抖（throttle）"><a href="#（1）防抖（throttle）" class="headerlink" title="（1）防抖（throttle）"></a>（1）防抖（throttle）</h4><p>用于</p>
+<ul>
+<li>用户输入用户名、手机号时，最后一个字母输入后再验证；</li>
+<li>一个按钮发送请求时，最后一次按才发送；</li>
+<li>窗口resize，当窗口确定大小时才渲染，防止重复渲染；</li>
+<li>输入框内容联想</li>
+</ul>
+<pre><code class="javascript">// fn是要节流的函数，wait是时间间隔，默认500毫秒
+const myDebounce = (fn, wait = 500) =&gt; &#123;
+  // 缓存一个定时器
+  let timer = null
+
+  // 使用闭包（这样节流函数复用时，不会相互影响，且不污染全局变量）
+  return function( ...args ) &#123; // ES6剩余参数收集参数
+    // 如果在500毫秒内再次触发，即timer存在，此时清除掉这个timer
+    // 这里实现了执行只最后一次
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(() =&gt; &#123;
+      fn.apply(this, args) // 利用apply绑定this，同时展开args数组并传参
+    &#125;, wait)
+  &#125;
+&#125;
+
+const divDom = document.createElement(&#39;botton&#39;)
+divDom.setAttribute(&#39;style&#39;, &#39;width: 50px; height: 100px; background: pink; cursor: pointer;&#39;)
+divDom.innerText = &#39;click me&#39;
+function print()&#123;
+  console.log(&#39;done&#39;)
+&#125;
+divDom.addEventListener(&#39;click&#39;, () =&gt; myDebounce(print))
+document.body.appendChild(divDom)
+</code></pre>
+<h4 id="（2）节流（throttle）"><a href="#（2）节流（throttle）" class="headerlink" title="（2）节流（throttle）"></a>（2）节流（throttle）</h4><p>用于</p>
+<ul>
+<li><p>滚动加载；mousemove ,mousehover</p>
+<pre><code class="javascript">// fn 是要节流的函数，wait 是时间间隔，默认 500 毫秒
+const myThrottle = (fn, wait = 500) =&gt; &#123;
+
+// 缓存一个定时器
+let timer
+
+// 使用闭包（这样节流函数复用时，不会相互影响）
+return function( ...args ) &#123;
+  // 如果在500毫秒内再次触发，即timer存在，此时return，等待这个timer执行完毕。
+  // 这里实现了时间间隔
+  if (timer) return
+
+  // 这里表示第一次触发，或是上一个timer执行完毕。就可以重新开启一个定时器。
+  timer = setTimeout(() =&gt; &#123;
+    fn.apply(this, args)
+    timer = null
+  &#125;, wait)
+&#125;
+&#125;
+</code></pre>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/265952983">《简单理解防抖和节流》</a></p>
+</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-观察者模式和发布订阅模式"><a href="#3-观察者模式和发布订阅模式" class="headerlink" title="3. 观察者模式和发布订阅模式"></a>3. 观察者模式和发布订阅模式</h3><p>在 JS 设计模式中，这两个模式有点类似<br><img src="./observer.png"></p>
+<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><pre><code class="javascript">// 定义一个目标对象
+class Subject &#123;
+  constructor() &#123;
+    this.Observers = [];
+  &#125;
+  add(observer) &#123;
+    //添加
+    this.Observers.push(observer);
+  &#125;
+  remove(observer) &#123;
+    //移除
+    this.Observers.filter((item) =&gt; item === observer);
+  &#125;
+  notify() &#123;
+    //通知所有观察者
+    this.Observers.forEach((item) =&gt; &#123;
+      item.update();
+    &#125;);
+  &#125;
+&#125;
+//定义观察者对象
+class Observer &#123;
+  constructor(name) &#123;
+    this.name = name;
+  &#125;
+  update() &#123;
+    console.log(`my name is:$&#123;this.name&#125;`);
+  &#125;
+&#125;
+
+let sub = new Subject();
+let obs1 = new Observer(&quot;observer11&quot;);
+let obs2 = new Observer(&quot;observer22&quot;);
+sub.add(obs1);
+sub.add(obs2);
+sub.notify();
+</code></pre>
+<h4 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h4><pre><code class="javascript">function PubSub()&#123;
+  this.list = &#123;&#125;;   // 主题列表
+  // 发布订阅最大的区别就是这里变成了对象，对象里存放了可订阅的类型，相当于前文所讲的“调度器”
+&#125;
+PubSub.prototype = &#123;
+  // 添加订阅
+  subscribe: function(key, fn)&#123;
+    console.log(this)
+    if(!this.list[key]) &#123;
+      this.list[key] = [];
+    &#125;
+    this.list[key].push(fn);
+  &#125;,
+  // 取消订阅
+  unSubscribe: function(key)&#123;
+      delete this.list[key];
+  &#125;,
+  // 发布通知
+  publish: function(key, para)&#123;
+    if(!this.list[key])&#123;
+      alert(&#39;没有该主题---&#39;);
+      return;
+    &#125;
+    let arr = this.list[key];
+    for(var j=0; j&lt;arr.length; j++)&#123;
+      arr[j](para);
+    &#125;
+  &#125;
+&#125;
+PubSub.prototype.constructor = PubSub
+
+var Pub = new PubSub();
+// 为不同主题（如主题sing或者dance）添加订阅者
+Pub.subscribe(&#39;sing&#39;, function(songName)&#123;
+  console.log(&#39;sing 订阅者01 歌名为 &#39;, songName)
+&#125;)
+Pub.subscribe(&#39;sing&#39;, function(songName)&#123;
+  console.log(&#39;sing 订阅者No2 歌名为 &#39;, songName)
+&#125;)
+Pub.subscribe(&#39;dance&#39;, function(para)&#123;
+  console.log(&#39;dance 订阅者 歌名为 &#39;, para)
+&#125;)
+// 根据不同主题（如主题sing或dance），发布不同消息
+Pub.publish(&#39;sing&#39;, &#39;Heal the word&#39;);
+Pub.publish(&#39;dance&#39;, &#39;华尔兹舞曲&#39;);
+// 最后输出结果：
+// sing 订阅者01 歌名为  Heal the word
+// sing 订阅者No2 歌名为  Heal the word
+// dance 订阅者 歌名为  华尔兹舞曲
+</code></pre>
+<p>可以看出来，dom 的事件监听也是发布订阅模式</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/357911263">《JS设计模式之观察者模式》</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/212256424">《JavaScript设计模式——观察者模式 vs 发布订阅模式》</a></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
