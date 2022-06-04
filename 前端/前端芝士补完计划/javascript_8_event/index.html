@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ff7d73>
+                <a href="/tags/基础" style=color:#ffa2c4>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#879cff>
+                <a href="/tags/JavaScript" style=color:#ff7d73>
                     JavaScript
                 </a>
             </span>
@@ -315,6 +315,58 @@ function addHandler(element, type, handler) &#123;
   &#125;
 &#125;
 </code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="6-visibility"><a href="#6-visibility" class="headerlink" title="6. visibility"></a>6. visibility</h3><p>判断页面是否最小化了，或者标签是否隐藏。比如轮询，是可以在页面隐藏期间停止的，这样可以一定程度上减小服务器的压力。（一下代码需要 babel 支持，否则需要针对事件监听写兼容）</p>
+<pre><code class="javascript">// 不同环境兼容
+/**
+ * 无前缀：新版本浏览器
+ * @ms IE older
+ * @webkit Chrome and Safari older
+ * @moz Firefox older
+ *
+ **/
+const getBrowserPrefix = () =&gt; &#123;
+  if (typeof document.hidden !== &#39;undefined&#39;) &#123;
+    return &#39;&#39;
+  &#125; else &#123;
+    const browserPrefixes = [&#39;moz&#39;, &#39;ms&#39;, &#39;o&#39;, &#39;webkit&#39;]
+    for (let i = 0; i &lt; browserPrefixes.length; i++) &#123;
+      if (typeof document[`$&#123;prefix&#125;Hidden`] !== undefined) &#123;
+        return prefix
+      &#125;
+    &#125;
+  &#125;
+&#125;
+
+// Get Browser Specific Hidden Property
+export function getHiddenProperty() &#123;
+  const prefix = getBrowserPrefix()
+  if (prefix) &#123;
+    return `$&#123;prefix&#125;Hidden`
+  &#125;
+  return &#39;hidden&#39;
+&#125;
+
+// Get Browser Specific Event
+export function getVisibilityEvent() &#123;
+  const prefix = getBrowserPrefix()
+  if (prefix) &#123;
+    return `$&#123;prefix&#125;visibilitychange`
+  &#125;
+  return &#39;visibilitychange&#39;
+&#125;
+
+const hidden = getHiddenProperty()
+const visibilitychange = getVisibilityEvent()
+dom.addEventListener(visibilitychange, function()&#123;
+  if (document[hidden]) &#123;
+    // 页面被隐藏了
+  &#125;
+&#125;)
+
+// 当 visibleStateState 属性的值转换为 hidden 时，Safari不会按预期触发 visibilitychange； 因此，在这种情况下，您还需要包含代码以侦听 pagehide 事件。
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>

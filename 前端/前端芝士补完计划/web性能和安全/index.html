@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/性能" style=color:#879cff>
+                <a href="/tags/性能" style=color:#1bccbc>
                     性能
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ffa2c4>
+                <a href="/tags/基础" style=color:#1bccbc>
                     基础
                 </a>
             </span>
@@ -370,7 +370,8 @@ Access-Control-Allow-Origin: &#123;发起请求所在页面的协议和域名，
 <pre><code>Access to fetch at &#39;https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png&#39; from origin &#39;https://www.bilibili.com&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. If an opaque response serves your needs, set the request&#39;s mode to &#39;no-cors&#39; to fetch the resource with CORS disabled.
 </code></pre>
 <h4 id="jsonp：JSON-with-Padding"><a href="#jsonp：JSON-with-Padding" class="headerlink" title="jsonp：JSON with Padding"></a>jsonp：JSON with Padding</h4><p><code>&lt;script&gt;</code> 标签没有同源限制，不可靠，且无法确定请求是否失败</p>
-<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><h3 id="9-惰性载入函数"><a href="#9-惰性载入函数" class="headerlink" title="9. 惰性载入函数"></a>9. 惰性载入函数</h3><p>惰性载入表示函数执行的分支仅会发生一次，避免没必要的重复执行代码。</p>
+<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="9-惰性载入函数"><a href="#9-惰性载入函数" class="headerlink" title="9. 惰性载入函数"></a>9. 惰性载入函数</h3><p>惰性载入表示函数执行的分支仅会发生一次，避免没必要的重复执行代码。</p>
 <p>适用场景：只有页面首次载入需要判断，之后的任何操作都不会对判断结果产生影响。（比如我们判断当前客户端是否是手机浏览器，那么只要在页面载入的时候判断一次就好，没必要之后每项操作都判断一下）</p>
 <p>有两种实现惰性载入的方式：</p>
 <h4 id="方法一：函数被调用时重新处理函数。"><a href="#方法一：函数被调用时重新处理函数。" class="headerlink" title="方法一：函数被调用时重新处理函数。"></a>方法一：函数被调用时重新处理函数。</h4><p>即第一次调用的过程中，该函数会被覆盖为另一个按合适方式执行的函数，这样任何对原函数的调用都不会经过其他分支了。</p>
@@ -420,6 +421,7 @@ Access-Control-Allow-Origin: &#123;发起请求所在页面的协议和域名，
 - &#125;
 + &#125;)()
 </code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>

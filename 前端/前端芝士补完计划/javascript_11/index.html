@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ffa2c4>
+                <a href="/tags/基础" style=color:#00bcd4>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#879cff>
+                <a href="/tags/JavaScript" style=color:#1bccbc>
                     JavaScript
                 </a>
             </span>
@@ -195,58 +195,6 @@
     
 
       <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-对比-Cookie、LocalStorage、SessionStorage、Session、Token"><a href="#1-对比-Cookie、LocalStorage、SessionStorage、Session、Token" class="headerlink" title="1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token"></a>1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token</h3><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>保存位置</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>生命周期</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>存储大小</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>数据类型</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>特点</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<table>
 <thead>
 <tr>
 <th></th>
@@ -269,7 +217,7 @@
 <td>LocalStorage</td>
 <td>客户端</td>
 <td>不清空缓存，则一直有效</td>
-<td>5MB</td>
+<td>2.5MB / 5MB</td>
 <td>字符串</td>
 <td></td>
 </tr>
@@ -277,7 +225,7 @@
 <td>SessionStorage</td>
 <td>客户端</td>
 <td>不清空缓存，则一直有效</td>
-<td>5MB</td>
+<td>2.5MB / 5MB</td>
 <td>字符串</td>
 <td></td>
 </tr>
@@ -298,7 +246,66 @@
 <td></td>
 </tr>
 </tbody></table>
+<h4 id="（1）Cookie"><a href="#（1）Cookie" class="headerlink" title="（1）Cookie"></a>（1）Cookie</h4><p>document.cookie 返回当前页面可用的（根据 cookie 的域、路径、失效时间和安全设置）所有 cookie 的字符串，一系列由分号隔开的名值对。所有名字和值都是经过 URL 编码的，所以必须使用 decodeURIComponent() 来解码。</p>
+<pre><code class="javascript">// get
+decodeURIComponent(document.cookie)
+// set
+document.cookie =  `$&#123;encodeURIComponent(&quot;name&quot;)&#125;=$&#123;encodeURIComponent(&quot;Nicholas&quot;)&#125;; domain=cotwelf.com;`;
+</code></pre>
+<p>客户端每次向服务器发起请求的时候，都会发送这个 cookie，浏览器关闭的时候，它就会被删除。一定不要在 cookie 中存储重要和敏感的数据。cookie 数据并非存储在一个安全环境中，其中包含的任何数据都可以被他人访问。</p>
+<p>由于所有的 cookie 都会由浏览器作为请求头发送，所以在 cookie 中存储大量信息会影响到特定域的请求性能。cookie 信息越大，完成对服务器请求的时间也就越长。尽管浏览器对 cookie 进行了大小限制，不过最好还是尽可能在 cookie 中少存储信息，以避免影响性能。</p>
+<p>cookie 的性质和它的局限使得其并不能作为存储大量信息的理想手段，所以 H5 之后又出现了其他方法。</p>
+<h4 id="（2）Web-Storage"><a href="#（2）Web-Storage" class="headerlink" title="（2）Web Storage"></a>（2）Web Storage</h4><p>H5 的一部分，只能存储字符串。存在的初衷是提供一种</p>
+<ul>
+<li>cookie 之外存储会话数据的途径；</li>
+<li>存储大量可以跨会话存在的数据机制。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>storageObj.clear()</td>
+<td>删除所有值</td>
+<td>Firefox 中无</td>
+</tr>
+<tr>
+<td>storageObj.getItem(name)</td>
+<td>查</td>
+<td>或 storageObj.name</td>
+</tr>
+<tr>
+<td>storageObj.removeItem(name)</td>
+<td>删</td>
+<td></td>
+</tr>
+<tr>
+<td>storageObj.setItem(name, value)</td>
+<td>增、改</td>
+<td>或 storageObj[name] = value</td>
+</tr>
+</tbody></table>
+<p>还可以使用 length 属性来判断有多少名值对儿存放在 Storage 对象中。但无法判断对象中所有数据的大小</p>
+<blockquote>
+<p>注意 setItem 和 getItem 的时候有可能是 null，那么 JSON.parse 或 JSON.stringify 的时候最好用 try catch，以免报错</p>
+</blockquote>
+<h5 id="sessionStorage-对象"><a href="#sessionStorage-对象" class="headerlink" title="sessionStorage 对象"></a><strong>sessionStorage 对象</strong></h5><p>sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。会话结束的时候，sessionStorage中的键值对会被清空。</p>
+<p>存储在 sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和 WebKit 都支持，IE 则不行）。</p>
+<h5 id="localStorage-对象"><a href="#localStorage-对象" class="headerlink" title="localStorage 对象"></a><strong>localStorage 对象</strong></h5><p>数据保留到通过 JS 删除或者是用户清除浏览器缓存。要访问同一个 localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。</p>
+<h5 id="sessionStorage-和-localStorage-的区别"><a href="#sessionStorage-和-localStorage-的区别" class="headerlink" title="sessionStorage 和 localStorage 的区别"></a>sessionStorage 和 localStorage 的区别</h5><p>假设一个场景，想要用户填写表单，刷新页面后自动填入未提交内容，希望：</p>
+<ul>
+<li>只要在同一 tab 内操作，每次进入都会填入上次未提交的内容，但关闭浏览器或使用其他 tab，内容清空——sessionStorage</li>
+<li>不论是否新开 tab，都填入上次未提交内容——localStorage</li>
+</ul>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-indexedDB"><a href="#2-indexedDB" class="headerlink" title="2. indexedDB"></a>2. indexedDB</h3><p>Indexed Database API，是在浏览器中保存结构化数据的一种数据库。IndexedDB 最大的特色是使用对象保存数据，而不是使用表来保存数据。一个 IndexedDB 数据库，就是一组位于相同命名空间下的对象的集合。</p>
+<p>IndexedDB 设计的操作完全是异步进行的。因此，大多数操作会以请求方式进行，但这些操作会在后期执行，然后如果成功则返回结果，如果失败则返回错误。</p>
+<pre><code class="javascript">var indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB || window.webkitIndexedDB;
+</code></pre>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
