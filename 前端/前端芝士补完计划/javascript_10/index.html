@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ff7d73>
+                <a href="/tags/基础" style=color:#879cff>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#879cff>
+                <a href="/tags/JavaScript" style=color:#ff7d73>
                     JavaScript
                 </a>
             </span>
@@ -194,7 +194,8 @@
     </div>
     
 
-      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-Event-Loop-的执行顺序"><a href="#1-Event-Loop-的执行顺序" class="headerlink" title="1. Event Loop 的执行顺序"></a>1. Event Loop 的执行顺序</h3><p>&emsp;&emsp;JS 是单线程语言，同一时间只能做一件事，不能有多个线程。所有在主线程上的任务都需要排队依次执行。可以把 JS 想象成在时间线上运行的。</p>
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#1-Event-Loop-%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">1. Event Loop 的执行顺序</a></p>
+<h3 id="1-Event-Loop-的执行顺序"><a href="#1-Event-Loop-的执行顺序" class="headerlink" title="1. Event Loop 的执行顺序"></a>1. Event Loop 的执行顺序</h3><p>&emsp;&emsp;JS 是单线程语言，同一时间只能做一件事，不能有多个线程。所有在主线程上的任务都需要排队依次执行。可以把 JS 想象成在时间线上运行的。</p>
 <p>Event Loop (事件循环)，是指浏览器或 Node 环境的一种解决 JS 单线程运行时不会阻塞的一种机制，也就是异步的原理，作为单线程语言，JS 本身没有异步这一说法，是其宿主环境提供的。</p>
 <ul>
 <li>解释器判断一行 JS 代码是同步还是异步，同步则进入 <code>主线程</code>;</li>
@@ -497,7 +498,7 @@ Pub.publish(&#39;dance&#39;, &#39;华尔兹舞曲&#39;);
 <p>可以看出来，dom 的事件监听也是发布订阅模式</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/357911263">《JS设计模式之观察者模式》</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/212256424">《JavaScript设计模式——观察者模式 vs 发布订阅模式》</a></p>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-</div>
+<h3 id="4-Promise-和-async-await"><a href="#4-Promise-和-async-await" class="headerlink" title="4. Promise 和 async/await"></a>4. Promise 和 async/await</h3></div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
         <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
@@ -521,10 +522,11 @@ Pub.publish(&#39;dance&#39;, &#39;华尔兹舞曲&#39;);
             @Cotwelf
         </div>
         <div></div>
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
         
     </div>
+    <br />
   </footer>
 
 

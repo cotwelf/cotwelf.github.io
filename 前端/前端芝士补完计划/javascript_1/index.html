@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#00bcd4>
+                <a href="/tags/基础" style=color:#879cff>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#00bcd4>
+                <a href="/tags/JavaScript" style=color:#879cff>
                     JavaScript
                 </a>
             </span>
@@ -194,13 +194,68 @@
     </div>
     
 
-      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#1-%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">1. 请简单描述一下你对 JavaScript 的理解。</a><br><a href="#5-JavaScript-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF">5. JavaScript 有哪些优势和劣势</a><br><a href="#6-%E4%BB%A5%E4%B8%8B%E5%AF%B9-JS-%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%AD%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">6. 以下对 JS 的理解中错误的是</a><br><a href="#7-script-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">*7. script 标签的常用属性</a><br><a href="#8-%E4%BB%A5%E4%B8%8B%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA%E5%8F%98%E9%87%8F%E5%90%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF">8. 以下可以作为变量名使用的是</a><br><a href="#9-%E5%9C%A8%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%AD%E4%BC%9A%E6%8A%9B%E5%87%BA%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">9. 在严格模式中会抛出错误的是</a><br><a href="#10-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-x-%E5%92%8C-y-%E5%88%86%E5%88%AB%E4%B8%BA">10. 执行下面的代码，在控制台输出的 x 和 y 分别为</a><br><a href="#11-%E8%B0%83%E7%94%A8%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9C%80%E7%BB%88%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA">11. 调用下面代码中的函数，最终返回的结果为</a><br><a href="#12-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-y-%E4%B8%BA">12. 执行下面的代码后，在控制台输出的 y 为</a><br><a href="#13-2-true-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-6-quot-9-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">13. <code>2 + true</code> 等于（），<code>&quot;6&quot; + 9</code> 等于（）</a><br><a href="#14-4-3-2-quot-1-quot-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-1-quot-2-4-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">14. <code>4 + 3 + 2 + &quot;1&quot;</code> 等于（），<code>&quot;1&quot; + 2 + 4</code> 等于（）</a></p>
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#1-%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">1. 请简单描述一下你对 JavaScript 的理解。</a><br><a href="#5-JavaScript-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF">5. JavaScript 有哪些优势和劣势</a><br><a href="#6-%E4%BB%A5%E4%B8%8B%E5%AF%B9-JS-%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%AD%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">*6. 以下对 JS 的理解中错误的是</a><br><a href="#7-script-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">*7. script 标签的常用属性</a><br><a href="#8-%E4%BB%A5%E4%B8%8B%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA%E5%8F%98%E9%87%8F%E5%90%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF">*8. 以下可以作为变量名使用的是</a>A.9name; B.$strick9; C.p wstrick; D.delete<br><a href="#9-%E5%9C%A8%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%AD%E4%BC%9A%E6%8A%9B%E5%87%BA%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">*9. 在严格模式中会抛出错误的是</a>A. function sum(x,x) {}; B. delete window.location; C. var x = 010; D. var eval=”strick”;<br><a href="#10-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-x-%E5%92%8C-y-%E5%88%86%E5%88%AB%E4%B8%BA">10. 执行下面的代码，在控制台输出的 x 和 y 分别为</a></p>
+<pre><code class="JavaScript">var x = 0, y = 0
+x
+++
+y
+</code></pre>
+<p><a href="#11-%E8%B0%83%E7%94%A8%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9C%80%E7%BB%88%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA">*11. 调用下面代码中的函数，最终返回的结果为</a></p>
+<pre><code class="JavaScript">function isArray() &#123;
+  return
+  true;
+&#125;
+isArray();
+</code></pre>
+<p><a href="#12-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-y-%E4%B8%BA">12. 执行下面的代码后，在控制台输出的 y 为</a></p>
+<pre><code class="JavaScript">var x = &#39;1&#39;, y;
+switch (x) &#123;
+  case 1:
+    y = 1;
+    break;
+  case 2:
+    y = 2;
+    break;
+  default:
+    y = 0;
+&#125;
+console.log(y)
+</code></pre>
+<p><a href="#13-2-true-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-6-quot-9-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">13. <code>2 + true</code> 等于（），<code>&quot;6&quot; + 9</code> 等于（）</a><br><a href="#14-4-3-2-quot-1-quot-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-1-quot-2-4-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">14. <code>4 + 3 + 2 + &quot;1&quot;</code> 等于（），<code>&quot;1&quot; + 2 + 4</code> 等于（）</a><br><a href="#15-%E8%AF%B7%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%81%8D%E5%8E%86%E8%87%B3-100-%E7%9A%84%E5%BE%AA%E7%8E%AF%EF%BC%8C%E5%9C%A8%E8%83%BD%E8%A2%AB-3-%E6%95%B4%E9%99%A4%E6%97%B6%E8%BE%93%E5%87%BA-%E2%80%9Cthree%E2%80%9D%EF%BC%8C%E5%9C%A8%E8%83%BD%E8%A2%AB-5-%E6%95%B4%E9%99%A4%E6%97%B6%E8%BE%93%E5%87%BA-%E2%80%9Cfive%E2%80%9D%EF%BC%8C%E5%9C%A8%E8%83%BD%E5%90%8C%E6%97%B6%E8%A2%AB-3-%E5%92%8C-5-%E6%95%B4%E9%99%A4%E6%97%B6%E8%BE%93%E5%87%BA-%E2%80%9Call%E2%80%9D%E3%80%82">15. 请实现一个遍历至 100 的循环，在能被 3 整除时输出 “three”，在能被 5 整除时输出 “five”，在能同时被 3 和 5 整除时输出 “all”。</a><br><a href="#16-%E7%9B%B8%E7%AD%89%EF%BC%88-%EF%BC%89%E5%92%8C%E5%85%A8%E7%AD%89%EF%BC%88-%EF%BC%89%E8%BF%90%E7%AE%97%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F">16. 相等（==）和全等（===）运算符有哪些区别？</a><br><a href="#17-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%8F%98%E9%87%8F-y-%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA">17. 执行下面的代码 <code>var z = 1, y = z = typeof y;</code> 后，变量 y 的结果为</a><br><a href="#18-1-5-1-2-%E7%AD%89%E4%BA%8E">18. (1, 5-1) * 2 等于</a><br><a href="#19-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-y-%E4%B8%BA%EF%BC%88%EF%BC%89">19. 执行下面的代码后，在控制台输出的 y 为（）</a></p>
+<pre><code class="javascript">var y,
+  x = 1;
+y = x +++ x;
+</code></pre>
+<p><a href="#20-JavaScript-%E6%9C%89%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC%EF%BC%9F%E4%BD%A0%E8%83%BD%E7%94%BB%E4%B8%80%E4%B8%8B%E4%BB%96%E4%BB%AC%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE%E5%90%97%EF%BC%9F">20. JavaScript 有几种类型的值？你能画一下他们的内存图吗？</a><br><a href="#21-%E5%9C%A8-JS-%E4%B8%AD%EF%BC%8C%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E5%AD%97%E9%9D%A2%E9%87%8F%E5%88%86%E5%88%AB%E6%8C%87%E4%BB%80%E4%B9%88%EF%BC%9F">21. 在 JS 中，常量、变量、字面量分别指什么？</a><br><a href="#22-%E5%88%86%E5%8F%B7%E4%BC%9A%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%EF%BC%9F%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%BC%8A%E7%AB%AF%EF%BC%9F">22. 分号会在什么时候自动补全？自动补全有什么弊端？</a><br><a href="#23-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%EF%BC%9F%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%E9%99%90%E5%88%B6%EF%BC%9F">23. 什么是严格模式？严格模式有哪些限制？</a><br><a href="#24-undefined-%E5%92%8C-null-%E7%9A%84%E5%BC%82%E5%90%8C">24. undefined 和 null 的异同</a><br><a href="#25-0-1-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8C0-amp-amp-1-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89">25. 0 || 1 得到的结果是（），0 &amp;&amp; 1 得到的结果是（）</a><br><a href="#26-%E4%B8%A4%E4%B8%AA%E8%BF%90%E7%AE%97%E7%AC%A6-typeof-%E4%B8%8E-instanceof-%E7%9A%84%E5%8C%BA%E5%88%AB">26. 两个运算符 typeof 与 instanceof 的区别</a><br><a href="#27-1-amp-amp-2-3-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8C0-2-amp-amp-1-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF">27. 1 &amp;&amp; 2 || 3 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是</a><br><a href="">28. 像下面这样判断 obj 是不是一个对象有什么潜在问题？<code>typeof obj === &#39;object&#39;</code> 如何改进？</a><br><a href="#29-%E4%BB%A5%E4%B8%8B%E6%98%AF-JS-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%9C%89">29. 以下是 JS 数据类型的有</a> A. int; B. string; C. boolean; D.object;<br><a href="#30-%E5%9C%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%AD%EF%BC%8C%E6%89%A7%E8%A1%8C-typeof-%E8%BF%90%E7%AE%97%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF">30. 在下面的代码中，执行 typeof 运算得到的结果是</a></p>
+<pre><code class="javascript">var func = (function() &#123;
+  return &quot;1&quot;;
+&#125;, function() &#123;
+  return 1;
+&#125;)()
+typeof func;
+</code></pre>
+<p><a href="#31-%E8%AF%B4%E5%87%A0%E6%9D%A1%E5%86%99-JavaScript-%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E8%8C%83">*31. 说几条写 JavaScript 的基本规范</a><br><a href="#32-%E5%81%87%E8%AE%BE%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F-a-%E5%92%8C-b%EF%BC%8C%E5%AE%83%E4%BB%AC%E7%9A%84%E5%80%BC%E9%83%BD%E6%98%AF%E6%95%B0%E5%AD%97%EF%BC%8C%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E5%80%9F%E7%94%A8%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%8A%8A%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B0%83%EF%BC%9F">32. 假设有两个变量 a 和 b，它们的值都是数字，如何在不借用第三个变量的情况下，把两个变量对调？</a><br><a href="#33-%E4%BB%A5%E4%B8%8B%E5%8D%95%E8%AF%8D%E4%B8%8D%E8%83%BD%E4%BD%9C%E4%B8%BA-JS-%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%98%AF">33. 以下单词不能作为 JS 关键字的是</a>A. delete; B. void; C. private; D.break<br><a href="#34-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BE%9D%E6%AC%A1%E8%BE%93%E5%87%BA">34. 执行下面的代码，在控制台依次输出</a></p>
+<pre><code class="javascript">function digit(i) &#123;
+  if(i == 2) &#123;
+    i++;
+  &#125; else if (i == 3) &#123;
+    i +=2;
+  &#125; else if (i == 4) &#123;
+    ++i;
+  &#125;
+  return i;
+&#125;
+for (var i = 1; i &lt; 5; i++) &#123;
+  console.log(digit(i))
+&#125;
+</code></pre>
+<p><a href="#35-%E5%9C%A8%E6%89%A7%E8%A1%8C%E6%97%B6%E4%BC%9A%E5%8F%91%E7%94%9F%E5%BC%82%E5%B8%B8%E7%9A%84%E8%AF%AD%E5%8F%A5%E6%98%AF">35. 在执行时会发生异常的语句是</a><br><a href="#36-void-0-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89%EF%BC%8CNaN-4-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89">36. void(0) 得到的结果为（），NaN * 4 得到的结果是（）</a></p>
 <h3 id="1-请简单描述一下你对-JavaScript-的理解"><a href="#1-请简单描述一下你对-JavaScript-的理解" class="headerlink" title="1. 请简单描述一下你对 JavaScript 的理解"></a>1. 请简单描述一下你对 JavaScript 的理解</h3><p>JavaScript 是一种<code>解释执行</code>的高级编程语言，同时也是一门<code>动态、弱类型的直译脚本语言</code>，适合面向对象（基于原型）和函数式的编程风格。JavaScript 主要运行在一个内置 JavaScript 解释器的客户端中（例如 Web 浏览器），能够处理复杂的计算，操控文档的内容、样式和行为。能在客户端完成的操作（例如输入验证、日期计算等）尽量都由 JavaScript 完成，这样就能减少与服务器的通信，降低服务器的负载。完整的 JavaScript 由 3 部分组成：<code>ECMAScript（提供核心语言功能）</code>、<code>DOM（文档对象模型）</code> 和 <code>BOM（浏览器对象模型）</code>。</p>
 <blockquote>
 <p><code>解释型</code>语言：相对于编译型语言存在的，特点：源代码不是直接翻译成机器语言；运行：先翻译成中间代码，由<code>解释器</code>运行。比如 Python / JavaScript / Perl /Shell等都是解释型语言。 解释型语言：程序<code>不需要编译</code>，程序在<code>运行时</code>才翻译成机器语言，<code>每执行一次都要翻译一次</code>。 因此效率比较低。</p>
 </blockquote>
 <blockquote>
-<p><code>弱类型</code>语言：<code>类型检查更不严格</code>，比如 <code>1 == &#39;1&#39;</code></p>
+<p><code>弱类型</code>语言：对于变量的类型没有严格的规定，比如 let a = 1 定义一个变量 a，类型显然是 number，之后可以重新赋值为 boolean 或 string 等，不像 C# 等，需要在声明时就确定变量的类型</p>
 </blockquote>
 <blockquote>
 <p>静态类型：编译时报错；<code>动态</code>类型：<code>运行时</code>报错。</p>
@@ -306,7 +361,7 @@ console.log(x, y)
 ++y
 </code></pre>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h3 id="11-调用下面代码中的函数，最终返回的结果为"><a href="#11-调用下面代码中的函数，最终返回的结果为" class="headerlink" title="11. 调用下面代码中的函数，最终返回的结果为"></a>11. 调用下面代码中的函数，最终返回的结果为</h3><pre><code class="JavaScript">function isArray() &#123;
+<h3 id="11-调用下面代码中的函数，最终返回的结果为"><a href="#11-调用下面代码中的函数，最终返回的结果为" class="headerlink" title="*11. 调用下面代码中的函数，最终返回的结果为"></a>*11. 调用下面代码中的函数，最终返回的结果为</h3><pre><code class="JavaScript">function isArray() &#123;
   return
   true;
 &#125;
@@ -394,7 +449,6 @@ y = z + x
 <th>列举</th>
 <th>特点</th>
 <th>存储位置</th>
-<th>图示</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -402,16 +456,15 @@ y = z + x
 <td>Undefined、Null、Boolean、Number、String<br />ES6: Symbol<br />ES10: BigInt</td>
 <td>占据空间小、大小固定</td>
 <td>栈</td>
-<td><img src="./images/basic.png" alt="原始数据类型"></td>
 </tr>
 <tr>
 <td>引用数据类型</td>
 <td>Object（子类有 Array、Date、Function 等）</td>
 <td>占据空间大、大小不固定，如果放在栈中会影响程序运行性能，可以在栈中存放指针，解释器会在栈中检索地址，根据地址获从堆中获得实体</td>
 <td>堆</td>
-<td><img src="./images/object.png" alt="引用数据类型"></td>
 </tr>
 </tbody></table>
+<p><img src="./stack&heap.png"></p>
 <p>null 值表示一个空对象指针，而这也正是使用 typeof 操作符检测 null 值时会返回 <code>&quot;object&quot;</code> 的原因，如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为 null。这也是为什么 React 中 state 里如果有对象，初始值是 null 而非 {}。</p>
 <p>undefined 值是派生自 null 值的，故 <code>undefined == null</code>，但 <code>undefined !== null</code></p>
 <p>任何涉及 NaN 的操作（例如 NaN/10）都会返回 NaN，这个特点在多步计算中有可能导致问题。其次，NaN 与任何值都不相等，包括 NaN 本身。针对 NaN 的这两个特点，ECMAScript 定义了 isNaN()函数。</p>
@@ -469,7 +522,31 @@ y = z + x
 <li>都是假值（可以理解 <code>!!undefined === false</code>; <code>!!null === false</code>）</li>
 <li>都只有一个值</li>
 </ul>
-<p>不同：<br>|不同点↓|undefined|null|<br>|–|–|–|<br>|类型|<code>typeof undefined === &#39;undefined&#39;</code>|<code>typeof null === &#39;object&#39;</code>|<br>|含义|声明但未赋值（未定义的值）|空对象|<br>|数字转换|<code>isNaN(Number(undefined))</code>|<code>Number(null) === 0</code>|</p>
+<p>不同：</p>
+<table>
+<thead>
+<tr>
+<th>不同点↓</th>
+<th>undefined</th>
+<th>null</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类型</td>
+<td><code>typeof undefined === &#39;undefined&#39;</code></td>
+<td><code>typeof null === &#39;object&#39;</code></td>
+</tr>
+<tr>
+<td>含义</td>
+<td>声明但未赋值（未定义的值）</td>
+<td>空对象</td>
+</tr>
+<tr>
+<td>数字转换</td>
+<td><code>isNaN(Number(undefined))</code></td>
+<td><code>Number(null) === 0</code></td>
+</tr>
+</tbody></table>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="25-0-1-得到的结果是（），0-amp-amp-1-得到的结果是（）"><a href="#25-0-1-得到的结果是（），0-amp-amp-1-得到的结果是（）" class="headerlink" title="25. 0 || 1 得到的结果是（），0 &amp;&amp; 1 得到的结果是（）"></a>25. 0 || 1 得到的结果是（），0 &amp;&amp; 1 得到的结果是（）</h3><p>1，0。</p>
 <p>逻辑或（||）会返回从左到右的第一个真值；</p>
@@ -501,9 +578,9 @@ y = z + x
 </tr>
 </tbody></table>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h3 id="27-1-amp-amp-2-0-得到的结果是（），0-2-amp-amp-1-得到的结果是"><a href="#27-1-amp-amp-2-0-得到的结果是（），0-2-amp-amp-1-得到的结果是" class="headerlink" title="27. 1 &amp;&amp; 2 || 0 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是"></a>27. 1 &amp;&amp; 2 || 0 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是</h3><p>2，1。</p>
+<h3 id="27-1-amp-amp-2-3-得到的结果是（），0-2-amp-amp-1-得到的结果是"><a href="#27-1-amp-amp-2-3-得到的结果是（），0-2-amp-amp-1-得到的结果是" class="headerlink" title="27. 1 &amp;&amp; 2 || 3 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是"></a>27. 1 &amp;&amp; 2 || 3 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是</h3><p>2，1。</p>
 <p>逻辑与优先级比逻辑或高，因此表达式相当于</p>
-<pre><code class="JavaScript">(1 &amp;&amp; 2) || 0
+<pre><code class="JavaScript">(1 &amp;&amp; 2) || 3
 0 || (2 &amp;&amp; 1)
 </code></pre>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
@@ -606,13 +683,6 @@ console.log(a, b)
 <td>break;</td>
 </tr>
 </tbody></table>
-<pre><code class="JavaScript">const myObj = &#123;
-  name: &#39;cotwelf&#39;,
-  feeling: &#39;sad&#39;,
-&#125;
-delete myObj.feeling
-console.log(myObj) // &#123;name: &#39;cotwelf&#39;&#125;
-</code></pre>
 <blockquote>
 <p>注意：在 React 里对 state 进行操作的时候不要用 delete。如果 state.obj 里没有嵌套对象的话，可以用扩展运算符浅拷贝出来，如果有的话就要深拷贝了，修改拷贝后的对象再 setState。具体可以在之后浅拷贝深拷贝的时候再谈。</p>
 </blockquote>
@@ -665,10 +735,11 @@ for (var i = 1; i &lt; 5; i++) &#123;
             @Cotwelf
         </div>
         <div></div>
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
         
     </div>
+    <br />
   </footer>
 
 
