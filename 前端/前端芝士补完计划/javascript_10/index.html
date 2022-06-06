@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#879cff>
+                <a href="/tags/基础" style=color:#ffa2c4>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#ff7d73>
+                <a href="/tags/JavaScript" style=color:#ffa2c4>
                     JavaScript
                 </a>
             </span>
@@ -196,7 +196,7 @@
 
       <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#1-Event-Loop-%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">1. Event Loop 的执行顺序</a></p>
 <h3 id="1-Event-Loop-的执行顺序"><a href="#1-Event-Loop-的执行顺序" class="headerlink" title="1. Event Loop 的执行顺序"></a>1. Event Loop 的执行顺序</h3><p>&emsp;&emsp;JS 是单线程语言，同一时间只能做一件事，不能有多个线程。所有在主线程上的任务都需要排队依次执行。可以把 JS 想象成在时间线上运行的。</p>
-<p>Event Loop (事件循环)，是指浏览器或 Node 环境的一种解决 JS 单线程运行时不会阻塞的一种机制，也就是异步的原理，作为单线程语言，JS 本身没有异步这一说法，是其宿主环境提供的。</p>
+<p>Event Loop (事件循环)，是指浏览器或 Node 环境的一种解决 JS 单线程运行时 <code>不会阻塞</code> 的一种机制，也就是 <code>异步</code> 的原理，作为单线程语言，JS 本身没有异步这一说法，是其宿主环境提供的。</p>
 <ul>
 <li>解释器判断一行 JS 代码是同步还是异步，同步则进入 <code>主线程</code>;</li>
 <li>异步任务进入到 Event Table，当异步任务有结果后，将相对应的回调函数进行注册，放入 Event Queue；</li>
@@ -328,7 +328,7 @@ console.log(&#39;13&#39;)
 </li>
 </ul>
 <blockquote>
-<p>宏任务和微任务是相对而言的，根据代码执时循环的先后，将代码执行分层理解，在每一层（一次）的事件循环中，首先整体代码块看作一个宏任务，宏任务中的 Promise（then、catch、finally）、MutationObserver、Process.nextTick就是该宏任务层的微任务；宏任务中的同步代码进入主线程中立即执行的，宏任务中的非微任务异步执行代码将作为下一次循环的宏任务时进入调用栈等待执行的；此时，调用栈中等待执行的队列分为两种，优先级较高先执行的本层循环微任务队列（MicroTask Queue），和优先级低的下层循环执行的宏任务队列（MacroTask Queue）！</p>
+<p>宏任务和微任务是相对而言的，根据代码执时循环的先后，将代码执行分层理解，在每一层（一次）的事件循环中，首先整体代码块看作一个宏任务，宏任务中的 Promise（then、catch、finally）、MutationObserver、Process.nextTick 就是该宏任务层的微任务；宏任务中的同步代码进入主线程中立即执行的，宏任务中的非微任务异步执行代码将作为下一次循环的宏任务时进入调用栈等待执行的；此时，调用栈中等待执行的队列分为两种，优先级较高先执行的本层循环微任务队列（MicroTask Queue），和优先级低的下层循环执行的宏任务队列（MacroTask Queue）！</p>
 </blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/songyao666/p/15405742.html">《JavaScript有同步任务和异步任务，浏览器是怎么处理的？》</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31967985/article/details/110310685">【js进阶】全面理解Event Loop这一篇就够了</a></p>
 <p>&emsp;&emsp;需要注意，定时器对队列的工作方式是，当特定时间过去后 <code>将代码插入</code>。注意，给队列添加代码并不意味着对它立刻执行，而只能表示它会尽快执行。设定一个 150ms 后执行的定时器不代表到了 150ms 代码就立刻执行，它表示代码会 <code>在 150ms 后被加入到队列中</code>。如果在这个时间点上，队列中没有其他东西，那么这段代码就会被执行，表面上看上去好像代码就在精确指定的时间点上执行了。其他情况下，代码可能明显地等待更长时间才执行。</p>
@@ -407,7 +407,7 @@ return function( ...args ) &#123;
 </li>
 </ul>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h3 id="3-观察者模式和发布订阅模式"><a href="#3-观察者模式和发布订阅模式" class="headerlink" title="3. 观察者模式和发布订阅模式"></a>3. 观察者模式和发布订阅模式</h3><p>在 JS 设计模式中，这两个模式有点类似<br><img src="./observer.png"></p>
+<h3 id="3-观察者模式模式"><a href="#3-观察者模式模式" class="headerlink" title="3. 观察者模式模式"></a>3. 观察者模式模式</h3><p>观察者模式和其变体，发布订阅模式<br><img src="./observer.png"></p>
 <h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><pre><code class="javascript">// 定义一个目标对象
 class Subject &#123;
   constructor() &#123;
@@ -498,7 +498,9 @@ Pub.publish(&#39;dance&#39;, &#39;华尔兹舞曲&#39;);
 <p>可以看出来，dom 的事件监听也是发布订阅模式</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/357911263">《JS设计模式之观察者模式》</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/212256424">《JavaScript设计模式——观察者模式 vs 发布订阅模式》</a></p>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h3 id="4-Promise-和-async-await"><a href="#4-Promise-和-async-await" class="headerlink" title="4. Promise 和 async/await"></a>4. Promise 和 async/await</h3></div>
+<h3 id="4-Promise-和-async-await"><a href="#4-Promise-和-async-await" class="headerlink" title="4. Promise 和 async/await"></a>4. Promise 和 async/await</h3><p>async 如果不写 await ，返回是个 promise 函数</p>
+<p>手写 bind<br>手写 promise<br>手写 new</p>
+</div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
         <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
