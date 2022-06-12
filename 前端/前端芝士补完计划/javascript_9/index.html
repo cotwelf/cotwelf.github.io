@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ffa2c4>
+                <a href="/tags/基础" style=color:#ff7d73>
                     基础
                 </a>
             </span>
@@ -278,6 +278,99 @@ JSON.stringify(obj) // &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:&#123;&quot;name
 JSON.stringify([233, &quot;hi&quot;, true]) // &#39;[233,&quot;hi&quot;,true]&#39;
 </code></pre>
 <p>JSON.stringify() 除了要序列化的 JS 对象外，还可接收两个参数，第一个参数是个过滤器，可以是一个数组，也可以是一个函数；第二个参数是一个选项，表示是否在 JSON 字符串中保留缩进。单独或组合使用这两个参数，可以更全面深入地控制 JSON 的序列化。</p>
+<h3 id="11-将下面的对象序列化为-JSON-字符串，在序列化时去除-name-属性，并将数组的第一个元素变为-null"><a href="#11-将下面的对象序列化为-JSON-字符串，在序列化时去除-name-属性，并将数组的第一个元素变为-null" class="headerlink" title="11. 将下面的对象序列化为 JSON 字符串，在序列化时去除 name 属性，并将数组的第一个元素变为 null"></a>11. 将下面的对象序列化为 JSON 字符串，在序列化时去除 name 属性，并将数组的第一个元素变为 null</h3><pre><code class="javascript">var json = &#123;
+  &quot;name&quot;: &quot;xiuwen&quot;,
+  &quot;age&quot;: 18,
+  &quot;like&quot;: [&quot;anime&quot;, &quot;game&quot;, &quot;music&quot;]
+&#125;;
+JSON.stringify(json, (key, value) =&gt; &#123;
+  if(key === &#39;name&#39;) &#123;
+    return undefined;
+  &#125;
+  if (key === &quot;0&quot;) &#123;
+    return undefined; // 数组中第一个值将变为 null
+  &#125;
+  return value
+&#125;)
+</code></pre>
+<p>关于 <code>JSON.stringify(value[, replacer [, space]])</code> 中的后两个参数</p>
+<h4 id="replacer"><a href="#replacer" class="headerlink" title="replacer"></a>replacer</h4><pre><code class="javascript">var json = &#123;
+  &quot;name&quot;: &quot;xiuwen&quot;,
+  &quot;age&quot;: 18,
+  &quot;like&quot;: [&quot;anime&quot;, &quot;game&quot;, &quot;music&quot;]
+&#125;;
+</code></pre>
+<p>replacer 是 function：</p>
+<ul>
+<li>如果返回一个 Number, 转换成相应的字符串作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;name&#39;) &#123;
+  return 2333
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;: 2333,&quot;age&quot;:18,&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回一个 String, 该字符串作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;name&#39;) &#123;
+  return &#39;xiuxiuxiu&#39;
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuxiuxiu&quot;,&quot;age&quot;:18,&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回一个 Boolean, “true” 或者 “false” 作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return false
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;age&quot;:18,&quot;like&quot;:false&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回任何其他对象，该对象递归地序列化成 JSON 字符串，对每个属性调用 replacer 方法。除非该对象是一个函数，这种情况将不会被序列化成 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return [&quot;code&quot;, &quot;eiga&quot;]
+&#125;
+if (key === &quot;1&quot;) &#123;
+  return undefined // 因为上面的 like 的每个属性也调用 replacer 方法，所以 like[1] 变为 null
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;age&quot;:18,&quot;like&quot;:[&quot;code&quot;,null]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回 undefined，该属性值不会在 JSON 字符串中输出。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return [&quot;code&quot;, &quot;eiga&quot;]
+&#125;
+if (key === &quot;age&quot;) &#123;
+  return undefined // 注意这里，key 非数组 index 的时候返回 undefined 才会删除属性，否则只会置 arr[index] 为 null
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;like&quot;:[&quot;code&quot;,&quot;eiga&quot;]&#125;&#39;
+</code></pre>
+replacer 是 arr<pre><code class="javascript">let replacer = [&quot;like&quot;]
+JSON.stringify(json, replacer) // &#39;&#123;&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+JSON.stringify() 一般和 JSON.parse() 结合 localstorage 使用，注意在 JSON.parse() 的 value 是 undefined、NaN、Infinity、函数、对象实例、变量或正则表达式时会报错，可以用 try catch。</li>
+</ul>
+<p>另外，JSON 可以实现简单数据类型的深拷贝</p>
+<pre><code class="javascript">function deepCopy(obj) &#123;
+  return JSON.parse(JSON.stringify(obj));
+&#125;
+const obj1 = &#123;
+  a: 1,
+  b: &#39;test&#39;,
+  c: &#123;
+    d: [1, 2],
+    e: () =&gt; &#123;&#125;, // 这里 e 并没有被拷贝
+  &#125;
+&#125;
+let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] &#125;&#125;
+</code></pre>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
