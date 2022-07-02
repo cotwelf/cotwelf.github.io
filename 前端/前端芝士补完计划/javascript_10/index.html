@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 高级技巧</title>
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 10. 高级技巧</title>
     <meta name="author" content="Cotwelf">
     <meta name="description" content="誰か聞こえますか。見えますか。 ">
     <meta name="keywords" content=" ">
@@ -154,7 +154,7 @@
   <div class="article" id="article">
     
     <div>
-      <h1>前端芝士补完计划 之 JavaScript - 高级技巧 </h1>
+      <h1>前端芝士补完计划 之 JavaScript - 10. 高级技巧 </h1>
     </div>
     <div class="info">
         
@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ff7d73>
+                <a href="/tags/基础" style=color:#00bcd4>
                     基础
                 </a>
             </span>
@@ -503,8 +503,40 @@ Pub.publish(&#39;dance&#39;, &#39;华尔兹舞曲&#39;);
 <p>可以看出来，dom 的事件监听也是发布订阅模式</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/357911263">《JS设计模式之观察者模式》</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/212256424">《JavaScript设计模式——观察者模式 vs 发布订阅模式》</a></p>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h3 id="4-Promise-和-async-await"><a href="#4-Promise-和-async-await" class="headerlink" title="4. Promise 和 async/await"></a>4. Promise 和 async/await</h3><p>async 如果不写 await ，返回是个 promise 函数</p>
-<p>手写 bind<br>手写 promise<br>手写 new</p>
+<h3 id="4-Promise-和-async-await"><a href="#4-Promise-和-async-await" class="headerlink" title="4. Promise 和 async/await"></a>4. Promise 和 async/await</h3><p>出现 await 必有 async，async 如果不写 await ，返回是个 promise 函数</p>
+<pre><code class="javascript">const myPromise = new Promise(resolve =&gt; &#123;
+    setTimeout(() =&gt; &#123;
+      resolve(&#39;completed&#39;)
+    &#125;, 1000)
+  &#125;)
+// 使用 then
+let result
+myPromise.then((r) =&gt; &#123;
+    result = r
+    console.log(&#39;2&#39;, result) // 2 completed
+&#125;)
+
+console.log(&#39;1&#39;, result) // 1 undefined
+// 因为 then 是异步微任务，所以会等待同步任务执行结束后再执行，1 中还没获得返回结果，所以是 undefined
+
+// 使用 async/await
+/** 在控制台调试的时候发现可以直接全局 await，但这是不规范的，只是 chrome 的新特性而已（全局 async），放到函数里就报错了
+ * let result = await myPromise
+ * console.log(&#39;1&#39;, result) // 1 completed
+ * 正确使用方法如下
+ **/
+const test = async () =&gt; &#123;
+  const myPromise = new Promise(resolve =&gt; &#123;
+    setTimeout(() =&gt; &#123;
+      resolve(&#39;completed&#39;)
+    &#125;, 1000)
+  &#125;)
+  let result = await myPromise
+  console.log(&#39;1&#39;, result) // 1 completed
+&#125;
+test()
+</code></pre>
+<p>手写 bind<br>手写 promise</p>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>

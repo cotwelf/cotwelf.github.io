@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#879cff>
+                <a href="/tags/基础" style=color:#00bcd4>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#ffa2c4>
+                <a href="/tags/JavaScript" style=color:#879cff>
                     JavaScript
                 </a>
             </span>
@@ -375,7 +375,10 @@ console.log(a.toString())
 <h3 id="18-1-instanceof-Number-的返回值是（），2-in-1-2-的返回值是（）"><a href="#18-1-instanceof-Number-的返回值是（），2-in-1-2-的返回值是（）" class="headerlink" title="18. 1 instanceof Number 的返回值是（），2 in [1, 2] 的返回值是（）"></a>18. <code>1 instanceof Number</code> 的返回值是（），<code>2 in [1, 2]</code> 的返回值是（）</h3><p>false,false.</p>
 <p><code>instanceof</code> 运算符能检测对象之间的关联性，左侧对象，右侧构造函数，如果左侧不是对象，会直接返回 false。</p>
 <p>in 用于检测 <code>属性</code> 是否在 <code>对象</code> 中，数组的索引（index）就是它的属性。2 超过了 <code>[1, 2]</code> 的最大索引 1，所以返回 <code>false</code>。</p>
-<pre><code class="javascript">&#39;name&#39; in &#123; name: &#39;cotwelf&#39;, age: 18 &#125; // true
+<pre><code class="javascript">1 instanceof Number // false
+let num = new Number(1)
+num instanceof Number // true
+&#39;name&#39; in &#123; name: &#39;cotwelf&#39;, age: 18 &#125; // true
 1 in [1, 2] // true
 </code></pre>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>

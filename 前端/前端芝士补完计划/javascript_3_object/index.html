@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#1bccbc>
+                <a href="/tags/基础" style=color:#879cff>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#1bccbc>
+                <a href="/tags/JavaScript" style=color:#00bcd4>
                     JavaScript
                 </a>
             </span>
@@ -276,7 +276,7 @@ console.log(xiuwen)
   obj._proto_ = constructorFn.prototype;
 
   // 3、让 constructorFn 的 this 指向 obj，并执行 constructorFn 的函数体
-  var result = constructorFn.call(obj);
+  var result = constructorFn.call(obj); // call 传了当前作用域给 constructorFn，以至于在 constructorFn 里的 this 就是 obj 的 this
 
   // 4、判断 constructorFn 的返回值类型，如果是值类型，返回 obj。如果是引用类型，就返回这个引用类型的对象。这里是构造函数的特性
   var obj1 = null
@@ -684,7 +684,39 @@ person1.like = [1, 2]
 console.log(&#39;person2.like&#39;, person2.like)
 </code></pre>
 <h3 id="如何实现继承"><a href="#如何实现继承" class="headerlink" title="如何实现继承"></a>如何实现继承</h3><p>什么是继承：简单来说就是构造函数 A 的原型是另一个构造函数 B 的实例（<code>Otaku.prototype = new Person()</code>），于是 A 就继承了 B 的属性和方法。</p>
-<p>JS 通过 <code>原型链</code> 来实现继承。原型链的构建是通过将一个类型的实例赋值给另一个构造函数的原型实现的。这样，子类型就能够访问超类型的所有属性和方法。原型链的问题是对象实例共享所有继承的属性和方法，解决这个问题的方法是在子类型构造函数的内部调用超类型构造函数。这样就可以做到每个实例都具有自己的属性，同时还能保证只使用构造函数模式来定义类型。使用最多的继承模式是【组合继承】，这种模式使用原型链继承共享的属性和方法，而通过借用构造函数继承实例属性（它唯一的缺点是需要调用两次超类）。</p>
+<p>JS 通过 <code>原型链</code> 来实现继承。原型链的构建是通过将一个类型的实例赋值给另一个构造函数的原型实现的。这样，子类型就能够访问超类型的所有属性和方法。</p>
+<p>ES5 中没有类（class）的写法，实现继承的方法多种多样，但我们一般用 ES6 语法。它更加简洁易懂，另外，它不可以直接作为函数调用，因此就不会出现误操作（通常指没有通过 new 来调用）而将 class 内的属性绑定到当前作用域（<a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%AE%89%E5%85%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">戳我看栗子~</a>）</p>
+<pre><code class="javascript">class Person &#123;
+  constructor(name, age) &#123;
+    this.name = name
+    this.age = age
+    this.hobby = &#39;eiga&#39; // 直接给子类添加属性
+  &#125;
+  aim = &#39;dalao&#39; // 直接给子类添加属性
+&#125;
+
+class Otaku extends Person &#123;
+  constructor(name, age, like)&#123;
+    super(name, age)
+    this.like = like
+  &#125;
+  sayHi () &#123;
+    console.log(`Hi~ I&#39;m $&#123;this.name&#125;, $&#123;this.age&#125;, and I like $&#123;this.like&#125;`)
+  &#125;
+&#125;
+
+let person = new Otaku(&#39;cotwelf&#39;, 18, &#39;anime&#39;)
+person.sayHi() // Hi~ I&#39;m cotwelf, 18, and I like anime
+console.log(typeof person) // object
+// 以下都是 true
+console.log(person instanceof Otaku)
+console.log(person instanceof Person)
+console.log(&quot;age&quot; in person, person.hasOwnProperty(&quot;age&quot;))
+console.log(person.hasOwnProperty(&quot;aim&quot;))
+console.log(&quot;hobby&quot; in person, person.hasOwnProperty(&quot;hobby&quot;))
+</code></pre>
+<p>原型链的问题是对象实例共享所有继承的属性和方法，解决这个问题的方法是在子类型构造函数的内部调用超类型构造函数。这样就可以做到每个实例都具有自己的属性，同时还能保证只使用构造函数模式来定义类型。使用最多的继承模式是【组合继承】，这种模式使用原型链继承共享的属性和方法，而通过借用构造函数继承实例属性（它唯一的缺点是需要调用两次超类）。</p>
+<p>（以下为 ES5 的方法，感觉似乎用不到。。知道就好，用到再查</p>
 <h4 id="原型链方式"><a href="#原型链方式" class="headerlink" title="原型链方式"></a>原型链方式</h4><pre><code class="javascript">function Person() &#123;
   this.like = &#39;eat&#39;
 &#125;
@@ -766,7 +798,10 @@ var person = Otaku(&#39;anime&#39;)
 console.log(person) // undefined.因为 Otaku 作为函数的话，并没有返回任何数据
 console.log(window.name, window.like) // cotwelf，anime
 </code></pre>
-<p>解决方法是创建一个 <code>作用域安全的构造函数</code>。它首先要确认 this 对象是正确类型的实例，如果不是，创建新实例并返回</p>
+<blockquote>
+<p>ES6 不会允许直接调用类（相当于构造函数），会报错 <code>Uncaught TypeError: Class constructor Otaku cannot be invoked without &#39;new&#39;</code>, 所以也就不会出现这种问题。</p>
+</blockquote>
+<p>解决方法是创建一个 <code>作用域安全的构造函数</code>。它首先要确认 this 对象是正确类型的实例，如果不是，创建新实例并返回。</p>
 <pre><code class="javascript">function Otaku(like) &#123;
   if(this instanceof Otaku) &#123;
     this.name = &#39;cotwelf&#39;
@@ -775,7 +810,6 @@ console.log(window.name, window.like) // cotwelf，anime
     // 如果直接调用 Otaku() 的话，这里的 this 是 Window
     return new Otaku(like)
   &#125;
-
 &#125;
 
 var person = Otaku(&#39;anime&#39;)
@@ -786,12 +820,15 @@ console.log(window.name, window.like) // cotwelf，anime
 <ul>
 <li>原型式继承，可以在不必预先定义构造函数的情况下实现继承，其本质是执行对给定对象的【浅复制】。而复制得到的副本还可以得到进一步改造。</li>
 <li>寄生式继承，与原型式继承非常相似，也是基于某个对象或某些信息创建一个对象，然后增强对象，最后返回对象。为了解决组合继承模式由于多次调用超类型构造函数而导致的低效率问题，可以将这个模式与组合继承一起使用。</li>
-<li>寄生组合式继承，集寄生式继承和组合继承的优点与一身，是实现基于类型继承的最有效方式。<h4 id="借用构造函数的方式"><a href="#借用构造函数的方式" class="headerlink" title="借用构造函数的方式"></a>借用构造函数的方式</h4>即在子类型构造函数的内部调用超类型构造函数，并绑定当前（子类的）作用域。好处是引用类型不会被实例修改，但坏处是方法并没有被复用。<pre><code class="javascript">function Person(name) &#123;
-this.name = name
-this.like = [&#39;anime&#39;]
+<li>寄生组合式继承，集寄生式继承和组合继承的优点与一身，是实现基于类型继承的最有效方式。</li>
+</ul>
+<h4 id="借用构造函数的方式"><a href="#借用构造函数的方式" class="headerlink" title="*借用构造函数的方式"></a>*借用构造函数的方式</h4><p>即在子类型构造函数的内部调用超类型构造函数，并绑定当前（子类的）作用域。好处是引用类型不会被实例修改，但坏处是方法并没有被复用。</p>
+<pre><code class="javascript">function Person(name) &#123;
+  this.name = name
+  this.like = [&#39;anime&#39;]
 &#125;
 function Otaku(name) &#123;
-Person.call(this, name)
+  Person.call(this, name)
 &#125;
 var person1 = new Person(&#39;cotwelf&#39;)
 var person2 = new Person(&#39;sylvia&#39;)
@@ -799,15 +836,31 @@ person1.like.push(&#39;eiga&#39;)
 person1.like // [&#39;anime&#39;, &#39;eiga&#39;]
 person2.like // [&#39;anime&#39;]
 </code></pre>
-<h4 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h4>组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为 JS 中最常用的继承模式。而且，instanceof 和 isPrototypeOf() 也能够用于识别基于组合继承创建的对象。<br>```javascript<br>function Person(name) {<br>this.name = name<br>}<br>function Otaku(name) {<br>Person.call(this, name) // 第一次调用 Person<br>// Otaku.prototype 会得到 name 属性，它是 Person 的实例属性，只不过现在位于 Otaku 的原型中。<br>this.like = [‘anime’]<br>}<br>Otaku.prototype = new Person() // 第二次调用 Person。因为这里丢掉了 prototype 初始的指向对象指针（初始构造函数的 prototype.constructor 指向构造函数寄几），如果没有下面一行，constructor 将会是 Person<br>Otaku.prototype.constructor = Otaku // 这里为了让原型的 constructor 依旧指向 Otaku<br>var people1 = new Otaku(‘cotwelf’)<br>var people2 = new Otaku(‘sylvia’)<br>people1.like.push(‘eiga’)</li>
-</ul>
-<p>people1.like // [‘anime’, ‘eiga’]<br>people2.like // [‘anime’]</p>
-<p>people1 instanceof Otaku // true<br>Otaku.prototype.isPrototypeOf(people1) // true<br>people1.constructor // Otaku。如果上面没有重新指向的话，这里会是 Person</p>
-<pre><code>组合继承最大的问题就是无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。
-#### 寄生组合式继承
-即通过借用【构造函数】来继承属性，通过【原型链】的混成形式来继承方法。其背后的基本思路是：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。
-```javascript
-// inheritPrototype() 实现了寄生组合式继承的最简单形式
+<h4 id="组合继承"><a href="#组合继承" class="headerlink" title="*组合继承"></a>*组合继承</h4><p>组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为 JS 中最常用的继承模式。而且，instanceof 和 isPrototypeOf() 也能够用于识别基于组合继承创建的对象。</p>
+<pre><code class="javascript">function Person(name) &#123;
+  this.name = name
+&#125;
+function Otaku(name) &#123;
+  Person.call(this, name) // 第一次调用 Person
+  // Otaku.prototype 会得到 name 属性，它是 Person 的实例属性，只不过现在位于 Otaku 的原型中。
+  this.like = [&#39;anime&#39;]
+&#125;
+Otaku.prototype = new Person() // 第二次调用 Person。因为这里丢掉了 prototype 初始的指向对象指针（初始构造函数的 prototype.constructor 指向构造函数寄几），如果没有下面一行，constructor 将会是 Person
+Otaku.prototype.constructor = Otaku // 这里为了让原型的 constructor 依旧指向 Otaku
+var people1 = new Otaku(&#39;cotwelf&#39;)
+var people2 = new Otaku(&#39;sylvia&#39;)
+people1.like.push(&#39;eiga&#39;)
+
+people1.like // [&#39;anime&#39;, &#39;eiga&#39;]
+people2.like // [&#39;anime&#39;]
+
+people1 instanceof Otaku // true
+Otaku.prototype.isPrototypeOf(people1) // true
+people1.constructor // Otaku。如果上面没有重新指向的话，这里会是 Person
+</code></pre>
+<p>组合继承最大的问题就是无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。</p>
+<h4 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h4><p>即通过借用【构造函数】来继承属性，通过【原型链】的混成形式来继承方法。其背后的基本思路是：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。</p>
+<pre><code class="javascript">// inheritPrototype() 实现了寄生组合式继承的最简单形式
 function inheritPrototype(subType, superType) &#123;
   var prototype = Object.create(superType.prototype) // 创建超类型【原型】的一个副本
   prototype.constructor = subType // 为副本添加 constructor，保证实例.construcor 指向 subType
@@ -863,7 +916,7 @@ Sub.prototype = Super.prototype
 </code></pre>
 <p>继承是面向对象语言的三大特性之一，JS 只支持实现继承（而像 Java 那类语言还支持接口继承），并且主要依靠原型链来实现。代码中的继承有两个不足的地方，如下所列，每个不足之处都给出了相应的改进方法。</p>
 <ul>
-<li>（1）不能向超类 Super 的构造函数传递参数（超类中需要接收一个 age 参数），也不能使用超类中的自有属性（如 names 和 age）。改进的犯法就是在子类 Sub 的构造函数中，显式地调用超类的构造函数，如下所示。<pre><code class="JavaScript">function Sub(age) &#123;
+<li>（1）不能向超类 Super 的构造函数传递参数（超类中需要接收一个 age 参数），也不能使用超类中的自有属性（如 names 和 age）。改进的方法就是在子类 Sub 的构造函数中，显式地调用超类的构造函数，如下所示。<pre><code class="JavaScript">function Sub(age) &#123;
 Super.call(this, age)
 &#125;
 </code></pre>
