@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || phaser 之旅 - 新手村</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>phaser 之旅 - 新手村 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/游戏">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                游戏
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/phaser" style=color:#00bcd4>
+                    phaser
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><p>这里我使用了官方的 typescript 框架：<a target="_blank" rel="noopener" href="https://github.com/ourcade/phaser3-typescript-parcel-template">phaser3-typescript-parcel-template</a></p>
+<p><a target="_blank" rel="noopener" href="https://phaser.io/">官网戳这里</a>~ 由于优秀官方文档的存在，我这里就不做搬运仓鼠了，只记录一些用到的方法。</p>
+<h2 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h2><p>比较详细的用法<a target="_blank" rel="noopener" href="https://rexrainbow.github.io/phaser3-rex-notes/docs/site/audio/">戳这里的链接</a>，以下只记录了我用到的一些方法，可能不够全面。</p>
+<pre><code class="javascript">// Phaser.Scene
+import Phaser from &#39;phaser&#39;
+
+export default class MyScene extends Phaser.Scene &#123;
+  constructor()&#123;
+    super(&#39;myScene&#39;)
+  &#125;
+  private myAudio
+  preload()&#123;
+    // 加载
+    this.load.audio(&#39;key&#39;, &#39;&#123;url of audio source&#125;&#39;)
+  &#125;
+  create() &#123;
+    this.myAudio = this.sound.add(&#39;key&#39;, &#123;
+      // config
+      volume: 0.3, // 音量：0~1, 默认是 1
+      loop: true, // 是否循环播放：boolean
+    &#125;)
+    this.myAudio.play(&#123;
+      volume: 0.5
+    &#125;)
+    // 相当于以下写法，但它只可以设置一次，之后无法控制，建议还是赋值一个变量
+    // this.sound.play(key, &#123;
+    //   volume: 0.5,
+    //   loop: true,
+    // &#125;);
+  &#125;
+  private handleMyAudio = () =&gt; &#123;
+    this.myAudio.play(&#123;
+      volume: 0.5 // 这里 config 会覆盖初始化 sound 的 config
+    &#125;)
+    this.myAudio.pause()
+    this.myAudio.stop()
+    this.myAudio.setVolume(0.2) // 设置 volume
+    let volume = this.myAudio.volume // 获取 volume
+    // 聪明的你应该可以知道如何修改其他 config 了
+    var isPlaying = this.myAudio.isPlaying
+    var isPaused = this.myAudio.isPaused
+  &#125;
+&#125;
+</code></pre>
+<p>那么问题来了，如果我有很多个 Scene，sound 会不会不间断捏？</p>
+<p>答案是：会的</p>
+<p>那么问题又来了：如果我在 SceneA 中定义了一个变量，赋值了个 audio 对象，如何在 SceneB 中操作它呢？（甚至 SceneC、SceneD）</p>
+<p>我这里采取了比较笨的方法，不在单个 Scene 中存储变量，而是存到 cache 里</p>
+<h2 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h2><p>cache 给我一种粗浅的理解，是一个帮你分好类的 localstorage，比如你可以直接存储数据到 <code>this.cache.audio</code> 中，而且可以是对象等引用类型（只是 cache 并不会帮你校验或者限制，比如你完全可以在 <code>this.cache.audio</code> 中存储一个布尔值或者 string）。举个栗子：</p>
+<pre><code class="javascript">import click from &#39;&#123;PATH TO click.mp3&#125;&#39;
+import bgmDark from &#39;&#123;PATH TO bgm-dark.mp3&#125;&#39;
+
+export const ASSET_KEYS = &#123;
+  AUDIO: &#123;
+    CLICK: &#123;
+      KEY: &#39;click&#39;,
+      SOURCE: click,
+    &#125;,
+    BGM_DARK: &#123;
+      KEY: &#39;bgm-dark&#39;,
+      SOURCE: bgmDark,
+    &#125;,
+  &#125;
+&#125;
+
+export const handleAssets = &#123;
+  load: function(that)&#123;
+    Object.keys(ASSET_KEYS.AUDIO).forEach((sound) =&gt; &#123;
+      that.load.audio(`$&#123;ASSET_KEYS.AUDIO[sound].KEY&#125;-temp`, ASSET_KEYS.AUDIO[sound].SOURCE)
+    &#125;)
+  &#125;,
+  add: function(that) &#123;
+    Object.keys(ASSET_KEYS.AUDIO).forEach((sound) =&gt; &#123;
+      that.cache.audio.add(
+        `$&#123;ASSET_KEYS.AUDIO[sound].KEY&#125;`,
+        that.sound.add(`$&#123;ASSET_KEYS.AUDIO[sound].KEY&#125;-temp`,
+      ))
+      that.cache.audio.remove(`$&#123;ASSET_KEYS.AUDIO[sound].KEY&#125;-temp`)
+    &#125;)
+  &#125;,
+  play: function(that: Phaser.Scene, key, config?: Phaser.Types.Sound.SoundConfig) &#123;
+    that.cache.audio.get(key).play(config)
+  &#125;,
+  stop: function(that, key) &#123;
+    that.cache.audio.get(key).stop()
+  &#125;
+&#125;
+
+// 使用：在最初一个 Scene 里的 preload 中调用 handleAssets.load(this) 用以载入数据，create 中调用 handleAssets.add(this)，接下来就可以在任意一个 Scene 使用 handleAssets.play(this, &#39;someKey&#39;) 等
+</code></pre>
+<p>其实也可以不要 that，比如最后的 stop，可以写成 <code>function(key) &#123; ... &#125;</code>，调用方法 <code>handleAssets.stop.bind(&#39;someKey&#39;)</code></p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

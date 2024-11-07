@@ -1,0 +1,1442 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 数据结构和算法</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 数据结构和算法 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Algorithm" style=color:#ffa2c4>
+                    Algorithm
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#ffa2c4>
+                    基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h1><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yD4y127vy">【JavaScript】数据结构与算法</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="一、前端八股文-之-算法"><a href="#一、前端八股文-之-算法" class="headerlink" title="一、前端八股文 之 算法"></a>一、前端八股文 之 算法</h2><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9_4cs8DD6u1gZ6rQSRvFyg">《万字总结 JS 数据结构与常用的算法》</a></p>
+</blockquote>
+<ol>
+<li>基本概念</li>
+</ol>
+<p>1.1. 时间复杂度：定义描述算法的运行时间</p>
+<h2 id="二、《前端通关手册：JavaScript》-07-算法"><a href="#二、《前端通关手册：JavaScript》-07-算法" class="headerlink" title="二、《前端通关手册：JavaScript》- 07 算法"></a>二、《前端通关手册：JavaScript》- 07 算法</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><a href="#1-%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0">1. 去除数组中的指定元素</a><br><a href="#2-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95">2. 数组去重方法</a></p>
+<h2 id="三、《初级算法》"><a href="#三、《初级算法》" class="headerlink" title="三、《初级算法》"></a>三、《初级算法》</h2><h3 id="数组-1"><a href="#数组-1" class="headerlink" title="数组"></a>数组</h3><p><a href="#1-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9">1. 删除排序数组中的重复项</a><br><a href="#2-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA">2. 买卖股票的最佳时机</a><br><a href="#3-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84">3. 旋转数组</a><br><a href="#4-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0">4. 存在重复元素</a><br><a href="#5-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97">5. 只出现一次的数字</a><br><a href="#6-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86">6. 两个数组的交集</a><br><a href="#7-%E5%8A%A0%E4%B8%80">7. 加一</a><br><a href="#8-%E7%A7%BB%E5%8A%A8%E9%9B%B6">8. 移动零</a><br><a href="#9-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">9. 两数之和</a><br><a href="#10-%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC">10. 有效的数独</a><br><a href="#11-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F">11. 旋转图像</a></p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p><a href="#1-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2">1. 反转字符串</a><br><a href="#2-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC">2. 整数反转</a><br><a href="#3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6">3. 字符串中的第一个唯一字符</a><br><a href="#4-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D">4. 有效的字母异位词</a></p>
+<h1 id="一、前端八股文-之-算法-1"><a href="#一、前端八股文-之-算法-1" class="headerlink" title="一、前端八股文 之 算法"></a>一、前端八股文 之 算法</h1><h2 id="逻辑题"><a href="#逻辑题" class="headerlink" title="逻辑题"></a>逻辑题</h2><h3 id="1-一个三角形-3-个定点有-3-只老鼠，一声枪响，3-只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？"><a href="#1-一个三角形-3-个定点有-3-只老鼠，一声枪响，3-只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？" class="headerlink" title="1. 一个三角形 3 个定点有 3 只老鼠，一声枪响，3 只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？"></a>1. 一个三角形 3 个定点有 3 只老鼠，一声枪响，3 只老鼠开始延三角形边匀速运动，请问它们相遇的概率是多少？</h3><p>每只老鼠都有顺时针、逆时针两种运动方向。3 只老鼠共有 8 种运动情况（即 3^2）只有当 3 只老鼠都为顺时针或逆时针时，它们才不会相遇，剩余 6 种情况都会相遇，所以相遇的概率是 6 &#x2F; 8 &#x3D; 75%</p>
+<h3 id="2-在一天的-24-小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的"><a href="#2-在一天的-24-小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的" class="headerlink" title="2. 在一天的 24 小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的"></a>2. 在一天的 24 小时中，时钟的时针、分针和秒针完全重合在一起的时候有几次？都分别是什么时间？你是怎样算出来的</h3><h1 id="二、《前端通关手册：JavaScript》-07-算法-1"><a href="#二、《前端通关手册：JavaScript》-07-算法-1" class="headerlink" title="二、《前端通关手册：JavaScript》- 07 算法"></a>二、《前端通关手册：JavaScript》- 07 算法</h1><h2 id="位运算"><a href="#位运算" class="headerlink" title="*位运算"></a>*位运算</h2><h3 id="1-什么是原码、反码、补码？"><a href="#1-什么是原码、反码、补码？" class="headerlink" title="*1. 什么是原码、反码、补码？"></a>*1. 什么是原码、反码、补码？</h3><p>面试高频指数：star x 3</p>
+<p>原码、反码和补码，均有 <code>符号位</code> 和 <code>数值位</code> 两部分。</p>
+<p>符号位：用 0 表示正，用 1 表示负</p>
+<p>在计算机系统中，数值一律用补码来表示和存储，好处：1）符号位和数值位统一处理；2）加法和减法统一处理。</p>
+<h2 id="数组-2"><a href="#数组-2" class="headerlink" title="数组"></a>数组</h2><h3 id="1-去除数组中的指定元素"><a href="#1-去除数组中的指定元素" class="headerlink" title="1. 去除数组中的指定元素"></a>1. 去除数组中的指定元素</h3><p>面试高频指数：star x 3</p>
+<p>输入：a &#x3D; [‘1’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’], target &#x3D; ‘4’</p>
+<p>输出：a &#x3D; [‘1’, ‘2’, ‘3’, ‘5’, ‘6’]</p>
+<pre><code class="javascript">// 方法 1
+const removeByValue = (a, target) =&gt; &#123;
+  a.forEach((i, index) =&gt; &#123;
+    if(i === target) &#123;
+      a.splice(index, 1)
+    &#125;
+  &#125;)
+  return a
+&#125;
+
+// 方法 2
+const removeByValue = (a, target) =&gt; &#123;
+  let index = a.findIndex(i =&gt; i === target)
+  if (index !== -1) &#123;
+    a.splice(a.findIndex(i =&gt; i === target), 1)
+  &#125;
+  /**
+   * Array.prototype.findIndex 返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回 -1。
+   * arr.findIndex(callback[, thisArg])
+   *
+   * 类似于 &#123;Array | String&#125;.prototype.indexOf
+   * &#123;arr | string&#125;.indexOf(element, [fromIndex])
+   * indexOf 的参数是要查找的元素（以及可选的开始查找位置），而 findIndex 的参数是过滤条件
+   **/
+  return a
+&#125;
+
+const a = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;]
+console.log(removeByValue(a, &#39;9&#39;)) // [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;5&#39;, &#39;6&#39;]
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-数组去重方法"><a href="#2-数组去重方法" class="headerlink" title="2. 数组去重方法"></a>2. 数组去重方法</h3><p>面试高频指数：star x 4</p>
+<p>输入：a &#x3D; [‘1’, ‘2’, ‘3’, ‘2’, ‘3’]</p>
+<p>输出：a &#x3D; [‘1’, ‘2’, ‘3’]</p>
+<pre><code class="javascript">// 方法 1：set 去重
+function unique(arr) &#123;
+  // const tempSet = new Set(arr)
+  const tempSet = new Map(arr)
+  const tempArr = Array.from(tempSet)
+  tempSet.set(&#39;0&#39;, 0)
+  console.log(tempSet, tempArr)
+  // Array.from() 方法对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
+  return [...new Set(arr)]
+&#125;
+
+unique([&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;2&#39;, &#39;3&#39;])
+</code></pre>
+<h4 id="这里我们大致补充一下什么是-Set，以及它和-Map-的异同"><a href="#这里我们大致补充一下什么是-Set，以及它和-Map-的异同" class="headerlink" title="这里我们大致补充一下什么是 Set，以及它和 Map 的异同"></a>这里我们大致补充一下什么是 Set，以及它和 Map 的异同</h4><ul>
+<li>Set<ul>
+<li>集合</li>
+<li>常用方法<pre><code class="javascript">// 创建
+let set = new Set() // Set(0) &#123;size: 0&#125;
+set = new Set([1, 2, 2, 1, 3]) // Set(3) &#123;1, 2, 3&#125;
+// 添加：Set 中可以存放任意类型的值，故存入时不会进行数据类型转换。
+set.add(&#39;2&#39;) // Set(4) &#123;1, 2, 3, &#39;2&#39;&#125;。set 末尾添加一个元素 &#39;2&#39;
+// 查询
+set.has(1) // true。set 中是否有元素 1
+// 删除
+set.delete(&#39;2&#39;) // Set(3) &#123;1, 2, 3&#125;。删除 set 中值为 4 的元素。当 delete 的元素并不在 set 中时也不会报错，而是不改变 set，比如 set.delete(6)，set 并不会改变
+// 长度
+set.size // 3。set 的长度
+// 转数组
+var arr = Array.from(set) // [1, 2, 3]。使用 Array.from 转换 Set 为 Array
+//  用...(展开操作符)操作符将 Set 转换为Array
+var arr = [...set]
+// set 可以用来保存 dom 节点，可以遍历
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Map<ul>
+<li>字典，特点：查找速度极快</li>
+<li>常用方法<pre><code class="javascript">// 创建
+let map = new Map() // Map(0) &#123;size: 0&#125;
+map = new Map([
+  [1, &#39;one&#39;],
+  [2, &#39;two&#39;],
+  [3, &#39;three&#39;],
+]); // Map(3) &#123;1 =&gt; &#39;one&#39;, 2 =&gt; &#39;two&#39;, 3 =&gt; &#39;three&#39;&#125;
+// 添加：Set 中可以存放任意类型的值，故存入时不会进行数据类型转换。
+map.set(&#39;4&#39;, &#39;four&#39;) // Map(4) &#123;1 =&gt; &#39;one&#39;, 2 =&gt; &#39;two&#39;, 3 =&gt; &#39;three&#39;, &#39;4&#39; =&gt; &#39;four&#39;&#125;。map 末尾添加一个 &#123; key: &quot;4&quot;, value: &quot;four&quot; &#125;元素
+// 查询
+map.has(&#39;4&#39;) // true。map 中是否有 key 为 &#39;4&#39; 的键值对
+// 删除——@return &#123;boolean&#125;。表示是否删除成功
+map.delete(&#39;4&#39;) // 删除 map 中 key 为 &#39;4&#39; 的键值对。当 delete 的元素并不在 map 中时也不会报错，但会返回 false，map 并不会改变
+// 长度
+set.size // 3。map 的长度
+// 转数组
+var arr = Array.from(map) // [[1, &#39;one&#39;], [2, &#39;two&#39;], [3, &#39;three&#39;]]。使用 Array.from 转换 Set 为 Array
+</code></pre>
+</li>
+</ul>
+</li>
+<li>相同点<ul>
+<li>都可以用作数组去重</li>
+<li>它们都是有序的</li>
+</ul>
+</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-判断一个对象是不是数组-Array"><a href="#3-判断一个对象是不是数组-Array" class="headerlink" title="3. 判断一个对象是不是数组 Array"></a>3. 判断一个对象是不是数组 Array</h3><p>面试高频指数：star x 4</p>
+<pre><code class="javascript">let arr = [1, 2, 3]
+// 方法 1：instanceof
+arr instanceof Array // true
+
+// 方法 2：Array.isArray()
+Array.isArray(arr) // true
+
+// 方法 3：Array 的原型是否在 arr 的原型链上
+Array.prototype.isPrototypeOf(arr) // true
+
+// *方法 4：Object.prototype.toString
+Object.prototype.toString.call(arr) // &#39;[object Array]&#39;
+// 可以封装个方法
+function isArray(value)&#123;
+ return Object.prototype.toString.call(value) == &quot;[object Array]&quot;;
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-移动零"><a href="#4-移动零" class="headerlink" title="4. 移动零"></a>4. 移动零</h3><p>面试高频指数：star x 3</p>
+<p><a href="#8-%E7%A7%BB%E5%8A%A8%E9%9B%B6">请戳《初级算法》</a></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="1-求最大公约数"><a href="#1-求最大公约数" class="headerlink" title="1. 求最大公约数"></a>1. 求最大公约数</h3><p>面试高频指数：star x 3</p>
+<blockquote>
+<p>社畜太久已经忘记最大公约数是什么了 qwq，我们来回忆一下</p>
+<ul>
+<li>最大公因数，也称最大公约数、最大公因子，指 <code>两个或多个整数</code> <code>共有约数</code> 中 <code>最大</code> 的一个。</li>
+<li>举个栗子：12、16 的公约数有 1、2、4，因为 12 和 16 都能分别被 1、2、4 整除，而这几个数字里，4 最大，所以 <code>12、16 的最大公约数是 4</code></li>
+</ul>
+</blockquote>
+<pre><code class="javascript">// 方法 1：递归。辗转相除法（欧几里得算法）
+function gcd(a, b) &#123;
+  const t = a % b // 12 % 16 === 4
+  if (t === 0) &#123;
+    return b
+  &#125;
+  return gcd(b, t) // 16, 4
+&#125;
+// round 1: b = 16, t = 4
+// round 2: b = 4, t === 0
+// 惊了这是个数学问题啊感觉。。。然鹅我数学辣鸡的一匹 qwq。。。嘛。。。知道递归就行了吧。。。
+gcd(1, 3)
+
+// 方法 2：迭代。
+function gcd(a, b) &#123;
+  let t
+  while (t = a % b) &#123;
+    a = b
+    b = t
+  &#125;
+  return b
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="1-插入排序"><a href="#1-插入排序" class="headerlink" title="1. 插入排序"></a>1. 插入排序</h3><p>面试高频指数：star x 3</p>
+<pre><code class="javascript">const sort = (a) =&gt; &#123;
+  for (let i = 0; i &lt; a.length; i++) &#123;
+    for (let j = i; j-- &amp;&amp; a[j + 1] &lt; a[j];) &#123;
+      [a[j + 1], a[j]] = [a[j], a[j + 1]]
+    &#125;
+  &#125;
+  return a
+&#125;
+</code></pre>
+<h1 id="二、《初级算法》"><a href="#二、《初级算法》" class="headerlink" title="二、《初级算法》"></a>二、《初级算法》</h1><h2 id="数组-3"><a href="#数组-3" class="headerlink" title="数组"></a>数组</h2><h3 id="1-删除排序数组中的重复项"><a href="#1-删除排序数组中的重复项" class="headerlink" title="1. 删除排序数组中的重复项"></a>1. 删除排序数组中的重复项</h3><ul>
+<li>入参是一个【升序】数组 <code>nums</code></li>
+<li>【原地】【修改】输入数组，删除重复出现的元素，使每个元素只出现 1 次（注意，不要使用额外的空间）；</li>
+<li>【返回】删除后数组的新长度</li>
+</ul>
+<p>系统会用下面的代码测试题解：</p>
+<pre><code class="javascript">int[] nums = [...] // 输入数组
+int[] expectedNums = [...] // 长度正确的期望答案
+int k = removeDuplicates(nums) // 调用
+assert k == expectedNums.length
+for (int i = 0; i &lt; k; i++) &#123;
+  assert nums[i] == expectedNums[i]
+&#125;
+</code></pre>
+<p>如果所有断言通过，那么题解将被 <code>通过</code>。</p>
+<blockquote>
+<p>提示：<br><code>0 &lt;= nums.length &lt;= 3 * 10 ^ 4</code><br><code>-10 ^ 4 &lt;= num[i] &lt;= 10 ^ 4</code><br><code>nums</code> 已按 <code>升序</code> 排列</p>
+</blockquote>
+<pre><code class="javascript">function removeDuplicates(nums) &#123;
+  let n = nums.length
+  for(let i = 0; i &lt; n - 1; i++) &#123;
+    if (nums[i] === nums[i + 1]) &#123;
+      nums.splice(i + 1, 1)
+      i--
+      n--
+    &#125;
+  &#125;
+  return nums.length
+&#125;
+</code></pre>
+<blockquote>
+<p>以下是官方答案，双指针，有点抽象orz</p>
+<pre><code class="javascript">function removeDuplicates(nums) &#123;
+  const n = nums.length
+  if (n === 0) &#123;
+    return 0;
+  &#125;
+  let fast = 1
+  let slow = 1
+  while (fast &lt; n) &#123;
+    if (nums[fast] !== nums[fast - 1]) &#123;
+      nums[slow] = nums[fast];
+      ++slow;
+    &#125;
+    ++fast;
+  &#125;
+  return slow
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+</blockquote>
+<h3 id="2-买卖股票的最佳时机"><a href="#2-买卖股票的最佳时机" class="headerlink" title="2. 买卖股票的最佳时机"></a>2. 买卖股票的最佳时机</h3><ul>
+<li>给你一个整数数组 <code>prices</code>，其中 <code>prices[i]</code> 表示某支股票第 <code>i</code> 天的价格</li>
+<li>在每一天，你可以决定是否购买&#x2F;出售股票。在任何时候【最多】只能持有【一股】股票。你也可以先购买，然后在【同一天】出售。</li>
+<li>返回你能获得的【最大】利润。<blockquote>
+<p>示例<br /><br /><br>输入：prices &#x3D; [7, 1, 5, 3, 6, 4]<br /><br>输出：7<br /><br>解释：第 2 天（价格 1）的时候买入，第三天卖出，这笔交易所得利润为 5 - 1 &#x3D; 4。随后，在第 4 天买入，第 5 天卖出，这笔交易获得利润为 6 - 3 &#x3D; 3。总利润为 4 + 3 &#x3D; 7。</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="javascript">var maxProfit = function(prices) &#123;
+  let n = prices.length
+  let sum = 0
+  let minIndex = 0
+  for (let i = 0; i &lt; n; i++) &#123;
+    // 左边比自己大，右边不小于自己，买入
+    if ((prices[i] &lt; prices[minIndex]) &amp;&amp; (prices[i] &lt;= prices[i + 1])) &#123;
+      minIndex = i
+    &#125; else if ((prices[i] &gt; prices[i - 1]) &amp;&amp; (prices[i] &gt;= prices[i + 1]) &amp;&amp; (i!== n - 1)) &#123;
+      // 左边比自己小，右边不大于自己，卖出，卖出后继续判断是否需要买入，minIndex 清零
+      sum += (prices[i] - prices[minIndex])
+      minIndex = i + 1
+      i ++
+    &#125;
+    // 如果最后了，还没有卖出，则卖出
+    if ((i === n - 1) &amp;&amp; minIndex &lt;= i) &#123;
+      // 如果亏了，那就归零，假装当初没有买入orz
+      sum += (prices[i] - prices[minIndex]) &gt; 0 ? (prices[i] - prices[minIndex]) : 0
+    &#125;
+  &#125;
+  return sum
+&#125;
+
+console.log(maxProfit([7, 1, 5, 3, 6, 4]), maxProfit([1, 2, 3, 4, 5]), maxProfit([3, 2, 1]))
+/**
+ * 执行用时：68ms（击败 39.91% JS 用户
+ * 内存消耗：41.3M（击败 67.33% JS 用户
+ **/
+</code></pre>
+<p>以下是官方答案，牛蛙好简单！！</p>
+<pre><code class="javascript">// 贪心
+var maxProfit = function(prices) &#123;
+  let ans = 0;
+  let n = prices.length;
+  for(let i = 1; i &lt; n; i++) &#123;
+    // 是不是可以理解为，我每天都卖出一次，买入一次，看看是否有利润，若有，本次买卖生效，没有则取消？（假装没有发生
+    ans += Math.max(0, prices[i] - prices[i - 1]);
+  &#125;
+  return ans;
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-旋转数组"><a href="#3-旋转数组" class="headerlink" title="3. 旋转数组"></a>3. 旋转数组</h3><ul>
+<li>给一个数组，将数组中的元素右轮转 k 个位置，其中 k 是非负数</li>
+</ul>
+<blockquote>
+<p>示例 <br /><br>输入：nums &#x3D; [1, 2, 3, 4, 5, 6, 7], k &#x3D; 3 <br /><br>输出：[5, 6, 7, 1, 2, 3, 4]</p>
+</blockquote>
+<pre><code class="javascript">var rotate = function(nums, k) &#123;
+  let n = nums.length
+  let fixK = k &gt; n ? k % n : k
+  let tempNums = nums.splice(n - fixK, n)
+  nums.unshift(...tempNums)
+&#125;
+rotate([-1, -100, 3, 99], 2) // [3, 99, -1, -100]
+rotate([1, 2, 3, 4, 5, 6, 7], 3) // [5, 6, 7, 1, 2, 3, 4]
+rotate([1, 2], 1) // [2, 1]
+/**
+ * 执行用时：92ms（击败 56.86% JS 用户
+ * 内存消耗：49.9M（击败 86.70% JS 用户
+ **/
+</code></pre>
+<p>以下是官方答案</p>
+<pre><code class="javascript">var rotate = function(nums, k) &#123;
+  const n = nums.length
+  const newArr = new Array(n)
+  for (let i = 0; i &lt; n; ++i) &#123;
+    // 右移 k，为什么不是 newArr[i + k] = nums[i]？
+    newArr[(i + k) % n] = nums[i]
+  &#125;
+  for (let i = 0; i &lt; n; ++i) &#123;
+    nums[i] = newArr[i]
+  &#125;
+&#125;
+rotate([1, 2, 3, 4, 5, 6, 7], 3) // [5, 6, 7, 1, 2, 3, 4]
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-存在重复元素"><a href="#4-存在重复元素" class="headerlink" title="4. 存在重复元素"></a>4. 存在重复元素</h3><ul>
+<li>给你一个整数数组 <code>nums</code></li>
+<li>如果任一值在数组中出现 <code>至少两次</code>，返回 <code>true</code>；如果每个元素都不相同，返回 <code>false</code></li>
+</ul>
+<blockquote>
+<p>示例<br/><br>输入：nums &#x3D; [1, 2, 3, 1]<br/><br>输出：true<br/></p>
+</blockquote>
+<pre><code class="javascript">var containsDuplicate = function(nums) &#123;
+  let tempNums = nums
+  for(let i = 0; i &lt; tempNums.length; i++) &#123;
+    let n = tempNums.length
+    if (tempNums.slice(1, n).includes(tempNums[0])) &#123;
+      return true
+    &#125;
+    tempNums = tempNums.slice(1, n)
+    i -= 1
+  &#125;
+  return false
+&#125;
+/**
+ * 执行用时：3908ms（击败 5.01% JS 用户
+ * 内存消耗：67.8M（击败 5.01% JS 用户
+ **/
+var containsDuplicate = function(nums) &#123;
+  for(let i = 0; i &lt; nums.length; i++) &#123;
+    let count = nums.filter(num =&gt; num === nums[i]).length
+    if (count &gt; 1) &#123;
+      return true
+    &#125;
+  &#125;
+  return false
+&#125;
+/**
+ * 执行用时：4028ms（击败 5.01% JS 用户
+ * 内存消耗：49.8M（击败 26.04% JS 用户
+ **/
+</code></pre>
+<p>官方解法</p>
+<pre><code class="javascript">// 方法一：排序
+var containsDuplicate = function(nums) &#123;
+  nums.sort((a, b) =&gt; a - b);
+  const n = nums.length;
+  for (let i = 0; i &lt; n - 1; i++) &#123;
+    if (nums[i] === nums[i + 1]) &#123;
+      return true
+    &#125;
+  &#125;
+  return false
+&#125;
+/**
+ * 执行用时：152ms（击败 31.68% JS 用户
+ * 内存消耗：49.7M（击败 33.89% JS 用户
+ **/
+
+// 方法二：哈希表
+var containsDuplicate = function(nums) &#123;
+  const set = new Set()
+  for (const x of nums) &#123;
+    if (set.has(x)) &#123;
+      return true;
+    &#125;
+    set.add(x)
+  &#125;
+  return false
+&#125;
+/**
+ * 执行用时：72ms（击败 92.52% JS 用户
+ * 内存消耗：49.5M（击败 55.82% JS 用户
+ **/
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="5-只出现一次的数字"><a href="#5-只出现一次的数字" class="headerlink" title="5. 只出现一次的数字"></a>5. 只出现一次的数字</h3><ul>
+<li>给一个 <code>非空</code> <code>整数</code> 数组</li>
+<li>除了某个元素只出现一次以外，其余每个元素均出现两次</li>
+<li>找出那个只出现了一次的元素</li>
+<li>尽量不使用额外空间</li>
+</ul>
+<blockquote>
+<p>示例<br/><br>输入：nums &#x3D; [2, 2, 1]<br/><br>输出：1<br/></p>
+</blockquote>
+<pre><code class="javascript">var singleNumber = function(nums) &#123;
+  nums.sort((a, b) =&gt; a - b)
+  for (let i = 0; i &lt; nums.length; i++) &#123;
+    if (i === 0 &amp;&amp; nums[i] !== nums[i + 1])&#123;
+      return nums[i]
+    &#125; else if (i === nums.length - 1 &amp;&amp; nums[i] !== nums[i - 1]) &#123;
+      return nums[i]
+    &#125; else if (nums[i] !== nums[i - 1] &amp;&amp; nums[i] !== nums[i + 1]) &#123;
+      return nums[i]
+    &#125;
+  &#125;
+&#125;
+/**
+ * 执行用时：80ms（击败 29.08% JS 用户
+ * 内存消耗：43.8M（击败 33.90% JS 用户
+ **/
+
+console.log(singleNumber([2, 2, 1]))
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="6-两个数组的交集"><a href="#6-两个数组的交集" class="headerlink" title="6. 两个数组的交集"></a>6. 两个数组的交集</h3><ul>
+<li>给你两个整数数组 <code>nums1</code> 和 <code>nums2</code>，以数组形式返回两个数组的交集</li>
+<li>可以不考虑输出结果的顺序</li>
+</ul>
+<blockquote>
+<p>示例 <br /><br>输入：nums1 &#x3D; [1, 2, 2, 1], nums2 &#x3D; [2, 2] <br /><br>输出：[2, 2]</p>
+</blockquote>
+<pre><code class="javascript">var intersect = function(nums1, nums2) &#123;
+  let union = []
+  for(let i = 0; i &lt; nums1.length; i ++) &#123;
+    let index = nums2.indexOf(nums1[i])
+    if (index !== -1) &#123;
+      union.push(nums1[i])
+      nums2.splice(index, 1)
+    &#125;
+  &#125;
+  return union
+&#125;
+/**
+ * 执行用时：64ms（击败 74.29% JS 用户
+ * 内存消耗：41.2M（击败 96.91% JS 用户
+ **/
+</code></pre>
+<p>官方木有 JS 版本题解</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="7-加一"><a href="#7-加一" class="headerlink" title="7. 加一"></a>7. 加一</h3><ul>
+<li>给一个由 <code>整数</code> 组成的 <code>非空</code> 数组所表示的非负整数，在该数的基础上加一</li>
+<li>最高位数字存放在数组首位，数组中每个元素只存储 <code>单个</code> 数字。</li>
+<li>你可以假设除了整数 0 之外，这个整数不会以 0 开头</li>
+</ul>
+<blockquote>
+<p>示例 1 <br /><br>输入：digits &#x3D; [1, 2, 3] <br /><br>输出：[1, 2, 2]</p>
+</blockquote>
+<blockquote>
+<p>示例 2 <br /><br>输入：digits &#x3D; [4, 3, 2, 1] <br /><br>输出：[4, 3, 2, 2]</p>
+</blockquote>
+<blockquote>
+<p>示例 3 <br /><br>输入：digits &#x3D; [0] <br /><br>输出：[1]</p>
+</blockquote>
+<pre><code class="javascript">var plusOne = function(digits) &#123;
+  let add = 0 // 假设需要进位 0
+  let fixArr = []
+  // 先拆分成多个组，避免数字过长溢出
+  var sliceArr = function(arr) &#123;
+    if(arr.length &gt; 15) &#123;
+      arr1 = arr.splice(-15, 15)
+      fixArr.unshift(arr1)
+      sliceArr(arr)
+    &#125; else &#123;
+      fixArr.unshift(arr)
+    &#125;
+  &#125;
+  sliceArr(digits)
+  // 检查各组需不需要进位
+  for(let i = fixArr.length - 1; i &gt;= 0; i--) &#123;
+    add += (fixArr.length - 1 === i) ? 1 : 0
+    let num = Number(fixArr[i].join(&#39;&#39;)) + add
+    add = 0
+    let n = num.toString().length
+    if (n &gt; fixArr[i].length) &#123;
+      add = 1
+      fixArr[i] = num.toString().split(&#39;&#39;).slice(-15)
+    &#125; else if(n &lt; fixArr[i].length) &#123;
+      let tempArr = num.toString().split(&#39;&#39;)
+      for(let j = fixArr[i].length - n; j &gt; 0; j--) &#123;
+        tempArr.unshift(&#39;0&#39;)
+      &#125;
+      fixArr[i] = tempArr
+    &#125; else &#123;
+      fixArr[i] = num.toString().split(&#39;&#39;)
+    &#125;
+  &#125;
+  let result = []
+  for(let i = 0; i &lt; fixArr.length; i++) &#123;
+    result = result.concat(fixArr[i])
+  &#125;
+  return result
+&#125;
+/**
+ * 执行用时：52ms（击败 95.93% JS 用户
+ * 内存消耗：41.4M（击败 6.64% JS 用户
+ **/
+
+
+plusOne([5, 9, 0, 8, 0, 0, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3])
+// console.log(plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]))
+</code></pre>
+<p>官方答案</p>
+<p>我们只需关注 digits 末尾出现了多少个 9 即可。</p>
+<ul>
+<li>如果末尾没有 9，则将末尾 + 1</li>
+<li>末尾有若干个 9，从末尾开始找第一个不为 9 的元素，该元素加 1</li>
+<li>如果所有元素都是 9， 需要构造一个长度比 digits 多 1 的新数组，首元素为 1，其余元素置为 0<br>&#96;&#96;&#96;javascript<br>var plusOne &#x3D; function(digits) {<br>const n &#x3D; digits.length<br>for (let i &#x3D; n - 1; i &gt;&#x3D; 0; –i) {<br>&#x2F;&#x2F; 从后往前找到第一个不为 9 的数字<br>  if (digits[i] !&#x3D;&#x3D; 9) {<br>&#x2F;&#x2F; 该数字 + 1，后面的置为 0<br>++digits[i];<br>&#x2F;&#x2F; 如果最后一位不为 9 的话，则不会进入下面的循环（因为 j &#x3D;&#x3D;&#x3D; n<br>for (let j &#x3D; i + 1; j &lt; n; ++j) {<br>  digits[j] &#x3D; 0<br>}<br>return digits<br>  }<br>}<br>&#x2F;&#x2F; digits 中所有元素均为 9<br>const ans &#x3D; new Array(n + 1).fill(0);<br>ans[0] &#x3D; 1<br>return ans;<br>}<br>&#x2F;**</li>
+</ul>
+<ul>
+<li>执行用时：48ms（击败 99.08% JS 用户</li>
+<li>内存消耗：41.1M（击败 49.90% JS 用户</li>
+</ul>
+<p> **&#x2F;</p>
+<pre><code>[&gt;&gt; 返回目录](#目录)
+
+### 8. 移动零
+- 给定一个数组 `nums`，将所有 `0` 移动到数组末尾，同时保持非 0 元素的相对顺序
+- 必须在不复制数组的情况下 `原地` 对数组进行操作
+
+```javascript
+var moveZeroes = function(nums) &#123;
+  let n = nums.length
+  let index = 0
+  for (let i = 0; i &lt; n; i++) &#123;
+    if(nums[index] === 0) &#123;
+      nums.splice(index, 1)
+      nums.push(0)
+      continue
+    &#125;
+      index += 1
+  &#125;
+  return nums
+&#125;
+/**
+ * 执行用时：312ms（击败 9.63% JS 用户
+ * 内存消耗：45.8M（击败 46.55% JS 用户
+ **/
+var moveZeroes = function(nums) &#123;
+  let n = nums.length
+  let tempNum = nums.filter(i =&gt; i !== 0)
+  let zeros = new Array(n - tempNum.length).fill(0)
+  tempsNum = [...tempNum, ...zeros]
+  nums.push(...tempsNum)
+  nums.splice(0, n)
+  return nums
+&#125;
+/**
+ * 执行用时：68ms（击败 99.36% JS 用户
+ * 内存消耗：48.4M（击败 5.01% JS 用户
+ **/
+</code></pre>
+<p>官方思路：双指针。右指针不断向右移动，每次右指针指向非零数，则将左右指针对应的数交换，同时左指针右移。</p>
+<p>另外 JS 通关手册中还有一种排序解法，但它似乎无法保证排序的时间和空间复杂性</p>
+<pre><code class="javascript">const moveZeros = (a) =&gt; a.sort((a, b) =&gt; -(b === 0 ^ 0))
+</code></pre>
+<p>我们顺便复习一下 Array.prototype.sort([compareFunc]) 方法，其中，compareFunc 是可选的，对于 compareFunc(a, b)</p>
+<ul>
+<li>a 是 arr[i+1]，b 是 arr[i]</li>
+<li>compareFunc(a, b) &lt; 0，a 会被排到 b 前</li>
+<li>compareFunc(a, b) &#x3D; 0, a、b 顺序不变</li>
+<li>compareFunc(a, b) &gt; 0，b 会被排到 a 前</li>
+</ul>
+<p>sort() 会改变原数组，且会返回改变后的数组，直接使用 arr.sort() 会进行类型转换，也就是说 <code>[2, &#39;1&#39;, 3].sort()</code> 的结果会是 <code>[&#39;1&#39;, 2, 3]</code></p>
+<p><a href="#4-%E7%A7%BB%E5%8A%A8%E9%9B%B6">&gt;&gt; 返回 《JS 通关手册》</a></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="9-两数之和"><a href="#9-两数之和" class="headerlink" title="9. 两数之和"></a>9. 两数之和</h3><ul>
+<li>给一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code></li>
+<li>在该数组中找出 <strong>和为目标值</strong> <code>target</code> 的那 <strong>两个</strong> 整数，并返回他们的数组下标</li>
+<li>顺序不限</li>
+</ul>
+<blockquote>
+<p>示例 <br /><br>输入：nums1 &#x3D; [2, 7, 11, 15], target &#x3D; 9 <br /><br>输出：[0, 1] <br /><br>解释：因为 nums[0] + nums[1] &#x3D;&#x3D;&#x3D; 9</p>
+</blockquote>
+<pre><code class="javascript">var twoSum = function(nums, target) &#123;
+  for (let i = 0; i &lt; nums.length; i++) &#123;
+    let next = nums.slice(i + 1, nums.length).indexOf(target - nums[i])
+    if (next !== -1) &#123;
+      return [i, next + i + 1]
+    &#125;
+  &#125;
+&#125;
+/**
+ * 执行用时：136ms（击败 19.46% JS 用户
+ * 内存消耗：47.1M（击败 5.02% JS 用户
+ **/
+twoSum([-1, -2, -3, -4, -5], -8)
+</code></pre>
+<p>官方推荐使用哈希表（以上解法相当于暴力枚举，哈希表还不会 qwq，之后补上哈希表解法</p>
+<h3 id="10-有效的数独"><a href="#10-有效的数独" class="headerlink" title="10. 有效的数独"></a>10. 有效的数独</h3><p>判断一个 <code>9 * 9</code> 的数独是否有效。需要以下规则验证已经填入的数字是否有效即可</p>
+<ul>
+<li>数字 <code>1-9</code> 在每一行只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一列只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一个 <code>3 * 3</code> 宫格内只能出现一次</li>
+</ul>
+<p>注意</p>
+<ul>
+<li>一个有效的数独（部分已被填充）不一定有解</li>
+<li>只需要根据以上规则验证已经填入的数字是否有效</li>
+<li>空白格用 <code>&#39;.&#39;</code> 表示。</li>
+</ul>
+<blockquote>
+<p>示例 <br /><br>输入：board &#x3D;<br>[[“8”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”]<br>,[“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”]<br>,[“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”]<br>,[“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”]<br>,[“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”]<br>,[“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”]<br>,[“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”]<br>,[“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”]<br>,[“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]] <br /><br>输出：false <br /><br>解释：因为左上角的 3*3 内有两个 8 存在，所以这个数独无效。</p>
+</blockquote>
+<pre><code class="javascript">var isValidSudoku = function(board) &#123;
+  let n = board.length
+  let row = []
+  let column = []
+  let tempGe = [[], [], []]
+  for (let i = 0; i &lt; n; i++) &#123;
+    // 判断行是否有效
+    row = board[i]
+    for (let j = 0; j &lt; n; j++) &#123;
+      // 顺便取出第 i 列准备检查的数据
+      column.push(board[j][i])
+      // 第 i 行的 0， 1， 2 列填入 ge 的 0 个数组，3， 4， 5 填入第 1 个数组
+      tempGe[Math.floor(j / 3)].push(board[i][j])
+      if (tempGe[2].length === 9) &#123;
+        for (let m = 0; m &lt; 3; m++) &#123;
+          for (let k = 0; k &lt; 3; k++) &#123;
+            let tempArr = tempGe[m].join(&#39;&#39;).replaceAll(&#39;.&#39;, &#39;&#39;).split(&#39;&#39;)
+            let dup = tempArr.slice(k + 1, tempArr.length).includes(tempArr[k])
+            if(dup) &#123;
+              return false
+            &#125;
+          &#125;
+        &#125;
+        tempGe = [[], [], []]
+      &#125;
+      let tempArr = row.join(&#39;&#39;).replaceAll(&#39;.&#39;, &#39;&#39;).split(&#39;&#39;)
+      let dup = tempArr.slice(j + 1, tempArr.length).includes(tempArr[j])
+      if(dup) &#123;
+        return false
+      &#125;
+    &#125;
+    // 判断列是否有效
+    for (let j = 0; j &lt; n; j++) &#123;
+      let tempArr = column.join(&#39;&#39;).replaceAll(&#39;.&#39;, &#39;&#39;).split(&#39;&#39;)
+      let dup = tempArr.slice(j + 1, tempArr.length).includes(tempArr[j])
+      if(dup) &#123;
+        return false
+      &#125;
+    &#125;
+    column = []
+  &#125;
+
+  return true
+&#125;
+/**
+ * 执行用时：100ms（击败 15.28% JS 用户
+ * 内存消耗：47.5M（击败 13.56% JS 用户
+ **/
+let board =
+[[&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;]
+,[&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;]
+,[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;]
+,[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;]
+,[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]
+isValidSudoku(board)
+</code></pre>
+<p>人要没了qwq，来看看官方解答，使用哈希表记录每一行每一列每一小宫格中，每个数字出现的次数。</p>
+<pre><code class="javascript">var isValidSudoku = function(board) &#123;
+  const rows = new Array(9).fill(0).map(() =&gt; new Array(9).fill(0));
+  const columns = new Array(9).fill(0).map(() =&gt; new Array(9).fill(0));
+  const subboxes = new Array(3).fill(0).map(() =&gt; new Array(3).fill(0).map(() =&gt; new Array(9).fill(0)));
+  for (let i = 0; i &lt; 9; i++) &#123;
+    for (let j = 0; j &lt; 9; j++) &#123;
+      const c = board[i][j];
+      if (c !== &#39;.&#39;) &#123;
+        const index = c.charCodeAt() - &#39;0&#39;.charCodeAt() - 1;
+        rows[i][index]++;
+        columns[j][index]++;
+        subboxes[Math.floor(i / 3)][Math.floor(j / 3)][index]++;
+        if (rows[i][index] &gt; 1 || columns[j][index] &gt; 1 || subboxes[Math.floor(i / 3)][Math.floor(j / 3)][index] &gt; 1) &#123;
+          return false;
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+  return true;
+&#125;;
+let board =
+[[&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;]
+,[&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;]
+,[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;]
+,[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;]
+,[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;]
+,[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]
+isValidSudoku(board)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="11-旋转图像"><a href="#11-旋转图像" class="headerlink" title="11. 旋转图像"></a>11. 旋转图像</h3><ul>
+<li>给一个 n * n 的二维矩阵 <code>matrix</code> 表示一个图像。</li>
+<li><code>原地</code> 将图像顺时针旋转 90 度。请不要用另一个矩阵来旋转图像</li>
+</ul>
+<p>示例：</p>
+<p>输入：matrix &#x3D; [[1,2,3],[4,5,6],[7,8,9]]</p>
+<p>输出：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p>
+<pre><code class="javascript">var rotate = function(matrix) &#123;
+  // 横的向量变为竖的，且数组取反
+  let tempArr = [...matrix]
+  let n = tempArr.length // 3
+  let c = []
+  for (let i = 0; i &lt; n; i++) &#123;
+    for (let j = 0; j &lt; n; j++) &#123;
+      c.push(tempArr[j][i])
+    &#125;
+    matrix[i] = c.reverse()
+    c = []
+  &#125;
+&#125;
+/**
+ * 执行用时：56ms（击败 89.33% JS 用户
+ * 内存消耗：41M（击败 81.34% JS 用户
+ **/
+rotate([[1,2,3],[4,5,6],[7,8,9]])
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h2><h3 id="1-反转字符串"><a href="#1-反转字符串" class="headerlink" title="1. 反转字符串"></a>1. 反转字符串</h3><ul>
+<li>将输入的字符串数组 <code>s</code> 反转过来</li>
+<li><code>原地</code> 修改输入数组，不要给另外的数组分配额外空间</li>
+</ul>
+<p>示例：</p>
+<p>输入：s &#x3D; [“h”, “e”, “l”, “l”, “o”]</p>
+<p>输出：[“o”, “l”, “l”, “e”, “h”]</p>
+<pre><code class="javascript">var reverseString = function(s) &#123;
+  return s.reverse()
+&#125;
+/**
+ * 执行用时：76ms（击败 95.95% JS 用户
+ * 内存消耗：48MB（击败 57.54% JS 用户
+ **/
+reverseString([&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;])
+</code></pre>
+<p>官方使用双指针解法</p>
+<pre><code class="javascript">var reverseString = function(s) &#123;
+  const n = s.length
+  for(let left = 0, right = n - 1; left &lt; right; left++, right--) &#123;
+    [s[left], s[right]] = [s[right], s[left]]
+  &#125;
+&#125;
+/**
+ * 执行用时：80ms（击败 89.13% JS 用户
+ * 内存消耗：47.8MB（击败 79.88% JS 用户
+ **/
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-整数反转"><a href="#2-整数反转" class="headerlink" title="2. 整数反转"></a>2. 整数反转</h3><ul>
+<li>给一个 32 位有符号整数 x，返回将 x 中的数字部分反转后的结果</li>
+<li>如果反转后整数超过 32 位的有符号整数的范围 [-2^31, 2^31 - 1] 就返回 0</li>
+</ul>
+<p>示例 1：</p>
+<p>输入：x &#x3D; 120；输出：21</p>
+<p>示例 2：</p>
+<p>输入：x &#x3D; -123；输出：x &#x3D; -321</p>
+<pre><code class="javascript">var reverse = function(x) &#123;
+  let numFix = &#39;&#39;
+  let numArr = x.toString().split(&#39;&#39;)
+  if (numArr[0] === &#39;-&#39;) &#123;
+    numFix = &#39;-&#39;
+    numArr.splice(0, 1)
+  &#125;
+  let result = Number(`$&#123;numFix&#125;$&#123;numArr.reverse().join(&#39;&#39;)&#125;`)
+  if (result &lt;= Math.pow(-2,31) || result &gt;= (Math.pow(2, 31) - 1)) &#123;
+    result = 0
+  &#125;
+  return result
+&#125;
+/**
+ * 执行用时：64ms（击败 88.76% JS 用户
+ * 内存消耗：42.6MB（击败 66.77% JS 用户
+ **/
+reverse(-123)
+</code></pre>
+<p>官方解答太难懂了 q’w’q，菜鸡的我放弃学习 orz</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-字符串中的第一个唯一字符"><a href="#3-字符串中的第一个唯一字符" class="headerlink" title="3. 字符串中的第一个唯一字符"></a>3. 字符串中的第一个唯一字符</h3><ul>
+<li>给一个字符串 <code>s</code>，找到它的第一个不重复的字符，并返回它的索引，如果不存在，则返回 <code>-1</code></li>
+</ul>
+<p>示例：</p>
+<p>输入：s &#x3D; “leetcode”；输出：0</p>
+<p>输入：s &#x3D; “aabb”；输出：-1</p>
+<pre><code class="javascript">var firstUniqChar = function(s) &#123;
+  let sMap = []
+  let n = s.length
+  for (let i = 0; i &lt; s.length; i++) &#123;
+    let obj = &#123;
+      str: s[i],
+      index: i
+    &#125;
+    sMap.push(obj)
+  &#125;
+  while(sMap.length &gt; 0) &#123;
+    let str = sMap[0]
+    let tempArr = sMap.filter(i =&gt; i.str === str.str)
+    if (tempArr.length &gt; 1) &#123;
+      // 有重复，去掉重复项，进行下一循环
+      sMap = sMap.filter(i =&gt; i.str !== str.str)
+      continue
+    &#125;
+    return tempArr[0].index
+  &#125;
+  return -1
+&#125;
+/**
+ * 执行用时：376ms（击败 5.15% JS 用户
+ * 内存消耗：62.4MB（击败 5.02% JS 用户
+ **/
+</code></pre>
+<p>哈希表存储索引，那么我们顺便了解一下 Map</p>
+<blockquote>
+<p>Map 对象保存键值对，并且能够记住键的原始插入顺序。<br>Map 和 Object 有些区别，如果不要求用到 Object 原型上的方法的话，只是对键值对的增删改查，那么 Map 的表现会更出色。</p>
+</blockquote>
+<p>下面我们尝试改一下上面的辣鸡代码</p>
+<pre><code class="javascript">var firstUniqChar = function(s) &#123;
+  let sMap = new Map()
+  let n = s.length
+  let repeat = []
+  for (let i = 0; i &lt; n; i++) &#123;
+    if (repeat.includes(s[i])) &#123;
+      continue
+    &#125;
+    if (sMap.has(s[i])) &#123;
+      repeat.push(s[i])
+      sMap.delete(s[i])
+    &#125; else &#123;
+      sMap.set(s[i], i)
+    &#125;
+  &#125;
+  for (const [key, value] of sMap) &#123;
+    return value
+  &#125;
+  return -1
+&#125;
+/**
+ * 执行用时：108ms（击败 43.00% JS 用户
+ * 内存消耗：44.9MB（击败 37.17% JS 用户
+ **/
+</code></pre>
+<p>emmm 至少比官方数值优秀一丢丢~ 所以就不贴官方啦</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-有效的字母异位词"><a href="#4-有效的字母异位词" class="headerlink" title="4. 有效的字母异位词"></a>4. 有效的字母异位词</h3><ul>
+<li>给定两个字符串 <code>s</code> 和 <code>t</code>，编写一个函数判断 <code>t</code> 是否是 <code>s</code> 的字母异位词。</li>
+</ul>
+<p>示例</p>
+<p>输入：s &#x3D; “anagram”, t &#x3D; “nagaram”<br>输出：true</p>
+<p>输入：s &#x3D; “rat”, t &#x3D; “car”; 输出：false</p>
+<pre><code class="javascript">var isAnagram = function(s, t) &#123;
+  let temps = s.split(&#39;&#39;).sort().join(&#39;&#39;)
+  let tempt = t.split(&#39;&#39;).sort().join(&#39;&#39;)
+  return temps === tempt
+&#125;
+/**
+ * 执行用时：104ms（击败 16.72% JS 用户
+ * 内存消耗：48.2MB（击败 17.52% JS 用户
+ **/
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="5-验证回文串"><a href="#5-验证回文串" class="headerlink" title="5. 验证回文串"></a>5. 验证回文串</h3><ul>
+<li>给定一个字符串，验证它是否是回文串</li>
+<li>只考虑字母和数字字符</li>
+<li>可以忽略字母大小写</li>
+<li>本题中，空字符串定义为有效回文串</li>
+</ul>
+<p>示例：</p>
+<p>输入：”A man, a plan, a canal: Panama”</p>
+<p>输出：true</p>
+<p>解释：”amanaplanacanalpanama” 是回文串</p>
+<pre><code class="javascript">var isPalindrome = function(s) &#123;
+  s = s.toLowerCase()
+  let arr = s.match(/[0-9A-Za-z]/g)
+    if (!arr) &#123;
+    return true
+  &#125;
+  let n = Math.floor(s.length / 2)
+  for(let i = 0; i &lt; n; i++) &#123;
+    if (arr[i] !== arr[arr.length - 1 - i]) &#123;
+      return false
+    &#125;
+  &#125;
+  return true
+&#125;
+/**
+ * 执行用时：56ms（击败 98.65% JS 用户
+ * 内存消耗：45.7MB（击败 34.14% JS 用户
+ **/
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="6-字符串转换整数（atoi）"><a href="#6-字符串转换整数（atoi）" class="headerlink" title="6. 字符串转换整数（atoi）"></a>6. 字符串转换整数（atoi）</h3><ul>
+<li>给一个字符串，将其转换成 32 位有符号整数</li>
+<li>去掉字符串中的无效空格</li>
+<li>检查正负号，无符号假定结果为正</li>
+<li>直到下一个非数字字符或到达输入结尾，字符串的其余部分将被忽略。</li>
+<li>“123” 转为 123，”0023” 转为 23，”123 with” 转为 123，如果没有数字，则整数为 0</li>
+<li>如果超过 32 位有符号整数范围 [-2^31, 2^31]需要截断这个整数，使其保持在这个范围内</li>
+</ul>
+<pre><code class="javascript">var myAtoi = function(s) &#123;
+  s = s.trim()
+  let isNumStart = s.match(/^[+|-]?\d*/) // 截取以 [+|-]? 开头的第一段数字
+  if (!isNumStart || !isNumStart[0].match(/\d$/)) &#123;
+    // 过滤掉单独的 &quot;+&quot; 或 &quot;-&quot;
+    return 0
+  &#125;
+  let num = Number(isNumStart[0])
+  if (num &lt; Math.pow(-2, 31))&#123;
+    return Math.pow(-2, 31)
+  &#125;
+  if (num &gt; Math.pow(2, 31) - 1) &#123;
+    return Math.pow(2, 31) - 1
+  &#125;
+  return num
+&#125;
+/**
+ * 执行用时：72ms（击败 71.09% JS 用户
+ * 内存消耗：42.5MB（击败 83.65% JS 用户
+ **/
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="7-实现-strStr"><a href="#7-实现-strStr" class="headerlink" title="7. 实现 strStr()"></a>7. 实现 strStr()</h3><ul>
+<li>给两个字符串 <code>haystack</code> 和 <code>needle</code></li>
+<li>在 <code>haystack</code> 中找到 <code>needle</code> 出现的第一个位置（下标从 0 开始）</li>
+<li>如果不存在，返回 -1</li>
+<li>对于本题来说，当 <code>needle</code> 是空字符串时返回 0</li>
+</ul>
+<p>示例：</p>
+<p>输入：haystack &#x3D; “hello”, needle &#x3D; “ll”</p>
+<p>输出：2</p>
+<pre><code class="javascript">var strStr = function(haystack, needle) &#123;
+  if (needle.length &lt; 1) &#123;
+    return 0
+  &#125;
+  return haystack.match(needle) ? haystack.match(needle).index : -1
+&#125;
+/**
+ * 执行用时：52ms（击败 96.98% JS 用户
+ * 内存消耗：40.4MB（击败 99.62% JS 用户
+ **/
+</code></pre>
+<p>感觉直接用正则并没有用到什么算法，出于礼貌还是放一下官方比较好懂的解法之一：暴力匹配 &#x3D;w&#x3D;</p>
+<pre><code class="javascript">var strStr = function(haystack, needle) &#123;
+  const n = haystack.length, m = needle.length;
+  for (let i = 0; i + m &lt;= n; i++) &#123;
+    let flag = true;
+    for (let j = 0; j &lt; m; j++) &#123;
+      if (haystack[i + j] != needle[j]) &#123;
+        flag = false;
+        break;
+      &#125;
+    &#125;
+    if (flag) &#123;
+      return i;
+    &#125;
+  &#125;
+  return -1;
+&#125;;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="8-外观数列"><a href="#8-外观数列" class="headerlink" title="8. 外观数列"></a>8. 外观数列</h3><ul>
+<li>给一个正整数 <code>n</code>，输出外观数列的第 <code>n</code> 项</li>
+</ul>
+<p>示例 1：</p>
+<p>输入：n &#x3D; 1；<br>输出：”1”</p>
+<p>示例 2：</p>
+<p>输入：n &#x3D; 4；<br>输出：”1211”；<br>解释：</p>
+<ul>
+<li>countAndSay(1) &#x3D; “1”</li>
+<li>countAndSay(2) &#x3D; 读 “1” &#x3D; 1 个 1 &#x3D; “11”</li>
+<li>countAndSay(3) &#x3D; 读 “11” &#x3D; 2 个 1 &#x3D; “21”</li>
+<li>countAndSay(4) &#x3D; 读 “21” &#x3D; 1 个 2 和 1 个 1 &#x3D; “1211”<br>&#96;&#96;&#96;javascript<br>&#x2F;**</li>
+</ul>
+<ul>
+<li>@param {number} n</li>
+<li>@return {string}</li>
+</ul>
+<p> <strong>&#x2F;<br>var countAndSay &#x3D; function(n) {<br>  let s &#x3D; “1”<br>  let say &#x3D; function() {<br>    n–<br>    if (n &gt; 0) {<br>      let res &#x3D; ‘’<br>      while(s.length &gt; 0) {<br>        let reg &#x3D; new RegExp(<code>$&#123;s[0]&#125;*</code>)<br>        let match &#x3D; s.match(reg)<br>        res &#x3D; <code>$&#123;res&#125;$&#123;match[0].length&#125;$&#123;match[0][0]&#125;</code><br>        s &#x3D; s.substring(match.index + match[0].length, s.length)<br>      }<br>      s &#x3D; res<br>      say()<br>    }<br>  }<br>  say()<br>  return s<br>}<br>&#x2F;</strong></p>
+<ul>
+<li>执行用时：68ms（击败 56.08% JS 用户</li>
+<li>内存消耗：47.6MB（击败 5.14% JS 用户</li>
+</ul>
+<p> **&#x2F;</p>
+<pre><code>[&gt;&gt; 返回目录](#目录)
+
+### 9. 最长公共前缀
+- 查找字符串数组中的最长公共前缀
+- 若不存在最长公共前缀，返回空字符串
+```javascript
+/**
+ * @param &#123;string[]&#125; strs
+ * @return &#123;string&#125;
+ **/
+var longestCommonPrefix = function(strs) &#123;
+  let test = &quot;&quot;
+  let loop = Math.min(...strs.map(i =&gt; i.length))
+  for (let i = 0; i &lt; loop; i++) &#123;
+    let temp = strs[0].slice(0, i+1)
+    let reg = new RegExp(`\^$&#123;temp&#125;`)
+    console.log(reg)
+    let count = 0
+    strs.forEach(item =&gt; &#123;
+      let match = item.match(reg)
+      if (match) &#123;
+
+        count++
+      &#125;
+    &#125;)
+    if (count !== strs.length) &#123;
+      return test
+    &#125;
+    test = temp
+  &#125;
+  return test
+&#125;
+/**
+ * 执行用时：72ms（击败 33.2% JS 用户
+ * 内存消耗：45.3MB（击败 5.01% JS 用户
+ **/
+longestCommonPrefix([&quot;flower&quot;, &quot;flow&quot;, &quot;flourish&quot;]) // &quot;flo&quot;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="1-删除链表中的节点"><a href="#1-删除链表中的节点" class="headerlink" title="1. 删除链表中的节点"></a>1. 删除链表中的节点</h3><ul>
+<li>编写一个函数，用于 <code>删除单链表中某个特定节点</code></li>
+<li>在设计函数时，无法访问链表的 head，只能直接访问要被删除的节点。</li>
+<li>题目数据保证需要删除的节点 <code>不是末尾节点</code></li>
+</ul>
+<p>示例：</p>
+<p>输入：head &#x3D; [4, 5, 1, 9], node &#x3D; 5；</p>
+<p>输出：[4, 1, 9];</p>
+<p>解释：指定链表中值为 5 的第二个节点，那么在调用了函数之后，该链表应变为 4 -&gt; 1 -&gt; 9</p>
+<p>以下是官方解法，微微有些奇怪，不知道为什么输入只有一个 node 可以得到输出，而且输入的 node 看起来像一个对象</p>
+<pre><code class="javascript">/**
+ * Definition for singly-linked list
+ * function ListNode(val) &#123;
+ *   this.val = val;
+ *   this.next = null
+ * &#125;
+ * @param &#123;ListNode&#125; node
+ * @return &#123;void&#125; Do not return anything, modify node in-place instead.
+ **/
+var deleteNode = function(node) &#123;
+  node.val = node.next.val;
+  node.next = node.next.next;
+&#125;
+</code></pre>
+<h3 id="2-删除链表中的倒数第-N-个节点"><a href="#2-删除链表中的倒数第-N-个节点" class="headerlink" title="2. 删除链表中的倒数第 N 个节点"></a>2. 删除链表中的倒数第 N 个节点</h3><ul>
+<li>给一个链表，删除倒数第 n 个节点，并返回链表的头节点</li>
+</ul>
+<pre><code class="javascript">function ListNode(val, next) &#123;
+  this.val = (val === undefined ? 0: val)
+  this.next = (next === undefined ? null : next)
+&#125;
+let myHead = [1, 2, 3, 4, 5]
+myHead = myHead.map((i, index) =&gt; &#123;
+  return new ListNode(i, myHead[index+1])
+&#125;)
+
+var removeNthFromEnd = function (head, n) &#123;
+  console.log(head)
+  head.splice(head.length - n, 1)
+  return head
+&#125;
+removeNthFromEnd(myHead,2)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<blockquote>
+<p>这里突然意识到，前端可能需要的更多是前端相关的算法，所以我们先放一放《初级算法》，还是先掌握《前端通关手册：JavaScript》中的算法叭~</p>
+</blockquote>
+<h2 id="数组-4"><a href="#数组-4" class="headerlink" title="数组"></a>数组</h2><h3 id="1-合并两个有序数组"><a href="#1-合并两个有序数组" class="headerlink" title="1. 合并两个有序数组"></a>1. 合并两个有序数组</h3><ul>
+<li>给两个按 <code>非递减顺序</code> 排列的整数数组 <code>muns1</code> 和 <code>nums2</code>，另有两个整数 <code>m</code> 和 <code>n</code>，分别表示 <code>nums1</code> 和 <code>nums2</code> 中的元素数目。</li>
+<li>合并 nums2 到 nums1 中，使合并后数组同样按照 <code>非递减顺序</code><br>&#96;&#96;&#96;javascript<br>&#x2F;**</li>
+</ul>
+<ul>
+<li>@param {number[]} nums1</li>
+<li>@param {number} m</li>
+<li>@param {number[]} nums2</li>
+<li>@param {number} n</li>
+<li>@return {void} Do not return anything, modify nums1 in-place instead.</li>
+</ul>
+<p> *&#x2F;<br>var merge &#x3D; function(nums1, m, nums2, n) {<br>  nums1 &#x3D; nums1.splice(m, nums1.length - m, …nums2)<br>  nums1.sort((a, b) &#x3D;&gt; a - b)<br>}<br>merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)</p>
+<pre><code>[&gt;&gt; 返回目录](#目录)
+
+52 张扑克按圆桌发牌，每人得到
+
+三数之和
+</code></pre>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

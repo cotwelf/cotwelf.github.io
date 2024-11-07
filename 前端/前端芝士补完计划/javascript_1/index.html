@@ -1,0 +1,866 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 1. 简介及基本语法</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript - 1. 简介及基本语法 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#879cff>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#1bccbc>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#1-%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9-JavaScript-%E7%9A%84%E7%90%86%E8%A7%A3">1. 请简单描述一下你对 JavaScript 的理解。</a><br><a href="#5-JavaScript-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF">5. JavaScript 有哪些优势和劣势</a><br><a href="#6-%E4%BB%A5%E4%B8%8B%E5%AF%B9-JS-%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%AD%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">*6. 以下对 JS 的理解中错误的是</a><br><a href="#7-script-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">*7. script 标签的常用属性</a><br><a href="#8-%E4%BB%A5%E4%B8%8B%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA%E5%8F%98%E9%87%8F%E5%90%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF">*8. 以下可以作为变量名使用的是</a>A.9name; B.$strick9; C.p wstrick; D.delete<br><a href="#9-%E5%9C%A8%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%AD%E4%BC%9A%E6%8A%9B%E5%87%BA%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF">*9. 在严格模式中会抛出错误的是</a>A. function sum(x,x) {}; B. delete window.location; C. var x &#x3D; 010; D. var eval&#x3D;”strick”;<br><a href="#10-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-x-%E5%92%8C-y-%E5%88%86%E5%88%AB%E4%B8%BA">10. 执行下面的代码，在控制台输出的 x 和 y 分别为</a></p>
+<pre><code class="JavaScript">var x = 0, y = 0
+x
+++
+y
+</code></pre>
+<p><a href="#11-%E8%B0%83%E7%94%A8%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9C%80%E7%BB%88%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA">*11. 调用下面代码中的函数，最终返回的结果为</a></p>
+<pre><code class="JavaScript">function isArray() &#123;
+  return
+  true;
+&#125;
+isArray();
+</code></pre>
+<p><a href="#12-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-y-%E4%B8%BA">12. 执行下面的代码后，在控制台输出的 y 为</a></p>
+<pre><code class="JavaScript">var x = &#39;1&#39;, y;
+switch (x) &#123;
+  case 1:
+    y = 1;
+    break;
+  case 2:
+    y = 2;
+    break;
+  default:
+    y = 0;
+&#125;
+console.log(y)
+</code></pre>
+<p><a href="#13-2-true-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-6-quot-9-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">13. <code>2 + true</code> 等于（），<code>&quot;6&quot; + 9</code> 等于（）</a><br><a href="#14-4-3-2-quot-1-quot-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C-quot-1-quot-2-4-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">14. <code>4 + 3 + 2 + &quot;1&quot;</code> 等于（），<code>&quot;1&quot; + 2 + 4</code> 等于（）</a><br><a href="#15-%E8%AF%B7%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%81%8D%E5%8E%86%E8%87%B3-100-%E7%9A%84%E5%BE%AA%E7%8E%AF%EF%BC%8C%E5%9C%A8%E8%83%BD%E8%A2%AB-3-%E6%95%B4%E9%99%A4%E6%97%B6%E8%BE%93%E5%87%BA-%E2%80%9Cthree%E2%80%9D%EF%BC%8C%E5%9C%A8%E8%83%BD%E8%A2%AB-5-%E6%95%B4%E9%99%A4%E6%97%B6%E8%BE%93%E5%87%BA-%E2%80%9Cfive%E2%80%9D%EF%BC%8C%E5%9C%A8%E8%83%BD%E5%90%8C%E6%97%B6%E8%A2%AB-3-%E5%92%8C-5-%E6%95%B4%E9%99%A4%E6%97%B6%E8%BE%93%E5%87%BA-%E2%80%9Call%E2%80%9D%E3%80%82">15. 请实现一个遍历至 100 的循环，在能被 3 整除时输出 “three”，在能被 5 整除时输出 “five”，在能同时被 3 和 5 整除时输出 “all”。</a><br><a href="#16-%E7%9B%B8%E7%AD%89%EF%BC%88-%EF%BC%89%E5%92%8C%E5%85%A8%E7%AD%89%EF%BC%88-%EF%BC%89%E8%BF%90%E7%AE%97%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F">16. 相等（&#x3D;&#x3D;）和全等（&#x3D;&#x3D;&#x3D;）运算符有哪些区别？</a><br><a href="#17-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%8F%98%E9%87%8F-y-%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA">17. 执行下面的代码 <code>var z = 1, y = z = typeof y;</code> 后，变量 y 的结果为</a><br><a href="#18-1-5-1-2-%E7%AD%89%E4%BA%8E">18. (1, 5-1) * 2 等于</a><br><a href="#19-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84-y-%E4%B8%BA%EF%BC%88%EF%BC%89">19. 执行下面的代码后，在控制台输出的 y 为（）</a></p>
+<pre><code class="javascript">var y,
+  x = 1;
+y = x +++ x;
+</code></pre>
+<p><a href="#20-JavaScript-%E6%9C%89%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC%EF%BC%9F%E4%BD%A0%E8%83%BD%E7%94%BB%E4%B8%80%E4%B8%8B%E4%BB%96%E4%BB%AC%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE%E5%90%97%EF%BC%9F">20. JavaScript 有几种类型的值？你能画一下他们的内存图吗？</a><br><a href="#21-%E5%9C%A8-JS-%E4%B8%AD%EF%BC%8C%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E5%AD%97%E9%9D%A2%E9%87%8F%E5%88%86%E5%88%AB%E6%8C%87%E4%BB%80%E4%B9%88%EF%BC%9F">21. 在 JS 中，常量、变量、字面量分别指什么？</a><br><a href="#22-%E5%88%86%E5%8F%B7%E4%BC%9A%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%EF%BC%9F%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%BC%8A%E7%AB%AF%EF%BC%9F">22. 分号会在什么时候自动补全？自动补全有什么弊端？</a><br><a href="#23-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%EF%BC%9F%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%E9%99%90%E5%88%B6%EF%BC%9F">23. 什么是严格模式？严格模式有哪些限制？</a><br><a href="#24-undefined-%E5%92%8C-null-%E7%9A%84%E5%BC%82%E5%90%8C">24. undefined 和 null 的异同</a><br><a href="#25-0-1-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8C0-amp-amp-1-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89">25. 0 || 1 得到的结果是（），0 &amp;&amp; 1 得到的结果是（）</a><br><a href="#26-%E4%B8%A4%E4%B8%AA%E8%BF%90%E7%AE%97%E7%AC%A6-typeof-%E4%B8%8E-instanceof-%E7%9A%84%E5%8C%BA%E5%88%AB">26. 两个运算符 typeof 与 instanceof 的区别</a><br><a href="#27-1-amp-amp-2-3-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8C0-2-amp-amp-1-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF">27. 1 &amp;&amp; 2 || 3 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是</a><br><a href="">28. 像下面这样判断 obj 是不是一个对象有什么潜在问题？<code>typeof obj === &#39;object&#39;</code> 如何改进？</a><br><a href="#29-%E4%BB%A5%E4%B8%8B%E6%98%AF-JS-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%9C%89">29. 以下是 JS 数据类型的有</a> A. int; B. string; C. boolean; D.object;<br><a href="#30-%E5%9C%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%AD%EF%BC%8C%E6%89%A7%E8%A1%8C-typeof-%E8%BF%90%E7%AE%97%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF">30. 在下面的代码中，执行 typeof 运算得到的结果是</a></p>
+<pre><code class="javascript">var func = (function() &#123;
+  return &quot;1&quot;;
+&#125;, function() &#123;
+  return 1;
+&#125;)()
+typeof func;
+</code></pre>
+<p><a href="#31-%E8%AF%B4%E5%87%A0%E6%9D%A1%E5%86%99-JavaScript-%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E8%8C%83">*31. 说几条写 JavaScript 的基本规范</a><br><a href="#32-%E5%81%87%E8%AE%BE%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F-a-%E5%92%8C-b%EF%BC%8C%E5%AE%83%E4%BB%AC%E7%9A%84%E5%80%BC%E9%83%BD%E6%98%AF%E6%95%B0%E5%AD%97%EF%BC%8C%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E5%80%9F%E7%94%A8%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%8A%8A%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B0%83%EF%BC%9F">32. 假设有两个变量 a 和 b，它们的值都是数字，如何在不借用第三个变量的情况下，把两个变量对调？</a><br><a href="#33-%E4%BB%A5%E4%B8%8B%E5%8D%95%E8%AF%8D%E4%B8%8D%E8%83%BD%E4%BD%9C%E4%B8%BA-JS-%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%98%AF">33. 以下单词不能作为 JS 关键字的是</a>A. delete; B. void; C. private; D.break<br><a href="#34-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BE%9D%E6%AC%A1%E8%BE%93%E5%87%BA">34. 执行下面的代码，在控制台依次输出</a></p>
+<pre><code class="javascript">function digit(i) &#123;
+  if(i == 2) &#123;
+    i++;
+  &#125; else if (i == 3) &#123;
+    i +=2;
+  &#125; else if (i == 4) &#123;
+    ++i;
+  &#125;
+  return i;
+&#125;
+for (var i = 1; i &lt; 5; i++) &#123;
+  console.log(digit(i))
+&#125;
+</code></pre>
+<p><a href="#35-%E5%9C%A8%E6%89%A7%E8%A1%8C%E6%97%B6%E4%BC%9A%E5%8F%91%E7%94%9F%E5%BC%82%E5%B8%B8%E7%9A%84%E8%AF%AD%E5%8F%A5%E6%98%AF">35. 在执行时会发生异常的语句是</a><br><a href="#36-void-0-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89%EF%BC%8CNaN-4-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89">36. void(0) 得到的结果为（），NaN * 4 得到的结果是（）</a></p>
+<h3 id="1-请简单描述一下你对-JavaScript-的理解"><a href="#1-请简单描述一下你对-JavaScript-的理解" class="headerlink" title="1. 请简单描述一下你对 JavaScript 的理解"></a>1. 请简单描述一下你对 JavaScript 的理解</h3><p>JavaScript 是一种<code>解释执行</code>的高级编程语言，同时也是一门<code>动态、弱类型的直译脚本语言</code>，适合面向对象（基于原型）和函数式的编程风格。JavaScript 主要运行在一个内置 JavaScript 解释器的客户端中（例如 Web 浏览器），能够处理复杂的计算，操控文档的内容、样式和行为。能在客户端完成的操作（例如输入验证、日期计算等）尽量都由 JavaScript 完成，这样就能减少与服务器的通信，降低服务器的负载。完整的 JavaScript 由 3 部分组成：<code>ECMAScript（提供核心语言功能）</code>、<code>DOM（文档对象模型）</code> 和 <code>BOM（浏览器对象模型）</code>。</p>
+<blockquote>
+<p><code>解释型</code>语言：相对于编译型语言存在的，特点：源代码不是直接翻译成机器语言；运行：先翻译成中间代码，由<code>解释器</code>运行。比如 Python &#x2F; JavaScript &#x2F; Perl &#x2F;Shell等都是解释型语言。 解释型语言：程序<code>不需要编译</code>，程序在<code>运行时</code>才翻译成机器语言，<code>每执行一次都要翻译一次</code>。 因此效率比较低。</p>
+</blockquote>
+<blockquote>
+<p><code>弱类型</code>语言：对于变量的类型没有严格的规定，比如 let a &#x3D; 1 定义一个变量 a，类型显然是 number，之后可以重新赋值为 boolean 或 string 等，不像 C# 等，需要在声明时就确定变量的类型</p>
+</blockquote>
+<blockquote>
+<p>静态类型：编译时报错；<code>动态</code>类型：<code>运行时</code>报错。</p>
+</blockquote>
+<blockquote>
+<p>直译语言：又称直译式语言，是一种编程语言，它会将代码一句一句执行，而不需要经过编译器先行编译为机器码。这种编程语言需要利用解释器，在执行期，动态将代码逐句解释（interpret）为机器代码，或是已经预先编译为机器代码的子程序，之后再执行.</p>
+</blockquote>
+<blockquote>
+<p>脚本语言：以<code>简单的方式快速完成某些复杂的事情</code>通常是创造脚本语言的重要原则，基于这项原则，使得脚本语言通常比 C 语言、C++ 语言或 Java 之类的系统编程语言要简单容易，也让脚本语言另有一些属于脚本语言的特性：（1）语法和结构通常比较简单；（2）学习和使用通常比较简单；（3）通常以容易修改程序的“解释”作为执行方式，而不需要“编译”；（4）程序的开发产能优于执行性能。</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="5-JavaScript-有哪些优势和劣势"><a href="#5-JavaScript-有哪些优势和劣势" class="headerlink" title="5. JavaScript 有哪些优势和劣势"></a>5. JavaScript 有哪些优势和劣势</h3><p>【JS 的优势】</p>
+<p>（1）JS 可在客户端替服务器分摊掉一些工作（例如数据验证、数学计算等），从而<code>减少了和服务器的交互次数，降低了服务器压力</code>。</p>
+<blockquote>
+<p>早期拨号上网速度很慢，与服务器数据交互很慢，比如表单提交，JS 可以在前端过滤掉一些基本错误，例如信息未填写完整等。</p>
+</blockquote>
+<p>（2）JS 比较容易上手，日常开发涉及的大部分<code>语法</code>都比较<code>简单</code>。</p>
+<p>（3）用户能<code>快速得到页面上的反馈</code>。一些操作必须与服务器通信，例如提交数据、验证昵称重复等，这些操作会有无法避免的网络延迟，而其他在客户端运行的大部分操作，都能得到即时反馈。</p>
+<p>（4）<code>跨平台</code>。JS 不会依赖操作系统（例如 Windows、IOS 等），只要有浏览器，就能正常执行。</p>
+<p>（5）丰富界面、增强<code>交互</code>。JS 可以控制文档中的任何元素，定制元素的内容、样式或行为，用 JS 代替 CSS 可以实现<code>复杂而多样的动画或特效</code>（例如点击元素改变背景色）。</p>
+<p>【JS 的劣势】</p>
+<p>（1）兼容性低。各个浏览器对 JS 的支持程度不同，同一套脚本在不同浏览器中的执行结果会不同，有的完美执行，有的可能会提示错误。</p>
+<p>（2）安全性低。由于 JS 在客户端运行，用户不仅可以查看 JS 源代码，还能嵌入恶意代码、替换或禁用脚本。</p>
+<p>（3）中断运行。因为 JS 是一种直译语言，所以只要有一条出错，那么就会直接停止运行。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="6-以下对-JS-的理解中错误的是"><a href="#6-以下对-JS-的理解中错误的是" class="headerlink" title="6. 以下对 JS 的理解中错误的是"></a>6. 以下对 JS 的理解中错误的是</h3><p><del>A. JScript 和 JS 是等价的；</del></p>
+<p>虽然 JS 和 JScript 都是 <code>ECMAScript</code> 的实现，但两者是由不同公司设计的，因此无法划等号。</p>
+<blockquote>
+<p>ECMAScript: ECMA（欧洲计算机制造商协会）指定的技术委员会（来自微软等关注脚本语言发展的公司的程序猿们组成）共同定义的<code>脚本语言标准</code>。</p>
+</blockquote>
+<blockquote>
+<p>ES5 是 ECMAScript 5 的缩写，也被称为 ECMAScript2009。 ECMAScript 标准的第六版是 ES6 或 ECMAScript6。 它也被称为 ECMAScript2015。</p>
+</blockquote>
+<p><del>B. JS 脱离浏览器后就不能运行；</del></p>
+<p>JS 主要运行在一个内置 JavaScript 解释器的客户端中，浏览器只是 ECMAScript 实现可能的<code>宿主环境</code>之一。</p>
+<blockquote>
+<p>Node.js 是一个开源和跨平台的 JavaScript 运行时环境。Node.js 在浏览器之外运行 V8 JavaScript 引擎（Google Chrome 的内核），具体可以看 Node.js 篇（TODO）。</p>
+</blockquote>
+<blockquote>
+<p>宿主环境不仅提供基本的 ECMAScript 实现，同时也会提供该语言的扩展（如 DOM，则利用 ECMAScript 的核心类型和语法提供更多更具体的功能，以便实现针对环境的操作），一遍语言与环境之间对接交互。ECMAScript 的其他宿主环境如 Node。可以理解为 ECMAScript 只是一种语法规范（<code>脚本语言标准</code>）</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="7-script-标签的常用属性"><a href="#7-script-标签的常用属性" class="headerlink" title="*7. script 标签的常用属性"></a>*7. script 标签的常用属性</h3><p>一般来说，script 标签放到 body 底部即可。也就是说，脚本会被延迟到整个页面都解析完毕后再运行。</p>
+<blockquote>
+<p>浏览器在遇到 body 标签时才开始呈现内容，因为如果将 script 标签放到 head 中的话，意味着需要等全部 JS 代码都被下载、解析和执行完成后，才能开始呈现页面的内容。会使呈现页面出现延迟，延迟期间浏览器会是一片空白。当然也可以把 script 标签放到 head 中并添加 defer 属性，但只适用于外部脚本。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>async</td>
+<td>可选。只对外部脚本有效。</td>
+<td>可异步加载脚本。async等于新开一个进程单独执行</td>
+</tr>
+<tr>
+<td>defer</td>
+<td>可选。只对外部脚本有效。</td>
+<td>脚本可以延迟到文档完全被解析和显示之后再执行。相当于把 script 标签放到 body 底部</td>
+</tr>
+<tr>
+<td>src</td>
+<td>可选。</td>
+<td>要执行的外部文件路径</td>
+</tr>
+<tr>
+<td>type</td>
+<td>可选。</td>
+<td>表示编写代码使用的脚本语言的内容类型。默认值 <code>text/javascript</code></td>
+</tr>
+</tbody></table>
+<p>可以直接在 script 标签内写 JS 代码，也可以通过 src 属性引用外部文件。在引用外部 js 文件时，.js 扩展名可以省略。带有 src 属性的 script 标签内的 JS 代码不会被执行。</p>
+<p>解释器会对 script 元素内部的代码从上到下依次解释，求值完毕以前，页面其余内容都不会被浏览器加载。</p>
+<p>不能在 HTML 文档中省略 script 标签的结束标签，因为这种语法不符合 HTML 规范，而且也得不到某些浏览器（尤其是 IE）的正确解析。</p>
+<p>XHTML（可扩展超文本标记语言） 是更加严格的 HTML，二者的标签特性略有不同。但没用到过，所以没有深入了解。</p>
+<p>在 HTML 中嵌入 JavaScript 代码虽然没有问题，但一般认为最好的做法还是尽可能使用外部文件来包含 JavaScript 代码。</p>
+<p>使用 async 属性可以表示当前脚本不必等待其他脚本，也不必阻塞文档呈现。不能保证异步脚本按照它们在页面中出现的顺序执行。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="8-以下可以作为变量名使用的是"><a href="#8-以下可以作为变量名使用的是" class="headerlink" title="8. 以下可以作为变量名使用的是"></a>8. 以下可以作为变量名使用的是</h3><p><del>A.9name;</del></p>
+<p>B.$strick9;</p>
+<p><del>C.p wstrick;</del></p>
+<p><del>D.delete</del></p>
+<p>JS 中的变量是一个标识符，标识符只能以字母、下划线（_）或美元符号（$）开头，并且后续的字符中不能有空格。D有特殊含义关键字，不能作为标识符使用。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="9-在严格模式中会抛出错误的是"><a href="#9-在严格模式中会抛出错误的是" class="headerlink" title="9. 在严格模式中会抛出错误的是"></a>9. 在严格模式中会抛出错误的是</h3><p>A. <code>function sum(x,x) &#123;&#125;;</code></p>
+<p>B. <code>delete window.location;</code></p>
+<p>C. <code>var x = 010;</code></p>
+<p>D. <code>var eval=&quot;strick&quot;;</code></p>
+<p>严格模式对 JS 的语法行为都做了一些更改，消除了语言中一些不合理、不确定和不安全之处。严格模式规定函数中不能定义同名参数，不能用 delete 运算符删除不可删除的属性，禁止使用以 0 为前缀的八进制数字，不能讲 eval 用作变量。根据这 4 个限制可知，执行选项 A、B、C 和 D 都会抛出错误。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="10-执行下面的代码，在控制台输出的-x-和-y-分别为"><a href="#10-执行下面的代码，在控制台输出的-x-和-y-分别为" class="headerlink" title="10. 执行下面的代码，在控制台输出的 x 和 y 分别为"></a>10. 执行下面的代码，在控制台输出的 x 和 y 分别为</h3><pre><code class="JavaScript">var x = 0, y = 0
+x
+++
+y
+console.log(x, y)
+</code></pre>
+<p>0、1。如果把 <code>++ 运算</code>符单独放一行，它会和下一行语句合并，作为一个整体被解析。本题中代码相当于</p>
+<pre><code class="JavaScript">x
+++y
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="11-调用下面代码中的函数，最终返回的结果为"><a href="#11-调用下面代码中的函数，最终返回的结果为" class="headerlink" title="*11. 调用下面代码中的函数，最终返回的结果为"></a>*11. 调用下面代码中的函数，最终返回的结果为</h3><pre><code class="JavaScript">function isArray() &#123;
+  return
+  true;
+&#125;
+isArray();
+</code></pre>
+<p>undefined。当关键字 return、break 和 continue 后紧跟换行时，JS 会在换行处自动填补分号，上面的函数会被解析成如下这样：</p>
+<pre><code class="JavaScript">function isArray() &#123;
+  return;
+  true;
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="12-执行下面的代码后，在控制台输出的-y-为"><a href="#12-执行下面的代码后，在控制台输出的-y-为" class="headerlink" title="12. 执行下面的代码后，在控制台输出的 y 为"></a>12. 执行下面的代码后，在控制台输出的 y 为</h3><pre><code class="JavaScript">var x = &#39;1&#39;, y;
+switch (x) &#123;
+  case 1:
+    y = 1;
+    break;
+  case 2:
+    y = 2;
+    break;
+  default:
+    y = 0;
+&#125;
+console.log(y)
+</code></pre>
+<p>0。switch 语句中的 x 变量会与 case 子语句中的表达式进行全等（&#x3D;&#x3D;&#x3D;）匹配（即类型也必须一致），由于 x 变量是一个字符串，而 case 子语句中的条件是数字，因此无法匹配 case 子语句，只能执行 default 子语句中的代码块，y 变量最终被定义为 0。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="13-2-true-等于（），-quot-6-quot-9-等于（）"><a href="#13-2-true-等于（），-quot-6-quot-9-等于（）" class="headerlink" title="13. 2 + true 等于（），&quot;6&quot; + 9 等于（）"></a>13. <code>2 + true</code> 等于（），<code>&quot;6&quot; + 9</code> 等于（）</h3><p><code>2 + true == 3</code> 布尔值会被先转化成 1，然后与 2 相加。</p>
+<p><code>&quot;6&quot; + 9 == &quot;69&quot;</code> 字符串和数字<code>相加</code>会执行拼接操作。</p>
+<p><code>&quot;2&quot; * 4 === 8</code> 字符串和数字<code>乘除余</code>都会先将字符串转化为数字，然后进行运算。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="14-4-3-2-quot-1-quot-等于（），-quot-1-quot-2-4-等于（）"><a href="#14-4-3-2-quot-1-quot-等于（），-quot-1-quot-2-4-等于（）" class="headerlink" title="14. 4 + 3 + 2 + &quot;1&quot; 等于（），&quot;1&quot; + 2 + 4 等于（）"></a>14. <code>4 + 3 + 2 + &quot;1&quot;</code> 等于（），<code>&quot;1&quot; + 2 + 4</code> 等于（）</h3><p><code>加法运算符</code>是<code>从左往右</code>结合的</p>
+<p><code>4 + 3 + 2 + &quot;1&quot; == &quot;91&quot;</code> 先做数字运算再做拼接。</p>
+<p><code>&quot;1&quot; + 2 + 4 == &quot;124&quot;</code> 只做拼接操作。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="15-请实现一个遍历至-100-的循环，在能被-3-整除时输出-“three”，在能被-5-整除时输出-“five”，在能同时被-3-和-5-整除时输出-“all”。"><a href="#15-请实现一个遍历至-100-的循环，在能被-3-整除时输出-“three”，在能被-5-整除时输出-“five”，在能同时被-3-和-5-整除时输出-“all”。" class="headerlink" title="15. 请实现一个遍历至 100 的循环，在能被 3 整除时输出 “three”，在能被 5 整除时输出 “five”，在能同时被 3 和 5 整除时输出 “all”。"></a>15. 请实现一个遍历至 100 的循环，在能被 3 整除时输出 “three”，在能被 5 整除时输出 “five”，在能同时被 3 和 5 整除时输出 “all”。</h3><pre><code class="JavaScript">for (let i = 0; i &lt;= 100; i++) &#123;
+  if (i % 3 == 0 &amp;&amp; i % 5 == 0) &#123;
+    console.log(&quot;all&quot;)
+  &#125; else if (i % 3 == 0) &#123;
+    console.log(&quot;three&quot;)
+  &#125; else if (i % 5 == 0) &#123;
+    console.log(&quot;five&quot;)
+  &#125;
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="16-相等（-x3D-x3D-）和全等（-x3D-x3D-x3D-）运算符有哪些区别？"><a href="#16-相等（-x3D-x3D-）和全等（-x3D-x3D-x3D-）运算符有哪些区别？" class="headerlink" title="16. 相等（&#x3D;&#x3D;）和全等（&#x3D;&#x3D;&#x3D;）运算符有哪些区别？"></a>16. 相等（&#x3D;&#x3D;）和全等（&#x3D;&#x3D;&#x3D;）运算符有哪些区别？</h3><p>相等运算符用于比较两个操作数是否相等，操作数会进行类型转换。全等运算符用于比较两个操作数是否严格相等，操作数不会类型转换。即 <code>1 == &#39;1&#39;</code> 但 <code>1 !== &#39;1&#39;</code>。</p>
+<blockquote>
+<p>开发过程中一律使用 &#x3D;&#x3D;&#x3D;，且比较之前需要将被比较的对象转换为同一类型，这样可以保持代码中数据类型的完整性，一定程度上避免出现 BUG。</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="17-执行下面的代码后，变量-y-的结果为"><a href="#17-执行下面的代码后，变量-y-的结果为" class="headerlink" title="17. 执行下面的代码后，变量 y 的结果为"></a>17. 执行下面的代码后，变量 y 的结果为</h3><pre><code class="JavaScript">var z = 1, y = z = typeof y;
+console.log(y);
+</code></pre>
+<p><code>&quot;undefined&quot;</code>。<code>typeof 运算符比等号运算符优先级高</code>，由此可知，先执行 typeof 运算符。而此时 y 变量还未定义，所以计算结果为 “undefined”。由于<code>等号运算符的结合性是从右往左</code>，因此 <code>&quot;undefined&quot;</code> 会先赋给 z 变量，再赋给 y 变量。</p>
+<pre><code class="JavaScript">var z = 1, y;
+console.log(typeof y, y); // undefined, undefined
+z = typeof y;
+y = z;
+console.log(y, z); // undefined, undefined
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="18-1-5-1-2-等于"><a href="#18-1-5-1-2-等于" class="headerlink" title="18. (1, 5-1) * 2 等于"></a>18. (1, 5-1) * 2 等于</h3><p>8。表达式中的 <code>()</code> 优先级最高，因此先计算圆括号中的子表达式。在子表达式中，<code>-</code> 优先级高于 <code>,</code>，得到的结果是 4。逗号运算符的结合性是从左往右，因此返回最后一个操作数的值，也就是 4。4 * 2 &#x3D;&#x3D;&#x3D; 8</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="19-执行下面的代码后，在控制台输出的-y-为（）"><a href="#19-执行下面的代码后，在控制台输出的-y-为（）" class="headerlink" title="19. 执行下面的代码后，在控制台输出的 y 为（）"></a>19. 执行下面的代码后，在控制台输出的 y 为（）</h3><pre><code class="JavaScript">var y,
+  x = 1;
+y = x +++ x;
+</code></pre>
+<p>3。由于递增运算符（++）的优先级高于加法运算符（+），因此表达式 <code>x +++ x</code> 相当于 <code>(x ++) + x</code>。先执行后置递增操作，对操作数进行增量返回未计算的值，也就是 1.然后 x 变量再与自身相加（此时 x 变量的值已为 2），也就是 <code>1 + 2</code>，最后得到的结果是 3。</p>
+<pre><code class="JavaScript">var y
+var x = 1
+var z
+z = x++
+console.log(z) // 1
+console.log(x) // 2
+// 由此可见，n++ 的意义相当于：先忽略递增符号进行赋值，赋值后再执行递增操作。
+// 而 ++n 相当于先递增，再赋值；
+y = z + x
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="20-JavaScript-有几种类型的值？你能画一下他们的内存图吗？"><a href="#20-JavaScript-有几种类型的值？你能画一下他们的内存图吗？" class="headerlink" title="20. JavaScript 有几种类型的值？你能画一下他们的内存图吗？"></a>20. JavaScript 有几种类型的值？你能画一下他们的内存图吗？</h3><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>列举</th>
+<th>特点</th>
+<th>存储位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原始数据类型</td>
+<td>Undefined、Null、Boolean、Number、String<br />ES6: Symbol<br />ES10: BigInt</td>
+<td>占据空间小、大小固定</td>
+<td>栈</td>
+</tr>
+<tr>
+<td>引用数据类型</td>
+<td>Object（子类有 Array、Date、Function 等）</td>
+<td>占据空间大、大小不固定，如果放在栈中会影响程序运行性能，可以在栈中存放指针，解释器会在栈中检索地址，根据地址获从堆中获得实体</td>
+<td>堆</td>
+</tr>
+</tbody></table>
+<p><img src="/./stack&heap.png"></p>
+<p>null 值表示一个空对象指针，而这也正是使用 typeof 操作符检测 null 值时会返回 <code>&quot;object&quot;</code> 的原因，如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为 null。这也是为什么 React 中 state 里如果有对象，初始值是 null 而非 {}。</p>
+<p>undefined 值是派生自 null 值的，故 <code>undefined == null</code>，但 <code>undefined !== null</code></p>
+<p>任何涉及 NaN 的操作（例如 NaN&#x2F;10）都会返回 NaN，这个特点在多步计算中有可能导致问题。其次，NaN 与任何值都不相等，包括 NaN 本身。针对 NaN 的这两个特点，ECMAScript 定义了 isNaN()函数。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="21-在-JS-中，常量、变量、字面量分别指什么？"><a href="#21-在-JS-中，常量、变量、字面量分别指什么？" class="headerlink" title="21. 在 JS 中，常量、变量、字面量分别指什么？"></a>21. 在 JS 中，常量、变量、字面量分别指什么？</h3><p><code>常量</code>是一种在程序中可以直接使用的数据值，通常它的<code>值是固定的</code>。字面量类型不限。</p>
+<blockquote>
+<p>比如猫耳就经常使用 <code>API_PREFIX</code>、<code>EVENT_ID</code>，以及 <code>ERROR_CODE.FEEDBACK</code> 等作为常量。这样做的好处是：（1）增加代码的可读性。如果只是写数字或普通的 url 链接的话无法确切知道它的用途。（2）易于维护。比如接口返回的 error_code 有改动，我们只要修改前端这边定义的 ERROR_CODE 常量对象中的对应参数即可，不论有多少文件有在使用该常量都不用改。</p>
+</blockquote>
+<p><code>变量</code>可以在声明并初始化之后重新为其赋值。变量<code>未声明</code>会<code>报错</code>，声明<code>未初始化</code>会是 <code>undefined</code></p>
+<p><code>字面量</code>是用于表达源代码中一个固定值的表示法。简单来说就是一个数据，通常会赋值给变量。如 <code>var a = &#39;test&#39;</code> 其中 a 是变量，’test’ 是字面量。</p>
+<blockquote>
+<p>常量和变量都属于变量，表示一块内存空间，它们在内存中的存储方式都是一样的。只是常量值固定，变量值可变。</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="22-分号会在什么时候自动补全？自动补全有什么弊端？"><a href="#22-分号会在什么时候自动补全？自动补全有什么弊端？" class="headerlink" title="22. 分号会在什么时候自动补全？自动补全有什么弊端？"></a>22. 分号会在什么时候自动补全？自动补全有什么弊端？</h3><p>JS 并<code>不强制</code>使用分号。在句末补全分号可以避免不必要的 BUG，如果非要省略分号，则一定要注意格式，可以使用 eslint 进行规范。使用分号的好处：</p>
+<p>（1）确保解释器可以正确解析脚本（避免写法不规范而导致前后语句合并解析）;</p>
+<p>（2）在某些情况下增进代码的性能，因为这样解析器就不必再花时间推测应该在哪里插入分号了。</p>
+<blockquote>
+<p>分号可以<code>增强脚本的可读性和整洁性</code>，但 JS 并<code>不强制</code>使用分号。一条语句会以分号结束，如果省略了分号并且无法正确解析代码，JS 解释器就会根据自己的判断在某个位置插入分号，例如一条以 <code>(</code>、<code>[</code>、<code>/</code>、<code>+</code>、<code>-</code> 这些字符开头的语句，<code>有可能</code>会与前一条语句合并在一起，<code>作为一个整体被解析</code>。</p>
+</blockquote>
+<blockquote>
+<p>另一个规范：在控制语句中使用代码块可以让编码意图更加清晰，而且也能降低修改代码时出错的几率。如：</p>
+</blockquote>
+<pre><code class="JavaScript">if (x === 1) &#123;
+  console.log(x)
+&#125;
+</code></pre>
+<p>而非</p>
+<pre><code class="JavaScript">if (x === 1)
+  console.log(x)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="23-什么是严格模式？严格模式有哪些限制？"><a href="#23-什么是严格模式？严格模式有哪些限制？" class="headerlink" title="23. 什么是严格模式？严格模式有哪些限制？"></a>23. 什么是严格模式？严格模式有哪些限制？</h3><blockquote>
+<p>ES6：ECMAScript6，ECMAScript 2015，ECMA-262第6版<br>ECMAScript5 引入了严格模式（strict mode）。严格模式对 JS 的语法和行为都做了一些更改，消除了语言中一些不合理、不确定、不安全之处；提供高效严谨的差错机制，保证代码安全运行；禁用在未来版本中可能会使用的语法，为新版本做好铺垫。在脚本文件第一行或函数内第一行引入 <code>&quot;use strict&quot;;</code> 命令，就能触发严格模式，它看起来是字符串，但可以理解为<code>编译指示</code>。</p>
+</blockquote>
+<p>严格模式常见限制有：</p>
+<p>（1）所有变量要先声明；</p>
+<p>（2）函数中 this 默认是 undefined 而不是 window；</p>
+<p>（3）delete 不可删除的属性会抛异常；</p>
+<p>（4）一个以上同名参数会报错，如 sum(x, x){}；</p>
+<p>（5）禁止 0 为前缀的八进制数字，但支持 0x 开头的 16 进制；（为啥？）</p>
+<p>（6）禁止 with 语句。</p>
+<p>（7）不能将 eval 和 arguments 作为变量、函数或参数名称；</p>
+<blockquote>
+<p>严格模式也可以作为一种代码规范（除了（2）），工作中一般不会用到严格模式，有些低版本浏览器不支持（如 IE8）</p>
+</blockquote>
+<blockquote>
+<p>为什么不用 0 作为八进制的前缀呢，盲猜可能是为了避免人们认为是十进制前误加了个 0 叭。如果非要使用八进制，可以加 0o 前缀，如 0o77 &#x3D;&#x3D;&#x3D; 63（但在非严格模式下 077 &#x3D;&#x3D;&#x3D; 63）</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="24-undefined-和-null-的异同"><a href="#24-undefined-和-null-的异同" class="headerlink" title="24. undefined 和 null 的异同"></a>24. undefined 和 null 的异同</h3><p>相同：</p>
+<ul>
+<li>都有【空缺】的意思；</li>
+<li>不包含方法和属性；</li>
+<li>都是假值（可以理解 <code>!!undefined === false</code>; <code>!!null === false</code>）</li>
+<li>都只有一个值</li>
+</ul>
+<p>不同：</p>
+<table>
+<thead>
+<tr>
+<th>不同点↓</th>
+<th>undefined</th>
+<th>null</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类型</td>
+<td><code>typeof undefined === &#39;undefined&#39;</code></td>
+<td><code>typeof null === &#39;object&#39;</code></td>
+</tr>
+<tr>
+<td>含义</td>
+<td>声明但未赋值（未定义的值）</td>
+<td>空对象</td>
+</tr>
+<tr>
+<td>数字转换</td>
+<td><code>isNaN(Number(undefined))</code></td>
+<td><code>Number(null) === 0</code></td>
+</tr>
+</tbody></table>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="25-0-1-得到的结果是（），0-amp-amp-1-得到的结果是（）"><a href="#25-0-1-得到的结果是（），0-amp-amp-1-得到的结果是（）" class="headerlink" title="25. 0 || 1 得到的结果是（），0 &amp;&amp; 1 得到的结果是（）"></a>25. 0 || 1 得到的结果是（），0 &amp;&amp; 1 得到的结果是（）</h3><p>1，0。</p>
+<p>逻辑或（||）会返回从左到右的第一个真值；</p>
+<p>逻辑与（&amp;&amp;）会返回从左到右第一个假值，若都为真，则返回最后一个真值；</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="26-两个运算符-typeof-与-instanceof-的区别"><a href="#26-两个运算符-typeof-与-instanceof-的区别" class="headerlink" title="26. 两个运算符 typeof 与 instanceof 的区别"></a>26. 两个运算符 typeof 与 instanceof 的区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>语法</th>
+<th>检测对象</th>
+<th>返回值</th>
+<th>操作数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typeof</td>
+<td><code>typeof &#123;operand&#125;</code><br /><code>typeof(&#123;operand&#125;)</code></td>
+<td>数据类型<br/>确定值是那种<code>基本类型</code></td>
+<td>字符串如 <code>&quot;string&quot;</code>，<code>&quot;number&quot;</code></td>
+<td>1 个</td>
+</tr>
+<tr>
+<td>instanceof</td>
+<td><code>&#123;object&#125; instanceof &#123;constructor&#125;</code></td>
+<td>对象之间的关联性<br />检测 constructor.prototype 是否存在于参数 object 的原型链上<br/>确定值是哪种<code>引用类型</code></td>
+<td>boolean</td>
+<td>2 个</td>
+</tr>
+</tbody></table>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="27-1-amp-amp-2-3-得到的结果是（），0-2-amp-amp-1-得到的结果是"><a href="#27-1-amp-amp-2-3-得到的结果是（），0-2-amp-amp-1-得到的结果是" class="headerlink" title="27. 1 &amp;&amp; 2 || 3 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是"></a>27. 1 &amp;&amp; 2 || 3 得到的结果是（），0 || 2 &amp;&amp; 1 得到的结果是</h3><p>2，1。</p>
+<p>逻辑与优先级比逻辑或高，因此表达式相当于</p>
+<pre><code class="JavaScript">(1 &amp;&amp; 2) || 3
+0 || (2 &amp;&amp; 1)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="28-像下面这样判断-obj-是不是一个对象有什么潜在问题？如何改进？"><a href="#28-像下面这样判断-obj-是不是一个对象有什么潜在问题？如何改进？" class="headerlink" title="28. 像下面这样判断 obj 是不是一个对象有什么潜在问题？如何改进？"></a>28. 像下面这样判断 obj 是不是一个对象有什么潜在问题？如何改进？</h3><p><code>typeof obj === &#39;object&#39;</code></p>
+<p><code>typeof null === &#39;object&#39;</code>，如果要区分 null 和对象，可以使用 Object 原型方法 toString() 对 null 做进一步检测。</p>
+<pre><code class="JavaScript">Object.prototype.toString.call(null) === &#39;[object Null]&#39;;
+Object.prototype.toString.call(&#123;&#125;) === &#39;[object Object]&#39;;
+</code></pre>
+<blockquote>
+<p>如果要判断对象是否为空，可以用 lodash 的 isEmpty() <code>isEmpty(&#123;value&#125;) === true</code>。<br>isEmpty() 检查 value 是否为一个空对象，集合，映射或者set。 判断的依据是除非是有枚举属性的对象，length 大于 0 的 arguments <code>object</code>, <code>array</code>, <code>string</code>。</p>
+</blockquote>
+<pre><code class="JavaScript">isEmpty(null) === true;
+isEmpty(&#123;&#125;) === true;
+isEmpty(true) === true;
+isEmpty(1) === true;
+isEmpty(&#39;&#39;) === true;
+isEmpty(&#39;2333&#39;) === false;
+isEmpty([1, 2, 3]) === false;
+isEmpty(&#123; &#39;a&#39;: 1 &#125;) === false;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="29-以下是-JS-数据类型的有"><a href="#29-以下是-JS-数据类型的有" class="headerlink" title="29. 以下是 JS 数据类型的有"></a>29. 以下是 JS 数据类型的有</h3><p>A. int; B. string; C. boolean; D.object;</p>
+<p>BC（原始数据类型）,D（引用数据类型）。JS 中的数字类型是 number，支持十进制、八进制和十六进制整数，浮点数（双精度）、NaN 和 infinity。</p>
+<blockquote>
+<p>*双精度：占 8 字节，有效数字位数 16 位。单精度 4 字节，位数 8 位，CPU 处理单精度要快。</p>
+</blockquote>
+<p>所有变量（包括基本类型和引用类型）都存在于一个执行环境（也称为作用域）当中，这个执行环境决定了变量的生命周期，以及哪一部分代码可以访问其中的变量。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="30-在下面的代码中，执行-typeof-运算得到的结果是"><a href="#30-在下面的代码中，执行-typeof-运算得到的结果是" class="headerlink" title="30. 在下面的代码中，执行 typeof 运算得到的结果是"></a>30. 在下面的代码中，执行 typeof 运算得到的结果是</h3><pre><code class="JavaScript">var func = (function() &#123;
+  return &quot;1&quot;;
+&#125;, function() &#123;
+  return 1;
+&#125;)()
+typeof func;
+</code></pre>
+<p>number。</p>
+<pre><code class="JavaScript">var func1 = function() &#123;
+  return &quot;1&quot;;
+&#125;
+var func2 = function() &#123;
+  return 1;
+&#125;
+var func = (func1, func2)()
+typeof func;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="31-说几条写-JavaScript-的基本规范"><a href="#31-说几条写-JavaScript-的基本规范" class="headerlink" title="31. 说几条写 JavaScript 的基本规范"></a>31. 说几条写 JavaScript 的基本规范</h3><p>在平常项目开发中，我们遵守一些这样的基本规范，比如说：</p>
+<p>（1）变量声明在函数首部，并初始化；</p>
+<p>（2）代码中出现地址、常数、时间等时需要使用常量代替；</p>
+<p>（3）在进行比较的时候尽量使用’&#x3D;&#x3D;&#x3D;’, ‘!&#x3D;&#x3D;’；</p>
+<p>（4）不要在内置对象的原型上添加方法，如 Array, Date。</p>
+<p>（5）switch 语句必须带有 default 分支。</p>
+<p>（6）for 循环必须使用大括号。</p>
+<p>（7）if 语句必须使用大括号。</p>
+<blockquote>
+<p>可以使用 eslint 进行规范。</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="32-假设有两个变量-a-和-b，它们的值都是数字，如何在不借用第三个变量的情况下，把两个变量对调？"><a href="#32-假设有两个变量-a-和-b，它们的值都是数字，如何在不借用第三个变量的情况下，把两个变量对调？" class="headerlink" title="32. 假设有两个变量 a 和 b，它们的值都是数字，如何在不借用第三个变量的情况下，把两个变量对调？"></a>32. 假设有两个变量 a 和 b，它们的值都是数字，如何在不借用第三个变量的情况下，把两个变量对调？</h3><pre><code class="JavaScript">let a = 2
+let b = 3
+// 方法 1
+a = String(a) + b
+b = Number(a[0])
+a = Number(a[1])
+console.log(a, b)
+// 方法 2
+a = a + b
+b = a - b
+a = a - b
+console.log(a, b)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="33-以下单词不能作为-JS-关键字的是"><a href="#33-以下单词不能作为-JS-关键字的是" class="headerlink" title="33. 以下单词不能作为 JS 关键字的是"></a>33. 以下单词不能作为 JS 关键字的是</h3><p>A. delete; B. void; C. private; D.break</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>作用</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>delete</td>
+<td>删除对象上的属性</td>
+<td>delete object.property</td>
+</tr>
+<tr>
+<td>void</td>
+<td>对给定的表达式进行求值，然后返回 undefined</td>
+<td>void expression</td>
+</tr>
+<tr>
+<td>private</td>
+<td>类中声明的私有属性</td>
+<td>private const key &#x3D; {value}</td>
+</tr>
+<tr>
+<td>break</td>
+<td>跳出循环</td>
+<td>break;</td>
+</tr>
+</tbody></table>
+<br />
+
+<blockquote>
+<p>注意：在 React 里对 state 进行操作的时候不要用 delete。如果 state.obj 里没有嵌套对象的话，可以用扩展运算符浅拷贝出来，如果有的话就要深拷贝了，修改拷贝后的对象再 setState。具体可以在之后浅拷贝深拷贝的时候再谈。</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="34-执行下面的代码，在控制台依次输出"><a href="#34-执行下面的代码，在控制台依次输出" class="headerlink" title="34. 执行下面的代码，在控制台依次输出"></a>34. 执行下面的代码，在控制台依次输出</h3><pre><code class="JavaScript">function digit(i) &#123;
+  if(i == 2) &#123;
+    i++;
+  &#125; else if (i == 3) &#123;
+    i +=2;
+  &#125; else if (i == 4) &#123;
+    ++i;
+  &#125;
+  return i;
+&#125;
+for (var i = 1; i &lt; 5; i++) &#123;
+  console.log(digit(i))
+&#125;
+</code></pre>
+<p>声明 digit 时传的参数 i 为形参，所以 digit 中 i 的修改不会影响 for 中的 i（但不推荐同名变量）。<br>digit(1) &#x3D;&#x3D; 1; digit(2) &#x3D;&#x3D;&#x3D; 3; digit(3) &#x3D;&#x3D;&#x3D; 5; digit(4) &#x3D;&#x3D;&#x3D; 5。</p>
+<blockquote>
+<p>如果只是单纯的 ++i 和 i++ 其实并没有什么区别，都是 i 自增 1。但如果和其他变量或字面量进行运算时，++i 参与运算前自增，i++ 参与运算后自增。</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="35-在执行时会发生异常的语句是"><a href="#35-在执行时会发生异常的语句是" class="headerlink" title="35. 在执行时会发生异常的语句是"></a>35. 在执行时会发生异常的语句是</h3><p>A.var obj &#x3D; (); B. var obj &#x3D; &#x2F;&#x2F;; C. var obj &#x3D; {}; D. var obj &#x3D; []</p>
+<p>AB。A 括号内要有表达式，B &#x2F;&#x2F; 是注释，会导致语句不完整。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="36-void-0-得到的结果为（），NaN-4-得到的结果是（）"><a href="#36-void-0-得到的结果为（），NaN-4-得到的结果是（）" class="headerlink" title="36. void(0) 得到的结果为（），NaN * 4 得到的结果是（）"></a>36. void(0) 得到的结果为（），NaN * 4 得到的结果是（）</h3><p>undefined，NaN。void 运算符能忽略操作数的计算结果返回 undefined。NaN 表示不是数值，参与运算都是 NaN，注意 NaN !&#x3D; NaN。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

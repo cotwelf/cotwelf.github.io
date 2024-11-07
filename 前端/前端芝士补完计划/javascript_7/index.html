@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript-DOM 和 BOM</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript-DOM 和 BOM </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#ff7d73>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#1bccbc>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="2-什么是-DOM"><a href="#2-什么是-DOM" class="headerlink" title="2. 什么是 DOM"></a>2. 什么是 DOM</h3><p>DOM（文档对象模型）是针对 XML 但经过扩展用于 HTML 的应用程序编程接口（API）。DOM 把整个页面映射为多层节点结构（相当于把页面映射为一个<code>对象</code>，将其作为对象来对待，可以读到对象属性，同时带有一些操作该对象的方法）。HTML 或 XML 页面中的每个组成部分都是某种类型的节点，这些节点又包含着不同类型的数据。通过 DOM 创建的文档树形图，开发人员可以轻松自如地更改任何节点。</p>
+<blockquote>
+<p>制定 Web 通信标准 W3C（万维网联盟）制定了 DOM 标准。</p>
+<ul>
+<li>DOM1 级（1998） &#x3D; DOM 核心 + DOM HTML，DOM 核心规定如何映射 XML 文档结构，DOM HTML 在 DOM 核心的基础上加以扩展，添加了针对 HTML 的对象和方法。<code>DOM1 级的目标主要是映射文档结构</code>。</li>
+<li>DOM2 级扩充了 <code>DOM 视图</code>（<em>这个不是很懂 orz</em>）、<code>DOM 事件</code>（事件和事件处理接口，比如 onclick 等鼠标事件，onkeydown 等键盘事件等）、<code>DOM 样式</code>（基于 CSS 为元素应用样式的接口，如 <code>document.getElementById(&quot;test&quot;).style）</code>、<code>DOM 遍历和范围</code>（遍历和操作文档树的接口，如 parentNode()，firstChild() 等）等模块。</li>
+<li>DOM3 级进一步扩展了 DOM，引入了以同一方式加载和保存文档的方法等。</li>
+<li><del>DOM0 级<code>标准</code></del> 并不存在，它可能只是一个参考点，即 IE4 和 Netscape Navigator 4.0 最初支持的不同形式的 DHTML，并非 W3C 制定的 DOM 标准。<br>DOM 并不只是针对 JS 的，很多别的语言也都实现了 DOM。如 SVG（可伸缩矢量图）。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>DOM 兼容性：不同浏览器对 DOM 的兼容性不一，比如 IE8 只支持 1 级，IE9 才开始支持到 3 级，而且某些浏览器只支持某级的【<code>部分</code>】，在开发过程中可能需要做兼容。例如 IE8 之前可能只能通过操作 BOM 的方式（<code>window.innerHeight</code>）获取到视口高度，所以获取视口高度的兼容性写法最好是 <code>const seeHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight</code></p>
+</blockquote>
+<blockquote>
+<p>更详细一些的写法是这样的</p>
+</blockquote>
+<pre><code class="javascript">var pageWidth = window.innerWidth
+var pageHeight = window.innerHeight;
+if (typeof pageWidth != &quot;number&quot;) &#123;
+  if (document.compatMode == &quot;CSS1Compat&quot;)&#123;
+    pageWidth = document.documentElement.clientWidth;
+    pageHeight = document.documentElement.clientHeight;
+  &#125; else &#123;
+    pageWidth = document.body.clientWidth;
+    pageHeight = document.body.clientHeight;
+  &#125;
+&#125;
+</code></pre>
+<h3 id="怎样获取页面元素的宽高"><a href="#怎样获取页面元素的宽高" class="headerlink" title="怎样获取页面元素的宽高"></a>怎样获取页面元素的宽高</h3><pre><code class="javascript">domElement.offsetWidth; // 元素水平方向占用的空间大小，相应有 offsetHeight
+domElement.offsetTop; // 元素的【上边框】到父级元素【上边框】的距离，相应有 offsetLeft
+domElement.clientWidth; // 内容 + padding。相应有 clientHeight
+domElement.scrollHeight; // 没有滚动条的情况下，元素内容的总高度，相应有 scrollWidth
+// 滚回顶部
+function scrollToTop(element)&#123;
+ if (element.scrollTop != 0)&#123; // 被隐藏在内容区域上方的像素数。通过设置这个属性可以改变元素的滚动位置。
+ element.scrollTop = 0;
+ &#125;
+&#125;
+</code></pre>
+<h3 id="JS-Node-的常用方法"><a href="#JS-Node-的常用方法" class="headerlink" title="JS Node 的常用方法"></a>JS Node 的常用方法</h3><p>JS 中的所有节点类型都继承自 Node 类型，每个节点都有一个 childNodes 属性，保存着一个 NodeList 对象（它是类数组，用于保存一组有序节点，并非真的 Array 实例）。NodeList 是基于 DOM 结构动态执行查询的结果，因此 DOM 结构的变化能够自动反映在 NodeList 对象中。而 NodeList 的 length 属性只是访问 NodeList 的那一刻，其中包含的节点数量。下面介绍如何将 NodeList 转为数组进行操作</p>
+<pre><code class="javascript">function convertToArray(nodes) &#123;
+  var array = null;
+  // try-catch 最适合处理那些我们无法控制的错误。
+  try &#123; // 这里用 try-catch 的原因是 IE8 不支持
+    array = Array.prototype.slice.call(nodes, 0); // 针对非 IE 浏览器
+  &#125; catch (e) &#123;
+    array = new Array()
+    var nodeLength = nodes.length // 这里是为了防止执行过程中 nodes 发生变化导致 nodes.length 变化，所以先将其值赋给一个变量进行保存
+    for (var i = 0; i &lt; nodeLength; i++) &#123;
+      array.push(nodes[i]);
+    &#125;
+  &#125;
+  return array;
+&#125;
+</code></pre>
+<p>JS 通过 Document 类型表示文档。document 对象是 window 对象的一个属性，可以作为全局对象来访问。这里有一些常用的和需要注意的方法</p>
+<pre><code class="javascript">// 常用
+var html = document.documentElement; // 获得 html 节点的引用，所有浏览器都支持
+var body = document.body; // 获得 body 节点的引用，所有浏览器都支持
+console.log(html.contains(body)); // true。说明 html 节点包含着 body 子节点
+var nodeA = document.createElement(&#39;div&#39;)
+var nodeB = document.createElement(&#39;span&#39;)
+nodeB.setAttibute(&#39;class&#39;)
+if (!nodeB.classList.contain(&#39;node-b&#39;)) &#123; // 如果 nodeB 的 class 不包含 &#39;node-b&#39;，为其添加该类
+  nodeB.classList.add(&#39;node-b&#39;) // 为 nodeB 添加一个 class（不覆盖之前已有的 class。删除用 classList.remove()，切换用 clssList.toggle()
+&#125;
+// 注意：只有 Firefox 和 chrome 浏览器支持 classList
+nodeB.getAttribute(&#39;class&#39;) // &#39;node-b&#39;。
+nodeA.setAttriubte(&#39;cotwelf&#39;, &#39;xiu&#39;) // setAttriubte 可以设置一些自定义属性，比如 &lt;div cotwelf=&quot;xiu&quot;&gt;&lt;/div&gt;
+nodeB.dataset.cotwelf // &#39;xiu&#39;。dataset 用于访问自定义属性的值，当然也可以用 nodeB.getAttribute(&#39;cotwelf&#39;)
+nodeA.appendChild(nodeB) // 添加子节点 B 到节点 A 末尾
+var deepList = nodeA.cloneNode(true) // 包括子节点的深拷贝
+var shallowList = nodeA.cloneNode(false) // 不包括子节点的浅拷贝
+console.log(deepList.childNodes.length, shallowList.childNodes.length) // 1, 0。另外对于 childNodes，有些浏览器会忽略注释，有些则不会
+nodeA.removeChild(nodeA.firstChild) // 移除节点 A 的第一个子节点
+console.log(deepList.childNodes.length) // 1
+var title = document.title // 获取文档标题，同理可设置 document.title = &#39;new title&#39;
+var div = document.getElementById(&#39;divId&#39;) || document.getElementById(&#39;divId&#39;.toLowerCase()) // 因为 IE8 等一些低版本浏览器不区分 ID 大小写，都会别解析为小写，所以 id 尽量使用 dash 分隔命名，不要使用驼峰（如 div-id）。同时一个页面需保证 id 唯一，否则只能 get 到第一个。另外表单元素（&lt;input&gt;、&lt;textarea&gt;、&lt;button&gt;及&lt;select&gt;）的 name 特性也不要和页面中存在的 id 重复，否则低版本浏览器会把它当 id 来 get（什么鬼 qwq
+
+var classes = document.getElementsByClassName(&#39;class-name&#39;) // 它返回一个 HTMLCollection 对象，作为一个“动态”集合，该对象与 NodeList 非常类似
+var image =  document.getElementsByTagName(&quot;img&quot;).namedItem(&#39;a-img&#39;) // 通过元素的 name 特性取得集合中的项。等同于 document.getElementsByTagName(&quot;img&quot;)[&quot;a-img&quot;]，等同于 document.images[&quot;a-img&quot;]
+var link = document.links // 获得带有 href 特性的 &lt;a&gt;
+</code></pre>
+<pre><code class="javascript">var div = document.createElement(&#39;div&#39;)
+div.innerHTML = &quot;这里有&lt;span&gt;1个&lt;/span&gt;&lt;!--注释--!&gt;&quot;
+var textNode1 = document.createTextNode(&quot;呢&quot;);
+var textNode2 = document.createTextNode(&quot;~&quot;);
+div.appendChild(textNode1)
+div.appendChild(textNode2)
+var len = div.childNodes.length // childNodes 包括所有类型的节点，如文本节点、注释节点等
+var len2 = div.children.length // children 只包含元素节点
+console.log(len) // 5
+console.log(len2) // 1 也就是 &lt;span&gt; 标签
+for (let i = 0; i &lt; len; i++)&#123;
+  console.log(div.childNodes[i], div.childNodes[i].nodeType)
+  // &quot;这里有&quot;            3
+  // &lt;span&gt;1个&lt;/span&gt;   1
+  // &lt;!--注释--!&gt;       8
+  // &quot;呢~&quot;              3
+  // &quot;~&quot;                3
+&#125;
+
+// 规范化文本节点
+div.normalize()
+len = div.childNodes.length
+for (let i = 0; i &lt; len; i++)&#123;
+  console.log(div.childNodes[i], div.childNodes[i].nodeType)
+  // &quot;这里有&quot;            3
+  // &lt;span&gt;1个&lt;/span&gt;   1
+  // &lt;!--注释--!&gt;       8
+  // &quot;呢~&quot;              3
+&#125;
+console.log(len) // 4, 可以看到 normalize 将相邻的两个文本节点合并了，但它会导致 IE6 奔溃
+</code></pre>
+<p>document.createDocumentFragment() 可以一次性向文档节点插入新元素，避免逐个添加导致浏览器重复渲染</p>
+<pre><code class="javascript">// 假设现在页面上有个 &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+var fragment = document.createDocumentFragment();
+var ul = document.getElementById(&#39;list&#39;)
+var li = null;
+for (let i = 0; i &lt; 3; i++) &#123;
+  li = document.createElement(&#39;li&#39;);
+  li.appendChild(document.createTextNode(`item $&#123;i&#125;`))
+  fragment.appendChild(li)
+&#125;
+ul.appendChild(fragment);
+/** &lt;ul&gt;
+ *    &lt;li&gt;item1&lt;/li&gt;
+ *    &lt;li&gt;item2&lt;/li&gt;
+ *    &lt;li&gt;item3&lt;/li&gt;
+ *  &lt;/ul&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Node 类型</th>
+<th>nodeType</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ELEMENT_NODE</td>
+<td>1</td>
+<td><code>&lt;span&gt;1个&lt;/span&gt;</code></td>
+</tr>
+<tr>
+<td>ATTRIBUTE_NODE</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT_NODE</td>
+<td>3</td>
+<td><code>&quot;这里有&quot;</code></td>
+</tr>
+<tr>
+<td>COMMENT_NODE</td>
+<td>8</td>
+<td><code>&lt;!--注释--!&gt;</code></td>
+</tr>
+<tr>
+<td>DOCUMENT_NODE</td>
+<td>9</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>其他 api</p>
+<pre><code class="javascript">// Selectors API: querySelector() 和 querySelectorAll() 致力于让浏览器原生支持 CSS 查询（低版本浏览器不支持
+var selected = document.querySelector(&quot;.selected&quot;); // 取得类为&quot;selected&quot;的第一个元素
+var selecteds = document.querySelectorAll(&quot;.selected&quot;); // 取得类为&quot;selected&quot;的所有元素
+var strongs = document.querySelectorAll(&quot;p strong&quot;) // 取得所有&lt;p&gt;元素中的所有&lt;strong&gt;元素
+// document.activeElement 引用 DOM 中当前获得了焦点的元素。文档加载期间，document.activeElement 的值为 null
+var button = document.getElementById(&quot;myButton&quot;);
+button.focus();
+console.log(document.activeElement === button); //true
+console.log(document.hasFocus()) // true. 通过检测文档是否获得了焦点，可以知道用户是不是正在与页面交互。
+
+// 查询文档获知哪个元素获得了焦点，以及确定文档是否获得了焦点，这两个功能最重要的用途是提高 Web 应用的无障碍性。
+
+// document.readyState: &#39;loading&#39; 正在加载，&#39;conplete&#39; 加载完成
+if (document.readyState == &quot;complete&quot;)&#123;
+ document.getElementById(&#39;app&#39;).scrollIntoView(); // 让 #app 元素可见
+ /** 如果给 scrollIntoView() 方法传入 true 作为参数，或者不传入任何参数，
+  * 那么窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐。
+  * 如果传入 false 作为参数，调用元素会尽可能全部出现在视口中，（可能的话，调用元素的底部会与视口顶部平齐。）
+  * 不过顶部不一定平齐
+  **/
+&#125;
+</code></pre>
+<p>理解 DOM 的关键，就是理解 DOM 对性能的影响。DOM 操作往往是 JS 程序中开销最大的部分，而因访问 NodeList 导致的问题为最多。NodeList 对象都是“动态的”，这就意味着每次访问 NodeList 对象，都会运行一次查询。有鉴于此，最好的办法就是尽量减少 DOM 操作。</p>
+<p>DOM3 级引入了两个辅助比较节点的方法：isSameNode()和 isEqualNode()。这两个方法都接受一个节点参数，并在传入节点与引用的节点相同或相等时返回 true。所谓相同，指的是两个节点引用的是同一个对象。所谓相等，指的是两个节点是相同的类型，具有相等的属性（nodeName、nodeValue，等等），而且它们的 attributes 和 childNodes 属性也相等（相同位置包含相同的值）</p>
+<pre><code class="javascript">var div1 = document.createElement(&quot;div&quot;);
+div1.setAttribute(&quot;class&quot;, &quot;box&quot;);
+var div2 = document.createElement(&quot;div&quot;);
+div2.setAttribute(&quot;class&quot;, &quot;box&quot;);
+alert(div1.isSameNode(div1)); //true
+alert(div1.isEqualNode(div2)); //true
+alert(div1.isSameNode(div2)); //false
+// DOM2 级样式新增
+div1.style.backgroundColor = &#39;pink&#39;; // 为元素设置 style
+result = getComputedStyle(div, &#39;::after&#39;).content // 查询伪类的style
+div.currentStyle.width // currentStyle 包含元素全部计算后的样式。所有计算的样式都是只读的；不能修改计算后样式对象中的 CSS 属性
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-什么是-BOM"><a href="#3-什么是-BOM" class="headerlink" title="3. 什么是 BOM"></a>3. 什么是 BOM</h3><p>BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象</p>
+<p>BOM（浏览器对象模型），它指的是把浏览器当做一个对象来对待，这个对象主要定义了与浏览器进行交互的方法和接口。BOM 的核心是 window，而 window 对象具有双重角色，它既是通过 js 访问浏览器窗口的一个接口，又是一个 Global（全局）对象。这意味着在网页中定义的任何对象，变量和函数，都作为全局对象的一个属性或者方法存在。window 对象含有<code>location</code>（浏览器所加载页面的详细信息，比如可以通过 window.location.href 获取到 url 等）、<code>navigator</code>（浏览器详细信息，比如 <code>window.navigator.userAgent</code> 获取当前设备（mac 还是 Windows）当前浏览器信息（Firefox 还是 Chrome，及其版本号）之类的）、screen 对象、history对象等子对象，并且 DOM 的最根本的对象 document 对象也是 BOM 的 window 对象的子对象。</p>
+<p>还记得 standalone 古老活动的代码吗？因为当时 standalone 是嵌套在 web 的 iframe，所以在 iframe 中和 window 通信需要加 top，已调用最顶层（也就是 web 项目中 window）上的方法。</p>
+<pre><code class="javascript">window.top.postMessage(&#123;
+  type: &#39;updateHeight&#39;,
+  height: &#39;calc(100vh + 40px)&#39;,
+&#125;, &#39;*&#39;)
+</code></pre>
+<p>另外有时需要获取浏览器和操作系统信息，以便对低版本浏览器抛出提示，可以通过 ua 判断，具体代码可以看红宝书第 9 章-客户端检测-用户代理检测-9.3.3（完整代码P242）<br><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-四大浏览器内核"><a href="#4-四大浏览器内核" class="headerlink" title="*4. 四大浏览器内核"></a>*4. 四大浏览器内核</h3><p>Webkit，Blink，Trident（也称IE内核），Gecko<br><strong>【常用浏览器所使用的内核。】</strong></p>
+<blockquote>
+<p>主要看 IE 和 Chrome 即可</p>
+</blockquote>
+<ul>
+<li>1、IE浏览器内核：Trident内核，也是俗称的IE内核；</li>
+<li>2、Chrome 浏览器内核：统称为 Chromium 内核或 Chrome 内核，以前是 Webkit 内核，现在是 Blink 内核；</li>
+<li>3、Firefox 浏览器内核：Gecko 内核，俗称 Firefox 内核；</li>
+<li>4、Safari 浏览器内核：Webkit 内核；</li>
+<li>5、Opera 浏览器内核：最初是自己的 Presto 内核，后来是 Webkit，现在是 Blink 内核；</li>
+<li>6、360 浏览器、猎豹浏览器内核：IE + Chrome 双内核；</li>
+<li>7、搜狗、遨游、QQ浏览器内核：Trident（兼容模式）+ Webkit（高速模式）；</li>
+<li>8、百度浏览器、世界之窗内核：IE 内核；</li>
+<li>9、2345 浏览器内核：以前是IE内核，现在也是 IE + Chrome 双内核；</li>
+</ul>
+<p><strong>【移动端的浏览器内核（系统内置浏览器的内核）】</strong></p>
+<ul>
+<li>1、iPhone 和 iPad 等苹果 iOS 平台主要是 WebKit;</li>
+<li>2、Android4.4 之前的 Android 系统浏览器内核是 WebKit，Android4.4 系统浏览器切换到了 Chromium，内核是 Webkit 的分支 Blink</li>
+<li>3、WindowsPhone8 系统浏览器内核是 Trident。</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

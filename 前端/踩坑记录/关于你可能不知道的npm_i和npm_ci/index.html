@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 关于你可能不知道的 npm i 和 npm ci</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>关于你可能不知道的 npm i 和 npm ci </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/npm" style=color:#879cff>
+                    npm
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="先说结论："><a href="#先说结论：" class="headerlink" title="先说结论："></a>先说结论：</h1><p><code>npm i</code> 和 <code>npm ci</code> 差不多，都是根据 <code>package-lock.json</code> &gt; <code>package.json</code> 优先级安装。日常使用中比较大的差异：</p>
+<p><code>npm i</code> 可以安装单个依赖。</p>
+<p><code>npm ci</code> 可以自动删除 <code>node_modules</code> 目录，且不会改变 <code>package-lock.json</code> 文件，但执行时 <code>package-lock.json</code> 必须存在且版本号与 <code>package.json</code> 要求一致。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="先看文档"><a href="#先看文档" class="headerlink" title="先看文档"></a>先看文档</h2><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bee041a4e08742cd847a5ec744d4bf6b~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<h2 id="npm-ci-和-npm-i-的差异"><a href="#npm-ci-和-npm-i-的差异" class="headerlink" title="npm ci 和 npm i 的差异"></a>npm ci 和 npm i 的差异</h2><p>从文档描述来看，简言之就是 <code>npm ci</code> 和 <code>npm i</code> 差不多，只不过 <code>npm ci</code>：</p>
+<ol>
+<li>它是一种更干净的安装；</li>
+<li>它要求 <code>package-lock.json</code> 等锁依赖版本的文件必须存在，且版本必须和 <code>package.json</code> 中要求的版本对应，否则会报错；</li>
+<li>它会在安装之前先把 <code>node_modules</code> 文件夹（下文可能会称为 modules）删除；</li>
+<li>它无法安装单个依赖</li>
+</ol>
+<p>对于一个前端草履虫的我来说，如果 build 项目出现依赖报错之类的问题，一般会使用 <code>rm -rf node_modules &amp;&amp; npm cache clean --force &amp;&amp; npm i</code> 重装依赖，因为很有可能是我 fetch 了主仓库的最新代码，而它们的依赖升级了，导致本地跑不起来。这时候大多会好起来，直到我遇到一个问题，就是主仓库有一个依赖要求版本是 latest ，且该依赖需要 npm 版本比我本地的更高，当时 <code>npm i</code> 未果，从而尝试了另一种奇葩的解决方法，就是装了个 nvm，先把这个包从 package.json 文件中注释掉，然后用低版本 <code>npm i</code>，再用高版本单独装这个包。（这么想想它是不是应该在 <code>package.json</code> 里就锁定版本比较好，而不是用 latest ?)其中装 nvm 也踩了不少坑 orz，之后可能会单独聊一下。</p>
+<h2 id="好奇宝宝时间"><a href="#好奇宝宝时间" class="headerlink" title="好奇宝宝时间"></a>好奇宝宝时间</h2><h3 id="1-npm-ci-有多-“干净”？"><a href="#1-npm-ci-有多-“干净”？" class="headerlink" title="1. npm ci 有多 “干净”？"></a>1. npm ci 有多 “干净”？</h3><p>上文有提到，一般有依赖相关的问题，我会简单粗暴使用 <code>rm -rf node_modules &amp;&amp; npm cache clean --force &amp;&amp; npm i</code> 重装，基本 80% 的问题就好了。首先， <code>rm -rf node_modules</code> 删除了当前项目中的依赖包，其次，<code>npm cache clean --force</code> 删除了 npm 缓存，<code>npm i</code> 重新下载依赖。</p>
+<p>从文档中可以看出，<code>npm ci</code> 只是删除了 node_modules，但是并没有删除 npm 缓存。虽然官方强调并不需要删除缓存，但难保你安装某些依赖的过程中如果因为网速镜像等一些问题报错而终止，之后的安装中会不会出现重复的问题。</p>
+<blockquote>
+<p>感觉有点像你把移动硬盘的数据传电脑，传一半没电了，再次打开，可能电脑中有传一半的数据，但并不完整，算是已经损毁，根本无法打开。再次传的时候还是会提醒你文件已存在是否跳过，这时候你选择跳过的话，那你得到的就是一个坏掉的文件。当然我没看源码，纯属根据之前的经验瞎猜，如果有误，希望大佬们可以帮忙纠正~</p>
+</blockquote>
+<p>tips：缓存位置可以使用 npm config get cache 看到，在 mac 下它是个不可见的文件夹 .npm，<a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v8/commands/npm-cache">npm-cache</a> 文档中有提到说，<code>npm cache clean -f</code> 删除的只是 _cacache 文件夹，发现有大佬使用它删除缓存失败的例子（请戳《<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903785018425351">记一次排错经历——npm缓存浅析</a>》）可能有些缓存会放在 _cacache 外，可能还需要手动清理。</p>
+<h3 id="2-npm-ci-为什么要求-package-lock-json-存在？package-lock-json-到底是什么？"><a href="#2-npm-ci-为什么要求-package-lock-json-存在？package-lock-json-到底是什么？" class="headerlink" title="2. npm ci 为什么要求 package-lock.json 存在？package-lock.json 到底是什么？"></a>2. <code>npm ci</code> 为什么要求 <code>package-lock.json</code> 存在？<code>package-lock.json</code> 到底是什么？</h3><p>身为草履虫的我一直认为，<code>package-lock.json</code> 是锁定项目中依赖版本的，而之前公司的项目中，lock 文件一直是 ignore 状态，因为不会被提交，所以很难注意到它何时被修改。直到后来发现 lock 不再被 ignore 了，<code>npm i</code> 之后，尽管 <code>package.json</code> 文件不会变，有时候 lock 文件会变，为什么呢？</p>
+<p>下面，我们来简单说一下 <code>npm i</code>。</p>
+<p>先放一张忘记从哪里扒的流程图<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b69b59aa6d246558bf4faa9d6a49810~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p><strong><code>npm i</code> 会根据 <code>package-lock.json</code> &gt;  <code>package.json</code> 顺序，以 <code>package.json</code> 为标准更新冲突依赖，更新结束后生成 <code>package-lock.json</code> 文件。</strong></p>
+<p>如果 modules 中原本存在符合要求版本的话会跳过安装，也就不会修改 <code>package-lock.json。</code></p>
+<blockquote>
+<p>本草履虫因为看不懂源码所以黑盒测试一下（别打我，以后会学会看源码的我保证！）。先随意找个本地有 package.json 有 lock 也有 modules 的项目，修改一下 modules 里某依赖 A 中的某个文件（于是菜鸡小心翼翼删掉了某一行注释）重新 npm i 一下，刚才那行注释并没有粗线。说明 npm i 并没有重新安装依赖。然后我们手动修改 package.json 里的某依赖 B 版本号，修改一下这个依赖的某个文件，再次 npm i ，这次可以看到刚才修改的依赖 B 中的文件有被覆盖，但最初修改的依赖 A 中的文件还是没有被覆盖。</p>
+</blockquote>
+<p>再说一下 <code>package-lock.json</code></p>
+<p><code>package-lock.json</code> 是你项目中所有依赖的描述，注意是【所有】依赖，如果说 <code>package.json</code> 中记录到你项目中用到的依赖 A，那 <code>package-lock.json</code> 中在记录了依赖 A 版本的同时，也记录了 A 要求的依赖 B 的版本，以及 A 描述中对于 B 的版本限制。</p>
+<p>如果说 <code>npm i</code> 是根据 <code>package-lock.json</code> 安装，同时对比 <code>package.json</code> 中依赖版本，如果不同，则安装后更新 <code>package-lock.json</code> 文件；那么 <code>npm ci</code> 就是根据 <code>package-lock.json</code> 安装，同时对比 <code>package.json</code>，如果有不同，则停止安装并报错，即使成功，也不会因为依赖的依赖有变化而更新 <code>package-lock.json</code> 文件。</p>
+<h2 id="最后，举个栗子"><a href="#最后，举个栗子" class="headerlink" title="最后，举个栗子"></a>最后，举个栗子</h2><p>已知你的项目中 <code>package.json</code> 中 <code>A@^1.2.3</code>。<br>1 个月前，你下载包的时候 A 是 1.2.3 版本，这时候 lock 里对于 A 和 B 的描述是酱紫的</p>
+<pre><code class="JSON">&quot;A&quot;: &#123;
+  &quot;version&quot;: &quot;1.2.3&quot;,
+  ...,
+  &quot;requires&quot;: &#123;
+    &quot;B&quot;: &quot;^3.5.1&quot;,
+  &#125;,
+  ...
+ &#125;,
+ &quot;B&quot;: &#123;
+   &quot;version&quot;: &quot;3.5.1&quot;,
+   ...
+ &#125;
+</code></pre>
+<p>此时你查看 <code>node_modules/A/package.json</code> 是这样的</p>
+<pre><code class="JSON">&quot;name&quot;: &quot;A&quot;,
+&quot;version&quot;: &quot;1.2.3&quot;,
+...,
+&quot;dependencies&quot;: &#123;
+  &quot;B&quot;: &quot;^3.5.1&quot;,
+&#125;
+</code></pre>
+<p><code>node_modules/B/package.json</code> 是这样的</p>
+<pre><code class="JSON">&quot;name&quot;: &quot;B&quot;,
+&quot;version&quot;:&quot;3.5.1&quot;,
+...
+</code></pre>
+<p>。<br>。。<br>。。。<br>1 month later<br>。。。<br>。。<br>。<br>可能由于这段时间 <code>A@1.2.3</code> 中要求的依赖 B 版本发生变化，当你删除 node_modules <code>npm i</code> 之后，package-lock 对于 A 和 B 的描述会变为</p>
+<pre><code class="JSON">&quot;A&quot;: &#123;
+  &quot;version&quot;: &quot;1.2.3&quot;,
+  ...,
+  &quot;requires&quot;: &#123;
+    &quot;B&quot;: &quot;latest&quot;,
+  &#125;,
+  ...
+ &#125;,
+ &quot;B&quot;: &#123;
+   &quot;version&quot;: &quot;3.5.1&quot;,
+   ...
+ &#125;
+</code></pre>
+<p>虽然使用 npm ci 后，package-lock.json 并不会发生变化，但不论是 npm i 还是 npm ci 后，查看 node_modules&#x2F;A&#x2F;package.json 都会变成</p>
+<pre><code class="JSON">&quot;name&quot;: &quot;A&quot;,
+&quot;version&quot;: &quot;1.2.3&quot;,
+...,
+&quot;dependencies&quot;: &#123;
+  &quot;B&quot;: &quot;latest&quot;,
+&#125;
+</code></pre>
+<p>node_modules&#x2F;B&#x2F;package.json 也并没有发生变化</p>
+<pre><code class="JSON">&quot;name&quot;: &quot;B&quot;,
+&quot;version&quot;:&quot;3.5.1&quot;,
+...
+</code></pre>
+<p>唯一的变化大概就是</p>
+<pre><code class="diff">&quot;name&quot;: &quot;A&quot;,
+&quot;version&quot;: &quot;1.2.3&quot;,
+...,
+&quot;dependencies&quot;: &#123;
+-  &quot;B&quot;: &quot;^3.5.1&quot;,
++  &quot;B&quot;: &quot;latest&quot;,
+&#125;
+</code></pre>
+<p>最后的最后，在我看来:<br>当 package-lock.json 与 package.json 没有冲突时：<br><code>rm -rf node_modules &amp;&amp; npm i &amp;&amp; git checkout -- package-lock.json</code> 等于 <code>npm ci</code>，但有冲突时 <code>npm ci</code> 会感知到并且终止抛出异常。<br>所以感觉 <code>npm ci</code> 会更以 <code>package-lock.json</code> 为准，在锁版本方面也比 <code>npm i</code> 优秀一点。</p>
+<p>但它有个问题，就是无法明确体现出依赖的依赖版本要求发生的变化。emmmm，会造成什么影响呢。。。不知道大佬们有没有遇到过。。。以后遇到再补充叭~</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v8/commands/npm-ci">npm-ci | npm Docs</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903785018425351">记一次排错经历——npm缓存浅析</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v8/commands/npm-cache">npm-cache | npm Docs</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/configuring-npm/package-locks">package-locks | npm Docs</a></p>
+</li>
+</ol>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

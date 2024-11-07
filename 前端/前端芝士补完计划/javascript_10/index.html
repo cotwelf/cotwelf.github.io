@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 10. 高级技巧</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript - 10. 高级技巧 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#00bcd4>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#ffa2c4>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#1-Event-Loop-%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">1. Event Loop 的执行顺序</a></p>
+<h3 id="1-Event-Loop-的执行顺序"><a href="#1-Event-Loop-的执行顺序" class="headerlink" title="1. Event Loop 的执行顺序"></a>1. Event Loop 的执行顺序</h3><p>&amp;emsp;&amp;emsp;JS 是单线程语言，同一时间只能做一件事，不能有多个线程。所有在主线程上的任务都需要排队依次执行。可以把 JS 想象成在时间线上运行的。</p>
+<p>Event Loop (事件循环)，是指浏览器或 Node 环境的一种解决 JS 单线程运行时 <code>不会阻塞</code> 的一种机制，也就是 <code>异步</code> 的原理，作为单线程语言，JS 本身没有异步这一说法，是其宿主环境提供的。</p>
+<ul>
+<li>解释器判断一行 JS 代码是同步还是异步，同步则进入 <code>主线程</code>;</li>
+<li>异步任务进入到 Event Table，当异步任务有结果后，将相对应的回调函数进行注册，放入 Event Queue；</li>
+<li>进入主线程的同步代码，优先执行 <code>宏任务</code>，微任务进入 <code>任务队列</code>，主线程中的异步代码推入 Event Table；</li>
+<li>主线程中同步任务执行结束，去 Event Queue 中查看是否有可执行的异步任务，有则推入主线程，重复上述步骤，直到主线程和 Event Table 清空。</li>
+</ul>
+<blockquote>
+<p>每一次&#x2F;层循环，都是首先从宏任务开始，微任务结束。每一个宏任务执行完之后，都会检查是否存在待执行的微任务，如果有，则执行完所有微任务之后，再继续执行下一个宏任务。</p>
+</blockquote>
+<h4 id="【名词解释】"><a href="#【名词解释】" class="headerlink" title="【名词解释】"></a>【名词解释】</h4><ul>
+<li><p>（1）进程和线程</p>
+<p>&amp;emsp;&amp;emsp;浏览器每一个 tab 都可以看做是浏览器内核进程，每个进程下面会有多个线程来互相配合完成任务。比如 GUI 线程、JS 引擎线程、网络线程、定时器线程等。</p>
+</li>
+<li><p>（2）任务队列</p>
+<p>&amp;emsp;&amp;emsp;任务队列中存放着微任务，会在主线程内任务全部执行完毕之后读取并执行。</p>
+</li>
+<li><p>（3）同步和异步任务</p>
+<ul>
+<li>同步任务：JS 执行时就在主线程上排队执行的任务<ul>
+<li>除了异步任务之外的，比如 console、Promise 实例（除了 then、catch、finally 之外的部分）</li>
+</ul>
+</li>
+<li>异步任务：会进入 event table 等候进入主线程<ul>
+<li>定时器 setTimeout 和 setInterval：设置定时器是同步（立即设置），异步指的是间隔多久后执行指定的函数</li>
+<li>事件绑定（监听）</li>
+<li>AJAX 的异步请求（fetch 应该也是</li>
+<li>promise 中的 then、catch、finally&#x2F;async&#x2F;await</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>（4）宏任务和微任务</p>
+<p>&amp;emsp;&amp;emsp;JS 的异步任务可以分为两种：</p>
+<ul>
+<li>微任务（MircoTask）：耗时任务<ul>
+<li>Promise 中的 then、catch、finally 原理可戳 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31967985/article/details/109902310">【js进阶】手撕Promise，一码一解析 包懂！</a></li>
+<li>MutationObserver 等</li>
+</ul>
+</li>
+<li>宏任务（MacroTask&#x2F;Task）<ul>
+<li>定时器 setTimeout，setInterval，事件绑定，回调函数，node 中的 fs 模块</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>（5）执行栈（也就是上面说到的主线程）<br>&amp;emsp;&amp;emsp;执行栈是解释器追踪函数执行流的一种机制。当引擎第一次遇到 js 代码时，会产生一个全局执行上下文压入执行栈，每遇到一个函数调用，就往栈中压入一个新的 <code>上下文</code>。引擎执行栈顶的函数后则弹出当前执行上下文直至函数依次执行完毕并回到全局的上下文。</p>
+</li>
+</ul>
+<p>举个栗子：</p>
+<pre><code class="javascript">console.log(&#39;1&#39;);
+
+setTimeout(function() &#123; // T1
+  console.log(&#39;2&#39;);
+  new Promise(function(resolve) &#123; // P1
+      console.log(&#39;3&#39;);
+      resolve();
+  &#125;).then(function() &#123;
+      console.log(&#39;4&#39;)
+  &#125;)
+  setTimeout(function() &#123; // T2
+    console.log(&#39;5&#39;);
+    new Promise(function(resolve) &#123; // P2
+        console.log(&#39;6&#39;);
+        resolve();
+    &#125;).then(function() &#123;
+        console.log(&#39;7&#39;)
+    &#125;)
+  &#125;)
+  console.log(&#39;14&#39;);
+&#125;)
+
+new Promise(function(resolve) &#123; // P3
+    console.log(&#39;8&#39;);
+    resolve();
+&#125;).then(function() &#123;
+    console.log(&#39;9&#39;)
+&#125;)
+
+setTimeout(function() &#123; // T3
+  console.log(&#39;10&#39;);
+  new Promise(function(resolve) &#123; // P4
+      console.log(&#39;11&#39;);
+      resolve();
+  &#125;).then(function() &#123;
+      console.log(&#39;12&#39;)
+  &#125;)
+&#125;)
+console.log(&#39;13&#39;)
+// 1, 8, 13, 9, 2, 3, 14, 4, 10, 11, 12, 5, 6, 7
+</code></pre>
+<p>分析一下上面的过程（setTimeout: T, Promise: P, console.log: L)</p>
+<p>JS 开始执行，同步任务 [L1, P3, L13] 进入主线程，异步任务 [T1, T3] 进入 event table 等待执行</p>
+<ul>
+<li>[L1, P3, L13] 在主线程<ul>
+<li>宏任务 [L1, P3-L8, L13]</li>
+<li>微任务 [P3.then-L9]</li>
+<li>event table [T1, T3]<blockquote>
+<p>打印出 <code>1, 8, 13, 9</code>，主线程清空，准备处理 event table 中的 T1</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>eventTabel[0] 即 setTimeout T1 进入主线程<ul>
+<li>宏任务 [L2, P1-L3, L14]</li>
+<li>微任务 [P1.then-L4]</li>
+<li>event table [T3, T2]<blockquote>
+<p>打印出 <code>2, 3, 14, 4</code>，主线程清空，准备处理 event table 中的 T3</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>eventTabel[0] 即 setTimeout T3 进入主线程<ul>
+<li>宏任务 [L10, P4-L11]</li>
+<li>微任务 [P4.then-L12]</li>
+<li>event table [T2]<blockquote>
+<p>打印出 <code>10, 11, 12</code>，主线程清空，准备处理 event table 中的 T2</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>eventTabel[0] 即 setTimeout T2 进入主线程<ul>
+<li>宏任务 [L5, P2-L6]</li>
+<li>微任务 [P2.then-L7]</li>
+<li>event table []<blockquote>
+<p>打印出 <code>5, 6, 7</code>，主线程清空，event table 清空</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>宏任务和微任务是相对而言的，根据代码执时循环的先后，将代码执行分层理解，在每一层（一次）的事件循环中，首先整体代码块看作一个宏任务，宏任务中的 Promise（then、catch、finally）、MutationObserver、Process.nextTick 就是该宏任务层的微任务；宏任务中的同步代码进入主线程中立即执行的，宏任务中的非微任务异步执行代码将作为下一次循环的宏任务时进入调用栈等待执行的；此时，调用栈中等待执行的队列分为两种，优先级较高先执行的本层循环微任务队列（MicroTask Queue），和优先级低的下层循环执行的宏任务队列（MacroTask Queue）！</p>
+</blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/songyao666/p/15405742.html">《JavaScript有同步任务和异步任务，浏览器是怎么处理的？》</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31967985/article/details/110310685">【js进阶】全面理解Event Loop这一篇就够了</a></p>
+<p>&amp;emsp;&amp;emsp;需要注意，定时器对队列的工作方式是，当特定时间过去后 <code>将代码插入</code>。注意，给队列添加代码并不意味着对它立刻执行，而只能表示它会尽快执行。设定一个 150ms 后执行的定时器不代表到了 150ms 代码就立刻执行，它表示代码会 <code>在 150ms 后被加入到队列中</code>。如果在这个时间点上，队列中没有其他东西，那么这段代码就会被执行，表面上看上去好像代码就在精确指定的时间点上执行了。其他情况下，代码可能明显地等待更长时间才执行。</p>
+<p>&amp;emsp;&amp;emsp;这也就是为什么客户端计时和服务端返回的时间总会出现误差的原因之一。另外网络请求也是存在时间差的。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-防抖和节流"><a href="#2-防抖和节流" class="headerlink" title="2. 防抖和节流"></a>2. 防抖和节流</h3><p>&amp;emsp;&amp;emsp;浏览器中某些计算和处理要比其他的昂贵很多。例如，DOM 操作比起非 DOM 交互需要更多的内存和 CPU 时间。连续尝试进行过多的 DOM 相关操作可能会导致浏览器挂起，有时候甚至会崩溃。</p>
+<p>&amp;emsp;&amp;emsp;防抖和节流背后的基本思想是指，某些代码不可以在没有间断的情况连续重复执行。。</p>
+<ul>
+<li><p>防抖：一个函数连续多次触发，我们只 <code>执行最后一次</code>。</p>
+<ul>
+<li>使用场景：一个按钮被点击时，会发送网络请求。为了防止用户无意多次点击，或有人恶意连续发送请求，我们不希望按钮连续被点击时，每次都发送网络请求。而是过一定时间没有再点击时，我们才发送请求—即只执行最后一次。</li>
+</ul>
+</li>
+<li><p>节流：一个函数连续多次触发，我们 <code>按照一定的时间间隔多次执行</code>。</p>
+<ul>
+<li>使用场景：滚动事件中会触发网络请求，但是我们不希望在滚动时一直发送网络请求，而是隔一定时间发起一次。</li>
+</ul>
+</li>
+</ul>
+<h4 id="（1）防抖（throttle）"><a href="#（1）防抖（throttle）" class="headerlink" title="（1）防抖（throttle）"></a>（1）防抖（throttle）</h4><p>用于</p>
+<ul>
+<li>用户输入用户名、手机号时，最后一个字母输入后再验证；</li>
+<li>一个按钮发送请求时，最后一次按才发送；</li>
+<li>窗口resize，当窗口确定大小时才渲染，防止重复渲染；</li>
+<li>输入框内容联想</li>
+</ul>
+<blockquote>
+<p>多次请求重置定时器</p>
+</blockquote>
+<pre><code class="javascript">// fn是要节流的函数，wait是时间间隔，默认500毫秒
+const myDebounce = (fn, wait = 500) =&gt; &#123;
+  // 缓存一个定时器
+  let timer = null
+
+  // 使用闭包（这样节流函数复用时，不会相互影响，且不污染全局变量）
+  return function() &#123;
+    // 如果在500毫秒内再次触发，即timer存在，此时清除掉这个timer
+    // 这里实现了执行只最后一次
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(() =&gt; &#123;
+      fn()
+    &#125;, wait)
+  &#125;
+&#125;
+
+const divDom = document.createElement(&#39;botton&#39;)
+divDom.setAttribute(&#39;style&#39;, &#39;width: 50px; height: 100px; background: pink; cursor: pointer;&#39;)
+divDom.innerText = &#39;click me&#39;
+function print()&#123;
+  console.log(&#39;done&#39;)
+&#125;
+divDom.addEventListener(&#39;click&#39;, () =&gt; myDebounce(print))
+document.body.appendChild(divDom)
+</code></pre>
+<h4 id="（2）节流（throttle）"><a href="#（2）节流（throttle）" class="headerlink" title="（2）节流（throttle）"></a>（2）节流（throttle）</h4><p>用于</p>
+<ul>
+<li>滚动加载；mousemove ,mousehover</li>
+</ul>
+<blockquote>
+<p>定时器生效期间禁止重复请求</p>
+</blockquote>
+<pre><code class="javascript">// fn 是要节流的函数，wait 是时间间隔，默认 500 毫秒
+const myThrottle = (fn, wait = 500) =&gt; &#123;
+
+  // 缓存一个定时器
+  let timer
+
+  // 使用闭包（这样节流函数复用时，不会相互影响）
+  return function( ...args ) &#123;
+    // 如果在500毫秒内再次触发，即timer存在，此时return，等待这个timer执行完毕。
+    // 这里实现了时间间隔
+    if (timer) return
+
+    // 这里表示第一次触发，或是上一个timer执行完毕。就可以重新开启一个定时器。
+    timer = setTimeout(() =&gt; &#123;
+      fn.apply(this, args)
+      timer = null
+    &#125;, wait)
+  &#125;
+&#125;
+</code></pre>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/265952983">《简单理解防抖和节流》</a></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-观察者模式模式"><a href="#3-观察者模式模式" class="headerlink" title="3. 观察者模式模式"></a>3. 观察者模式模式</h3><p>观察者模式和其变体，发布订阅模式<br><img src="/./observer.png"></p>
+<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><pre><code class="javascript">// 定义一个目标对象
+class Subject &#123;
+  constructor() &#123;
+    this.Observers = [];
+  &#125;
+  add(observer) &#123;
+    //添加
+    this.Observers.push(observer);
+  &#125;
+  remove(observer) &#123;
+    //移除
+    this.Observers = this.Observers.filter((item) =&gt; item !== observer);
+  &#125;
+  notify() &#123;
+    //通知所有观察者
+    this.Observers.forEach((item) =&gt; &#123;
+      item.update();
+    &#125;);
+  &#125;
+&#125;
+//定义观察者对象
+class Observer &#123;
+  constructor(name) &#123;
+    this.name = name;
+  &#125;
+  update() &#123;
+    console.log(`my name is:$&#123;this.name&#125;`);
+  &#125;
+&#125;
+
+let sub = new Subject();
+let obs1 = new Observer(&quot;observer11&quot;);
+let obs2 = new Observer(&quot;observer22&quot;);
+sub.add(obs1);
+sub.add(obs2);
+sub.notify();
+</code></pre>
+<h4 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h4><pre><code class="javascript">function PubSub()&#123;
+  this.list = &#123;&#125;;   // 主题列表
+  // 发布订阅最大的区别就是这里变成了对象，对象里存放了可订阅的类型，相当于前文所讲的“调度器”
+&#125;
+PubSub.prototype = &#123;
+  // 添加订阅
+  subscribe: function(key, fn)&#123;
+    console.log(this)
+    if(!this.list[key]) &#123;
+      this.list[key] = [];
+    &#125;
+    this.list[key].push(fn);
+  &#125;,
+  // 取消订阅
+  unSubscribe: function(key)&#123;
+      delete this.list[key];
+  &#125;,
+  // 发布通知
+  publish: function(key, para)&#123;
+    if(!this.list[key])&#123;
+      alert(&#39;没有该主题---&#39;);
+      return;
+    &#125;
+    let arr = this.list[key];
+    for(var j=0; j&lt;arr.length; j++)&#123;
+      arr[j](para);
+    &#125;
+  &#125;
+&#125;
+PubSub.prototype.constructor = PubSub
+
+var Pub = new PubSub();
+// 为不同主题（如主题sing或者dance）添加订阅者
+Pub.subscribe(&#39;sing&#39;, function(songName)&#123;
+  console.log(&#39;sing 订阅者01 歌名为 &#39;, songName)
+&#125;)
+Pub.subscribe(&#39;sing&#39;, function(songName)&#123;
+  console.log(&#39;sing 订阅者No2 歌名为 &#39;, songName)
+&#125;)
+Pub.subscribe(&#39;dance&#39;, function(para)&#123;
+  console.log(&#39;dance 订阅者 歌名为 &#39;, para)
+&#125;)
+// 根据不同主题（如主题sing或dance），发布不同消息
+Pub.publish(&#39;sing&#39;, &#39;Heal the word&#39;);
+Pub.publish(&#39;dance&#39;, &#39;华尔兹舞曲&#39;);
+// 最后输出结果：
+// sing 订阅者01 歌名为  Heal the word
+// sing 订阅者No2 歌名为  Heal the word
+// dance 订阅者 歌名为  华尔兹舞曲
+</code></pre>
+<p>可以看出来，dom 的事件监听也是发布订阅模式</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/357911263">《JS设计模式之观察者模式》</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/212256424">《JavaScript设计模式——观察者模式 vs 发布订阅模式》</a></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-Promise-和-async-x2F-await"><a href="#4-Promise-和-async-x2F-await" class="headerlink" title="4. Promise 和 async&#x2F;await"></a>4. Promise 和 async&#x2F;await</h3><p>出现 await 必有 async，async 如果不写 await ，返回是个 promise 函数</p>
+<pre><code class="javascript">const myPromise = new Promise(resolve =&gt; &#123;
+    setTimeout(() =&gt; &#123;
+      resolve(&#39;completed&#39;)
+    &#125;, 1000)
+  &#125;)
+// 使用 then
+let result
+myPromise.then((r) =&gt; &#123;
+    result = r
+    console.log(&#39;2&#39;, result) // 2 completed
+&#125;)
+
+console.log(&#39;1&#39;, result) // 1 undefined
+// 因为 then 是异步微任务，所以会等待同步任务执行结束后再执行，1 中还没获得返回结果，所以是 undefined
+
+// 使用 async/await
+/** 在控制台调试的时候发现可以直接全局 await，但这是不规范的，只是 chrome 的新特性而已（全局 async），放到函数里就报错了
+ * let result = await myPromise
+ * console.log(&#39;1&#39;, result) // 1 completed
+ * 正确使用方法如下
+ **/
+const test = async () =&gt; &#123;
+  const myPromise = new Promise(resolve =&gt; &#123;
+    setTimeout(() =&gt; &#123;
+      resolve(&#39;completed&#39;)
+    &#125;, 1000)
+  &#125;)
+  let result = await myPromise
+  console.log(&#39;1&#39;, result) // 1 completed
+&#125;
+test()
+</code></pre>
+<p>手写 bind<br>手写 promise</p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

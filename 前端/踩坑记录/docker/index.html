@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || Docker 使用指北</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>Docker 使用指北 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/工具" style=color:#1bccbc>
+                    工具
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><blockquote>
+<p>因为公司 Web 环境太难配了，萌新非常不友好，每次拿到新电脑之后环境要配好久，还容易出问题，因此打算试一下 Docker，看看能不能实现环境自由(bushi)~ 为什么要使用 Docker 而不用虚拟机呢？因为 Docker 更轻量，它并不是模拟完整的操作系统，而是提供一个最小限度的程序运行的虚拟环境，对于硬盘巨小星人非常友好。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/introduction">《Docker 中文文档》</a><br><a target="_blank" rel="noopener" href="https://docs.docker.com/">《Docker 官网》</a></p>
+<p>镜像和容器的关系，就像 <code>类</code> 和 <code>实例</code>，镜像是静态的定义，容器是运行的实体。</p>
+<h1 id="下载并运行-Docker"><a href="#下载并运行-Docker" class="headerlink" title="下载并运行 Docker"></a>下载并运行 Docker</h1><p><a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">官网下载</a></p>
+<h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2><p>运行一个 nginx 服务: <code>docker run -d -p 80:80 --name webserver nginx</code></p>
+<p>停止: <code>docker stop webserver</code></p>
+<p>删除: <code>docker rm webserver</code></p>
+<h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><p>拉取镜像: <code>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code></p>
+<blockquote>
+<p>如: <code>docker pull nginx:latest</code></p>
+</blockquote>
+<p>删除镜像: <code>docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...]</code></p>
+<blockquote>
+<p>可以通过 image ID 删除，如 <code>docker image rm 501</code>（501 是 id 前三位，能分辨就可），也可以通过 image name 删除，如 <code>docker image rm nginx</code><br>查看本地已下载镜像: <code>docker image ls</code></p>
+</blockquote>
+<p>删除虚悬镜像: <code>docker image prune</code> （使用 ls 查看时发现有些镜像名变成了 &lt; none &gt;，大概是由于官方维护，将镜像名转移到新下载的镜像上，虚悬镜像可以随意删除）</p>
+<blockquote>
+<p>如果在使用过程中发现拉取 Docker 镜像十分缓慢，可以配置 Docker <a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/mirror">镜像加速器</a></p>
+</blockquote>
+<h1 id="配置-Web-环境"><a href="#配置-Web-环境" class="headerlink" title="配置 Web 环境"></a>配置 Web 环境</h1><p>dependencies</p>
+<ul>
+<li>php: 7.2.* or higher version.</li>
+<li>NPM: 4.* or higher version.</li>
+<li>ImageMagick</li>
+<li>php-imagick</li>
+<li>php-redis</li>
+<li>php-memcached</li>
+</ul>
+<p>这里我们使用 Dockerfile 来定制镜像</p>
+<pre><code class="bash">mkdir webserver
+cd webserver
+touch Dockerfile
+</code></pre>
+<h2 id="指定基础镜像"><a href="#指定基础镜像" class="headerlink" title="指定基础镜像"></a>指定基础镜像</h2><p>可以看到，web 的大多数依赖都是 php 的，所以我们选择 <a target="_blank" rel="noopener" href="https://hub.docker.com/_/php">php 官方镜像</a> 作为基础镜像</p>
+<blockquote>
+<p>注意，下面这里有个坑，猜猜是什么坑呢？</p>
+</blockquote>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot; \
+  &amp;&amp; cd &quot;$PHP_INI_DIR&quot; \
+  (...略略略，全部脚本见文档末尾...）
+  &amp;&amp; mkdir -p imagick \
+    &amp;&amp; pecl install xdebug
+</code></pre>
+<p>这里的坑就是，如果所有的指令都放到一个 RUN 里执行，会不知道执行到哪里了（终端如下图<br><img src="/./run.png"><br>（上述指令可以写成 shell 脚本，使用 <code>COPY ./install_imagick.sh ./</code> 放到 docker 镜像里，但依旧不会解决上述问题）</p>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+COPY ./install_imagick.sh ./
+RUN sh install_imagick.sh
+</code></pre>
+<p>所以我把有可能出错的地方单独 RUN，创建文件夹跳转目录等行为，可以合并到一个 RUN 脚本里。</p>
+<blockquote>
+<p>这里也有个坑 orz，可以先预测一下会出现什么问题。。。</p>
+</blockquote>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
+RUN cd &quot;$PHP_INI_DIR&quot; \
+  (...略略略，全部脚本见文档末尾...）
+  &amp;&amp; curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz \
+  &amp;&amp; mkdir -p imagick \
+  (...略略略，全部脚本见文档末尾...）
+</code></pre>
+<p>没戳，聪明的你一定发现了，万一下载速度巨慢。。。（别问我怎么知道的，现在我还在下 imagick 和 ImageMagick QAQ，所以打算下载好之后放在目录里，运行 Dockerfile 的时候 copy 进去（反正也不大，15M 左右）</p>
+<pre><code class="Dockerfile">FROM php:7.4-cli
+RUN mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
+RUN cd &quot;$PHP_INI_DIR&quot; \
+  &amp;&amp; curl -fsSL &#39;http://www.imagemagick.org/download/ImageMagick.tar.gz&#39; -o imagemagick.tar.gz
+RUN  mkdir -p imagemagick \
+  &amp;&amp; tar zxvf imagemagick.tar.gz imagemagick --strip-components=1 \
+  &amp;&amp; rm imagemagick.tar.gz \
+  &amp;&amp; cd imagemagick \
+  &amp;&amp; ./configure --prefix=.
+RUN make &amp;&amp; make install
+RUN cd &quot;$PHP_INI_DIR&quot; \
+  &amp;&amp; curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz \
+  &amp;&amp; mkdir -p imagick \
+  &amp;&amp; tar zxvf imagick.tgz imagick --strip-components=1 \
+  &amp;&amp; rm imagick.tgz \
+  &amp;&amp; cd imagick
+RUN phpize
+RUN ln -s &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick-7&quot; &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick&quot;
+RUN ./configure --with-php-config=&quot;$PHP_INI_DIR/bin/php-config&quot; --with-imagick=&quot;$PHP_INI_DIR/imagemagick&quot;
+RUN make &amp;&amp; make install
+RUN echo &quot;extensions=imagick.so&quot; &gt; &quot;$PHP_INI_DIR/php.ini&quot;
+RUN pecl install memcached \
+  &amp;&amp; pecl install redis \
+    &amp;&amp; pecl install xdebug
+</code></pre>
+<p>保存 Dockerfile，在 &#x2F;webserver 目录下执行</p>
+<pre><code class="bash">docker build -t webserver:v1 .
+</code></pre>
+<blockquote>
+<p>可以在 Docker 的镜像仓库 <a target="_blank" rel="noopener" href="https://hub.docker.com/search?q=&type=image">Docker Hub</a> 里找需要用的镜像。</p>
+</blockquote>
+<hr>
+<p>2020.5.18</p>
+<p>时隔大半个月，继续 orz<br>上次说到，可以把文件下载到本地，然后直接在 docker 里解压安装，我们来试下</p>
+<pre><code class="shell">mv &quot;$PHP_INI_DIR/php.ini-production&quot; &quot;$PHP_INI_DIR/php.ini&quot;
+cd &quot;$PHP_INI_DIR&quot;
+curl -fsSL &#39;http://www.imagemagick.org/download/ImageMagick.tar.gz&#39; -o imagemagick.tar.gz
+mkdir -p imagemagick
+tar zxvf imagemagick.tar.gz imagemagick --strip-components=1
+rm imagemagick.tar.gz
+cd imagemagick
+./configure --prefix=.
+make &amp;&amp; make install
+cd &quot;$PHP_INI_DIR&quot;
+curl -fsSL &#39;https://pecl.php.net/get/imagick-3.7.0.tgz&#39; -o imagick.tgz
+mkdir -p imagick
+tar zxvf imagick.tgz imagick --strip-components=1
+rm imagick.tgz
+magick
+phpize
+ln -s &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick-7&quot; &quot;$PHP_INI_DIR/imagemagick/include/ImageMagick&quot;
+./configure --with-php-config=&quot;$PHP_INI_DIR/bin/php-config&quot; --with-imagick=&quot;$PHP_INI_DIR/imagemagick&quot;
+make &amp;&amp; make install
+echo &quot;extensions=imagick.so&quot; &gt; &quot;$PHP_INI_DIR/php.ini&quot;
+pecl install memcached
+pecl install redis
+pecl install xdebug
+</code></pre>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

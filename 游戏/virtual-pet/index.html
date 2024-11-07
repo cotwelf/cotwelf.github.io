@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 是时候养一只电子宠物了~</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>是时候养一只电子宠物了~ </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/游戏">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                游戏
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/phaser" style=color:#1bccbc>
+                    phaser
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/像素" style=color:#00bcd4>
+                    像素
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><script>
+test = 'test'
+
+</script>
+
+<h1 id="一、灵感来源"><a href="#一、灵感来源" class="headerlink" title="一、灵感来源"></a>一、灵感来源</h1><p>以下是作业构想<br><img src="/./ppt.jpeg"></p>
+<hr>
+<h1 id="二、游戏策划方案"><a href="#二、游戏策划方案" class="headerlink" title="二、游戏策划方案"></a>二、游戏策划方案</h1><h3 id="1-游戏名称"><a href="#1-游戏名称" class="headerlink" title="1. 游戏名称"></a>1. 游戏名称</h3><p>存活 7 天挑战</p>
+<h3 id="2-游戏类型"><a href="#2-游戏类型" class="headerlink" title="2. 游戏类型"></a>2. 游戏类型</h3><p>单机、休闲</p>
+<h3 id="3-游戏进行方式"><a href="#3-游戏进行方式" class="headerlink" title="3. 游戏进行方式"></a>3. 游戏进行方式</h3><p>随机事件</p>
+<h3 id="4-游戏主题"><a href="#4-游戏主题" class="headerlink" title="4. 游戏主题"></a>4. 游戏主题</h3><p>如何让一个因疫情被封印在家的人存活下来（当然是靠运气啦（bushi</p>
+<h3 id="5-游戏目的"><a href="#5-游戏目的" class="headerlink" title="5. 游戏目的"></a>5. 游戏目的</h3><p>留存特殊时期的记忆。</p>
+<h3 id="6-游戏角色"><a href="#6-游戏角色" class="headerlink" title="6. 游戏角色"></a>6. 游戏角色</h3><p>1人（提供内置角色可供选择）</p>
+<h3 id="7-游戏风格"><a href="#7-游戏风格" class="headerlink" title="7. 游戏风格"></a>7. 游戏风格</h3><p>类似电子宠物和旅行青蛙的休闲类小游戏，无需投入大量时间，但每次登录都有小惊喜（或者小失望 orz 因为角色可能死掉或离家出走溜去另一个城市），玩家只是作为一个观察者，观察着游戏中这个”薛定谔的人“。</p>
+<h3 id="8-目标用户"><a href="#8-目标用户" class="headerlink" title="8. 目标用户"></a>8. 目标用户</h3><p>疫情下精神疲惫的人群，可以在游戏中找到一丝乐趣（类似苦中作乐？大概也许）</p>
+<h3 id="9-运行环境"><a href="#9-运行环境" class="headerlink" title="9. 运行环境"></a>9. 运行环境</h3><p>Web 浏览器，手机浏览器（其中只有手机浏览器可分享）</p>
+<h3 id="10-游戏背景故事"><a href="#10-游戏背景故事" class="headerlink" title="10. 游戏背景故事"></a>10. 游戏背景故事</h3><p>以疫情期间被封印的我和身边的朋友同事为原型，以一种半真实，戏谑的方式记录这段时间大家的各种遭遇以及见闻。</p>
+<h3 id="11-游戏概述"><a href="#11-游戏概述" class="headerlink" title="11. 游戏概述"></a>11. 游戏概述</h3><p>【每天登录】及【随机用户交互】触发事件。包括但不限于每日核酸、抢菜、吃饭、学习、追剧、被公司或小区投喂蔬菜包、在群里和志愿者吵了一架、楼上半夜跳健身操被打扰到（之后遇到奇葩事情可能会相应添加游戏事件）</p>
+<h3 id="12-人物设定"><a href="#12-人物设定" class="headerlink" title="12. 人物设定"></a>12. 人物设定</h3><p>二选一，宅家期间，可能会不修边幅一点。<br><img src="./hito.jpeg" style="width: 600px;" /><br>原本衣服采用条纹（有种被监禁的感觉），但碍于本次像素画尺寸较小，无法呈现条纹（需要尺寸稍大点吗？但可能会失去电子宠物的感觉）</p>
+<div style="text-align: center;">
+  <img style="display: inline-block; margin: 50px;" src="./girl.gif" />
+  <img style="display: inline-block; margin: 50px;" src="./boy.gif" />
+</div>
+
+<h3 id="13-游戏过程"><a href="#13-游戏过程" class="headerlink" title="13. 游戏过程"></a>13. 游戏过程</h3><h4 id="13-1-初始页"><a href="#13-1-初始页" class="headerlink" title="13.1. 初始页"></a>13.1. 初始页</h4><img src="./page0.jpeg" style="width: 750px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<h4 id="13-2-创建人物"><a href="#13-2-创建人物" class="headerlink" title="13.2. 创建人物"></a>13.2. 创建人物</h4><img src="./create.jpeg" style="width: 600px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<h4 id="13-3-确定初始数据值"><a href="#13-3-确定初始数据值" class="headerlink" title="13.3. 确定初始数据值"></a>13.3. 确定初始数据值</h4><img src="./set.jpeg" style="width: 600px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<br />
+
+<p>可分配数值总数：<code>20</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">分配项</th>
+<th align="center">下限（默认）</th>
+<th align="center">上限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">健康</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">心情</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">知识</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">人际</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+</tbody></table>
+<br/>
+
+<blockquote>
+<p>心情为 0 时，健康每小时 -1。健康为 0 时不可观测，除了【被发现】事件外，无法触发任何事件</p>
+</blockquote>
+<h4 id="13-4-日常状态及随机事件"><a href="#13-4-日常状态及随机事件" class="headerlink" title="13.4. 日常状态及随机事件"></a>13.4. 日常状态及随机事件</h4><h5 id="13-4-1-空闲及不可交互事件状态"><a href="#13-4-1-空闲及不可交互事件状态" class="headerlink" title="13.4.1. 空闲及不可交互事件状态"></a>13.4.1. 空闲及不可交互事件状态</h5><img src="./status.jpeg" style="width: 750px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<h5 id="13-4-2-可交互事件状态"><a href="#13-4-2-可交互事件状态" class="headerlink" title="13.4.2. 可交互事件状态"></a>13.4.2. 可交互事件状态</h5><img src="./random.jpeg" style="width: 750px;box-shadow: 0 2px 6px 0 rgba(0,0,0,10%);" />
+
+<blockquote>
+<p>【事件】分为【持续事件】和【突发事件】，两种事件发生概率互不影响（即有可能在持续事件的过程中发生突发事件）。持续事件需持续一定时长，方可获得相应收益，若中途被【突发事件】打断则该【持续事件】无收益（有可能突发事件会带来额外收益）。</p>
+</blockquote>
+<h5 id="相关数值策划请戳这里-gt-gt"><a href="#相关数值策划请戳这里-gt-gt" class="headerlink" title="相关数值策划请戳这里 &gt;&gt;"></a><a href="/%E6%B8%B8%E6%88%8F/virtual-pet/data/index.html">相关数值策划请戳这里 &gt;&gt;</a></h5><hr>
+<h1 id="三、技术选型"><a href="#三、技术选型" class="headerlink" title="三、技术选型"></a>三、技术选型</h1><p>技术选型之类的，比较投机取巧了，直接问了B站首页风叶穿行游戏的制作者 D 大。主要是 unity 学习成本比较高，另外自己还不会 C#，从零开始会有点困难。如果用 js 游戏引擎，基本上就看看文档就行，不用学习新的语言。</p>
+<p>大佬推荐了 <a target="_blank" rel="noopener" href="https://phaser.io/">phaser</a>（内部是用 pixi 渲染的），这种封装好的游戏引擎对萌新友好，但它相对 unity 来说比较简陋，没有编辑器，没有官方支持的 ecs 架构，主要是用来渲染雪碧图的 2d 游戏引擎，因此可能需要接入一些第三方库（比如物理引擎的话可以用 matter.js，另外可能还需要各种模型文件、动画格式的支持。</p>
+<blockquote>
+<p>大佬是直接用 Webgl 写了个游戏引擎，封装了一些常用功能如 ecs、timer、场景树、动画机等。我等草履虫望尘莫及 orz</p>
+</blockquote>
+<blockquote>
+<p>如果自己用 webgl 写游戏引擎的话，渲染引擎可以试试 pixi（看了下 standalone 里好像有 pixi 诶，似乎是 21 年年度报告用到的，不愧是大佬）、three.js（这个好像用的人挺多的，似乎还可以渲染 3d） 和 babylon</p>
+</blockquote>
+<p>综合下来我打算用官方推荐的项目模板 <a target="_blank" rel="noopener" href="https://github.com/ourcade/phaser3-typescript-parcel-template">phaser3-typescript-parcel-template</a></p>
+<blockquote>
+<p>本来想融合一下 react 的（因为想学习一下 orz），找了个 <a target="_blank" rel="noopener" href="https://tnodes.medium.com/integrating-react-and-phaser-3-tutorial-eb96717d4a9d">文档</a> 有一些解决方案，但比较古早了，webpack 配置都更新了，有点跑不起来，暂时放弃，之后如果要用到状态管理的话再说</p>
+</blockquote>
+<p>这里是 <a target="_blank" rel="noopener" href="https://phaser.io/tutorials/making-your-first-phaser-3-game-chinese/index">官方 demo 中文版文档</a>，这里是官方出的两本 <a target="_blank" rel="noopener" href="https://blog.ourcade.co/">免费入门教程（pdf）</a></p>
+<iframe
+  className="test"
+  scrolling="no"
+  width="1200px"
+  height="810px"
+  style="position:relative; left:-20%;"
+  src="https://virtual-pet-rho.vercel.app/"
+  allowTransparency="true"
+></iframe>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

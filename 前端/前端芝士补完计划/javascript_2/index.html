@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 2. 数据类型</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript - 2. 数据类型 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#ffa2c4>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#ffa2c4>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="#1-%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA-isInteger-%E5%87%BD%E6%95%B0%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%A3%80%E6%B5%8B%E4%BC%A0%E5%85%A5%E7%9A%84%E5%80%BC%E6%98%AF%E5%90%A6%E4%B8%BA%E6%95%B4%E6%95%B0">1. 封装一个 <code>isInteger()</code> 函数，用于检测传入的值是否为整数</a><br><a href="#2-%E8%AF%B7%E9%87%8D%E6%96%B0%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA-isNaN2-%E5%87%BD%E6%95%B0%EF%BC%8C%E7%94%A8%E6%9D%A5%E5%BC%A5%E8%A1%A5%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0-isNaN-%E7%9A%84%E4%B8%8D%E8%B6%B3">2. 请重新封装一个 <code>isNaN2()</code> 函数，用来弥补全局函数 <code>isNaN()</code> 的不足</a><br><a href="#3-%E5%85%B3%E4%BA%8E%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86">3. 关于垃圾收集</a><br><a href="#4-%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E8%AE%A9%E4%B8%A4%E4%B8%AA%E5%B9%B6%E4%B8%8D%E5%A4%A7%E7%9A%84%E5%B0%8F%E6%95%B0%E6%AD%A3%E6%95%B0%E7%9B%B8%E4%B9%98">4. 编写一个函数，让两个并不大的小数正数相乘</a><br><a href="#5-%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%B2-xxxxyydda-%E4%B8%AD%E6%AF%8F%E4%B8%AA%E5%AD%97%E6%AF%8D%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0">5. 统计字符串 <code>&quot;xxxxyydda&quot;</code> 中每个字母出现的次数</a><br><a href="#6-7-39-a-39-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89%EF%BC%8C7-0-%E7%AD%89%E4%BA%8E%EF%BC%88%EF%BC%89">6. <code>7 - &#39;a&#39;</code> 等于（），<code>7 / 0</code> 等于（）</a><br><a href="#7-3-toFixed-2-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C">7. <code>3..toFixed(2)</code> 得到的结果</a><br><a href="#8-String-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95%E4%B8%8D%E5%8C%85%E6%8B%AC">8. <code>String</code> 对象的方法不包括</a><br><a href="#9-parseFloat-%E2%80%9C12-3-4%E2%80%9D-%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89">9. <code>parseFloat(“12.3.4”)</code>返回的结果为（）</a><br><a href="#10-Number-012-%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89Number-%E2%80%9C0xA%E2%80%9D-%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89">10. <code>Number(012)</code>返回的结果为（）<code>Number(“0xA”)</code>返回的结果为（）</a><br><a href="#11-%E5%9C%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%AD%EF%BC%8CNumber-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%9C%80%E7%BB%88%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89">11. 在下面的代码中，<code>Number()</code> 函数的参数是一个对象，最终的结果为（）</a></p>
+<pre><code class="javascript">const numberObj = &#123;
+  valueOf: () =&gt; &#123;&#125;,
+  toString: () =&gt; &quot;10&quot;,
+&#125;
+Number(numberObj)
+</code></pre>
+<p><a href="#12-%E4%BB%A5%E4%B8%8B%E4%BB%A3%E7%A0%81%E6%9C%80%E7%BB%88%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89">12. 以下代码最终在控制台输出的结果为（）</a></p>
+<pre><code class="javascript">const a = &#123;&#125;
+const b = &#123; name: &quot;xiu&quot;&#125;
+const c = &#123; name: &quot;wen&quot; &#125;
+a[b] = 10
+a[c] = 20
+console.log(a[b])
+</code></pre>
+<p><a href="#13-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89">13. <code>[] == ![]</code> 得到的结果是（）</a><br><a href="#14-%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8C-%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89">*14. <code>[] + &#123;&#125;</code> 的结果是（），{} + [] 的结果是（）</a><br><a href="#15-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF-true%EF%BC%8C%E9%82%A3%E4%B9%88-a-%E7%9A%84%E5%80%BC%E6%98%AF%E4%BB%80%E4%B9%88">15. 执行代码 <code>a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3</code>，返回的结果是 <code>true</code>，那么 <code>a</code> 的值是什么</a><br><a href="#16-false-quot-0-quot-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89%EF%BC%8Cfalse-quot-0-quot-%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA">*16. <code>false == &quot;0&quot;</code> 得到的结果为（），<code>false === &quot;0&quot;</code> 得到的结果为</a><br><a href="#17-%E5%9C%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD%EF%BC%8C%E8%83%BD%E8%BF%94%E5%9B%9E-false-%E7%9A%84%E6%98%AF%EF%BC%88%EF%BC%89">17. 在下面的表达式中，能返回 <code>false</code> 的是（）</a>A. <code>1 == true</code>; B.<code>&quot;&quot; == false</code>; C. <code>null == undefined</code>; D. <code>false == null</code>;<br><a href="#18-1-instanceof-Number-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8C2-in-1-2-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E6%98%AF%EF%BC%88%EF%BC%89">18. <code>1 instanceof Number</code> 的返回值是（），<code>2 in [1, 2]</code> 的返回值是（）</a><br><a href="#19-typeof-undefined-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8Ctypeof-null-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E6%98%AF%EF%BC%88%EF%BC%89">19. <code>typeof undefined</code> 的返回值是（），<code>typeof null</code> 的返回值是（）</a><br><a href="#20-%E5%B0%86-Object-%E7%9A%84-toString-%E6%96%B9%E6%B3%95%E5%88%86%E5%88%AB%E5%BA%94%E7%94%A8%E4%BA%8E-null-%E5%92%8C-undefined-%EF%BC%88%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA%EF%BC%89%EF%BC%8C%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA%EF%BC%88%EF%BC%89%E5%92%8C%EF%BC%88%EF%BC%89%E3%80%82">20. 将 <code>Object</code> 的 <code>toString()</code> 方法分别应用于 <code>null</code> 和 <code>undefined</code> （如下所示），得到的结果为（）和（）。</a></p>
+<pre><code class="javascript">Object.prototype.toString.call(null)
+Object.prototype.toString.call(undefined)
+</code></pre>
+<p><a href="#21-%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%B0%83%E7%94%A8-isPrototypeOf-%E6%96%B9%E6%B3%95%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89%EF%BC%8C%E6%89%A7%E8%A1%8C-instanceof-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%88%EF%BC%89">21. 执行下面的代码，调用 <code>isPrototypeOf()</code> 方法得到的结果是（），执行 <code>instanceof</code> 运算符得到的结果是（）</a></p>
+<pre><code class="javascript">function child() &#123;&#125;
+function ancestor() &#123;&#125;
+child.prototype = ancestor;
+var obj = new child()
+console.log(ancestor.isPrototypeOf(obj));
+console.log(obj instanceof ancestor);
+console.log(obj instanceof child);
+</code></pre>
+<h3 id="1-封装一个-isInteger-函数，用于检测传入的值是否为整数"><a href="#1-封装一个-isInteger-函数，用于检测传入的值是否为整数" class="headerlink" title="1. 封装一个 isInteger() 函数，用于检测传入的值是否为整数"></a>1. 封装一个 isInteger() 函数，用于检测传入的值是否为整数</h3><p>整数（’number’ 类型，且不是 NaN, Infinity 和 -Infinity）</p>
+<pre><code class="JavaScript">const isInteger = (value) =&gt; &#123;
+  return typeof value === &#39;number&#39; &amp;&amp; isFinite(value) &amp;&amp; value % 1 === 0
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-请重新封装一个-isNaN2-函数，用来弥补全局函数-isNaN-的不足"><a href="#2-请重新封装一个-isNaN2-函数，用来弥补全局函数-isNaN-的不足" class="headerlink" title="2. 请重新封装一个 isNaN2() 函数，用来弥补全局函数 isNaN() 的不足"></a>2. 请重新封装一个 isNaN2() 函数，用来弥补全局函数 isNaN() 的不足</h3><p>isNaN() 的参数如果不是 NaN 也不是数字，例如字符串，返回的结果会是 true。</p>
+<pre><code class="JavaScript">function isNaN2(value) &#123;
+  return typeof value === &#39;number&#39; &amp;&amp; isNaN(value);
+&#125;
+</code></pre>
+<blockquote>
+<p>哈哈哈答案还是用了 isNaN()，那如果不用 isNaN() 呢？是不是可以酱紫</p>
+</blockquote>
+<pre><code class="JavaScript">const isNaN2 = (value) =&gt; &#123;
+  return typeof value === &#39;number&#39; &amp;&amp; value.toString() === &#39;NaN&#39;
+&#125;
+isNaN2(&#39;2333&#39;) // false
+isNaN2(NaN) // true
+isNaN2(Infinity) // false
+isNaN2(233) // false
+// 奈斯 ✿✿ヽ(°▽°)ノ✿
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-关于垃圾收集"><a href="#3-关于垃圾收集" class="headerlink" title="3. 关于垃圾收集"></a>3. 关于垃圾收集</h3><p>（1）标记清除</p>
+<p>主流算法，给当前不使用的值（该值是否可获得）加上标记，然后回收内存。</p>
+<p>（2）引用计数</p>
+<p>跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是 1。如果同一个值又被赋给另一个变量，则该值的引用次数加 1。但它有个问题，就是 <code>循环引用</code> 的变量不会被清除</p>
+<pre><code class="JavaScript">var element = document.getElementById(&quot;some_element&quot;);
+var myObject = new Object();
+myObject.element = element;
+element.someObject = myObject;
+// 正确做法，在页面卸载（销毁）之前，将其设为 null
+myObject.element = null;
+element.someObject = null;
+</code></pre>
+<p>类似的有，setTimeout 和 setInterval 在页面销毁前也需要清理，即<code>将变量设置为 null</code>，这种做法叫做<code>解除引用</code>，其作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。</p>
+<p>JS 会定时清理不用的变量以释放内存，比如局部变量会在函数执行结束后清理。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-编写一个函数，让两个并不大的小数正数相乘"><a href="#4-编写一个函数，让两个并不大的小数正数相乘" class="headerlink" title="4. 编写一个函数，让两个并不大的小数正数相乘"></a>4. 编写一个函数，让两个并不大的小数正数相乘</h3><pre><code class="JavaScript">const accMul = (arg1, arg2) =&gt; &#123;
+  let m = 0 // 存放小数位数
+  let s1 = arg1.toString()
+  let s2 = arg2.toString()
+  m = s1.split(&#39;.&#39;)[1].length + s2.split(&#39;.&#39;)[1].length
+  let result = Number(s1.replace(&#39;.&#39;, &#39;&#39;)) * Number(s2.replace(&#39;.&#39;, &#39;&#39;))
+  return result / Math.pow(10, m)
+&#125;
+accMul(0.03, 0.23)
+</code></pre>
+<p>由于 JavaScript 中的浮点数时基于 IEEE 754 标准来实现的，因此它的计算精度远远不如整数，例如 33.98 会显示成 33.9799999999。如果两个小数并不大，那么可以先将小数变成整数，再执行乘法运算，最后把小数点往左移动到指定位置，得到想要的结果。</p>
+<blockquote>
+<p>注意！！<code>Math.pow(base, exponent)</code> 中的 exponent 不能是负数！！！</p>
+</blockquote>
+<pre><code class="JavaScript">Math.pow(10, 4) // 输出：10000，正确
+Math.pow(10, -4) // 输出：0.00009999999999999999，错误，应该是 0.001，也是浮点数计算精度问题
+</code></pre>
+<blockquote>
+<p>计算中最好把小数运算都换成整数运算，然后通过除以 pow 正数次方位移</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="5-统计字符串-xxxxyydda-中每个字母出现的次数"><a href="#5-统计字符串-xxxxyydda-中每个字母出现的次数" class="headerlink" title="5. 统计字符串 xxxxyydda 中每个字母出现的次数"></a>5. 统计字符串 <code>xxxxyydda</code> 中每个字母出现的次数</h3><pre><code class="JavaScript">const counter = (str) =&gt; &#123;
+  let result = &#123;&#125;
+  let keys = []
+  for(let i = 0; i &lt; str.length; i++) &#123;
+    if(keys.includes(str[i])) &#123;
+      result[str[i]] += 1
+    &#125; else &#123;
+      keys.push(str[i])
+      result[str[i]] = 1
+    &#125;
+  &#125;
+  return result
+&#125;
+counter(&quot;xxyxxyydda&quot;)
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="6-7-39-a-39-等于（），7-0-等于（）"><a href="#6-7-39-a-39-等于（），7-0-等于（）" class="headerlink" title="6. 7 - &#39;a&#39; 等于（），7 / 0 等于（）"></a>6. <code>7 - &#39;a&#39;</code> 等于（），<code>7 / 0</code> 等于（）</h3><p>7 - ‘a’ 等于 NaN，7&#x2F;0 等于 Infinity。除此之外如果 -7&#x2F;0 等于 -Infinity。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="7-3-toFixed-2-得到的结果"><a href="#7-3-toFixed-2-得到的结果" class="headerlink" title="7. 3..toFixed(2) 得到的结果"></a>7. <code>3..toFixed(2)</code> 得到的结果</h3><p>“3.00”。toFixed() 是内置对象 Number 的一个方法，用于格式化一个浮点数，返回数字的字符串形式。他的参数用于指定小数部分的显示位数，并对最后一位四舍五入。如果小数部分实际位数达不到指定位数，就用 0 补齐。表达式中的两个点号，第一个点被识别为小数点，第二个点被识别为成员访问运算符。相当于 <code>3.0.toFixed(2)</code>，计算结果为 “3.00”</p>
+<p><code>toFixed()</code> 方法很适合处理货币值。但需要注意的是，不同浏览器给这个方法设定的舍入规则可能会有所不同。（IE8 无法正确舍入）。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="8-String-对象的方法不包括"><a href="#8-String-对象的方法不包括" class="headerlink" title="8. String 对象的方法不包括"></a>8. String 对象的方法不包括</h3><p>A.map(); B.concat(); C.indexOf(); D.replace()</p>
+<p>array.map() 是数组对象的方法。</p>
+<p>‘aa’.concat(‘bb’) &#x3D;&#x3D;&#x3D; ‘aabb’,能够连接多个字符串为新的字符串，可应用于字符串和数组。</p>
+<p>indexOf(‘x’) 返回给定字符 ‘x’ 在字符串中<code>首次</code>出现的位置，未找到返回 -1；</p>
+<p>‘string’.replace(‘s’, ‘S’), 替换匹配正则表达式的<code>首次</code>出现的子串。代替全部用 replaceAll。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="9-parseFloat-“12-3-4”-返回的结果为（）"><a href="#9-parseFloat-“12-3-4”-返回的结果为（）" class="headerlink" title="9. parseFloat(“12.3.4”)返回的结果为（）"></a>9. parseFloat(“12.3.4”)返回的结果为（）</h3><p>12.3。字符串转数字的过程中，只有第一个小数点是有效的。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="10-Number-012-返回的结果为（）Number-“0xA”-返回的结果为（）"><a href="#10-Number-012-返回的结果为（）Number-“0xA”-返回的结果为（）" class="headerlink" title="10. Number(012)返回的结果为（）Number(“0xA”)返回的结果为（）"></a>10. Number(012)返回的结果为（）Number(“0xA”)返回的结果为（）</h3><p>10、10。012 是八进制，0xA 是十六进制。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="11-在下面的代码中，Number-函数的参数是一个对象，最终的结果为（）"><a href="#11-在下面的代码中，Number-函数的参数是一个对象，最终的结果为（）" class="headerlink" title="11. 在下面的代码中，Number()函数的参数是一个对象，最终的结果为（）"></a>11. 在下面的代码中，Number()函数的参数是一个对象，最终的结果为（）</h3><pre><code class="JavaScript">const numberObj = &#123;
+  valueOf: () =&gt; &#123;&#125;,
+  toString: () =&gt; &quot;10&quot;,
+&#125;
+Number(numberObj)
+</code></pre>
+<p>10。当参数是对象时，先对其执行 ToPrimitive 抽象操作，变为基础类型的值，再进行转换。</p>
+<p>ToPrimitive：①检查是否有 valueOf() 方法，有且返回值是基本类型的话，就用这个返回值；②若无 valueOf() 则改用 toString() 方法，用其返回值。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="12-以下代码最终在控制台输出的结果为（）"><a href="#12-以下代码最终在控制台输出的结果为（）" class="headerlink" title="12. 以下代码最终在控制台输出的结果为（）"></a>12. 以下代码最终在控制台输出的结果为（）</h3><pre><code class="JavaScript">const a = &#123;&#125;
+const b = &#123; name: &quot;xiu&quot;&#125;
+const c = &#123; name: &quot;wen&quot; &#125;
+a[b] = 10
+a[c] = 20
+console.log(a[b])
+</code></pre>
+<p>20。b 和 c 都是对象，当作为 a 对象的属性名时，会被转换为字符串类型，两个对象转换后的值都为 <code>&quot;[object Object]&quot;</code>，两句赋值语句相当于下面的代码</p>
+<pre><code class="JavaScript">a[&quot;[object Object]&quot;] = 10
+a[&quot;[object Object]&quot;] = 20
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="13-得到的结果是（）"><a href="#13-得到的结果是（）" class="headerlink" title="13. [] == ![] 得到的结果是（）"></a>13. <code>[] == ![]</code> 得到的结果是（）</h3><p>true。根据运算符的优先级规则：</p>
+<ul>
+<li>先计算逻辑非，<code>![]</code> 为 <code>false</code>，此时表达式为 <code>[] == false</code></li>
+<li>空数组能转换为空字符串，表达式变为 <code>&quot;&quot; == false</code></li>
+<li>当左操作数是字符串，右操作数是布尔值时，右边的布尔值要转为数字，所以 <code>false</code> 转为 <code>0</code>，表达式为 <code>&quot;&quot; == 0</code></li>
+<li>当左操作数是字符串，右操作数是数字时，字符串要转为数字，所以 <code>&quot;&quot;</code> 转为 <code>0</code>，<code>0 == 0</code> 为 <code>true</code></li>
+</ul>
+<blockquote>
+<p>一句话总结：比较请同类型比较，否则会变得不幸 QAQ</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="14-的结果是（），-的结果是（）"><a href="#14-的结果是（），-的结果是（）" class="headerlink" title="*14. [] + {} 的结果是（），{} + [] 的结果是（）"></a>*14. <code>[] + &#123;&#125;</code> 的结果是（），<code>&#123;&#125; + []</code> 的结果是（）</h3><p><code>&quot;[object Object]&quot;</code>、0。</p>
+<ul>
+<li><code>[] + &#123;&#125;</code>： <code>[]</code> 变为 <code>&quot;&quot;</code>，与空对象拼接，结果为 <code>&quot;[object Object]&quot;</code></li>
+<li><code>&#123;&#125; + []</code>：<code>&#123;&#125;</code> 并不是空对象，而是不执行任何操作的空代码块，表达式由 <code>+[]</code> 计算得到，结果为 0。</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="15-执行下面的代码，返回的结果是-true，那么-a-的值是什么"><a href="#15-执行下面的代码，返回的结果是-true，那么-a-的值是什么" class="headerlink" title="15. 执行下面的代码，返回的结果是 true，那么 a 的值是什么"></a>15. 执行下面的代码，返回的结果是 true，那么 a 的值是什么</h3><pre><code class="JavaScript">a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3
+</code></pre>
+<p>a 可以是一个对象。当相等运算符左边是一个对象，右边是一个数字时，对象要先做 ToPrimitive 抽象操作，即先调用 valueOf()，若其返回值不是基本类型的话再调用 toString()</p>
+<pre><code class="JavaScript">const a = &#123;
+  value: 1,
+  valueOf: function() &#123;
+    console.log(this,&#39;this&#39;)
+    return this.value++
+  &#125;,
+  toString: () =&gt; &#123;
+    console.log(this,&#39;this&#39;) // window
+  &#125;
+&#125;
+console.log(a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3)
+console.log(a.valueOf())
+console.log(a.toString())
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="16-false-quot-0-quot-得到的结果为（），false-quot-0-quot-得到的结果为"><a href="#16-false-quot-0-quot-得到的结果为（），false-quot-0-quot-得到的结果为" class="headerlink" title="*16. false == &quot;0&quot; 得到的结果为（），false === &quot;0&quot; 得到的结果为"></a>*16. <code>false == &quot;0&quot;</code> 得到的结果为（），<code>false === &quot;0&quot;</code> 得到的结果为</h3><p><code>true</code>，<code>false</code>。<code>==</code> 不比较类型，<code>===</code> 会比较类型。<code>0 == &quot;0&quot;</code>，但 <code>0 !== &quot;0&quot;</code></p>
+<h3 id="17-在下面的表达式中，能返回-false-的是（）"><a href="#17-在下面的表达式中，能返回-false-的是（）" class="headerlink" title="17. 在下面的表达式中，能返回 false 的是（）"></a>17. 在下面的表达式中，能返回 false 的是（）</h3><p>A. <code>1 == true</code>; B. <code>&quot;&quot; == false</code>; C. <code>null == undefined</code>; D. <code>false == null</code>;</p>
+<p>D。左边布尔值右边 <code>null</code>，左边会调用 <code>Number()</code> 转为数字，最终表达式变为 <code>0 == null</code>，数字不等于 <code>null</code>。</p>
+<h3 id="18-1-instanceof-Number-的返回值是（），2-in-1-2-的返回值是（）"><a href="#18-1-instanceof-Number-的返回值是（），2-in-1-2-的返回值是（）" class="headerlink" title="18. 1 instanceof Number 的返回值是（），2 in [1, 2] 的返回值是（）"></a>18. <code>1 instanceof Number</code> 的返回值是（），<code>2 in [1, 2]</code> 的返回值是（）</h3><p>false,false.</p>
+<p><code>instanceof</code> 运算符能检测对象之间的关联性，左侧对象，右侧构造函数，如果左侧不是对象，会直接返回 false。</p>
+<p>in 用于检测 <code>属性</code> 是否在 <code>对象</code> 中，数组的索引（index）就是它的属性。2 超过了 <code>[1, 2]</code> 的最大索引 1，所以返回 <code>false</code>。</p>
+<pre><code class="javascript">1 instanceof Number // false
+let num = new Number(1)
+num instanceof Number // true
+&#39;name&#39; in &#123; name: &#39;cotwelf&#39;, age: 18 &#125; // true
+1 in [1, 2] // true
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="19-typeof-undefined-的返回值是（），typeof-null-的返回值是（）"><a href="#19-typeof-undefined-的返回值是（），typeof-null-的返回值是（）" class="headerlink" title="19. typeof undefined 的返回值是（），typeof null 的返回值是（）"></a>19. <code>typeof undefined</code> 的返回值是（），<code>typeof null</code> 的返回值是（）</h3><p><code>&#39;undefined&#39;</code>，<code>&#39;object&#39;</code>。注意 <code>typeof [1, 2]</code> 也是 <code>&#39;object&#39;</code>，所以要使用判断数组要使用 <code>Array.isArray([1, 2])</code></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="20-将-Object-的-toString-方法分别应用于-null-和-undefined-（如下所示），得到的结果为（）和（）。"><a href="#20-将-Object-的-toString-方法分别应用于-null-和-undefined-（如下所示），得到的结果为（）和（）。" class="headerlink" title="20. 将 Object 的 toString() 方法分别应用于 null 和 undefined （如下所示），得到的结果为（）和（）。"></a>20. 将 <code>Object</code> 的 <code>toString()</code> 方法分别应用于 <code>null</code> 和 <code>undefined</code> （如下所示），得到的结果为（）和（）。</h3><pre><code class="JavaScript">Object.prototype.toString.call(null)
+Object.prototype.toString.call(undefined)
+</code></pre>
+<p><code>&quot;[object Null]&quot;</code>, <code>&quot;[object Undefined]&quot;</code>。<code>Object</code> 的 <code>toString()</code> 方法返回格式是 <code>&quot;[object Type]&quot;</code>，其中 <code>Type</code> 是对象类型。如果传入 <code>null</code>，<code>Type</code> 对应值为 <code>&quot;Null&quot;</code>，传入 <code>undefined</code>，<code>Type</code> 对应值为 <code>&quot;Undefined&quot;</code>。</p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="21-执行下面的代码，调用-isPrototypeOf-方法得到的结果是（），执行-instanceof-运算符得到的结果是（）"><a href="#21-执行下面的代码，调用-isPrototypeOf-方法得到的结果是（），执行-instanceof-运算符得到的结果是（）" class="headerlink" title="21. 执行下面的代码，调用 isPrototypeOf() 方法得到的结果是（），执行 instanceof 运算符得到的结果是（）"></a>21. 执行下面的代码，调用 <code>isPrototypeOf()</code> 方法得到的结果是（），执行 <code>instanceof</code> 运算符得到的结果是（）</h3><pre><code class="JavaScript">function child() &#123;&#125;
+function ancestor() &#123;&#125;
+child.prototype = ancestor;
+var obj = new child()
+console.log(ancestor.isPrototypeOf(obj)); // true
+console.log(obj instanceof ancestor); // false
+console.log(obj instanceof child); // true
+</code></pre>
+<p><code>isPrototypeOf()</code> 方法用于检测【调用此方法的对象】是否存在于指定对象的原型链中，构造函数 <code>child()</code> 的原型指向构造函数 <code>ancestor()</code>，因此 <code>ancestor()</code> 在 <code>obj</code> 的原型链上，调用 <code>isPrototypeOf()</code> 方法得到的结果是 <code>true</code>。</p>
+<p><code>instanceof</code> 运算符是用于检测【构造函数的原型】是否存在于指定对象的原型链中，查看代码可知 <code>ancestor()</code> 的原型并不在 <code>obj</code> 对象的原型链上，因此执行 <code>instanceof</code> 运算符得到的结果是 <code>false</code>。</p>
+<blockquote>
+<p><code>a.isPrototypeOf(b)</code> 即 a 是否是 b 的 prototype（原型）。</p>
+</blockquote>
+<blockquote>
+<p><code>a instanceof A</code> 为 true 的条件：假设 <code>let a = new Obj()</code>，<code>Obj.constructor</code> 为 <code>A</code>。这里一般情况下 Obj 就是 A，但不排除 constructor 被重新赋值的情况（比如直接修改了 Obj 的 <code>prototype</code> 的引用指针）</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

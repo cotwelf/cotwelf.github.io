@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 只是一个误入三次元的 NPC 而已</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>只是一个误入三次元的 NPC 而已 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/碎碎念">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                碎碎念
+            </a>
+        </span>
+        
+
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><p>当前我们 15 舍的情况是这样的，整个楼封闭，共 6 层，12 层男生，3456 层女生，相互不能串层，避免交叉感染，因为上周 1 楼有确诊阳性 1 例，5 楼也有疑似确诊被拉去隔离了，所以 5 楼的志愿者不能下楼取饭，只能阿姨送上来，1 楼同 5 楼一样，其他楼层由志愿者去一楼取饭并拿到相应楼层，我在六楼。</p>
+<p>每人每次只能拿两袋，因为真的太重了，楼里出阳之前，一般都是 1、2 楼男生帮忙拿上来，但现在 1 楼阳了，所以不便送饭上楼，我们需要下去自己取。</p>
+<p>昨天中午下去拿午饭的时候，看到阿姨正在往五楼搬饭。于是顺手帮了阿姨一下。</p>
+<p>出于好心，我是这样想的，我们六楼反正要经过 5 楼，那么我们上来的时候可以帮阿姨拿一袋，再拿一袋我们六楼自己的，经过五楼的时候放到门口，感觉还行，因为我们一般会下去三个志愿者，我们六楼有 4 袋饭，可以帮阿姨拿 2 袋。于是提议我们帮一下阿姨，上六楼的时候带上来。</p>
+<p>阿姨们立马同意了，表示非常感谢。</p>
+<p>于是到了晚上，阿姨通知我们下去取饭的时候，让我们三个人。。。把所有 5 楼的饭都拿上来了。。。5 楼一共 6 袋，我们三人帮忙搬完 5 楼又下去搬了我们自己的饭上 6 楼。。。。。</p>
+<p>有同学提议，这样做增加了我们的风险，因为原本只要下去一次（因为阳在 1 楼，大家都很怕 1 楼其实），现在要来回两次，于是在群里和阿姨说了，毕竟志愿者也要对 6 楼整层的同学负责。我认为没什么毛病，因为和之前想象的确实不太一样。原本计划替自己楼层取饭的时候顺便帮一把，没想到全给我们了，其实我心里也是不愿意的。</p>
+<p>今天早上下去取饭的时候，居然收到了阿姨的白眼。。。。然后一通抱怨，说我们六楼本来就要上楼的，顺便放到五楼门口就好了呀，我瞬间就有点上头，好一个【顺便】，我们自己的饭呢请问？阿姨帮我们送上来吗？</p>
+<p>当然我没有直接怼，毕竟未来的一年还要天天见，但心已经凉了，本来打算疫情结束之后给志愿者的大家送点小零食毕竟同舟共济过，但，看来似乎是不必了。</p>
+<p><code>----------  我 是 可 爱 的 分 割 线  ----------</code></p>
+<p>另外，今天差点被绑架。</p>
+<p>本来我做志愿者的初衷是看我们楼层志愿者太辛苦，所以可以帮忙去一楼取饭。因为之前志愿者是去一楼取上来，然后放到楼层门口通知各个寝室去取饭。</p>
+<p>但我是线上办公，又不是普通的线上办公，摸鱼机会几乎木得，迭代任务排的满满当当，但我感觉，下去拿饭花不了多久，就当运动了。于是报名了志愿者，想要尽一份力。</p>
+<p>注意，这里我做志愿者，是为了尽力所能及之力，而不是榨干自己尽所有的力量。毕竟我没这么伟大，只是个平凡的误入三次元的 NPC 而已。</p>
+<p>我承认，志愿者不止拿饭，还有分发物资，统计抗原检测结果等诸多事情，拿饭可以当成是运动，但后面两项太过耗费精力和时间，对于现在的我来说，我不愿意为陌生人耗费这些，因为我有工作，有学习，没有闲到、先进到舍己为人的地步。</p>
+<p>而且退一万步说，在这个伟大的 shzy-gj，身边有这么多优秀的 dy 和 ty，为什么他们在这种时刻做缩头乌龟？反而要我这种群众挺身而出？那他们借着这种身份享受的各种福利，凭什么？我不理解。</p>
+<p>言归正传，今天早上下楼取饭的时候，拿上来之后一起下去的志愿者说，以后要把饭发到每个寝室了，当时我就想，行吧那你们发呗。但回来觉得还是说清楚比较好，于是打开了微信（没错我只是临场反应迟钝语无伦次不会说话的误入三次元的 NPC 而已），说明了自己的情况，可以帮忙拿饭上来，但不会分发，因为我有工作要做，而且我入群只是为了拿饭而已。</p>
+<p>然后有人发出了抓头的表情包。</p>
+<p>我已经开始生气了。</p>
+<p>所以我想尽一份力才来做志愿者的，就一定要把我榨干吗？</p>
+<p>我不理解。</p>
+<p>我真的不理解。</p>
+<p>昨天和思源说起这些事，思源说：“为啥大佬会心疼别人不心疼自己呢（叹气）”。我差点没绷住哭出来，所以果然是朋友，其他人最上说着谢谢志愿者，感谢有你，但心里全盘算着怎么白嫖了。</p>
+<p>我真的不理解。</p>
+<p>我不理解。</p>
+<p>这个世界不该是这样的，人心不该是这样的。</p>
+<p>所以我硬气了起来，拒绝发饭，如果让我做除了拿饭上楼以外的工作，我就退出，让其他人来做吧，毕竟我还有比服务一群 SB 更重要的事，哪怕只是坐着看番，优先级都比这高，毕竟只是一群 SB 而已。而且我已经为这个集体服务了一段时间，如果工作量按人平分的话，早就够了。</p>
+<p>自此之后，解封之前，谁也不欠我，我也不欠谁。</p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'true' || 'true' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

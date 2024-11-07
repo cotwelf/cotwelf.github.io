@@ -1,0 +1,1019 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || この世界を愛したい</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  <div id="home-head" style=background-image:url('/images/zshz.jpeg')>
+    <script>
+        var menu = document.getElementById("menu")
+        menu.className += " menu-color"
+    </script>
+     
+    <div id="home-info" class="home-info" @click="home_click">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Cotwelf's Life</h1>
+                <h3>この世界を愛したい</h3>
+                <h5>誰か聞こえますか。見えますか。</h5>
+            </div>
+        </span>
+    </div>
+     
+</div>
+
+
+
+<div id="home-posts-wrap" class=>
+    <div id="home-posts">
+
+        <div id="posts">
+            
+
+  
+
+  
+    <div class="post">
+      
+      <a href="/前端/踩坑记录/记一次非常非常非常麻烦的浏览器兼容问题/">
+          <h2>
+              记一次非常非常非常麻烦的浏览器兼容问题
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/前端">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  前端
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-24
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              拿到设计稿之后，开始敲代码前，先【检查设计稿】【检查设计稿】【检查设计稿】！！！（重要的事情说三遍！）
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/兼容" style=color:#00bcd4>
+                  兼容
+              </a>
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/响应式" style=color:#00bcd4>
+                  响应式
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/前端/踩坑记录/记一次非常非常非常麻烦的浏览器兼容问题/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/碎碎念/2022/4/23/">
+          <h2>
+              突然觉得，做志愿者还是有意义的
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/碎碎念">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  碎碎念
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-23
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              上帝对着我笑了，大概是因为我在思考
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          
+      </div>
+
+      <a href="/碎碎念/2022/4/23/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/笔记/1minutes/">
+          <h2>
+              一分钟影像
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/笔记">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  笔记
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-22
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              研二下学期，最后一学期的一分钟影像课。胡一宽老师 yyds！！海璐老师棒棒棒！！
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/课堂笔记" style=color:#1bccbc>
+                  课堂笔记
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/笔记/1minutes/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/笔记/reply/">
+          <h2>
+              19 级毕业答辩旁听记录
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/笔记">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  笔记
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-22
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              今天 19 级答辩，因为疫情的关系，所以改线上了。听下来整体感觉，学姐们很棒都！！题目不用标新立意，只要选自己喜欢的方向研究就好。其实可以不用太多的创新点，归纳总结，提出自己的观点就可以~ 这里记录了一些老师们针对学姐们答辩内容的一些建议，可供之后毕设参考。
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/取经" style=color:#00bcd4>
+                  取经
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/笔记/reply/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/前端/前端芝士补完计划/javascript_1/">
+          <h2>
+              前端芝士补完计划 之 JavaScript - 1. 简介及基本语法
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/前端">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  前端
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-10
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              前端芝士补完计划是一套萌新友好的一套前端芝士地图，up 其实本科是电子信息工程，毕业后辗转多个技术岗位，包括测试、产品、项管（但都不久 orz），前端是跟着视频和文档学的，而且工作中用到的才看，没用到没理解的直接过了，这个计划是为了重新回头打基础，了解一些本就该刻在前端 DNA 里的东西，不论是【巩固基础】还是【准备面试】都是极好的~ 
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/基础" style=color:#879cff>
+                  基础
+              </a>
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#00bcd4>
+                  JavaScript
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/前端/前端芝士补完计划/javascript_1/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/前端/前端芝士补完计划/javascript_2/">
+          <h2>
+              前端芝士补完计划 之 JavaScript - 2. 数据类型
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/前端">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  前端
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-10
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              前端芝士补完计划是一套萌新友好的一套前端芝士地图，up 其实本科是电子信息工程，毕业后辗转多个技术岗位，包括测试、产品、项管（但都不久 orz），前端是跟着视频和文档学的，而且工作中用到的才看，没用到没理解的直接过了，这个计划是为了重新回头打基础，了解一些本就该刻在前端 DNA 里的东西，不论是【巩固基础】还是【准备面试】都是极好的~ 
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/基础" style=color:#ffa2c4>
+                  基础
+              </a>
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#ff7d73>
+                  JavaScript
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/前端/前端芝士补完计划/javascript_2/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/前端/前端芝士补完计划/javascript_3_object/">
+          <h2>
+              前端芝士补完计划 之 JavaScript - 3. 对象
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/前端">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  前端
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-10
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              &emsp;&emsp;前端芝士补完计划是一套萌新友好的一套前端芝士地图，这个计划是为了重新回头打基础，了解一些本就该刻在前端 DNA 里的东西，不论是【巩固基础】还是【准备面试】都是极好的~ <br/><br/> &emsp;&emsp;本节主要涉及<span class="hightlight">JS 内置对象</span>、<span class="hightlight">new 一个对象</span>和<span class="hightlight">对象的常用方法</span>。
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/基础" style=color:#1bccbc>
+                  基础
+              </a>
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#1bccbc>
+                  JavaScript
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/前端/前端芝士补完计划/javascript_3_object/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/前端/前端芝士补完计划/javascript_7/">
+          <h2>
+              前端芝士补完计划 之 JavaScript-DOM 和 BOM
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/前端">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  前端
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-10
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              前端芝士补完计划是一套萌新友好的一套前端芝士地图，up 其实本科是电子信息工程，毕业后辗转多个技术岗位，包括测试、产品、项管（但都不久 orz），前端是跟着视频和文档学的，而且工作中用到的才看，没用到没理解的直接过了，这个计划是为了重新回头打基础，了解一些本就该刻在前端 DNA 里的东西，不论是【巩固基础】还是【准备面试】都是极好的~ 
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/基础" style=color:#1bccbc>
+                  基础
+              </a>
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#ffa2c4>
+                  JavaScript
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/前端/前端芝士补完计划/javascript_7/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+  
+    <div class="post">
+      
+      <a href="/前端/前端芝士补完计划/javascript_8_event/">
+          <h2>
+              前端芝士补完计划 之 JavaScript - 事件处理
+          </h2>
+      </a>
+
+      <div class="category-and-date">
+
+          
+          <span class="category">
+              <a href="/categories/前端">
+                  <span class="icon">
+                      <a-icon type="book" theme="filled" /></span>
+                  前端
+              </a>
+          </span>
+          
+
+          <span class="date">
+              <span class="icon">
+                  <a-icon type="calendar" theme="filled" />
+              </span>
+              2022-04-10
+          </span>
+      </div>
+
+      <div class="excerpt">
+          <div class="content" v-pre>
+              
+              前端芝士补完计划是一套萌新友好的一套前端芝士地图，up 其实本科是电子信息工程，毕业后辗转多个技术岗位，包括测试、产品、项管（但都不久 orz），前端是跟着视频和文档学的，而且工作中用到的才看，没用到没理解的直接过了，这个计划是为了重新回头打基础，了解一些本就该刻在前端 DNA 里的东西，不论是【巩固基础】还是【准备面试】都是极好的~ 
+              
+              
+          </div>
+      </div>
+
+      <div class="post-tags">
+          
+          <span class="icon">
+              <a-icon type="tags" theme="filled" />
+          </span>
+          
+          
+          <span class="tag">
+              
+              <a href="/tags/基础" style=color:#00bcd4>
+                  基础
+              </a>
+          </span>
+          
+          <span class="tag">
+              
+              <a href="/tags/JavaScript" style=color:#00bcd4>
+                  JavaScript
+              </a>
+          </span>
+          
+      </div>
+
+      <a href="/前端/前端芝士补完计划/javascript_8_event/ " class="go-post">
+          阅读全文
+      </a>
+    </div>
+  
+
+
+
+             
+<div class="page-current">
+
+    <div class="prev">
+        
+        <a href="/page/3/">
+            <span class="page-num">
+                <a-icon type="caret-left" theme="filled" />
+            </span>
+        </a>
+        
+    </div>
+
+    <div class="page-index">
+
+        
+        <span>
+
+            
+            <a href="/"><span class="page-num">1</span></a>
+            <span class="page-omit">...</span>
+            
+
+            
+
+            
+
+            
+            <a href="/page/2">
+                <span class="page-num">
+                    2
+                </span>
+            </a>
+            
+
+            
+            <a href="/page/3/">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
+        </span>
+        
+
+        <span class="current">
+            4
+        </span>
+
+        
+        <span>
+            <a href="/page/5/">
+                <span class="page-num">
+                    5
+                </span>
+            </a>
+            
+
+            
+
+        </span>
+        
+
+    </div>
+
+    <div class="next">
+        
+        <a href="/page/5/ ">
+            <span class="page-num">
+                <a-icon type="caret-right" theme="filled" />
+            </span>
+        </a>
+        
+    </div>
+
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <a-affix :offset-top="card_top">
+    <a-card class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="/images/cover/77.jpeg " alt="头像">
+        </div>
+        <div class="name">
+            Cotwelf
+        </div>
+        <div class="descriptions">
+            
+            <div class="description">
+                大切なことは
+            </div>
+            
+            <div class="description">
+                目には見えない
+            </div>
+            
+        </div>
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/cotwelf">
+                    
+                    <a-icon type="github"
+                        theme="filled" />
+                    
+                </a>
+            </span>
+            
+        </div>
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a href="javascript:void(0);">
+                    没有友链 qwq
+                </a>
+            </div>
+            
+        </div>
+    </a-card>
+</a-affix>
+
+    </div>
+    
+</div>
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

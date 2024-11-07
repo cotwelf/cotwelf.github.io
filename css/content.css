@@ -1,0 +1,217 @@
+.content blockquote {
+  padding: 1px 16px;
+  background-color: blockquote-bg;
+  display: block;
+  color: blockquote-font;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px 0 blockquote-shadow;
+}
+.content code {
+  font-family: code-font-family;
+  background: code-background;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: code-font;
+}
+.content pre {
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+  border: 1px solid #ebeef5;
+  padding: 50px 30px 20px;
+  margin: 25px 0;
+  border-radius: 15px;
+  overflow: auto;
+  position: relative;
+}
+.content pre blockquote {
+  padding: 1px 16px;
+  background-color: blockquote-bg;
+  display: block;
+  color: blockquote-font;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px 0 blockquote-shadow;
+}
+.content pre code {
+  background: none;
+  padding: 0;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5 {
+  position: relative;
+  text-align: left !important;
+  margin: 18px 0;
+}
+.content h1:hover .headerlink,
+.content h2:hover .headerlink,
+.content h3:hover .headerlink,
+.content h4:hover .headerlink,
+.content h5:hover .headerlink {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 25px;
+  height: 22px;
+  background: url("../images/icons/link.svg") no-repeat left;
+  background-size: contain;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+}
+.content a {
+  color: default-link;
+  text-decoration: none;
+}
+.content b,
+.content strong {
+  line-height: 2.5;
+  font-weight: bolder;
+}
+.content img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.content table tr th {
+  padding: 8px 20px;
+  color: th-font;
+}
+.content table tr th:nth-child(2n) {
+  background: th-color-dual;
+}
+.content table tr th:nth-child(2n-1) {
+  background: th-color-sing;
+}
+.content table tr td {
+  padding: 8px 20px;
+}
+.content table tr td:nth-child(2n) {
+  background: td-color-dual;
+}
+.content table tr td:nth-child(2n-1) {
+  background: td-color-sing;
+}
+.content table tbody tr {
+  border-top: 2px solid #fff;
+}
+.content .markdownIt-Anchor {
+  display: none;
+}
+.content .language {
+  font-family: code-font-family;
+  position: absolute;
+  top: 0px;
+  padding: 10px 15px;
+  background: code-tag;
+  box-shadow: 1px 1px 0.75rem code-tag-shadow;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 0 0 10px 10px;
+}
+.content .hljs {
+  font-family: code-font-family;
+  background: none;
+  line-height: 2;
+  font-size: 13px;
+}
+.content .hljs .hljs-built_in {
+  color: #42a4d6;
+}
+.content .hljs .hljs-keyword {
+  color: #e24279;
+}
+.content .hljs .hljs-literal,
+.content .hljs .hljs-number {
+  color: #ff9800;
+}
+.content .hljs .hljs-doctag,
+.content .hljs .hljs-string {
+  color: #009688;
+}
+.content .hljs .hljs-comment,
+.content .hljs .hljs-quote {
+  color: #9e9e9e;
+}
+.content .hljs .hljs-attribute,
+.content .hljs .hljs-name {
+  color: #f00;
+}
+.content .hljs .hljs-attr {
+  color: #525252;
+}
+.content .hljs .hljs-class,
+.content .hljs .hljs-title,
+.content .hljs .hljs-type {
+  color: #3f51b5;
+}
+.content .hljs .hljs-params,
+.content .hljs .hljs-variable {
+  color: #458;
+}
+.content .hljs .hljs-deletion {
+  background-color: #ffebe9;
+}
+.content .hljs .hljs-addition {
+  background-color: #e6ffec;
+}
+.release-tip {
+  text-align: center;
+  font-size: 2rem;
+  margin: 10rem 0 5rem;
+  color: #fba5b5;
+}
+#release-value {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 20rem;
+  height: 4rem;
+  outline: none;
+  border: 1.5px dashed #fba5b5;
+  border-radius: 1rem;
+}
+#release-value::placeholder {
+  color: rgba(158,158,158,0.69);
+}
+.release-err {
+  text-align: center;
+  position: relative;
+  top: 1rem;
+  color: rgba(135,156,255,0.8);
+}
+#release-btn {
+  margin: 2rem auto 1rem;
+  display: block;
+  background: rgba(251,165,181,0.18);
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  width: 20rem;
+  height: 3rem;
+  color: #fba5b5;
+  border-radius: 25px;
+  border: 1.5px solid #fba5b5;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+#release-btn:hover {
+  box-shadow: 0 2px 6px 0 rgba(135,156,255,0.6);
+}
+.tips {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(158,158,158,0.69);
+}
+.divider {
+  width: 60vw;
+  max-width: 600px;
+  min-width: 300px;
+  margin-bottom: 4rem;
+}
+iframe {
+  border: none;
+}

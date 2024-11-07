@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 课堂笔记</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<div class="categories-tags">
+    
+    <div class="all-s">
+        
+        
+        <span>
+            <a href="/tags/phaser/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                phaser
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/像素/" style=background:#879cff>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                像素
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/课堂笔记/" style='background:linear-gradient(to right, #fbc2eb 0%, #bbd4ff 100%)'>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                课堂笔记
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/外语/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                外语
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/取经/" style=background:#00bcd4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                取经
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/React/" style=background:#00bcd4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                React
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/Algorithm/" style=background:#00bcd4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                Algorithm
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/基础/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                基础
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/JavaScript/" style=background:#00bcd4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                JavaScript
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/性能/" style=background:#1bccbc>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                性能
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/网络/" style=background:#00bcd4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                网络
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/ACG/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                ACG
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/工具/" style=background:#879cff>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                工具
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/编码/" style=background:#879cff>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                编码
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/npm/" style=background:#1bccbc>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                npm
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/兼容/" style=background:#1bccbc>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                兼容
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/响应式/" style=background:#1bccbc>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                响应式
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/画画/" style=background:#ff7d73>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                画画
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/CSS/" style=background:#879cff>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                CSS
+            </a>
+        </span>
+        
+        
+    </div>
+    <div id="archives">
+        
+          
+            <a-timeline>
+              <a-timeline-item color="#a5c2f5">
+                  <a-card hoverable>
+                      <div class="item-time">2022-04-22</div>
+                      <a href="/笔记/1minutes/">
+                          <h3>一分钟影像</h3>
+                      </a>
+                      <div class="info">
+                          
+                          <span class="category">
+                              <a href="/categories/笔记">
+                                  <span class="icon">
+                                      <a-icon type="book" theme="filled" />
+                                  </span>
+                                  笔记
+                              </a>
+                          </span>
+                          
+
+                          
+                          <span class="tags">
+                              <span class="icon">
+                                  <a-icon type="tags" theme="filled" />
+                              </span>
+                              
+                              <span class="tag">
+                                  
+                                  <a href="/tags/课堂笔记" style=color:#00bcd4>
+                                      课堂笔记
+                                  </a>
+                              </span>
+                              
+                          </span>
+                          
+                      </div>
+                  </a-card>
+              </a-timeline-item>
+          </a-timeline>
+          
+        
+    </div>
+    <script>
+        new Vue({
+            el: '#archives'
+        })
+    </script>
+</div>
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

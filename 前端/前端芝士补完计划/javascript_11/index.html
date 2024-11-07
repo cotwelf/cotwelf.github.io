@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 数据存储</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript - 数据存储 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#1bccbc>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#ffa2c4>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-对比-Cookie、LocalStorage、SessionStorage、Session、Token"><a href="#1-对比-Cookie、LocalStorage、SessionStorage、Session、Token" class="headerlink" title="1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token"></a>1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>保存位置</th>
+<th>生命周期</th>
+<th>存储大小</th>
+<th>数据类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cookie</td>
+<td>客户端</td>
+<td>expires 前有效，若不设置 expires 则会话期间有效</td>
+<td>4KB</td>
+<td>字符串</td>
+<td>请求头 cookie，同域名每次请求都附加；响应头 set-cookie 设置 cookie</td>
+</tr>
+<tr>
+<td>LocalStorage</td>
+<td>客户端</td>
+<td>不清空缓存，则一直有效</td>
+<td>2.5MB &#x2F; 5MB</td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>SessionStorage</td>
+<td>客户端</td>
+<td>不清空缓存，则一直有效</td>
+<td>2.5MB &#x2F; 5MB</td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>Session</td>
+<td>服务端，sessionid 存在 cookie 或跟在 URL 后</td>
+<td>默认 20 分钟，可更改。清空 cookie 或更改 URL 传参，影响 Session</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Token</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="（1）Cookie"><a href="#（1）Cookie" class="headerlink" title="（1）Cookie"></a>（1）Cookie</h4><p>document.cookie 返回当前页面可用的（根据 cookie 的域、路径、失效时间和安全设置）所有 cookie 的字符串，一系列由分号隔开的名值对。所有名字和值都是经过 URL 编码的，所以必须使用 decodeURIComponent() 来解码。</p>
+<pre><code class="javascript">// get
+decodeURIComponent(document.cookie)
+// set
+document.cookie =  `$&#123;encodeURIComponent(&quot;name&quot;)&#125;=$&#123;encodeURIComponent(&quot;Nicholas&quot;)&#125;; domain=cotwelf.com;`;
+</code></pre>
+<p>客户端每次向服务器发起请求的时候，都会发送这个 cookie，浏览器关闭的时候，它就会被删除。一定不要在 cookie 中存储重要和敏感的数据。cookie 数据并非存储在一个安全环境中，其中包含的任何数据都可以被他人访问。</p>
+<p>由于所有的 cookie 都会由浏览器作为请求头发送，所以在 cookie 中存储大量信息会影响到特定域的请求性能。cookie 信息越大，完成对服务器请求的时间也就越长。尽管浏览器对 cookie 进行了大小限制，不过最好还是尽可能在 cookie 中少存储信息，以避免影响性能。</p>
+<p>cookie 的性质和它的局限使得其并不能作为存储大量信息的理想手段，所以 H5 之后又出现了其他方法。</p>
+<h4 id="（2）Web-Storage"><a href="#（2）Web-Storage" class="headerlink" title="（2）Web Storage"></a>（2）Web Storage</h4><p>H5 的一部分，只能存储字符串。存在的初衷是提供一种</p>
+<ul>
+<li>cookie 之外存储会话数据的途径；</li>
+<li>存储大量可以跨会话存在的数据机制。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>storageObj.clear()</td>
+<td>删除所有值</td>
+<td>Firefox 中无</td>
+</tr>
+<tr>
+<td>storageObj.getItem(name)</td>
+<td>查</td>
+<td>或 storageObj.name</td>
+</tr>
+<tr>
+<td>storageObj.removeItem(name)</td>
+<td>删</td>
+<td></td>
+</tr>
+<tr>
+<td>storageObj.setItem(name, value)</td>
+<td>增、改</td>
+<td>或 storageObj[name] &#x3D; value</td>
+</tr>
+</tbody></table>
+<p>还可以使用 length 属性来判断有多少名值对儿存放在 Storage 对象中。但无法判断对象中所有数据的大小</p>
+<blockquote>
+<p>注意 setItem 和 getItem 的时候有可能是 null，那么 JSON.parse 或 JSON.stringify 的时候最好用 try catch，以免报错</p>
+</blockquote>
+<h5 id="sessionStorage-对象"><a href="#sessionStorage-对象" class="headerlink" title="sessionStorage 对象"></a><strong>sessionStorage 对象</strong></h5><p>sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。会话结束的时候，sessionStorage中的键值对会被清空。</p>
+<p>存储在 sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和 WebKit 都支持，IE 则不行）。</p>
+<h5 id="localStorage-对象"><a href="#localStorage-对象" class="headerlink" title="localStorage 对象"></a><strong>localStorage 对象</strong></h5><p>数据保留到通过 JS 删除或者是用户清除浏览器缓存。要访问同一个 localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。</p>
+<h5 id="sessionStorage-和-localStorage-的区别"><a href="#sessionStorage-和-localStorage-的区别" class="headerlink" title="sessionStorage 和 localStorage 的区别"></a>sessionStorage 和 localStorage 的区别</h5><p>假设一个场景，想要用户填写表单，刷新页面后自动填入未提交内容，希望：</p>
+<ul>
+<li>只要在同一 tab 内操作，每次进入都会填入上次未提交的内容，但关闭浏览器或使用其他 tab，内容清空——sessionStorage</li>
+<li>不论是否新开 tab，都填入上次未提交内容——localStorage</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-indexedDB"><a href="#2-indexedDB" class="headerlink" title="2. indexedDB"></a>2. indexedDB</h3><p>Indexed Database API，是在浏览器中保存结构化数据的一种数据库。IndexedDB 最大的特色是使用对象保存数据，而不是使用表来保存数据。一个 IndexedDB 数据库，就是一组位于相同命名空间下的对象的集合。</p>
+<p>IndexedDB 设计的操作完全是异步进行的。因此，大多数操作会以请求方式进行，但这些操作会在后期执行，然后如果成功则返回结果，如果失败则返回错误。</p>
+<pre><code class="javascript">var indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB || window.webkitIndexedDB;
+</code></pre>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

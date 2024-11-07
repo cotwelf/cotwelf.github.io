@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 错误处理与调试、JSON</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript - 错误处理与调试、JSON </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#1bccbc>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#1bccbc>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>错误处理的核心，是首先要知道代码里会发生什么错误。由于 JS 是松散类型的，而且也不会验证函数的参数，因此错误只会在代码运行期间出现。一般来说需要关注以下三种，它们可能会在特定模式下、或是没有充分检查备操作值的情况下出现。</p>
+<ol>
+<li>类型转换错误<ul>
+<li>使用全等 <code>===</code> 判断，避免比较前自动类型转换；</li>
+<li>控制流程语句前手动将条件转为 boolean（即使用 if(<code>!!a</code>){} 或者 if(<code>typeof a !== undefined</code>){} 代替 if(<code>a</code>){}）避免自动转换出现问题</li>
+</ul>
+</li>
+<li>数据类型错误<ul>
+<li>用到处理特定类型值的函数之前，需要判断一下被处理值的类型，如<pre><code class="javascript">function getQueryString(url) &#123;
+  if (typeof url === &#39;string&#39;) &#123; // 这里如果不加判断，indexOf 可能会报错。
+    var index = url.indexOf(&#39;?&#39;);
+    if (index &gt; -1) &#123;
+      return url.substring(index + 1)
+    &#125;
+  &#125;
+  return &#39;&#39;;
+&#125;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>通信错误<br>&#96;&#96;&#96;javascript<br>try {</li>
+</ol>
+<p>} catch(error) {<br>  &#x2F;&#x2F; 可以对 catch 到 error 进行处理<br>  if (xxx) {<br>    return {error: ‘xxx’, message: ‘xxxx’}<br>  }<br>  &#x2F;&#x2F; 也可以抛出错误<br>  throw new Error(“Something bad happened.”);<br>}</p>
+<pre><code>
+### 2. 常见 IE 错误
+#### 操作终止（如 appendChild
+JS 只能修改已经加载完毕的元素，要避免这个问题，可以换成使用 `insertBefore()` 方法
+```diff
+- document.body.appendChild(document.createElement(&quot;div&quot;));
++ document.body.insertBefore(document.createElement(&quot;div&quot;), document.body.firstChild);
+</code></pre>
+<h4 id="无效字符"><a href="#无效字符" class="headerlink" title="无效字符"></a>无效字符</h4><h4 id="未找到成员"><a href="#未找到成员" class="headerlink" title="未找到成员"></a>未找到成员</h4><p>即对象被销毁后被赋值</p>
+<h4 id="未知运行时错误"><a href="#未知运行时错误" class="headerlink" title="未知运行时错误"></a>未知运行时错误</h4><p>比如给 <code>&lt;span&gt;</code> 内添加了 <code>&lt;div&gt;</code>，如： <code>span.innerHTML = &quot;&lt;div&gt;Hi&lt;/div&gt;&quot;;</code></p>
+<h4 id="语法错误"><a href="#语法错误" class="headerlink" title="语法错误"></a>语法错误</h4><p>比如 <code>&lt;script&gt;</code> 元素的 src 特性指向了一个 HTML 文件，就会导致语法错误。</p>
+<h4 id="系统无法找到制定资源"><a href="#系统无法找到制定资源" class="headerlink" title="系统无法找到制定资源"></a>系统无法找到制定资源</h4><p>URL 长度超限</p>
+<h3 id="JSON-对象与-JS-对象的不同之处"><a href="#JSON-对象与-JS-对象的不同之处" class="headerlink" title="JSON 对象与 JS 对象的不同之处"></a>JSON 对象与 JS 对象的不同之处</h3><p>JSON 只是一种数据格式，不从属于 JS，很多语言都有针对 JSON 的解释器。JSON 中不支持保存 undefined，其余和 JS 类似。</p>
+<p>对象和数组通常是 JSON 数据结构的最外层形式（当然，这不是强制规定的），利用它们能够创造出各种各样的数据结构。</p>
+<p>JSON 对象相比较 JS 对象有以下不同点：</p>
+<ul>
+<li>键值对中的 key 要加引号；</li>
+<li>string 需要用双引号包裹；</li>
+<li>对象最后一个字段后不能加逗号；</li>
+<li>对象末尾不能加分号。</li>
+</ul>
+<pre><code class="javascript">var obj = &#123;
+  &quot;a&quot;: 1, // 单双引号或不加引号均可
+  &#39;b&#39;: &#123;
+    name: &#39;cotwelf&#39; // string 也可以使用单引号或双引号包裹
+  &#125;,
+  c: 3, // 最后一个键值对之后可以加逗号也可以不加
+&#125;; // 末尾可加分号可不加分号
+</code></pre>
+<pre><code class="JSON">&#123;
+  &quot;a&quot;: 1, // 属性必须用双引号
+  &quot;b&quot;: &#123;
+    &quot;name&quot;: &quot;cotwelf&quot; // string 只能用双引号
+  &#125;,
+  &quot;c&quot;: 3
+&#125; // 末尾没有分号
+</code></pre>
+<h3 id="JSON-stringify-与-JSON-parse-使用过程中应该注意什么"><a href="#JSON-stringify-与-JSON-parse-使用过程中应该注意什么" class="headerlink" title="JSON.stringify() 与 JSON.parse() 使用过程中应该注意什么"></a>JSON.stringify() 与 JSON.parse() 使用过程中应该注意什么</h3><p>在序列化 JS 对象时，所有函数的原型成员都会被忽略，不体现在结果中。值为 undefined 的属性也会被跳过。</p>
+<p>注意，如果传给 JSON.parse() 的字符串不是有效的 JSON，该方法会抛出错误。</p>
+<pre><code class="javascript">// 1. 简单值
+JSON.parse(&quot;test&quot;) // Uncaught SyntaxError: Unexpected token e in JSON at position 1
+JSON.stringify(&quot;test&quot;) // &#39;&quot;test&quot;&#39;
+JSON.parse(&#39;&quot;test&quot;&#39;) // &#39;test&#39;
+JSON.parse(1) // 1
+JSON.parse(&quot;null&quot;) // null
+JSON.parse(&quot;true&quot;) // true
+// 2. 对象
+var obj = &#123;
+  &quot;a&quot;: 1,
+  &#39;b&#39;: &#123;
+    name: &#39;cotwelf&#39;
+  &#125;,
+  c: 3,
+&#125;;
+// 外面的单引号是为了不影响 JSON 内双引号的闭合
+JSON.stringify(obj) // &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:&#123;&quot;name&quot;:&quot;cotwelf&quot;&#125;,&quot;c&quot;:3&#125;&#39;
+// 3. 数组
+JSON.stringify([233, &quot;hi&quot;, true]) // &#39;[233,&quot;hi&quot;,true]&#39;
+</code></pre>
+<p>JSON.stringify() 除了要序列化的 JS 对象外，还可接收两个参数，第一个参数是个过滤器，可以是一个数组，也可以是一个函数；第二个参数是一个选项，表示是否在 JSON 字符串中保留缩进。单独或组合使用这两个参数，可以更全面深入地控制 JSON 的序列化。</p>
+<h3 id="11-将下面的对象序列化为-JSON-字符串，在序列化时去除-name-属性，并将数组的第一个元素变为-null"><a href="#11-将下面的对象序列化为-JSON-字符串，在序列化时去除-name-属性，并将数组的第一个元素变为-null" class="headerlink" title="11. 将下面的对象序列化为 JSON 字符串，在序列化时去除 name 属性，并将数组的第一个元素变为 null"></a>11. 将下面的对象序列化为 JSON 字符串，在序列化时去除 name 属性，并将数组的第一个元素变为 null</h3><pre><code class="javascript">var json = &#123;
+  &quot;name&quot;: &quot;xiuwen&quot;,
+  &quot;age&quot;: 18,
+  &quot;like&quot;: [&quot;anime&quot;, &quot;game&quot;, &quot;music&quot;]
+&#125;;
+JSON.stringify(json, (key, value) =&gt; &#123;
+  if(key === &#39;name&#39;) &#123;
+    return undefined;
+  &#125;
+  if (key === &quot;0&quot;) &#123;
+    return undefined; // 数组中第一个值将变为 null
+  &#125;
+  return value
+&#125;)
+</code></pre>
+<p>关于 <code>JSON.stringify(value[, replacer [, space]])</code> 中的后两个参数</p>
+<h4 id="replacer"><a href="#replacer" class="headerlink" title="replacer"></a>replacer</h4><pre><code class="javascript">var json = &#123;
+  &quot;name&quot;: &quot;xiuwen&quot;,
+  &quot;age&quot;: 18,
+  &quot;like&quot;: [&quot;anime&quot;, &quot;game&quot;, &quot;music&quot;]
+&#125;;
+</code></pre>
+<p>replacer 是 function：</p>
+<ul>
+<li>如果返回一个 Number, 转换成相应的字符串作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;name&#39;) &#123;
+  return 2333
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;: 2333,&quot;age&quot;:18,&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回一个 String, 该字符串作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;name&#39;) &#123;
+  return &#39;xiuxiuxiu&#39;
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuxiuxiu&quot;,&quot;age&quot;:18,&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回一个 Boolean, “true” 或者 “false” 作为属性值被添加入 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return false
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;age&quot;:18,&quot;like&quot;:false&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回任何其他对象，该对象递归地序列化成 JSON 字符串，对每个属性调用 replacer 方法。除非该对象是一个函数，这种情况将不会被序列化成 JSON 字符串。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return [&quot;code&quot;, &quot;eiga&quot;]
+&#125;
+if (key === &quot;1&quot;) &#123;
+  return undefined // 因为上面的 like 的每个属性也调用 replacer 方法，所以 like[1] 变为 null
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;age&quot;:18,&quot;like&quot;:[&quot;code&quot;,null]&#125;&#39;
+</code></pre>
+</li>
+<li>如果返回 undefined，该属性值不会在 JSON 字符串中输出。<pre><code class="javascript">let replacer = (key, value) =&gt; &#123;
+if (key === &#39;like&#39;) &#123;
+  return [&quot;code&quot;, &quot;eiga&quot;]
+&#125;
+if (key === &quot;age&quot;) &#123;
+  return undefined // 注意这里，key 非数组 index 的时候返回 undefined 才会删除属性，否则只会置 arr[index] 为 null
+&#125;
+return value
+&#125;
+JSON.stringify(json, replacer) // &#39;&#123;&quot;name&quot;:&quot;xiuwen&quot;,&quot;like&quot;:[&quot;code&quot;,&quot;eiga&quot;]&#125;&#39;
+</code></pre>
+replacer 是 arr<pre><code class="javascript">let replacer = [&quot;like&quot;]
+JSON.stringify(json, replacer) // &#39;&#123;&quot;like&quot;:[&quot;anime&quot;,&quot;game&quot;,&quot;music&quot;]&#125;&#39;
+</code></pre>
+JSON.stringify() 一般和 JSON.parse() 结合 localstorage 使用，注意在 JSON.parse() 的 value 是 undefined、NaN、Infinity、函数、对象实例、变量或正则表达式时会报错，可以用 try catch。</li>
+</ul>
+<p>另外，JSON 可以实现简单数据类型的深拷贝</p>
+<pre><code class="javascript">function deepCopy(obj) &#123;
+  return JSON.parse(JSON.stringify(obj));
+&#125;
+const obj1 = &#123;
+  a: 1,
+  b: &#39;test&#39;,
+  c: &#123;
+    d: [1, 2],
+    e: () =&gt; &#123;&#125;, // 这里 e 并没有被拷贝
+  &#125;
+&#125;
+let obj2 = deepCopy(obj1) // &#123;a: 1, b: &#39;test&#39;, c: &#123; d: [1, 2] &#125;&#125;
+</code></pre>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

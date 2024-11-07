@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 每天 1 篇论文</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>每天 1 篇论文 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/取经" style=color:#879cff>
+                    取经
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#%E3%80%8A%E5%9F%BA%E4%BA%8E%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B4%E7%9A%84%E6%95%99%E8%82%B2%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6%E3%80%8B">《基于设计思维的教育游戏设计方法研究》</a> 2022-05-02<br><a href="#%E3%80%8A%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E6%9E%81%E7%AE%80%E4%B8%BB%E4%B9%89%E3%80%8B">《游戏设计中的极简主义》</a> 2022-05-04<br><a href="#%E3%80%8A%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%BF%83%E7%90%86%E5%AD%A6%E7%A0%94%E7%A9%B6%E3%80%8B">《游戏设计中的设计心理学研究》</a> 2022-05-07<br><a href="#%E3%80%8A%E5%A4%A7%E4%BC%97%E6%96%87%E5%8C%96%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E6%89%8B%E6%9C%BA%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E3%80%8B">《大众文化视域下的手机游戏设计》</a> 2022-05-16<br><a href="#%E3%80%8A%E6%B5%85%E6%9E%90%E5%9F%BA%E4%BA%8E%E7%8E%A9%E5%AE%B6%E9%9C%80%E6%B1%82%E7%9A%84%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E5%AF%B9%E4%BC%A0%E7%BB%9F%E6%96%87%E5%8C%96%E5%85%83%E7%B4%A0%E7%9A%84%E8%BF%90%E7%94%A8%E3%80%8B">《浅析基于玩家需求的游戏设计对传统文化元素的运用》</a> 2022-05-16</p>
+<hr>
+<h2 id="《基于设计思维的教育游戏设计方法研究》"><a href="#《基于设计思维的教育游戏设计方法研究》" class="headerlink" title="《基于设计思维的教育游戏设计方法研究》"></a>《基于设计思维的教育游戏设计方法研究》</h2><h3 id="0-引言"><a href="#0-引言" class="headerlink" title="0. 引言"></a>0. 引言</h3><ul>
+<li>什么是教育游戏，当前教育游戏存在的问题（缺乏科学理论支持）</li>
+<li>列举一些当前市面上的教育游戏，它们存在的问题（均未在设计思维方面进行研究），需要引入设计思维来解决这些问题</li>
+</ul>
+<h3 id="1-设计思维定义及模型"><a href="#1-设计思维定义及模型" class="headerlink" title="1. 设计思维定义及模型"></a>1. 设计思维定义及模型</h3><ul>
+<li>分阶段介绍 D.School 推荐的设计思维模型</li>
+</ul>
+<h4 id="1-1-设计思维定义"><a href="#1-1-设计思维定义" class="headerlink" title="1.1. 设计思维定义"></a>1.1. 设计思维定义</h4><h4 id="1-2-设计思维模型"><a href="#1-2-设计思维模型" class="headerlink" title="1.2. 设计思维模型"></a>1.2. 设计思维模型</h4><h5 id="1-2-1-同理心"><a href="#1-2-1-同理心" class="headerlink" title="1.2.1. 同理心"></a>1.2.1. 同理心</h5><h5 id="1-2-2-定义"><a href="#1-2-2-定义" class="headerlink" title="1.2.2. 定义"></a>1.2.2. 定义</h5><h5 id="1-2-3-概念生成"><a href="#1-2-3-概念生成" class="headerlink" title="1.2.3. 概念生成"></a>1.2.3. 概念生成</h5><h5 id="1-2-4-制作实施"><a href="#1-2-4-制作实施" class="headerlink" title="1.2.4. 制作实施"></a>1.2.4. 制作实施</h5><h5 id="1-2-5-测试"><a href="#1-2-5-测试" class="headerlink" title="1.2.5. 测试"></a>1.2.5. 测试</h5><h3 id="2-教育游戏设计方法"><a href="#2-教育游戏设计方法" class="headerlink" title="2. 教育游戏设计方法"></a>2. 教育游戏设计方法</h3><blockquote>
+<p>对应设计思维模型分阶段介绍</p>
+</blockquote>
+<h4 id="2-1-教学目标及对象确定"><a href="#2-1-教学目标及对象确定" class="headerlink" title="2.1. 教学目标及对象确定"></a>2.1. 教学目标及对象确定</h4><ul>
+<li>同理心：确定产品方向，目标用户，了解用户日常行为，站在用户的角度思考，想要从产品的使用中获得什么</li>
+</ul>
+<h4 id="2-2-学习内容制定"><a href="#2-2-学习内容制定" class="headerlink" title="2.2. 学习内容制定"></a>2.2. 学习内容制定</h4><ul>
+<li>定义：通过一些工具、手段等收集整理分析用户需求。明确内容和目标，列出待解决的问题。</li>
+</ul>
+<h4 id="2-3-框架构建"><a href="#2-3-框架构建" class="headerlink" title="2.3. 框架构建"></a>2.3. 框架构建</h4><ul>
+<li>概念生成：根据整理出来的内容，头脑风暴，思维导图，完成初步设计。</li>
+</ul>
+<h4 id="2-4-制作实施"><a href="#2-4-制作实施" class="headerlink" title="2.4. 制作实施"></a>2.4. 制作实施</h4><ul>
+<li>制作实施：开始实施计划，计划包括哪些阶段（设计、开发、测试等）</li>
+</ul>
+<h4 id="2-5-评价反馈"><a href="#2-5-评价反馈" class="headerlink" title="2.5. 评价反馈"></a>2.5. 评价反馈</h4><ul>
+<li>测试：产品投放目标用户，收集反馈，是否达到预期目标，根据反馈改进产品。</li>
+</ul>
+<h3 id="3-案例研究：“趣思维”教育游戏"><a href="#3-案例研究：“趣思维”教育游戏" class="headerlink" title="3. 案例研究：“趣思维”教育游戏"></a>3. 案例研究：“趣思维”教育游戏</h3><ul>
+<li>自己产品的简要介绍</li>
+</ul>
+<h4 id="3-1-案例简介"><a href="#3-1-案例简介" class="headerlink" title="3.1. 案例简介"></a>3.1. 案例简介</h4><ul>
+<li>包括目标用户，游戏玩法，想要达到的目标等。</li>
+</ul>
+<h4 id="3-2-前期分析"><a href="#3-2-前期分析" class="headerlink" title="3.2. 前期分析"></a>3.2. 前期分析</h4><ul>
+<li>根据实际情况，稍微详细概述一下需求整理分析方法和过程，包括问卷设计，问卷数据。目标人群选择原因等。</li>
+</ul>
+<h4 id="3-3-游戏内容及方向确定"><a href="#3-3-游戏内容及方向确定" class="headerlink" title="3.3. 游戏内容及方向确定"></a>3.3. 游戏内容及方向确定</h4><ul>
+<li>根据前期需求分析，问卷数据明确游戏设计方向。包括目标用户范围锁定，解决目标用户的问题，如何解决（大致想法）</li>
+</ul>
+<h4 id="3-4-游戏设计"><a href="#3-4-游戏设计" class="headerlink" title="3.4. 游戏设计"></a>3.4. 游戏设计</h4><ul>
+<li>亿点点细节，包括游戏策划，流程图，每个流程中用户的参与，想要达成的目的等。</li>
+</ul>
+<h4 id="3-5-游戏制作"><a href="#3-5-游戏制作" class="headerlink" title="3.5. 游戏制作"></a>3.5. 游戏制作</h4><ul>
+<li>细节到 4cm 正方形拼块素材，144 块积木，元素包括：岩石、河流、草地等。部分机关的设计</li>
+</ul>
+<h4 id="3-6-测试与反馈"><a href="#3-6-测试与反馈" class="headerlink" title="3.6. 测试与反馈"></a>3.6. 测试与反馈</h4><ul>
+<li>选择一些目标用户试玩，观察用户游戏过程，测试后整理调整存在的问题</li>
+</ul>
+<h4 id="3-7-总结"><a href="#3-7-总结" class="headerlink" title="3.7. 总结"></a>3.7. 总结</h4><ul>
+<li>产品达成的成果，产品现存的问题。</li>
+</ul>
+<h3 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h3><ul>
+<li>引言部分去掉例子，结合自己的游戏产品，大概说一下设计思维模型起到了什么作用，如何深度融合有待进一步研究。</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<hr>
+<h2 id="《游戏设计中的极简主义》"><a href="#《游戏设计中的极简主义》" class="headerlink" title="《游戏设计中的极简主义》"></a>《游戏设计中的极简主义》</h2><p>摘要：简化不必要的细节，从造型、色彩、交互三方面，探讨极简主义在游戏设计中的发展状况。</p>
+<h3 id="1-大道极简的造型设计"><a href="#1-大道极简的造型设计" class="headerlink" title="1. 大道极简的造型设计"></a>1. 大道极简的造型设计</h3><ul>
+<li>几何化是极简主义的造型技巧，举例论证</li>
+</ul>
+<h3 id="2-单纯而具有设计感的配色"><a href="#2-单纯而具有设计感的配色" class="headerlink" title="2. 单纯而具有设计感的配色"></a>2. 单纯而具有设计感的配色</h3><ul>
+<li>不同的色彩具有不同的思想，带给人的情绪也不同。明艳的色彩使人心情舒畅。举例论证</li>
+</ul>
+<h3 id="3-化繁为简的交互方式"><a href="#3-化繁为简的交互方式" class="headerlink" title="3. 化繁为简的交互方式"></a>3. 化繁为简的交互方式</h3><ul>
+<li>交互应简单易懂。过于复杂的操作会让玩家停滞不前，从而离开游戏。最大的功能就是给玩家提供必要的交互操作。举例论证</li>
+</ul>
+<h3 id="4-结语-1"><a href="#4-结语-1" class="headerlink" title="4. 结语"></a>4. 结语</h3><ul>
+<li>极简主义游戏风格不失灵魂，同时价格低廉，易于开发，有很大的发展前景。</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<hr>
+<h2 id="《游戏设计中的设计心理学研究》"><a href="#《游戏设计中的设计心理学研究》" class="headerlink" title="《游戏设计中的设计心理学研究》"></a>《游戏设计中的设计心理学研究》</h2><h3 id="一、游戏设计与设计心理学"><a href="#一、游戏设计与设计心理学" class="headerlink" title="一、游戏设计与设计心理学"></a>一、游戏设计与设计心理学</h3><h4 id="（一）游戏设计的原理"><a href="#（一）游戏设计的原理" class="headerlink" title="（一）游戏设计的原理"></a>（一）游戏设计的原理</h4><ul>
+<li>如何吸引玩家。包括内在动机和外在动机。</li>
+</ul>
+<h4 id="（二）设计心理学简述"><a href="#（二）设计心理学简述" class="headerlink" title="（二）设计心理学简述"></a>（二）设计心理学简述</h4><ul>
+<li>以人为本</li>
+</ul>
+<h3 id="二、游戏设计对应的心理动因"><a href="#二、游戏设计对应的心理动因" class="headerlink" title="二、游戏设计对应的心理动因"></a>二、游戏设计对应的心理动因</h3><ul>
+<li>玩家玩游戏时的心理需求</li>
+</ul>
+<h4 id="（一）成就感"><a href="#（一）成就感" class="headerlink" title="（一）成就感"></a>（一）成就感</h4><ul>
+<li>完成任务的奖励，但不能轻易满足这种成就感，可以在玩家受挫时进行补偿。</li>
+</ul>
+<h4 id="（二）回避挫折"><a href="#（二）回避挫折" class="headerlink" title="（二）回避挫折"></a>（二）回避挫折</h4><ul>
+<li>在游戏上投入的时间有限</li>
+</ul>
+<h4 id="（三）细节塑造"><a href="#（三）细节塑造" class="headerlink" title="（三）细节塑造"></a>（三）细节塑造</h4><ul>
+<li>加点彩蛋，隐藏于游戏中等待人发现，增加可玩性。</li>
+</ul>
+<h4 id="（四）心流体验"><a href="#（四）心流体验" class="headerlink" title="（四）心流体验"></a>（四）心流体验</h4><ul>
+<li>通过听觉、视觉、触觉等让人沉浸其中，忘记时间流逝。</li>
+</ul>
+<h3 id="三、游戏设计中应该怎样从心理上满足玩家的需要"><a href="#三、游戏设计中应该怎样从心理上满足玩家的需要" class="headerlink" title="三、游戏设计中应该怎样从心理上满足玩家的需要"></a>三、游戏设计中应该怎样从心理上满足玩家的需要</h3><h4 id="（一）设计体验"><a href="#（一）设计体验" class="headerlink" title="（一）设计体验"></a>（一）设计体验</h4><ul>
+<li>游戏设计师真正关注的并非是关卡设计，而是玩家玩游戏时所获得的游戏体验。</li>
+<li>具体如何对玩家体验进行设计，主要有：（1）将单纯的体验从游戏中分离出来。设计过程中围绕三个问题：a. 玩家将从游戏中获得怎样的体验；b. 这种体验的本质是什么; c. 如何在设计游戏时抓住这种体验的本质。（2）创造与游戏相匹配的场景，考虑玩家一般会在哪种场景下玩游戏。</li>
+</ul>
+<h4 id="（二）设计兴趣曲线"><a href="#（二）设计兴趣曲线" class="headerlink" title="（二）设计兴趣曲线"></a>（二）设计兴趣曲线</h4><ul>
+<li>如何引起玩家情绪波动。让玩家情绪能够按照设计师所想进行累积与减弱。任何体验都是一系列“时刻”组成，所以设计师应该设计出整个游戏过程中一些重要的时刻点，设置起伏（起承转合），得出一条兴趣线。</li>
+</ul>
+<h3 id="四、结语"><a href="#四、结语" class="headerlink" title="四、结语"></a>四、结语</h3><ul>
+<li>游戏设计根本上是围绕“人”这个主题展开的，需要考虑人的情感因素，心理特点。</li>
+<li>从设计心理学角度出发，讨论游戏设计满足人们怎样的心理需求，以及如何满足。</li>
+</ul>
+<blockquote>
+<p>推荐：《Jesse Schell. 游戏设计艺术 第2版[M].电子工业出版社,2016.》</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="《大众文化视域下的手机游戏设计》"><a href="#《大众文化视域下的手机游戏设计》" class="headerlink" title="《大众文化视域下的手机游戏设计》"></a>《大众文化视域下的手机游戏设计》</h2><p>手游的片段娱乐化以及玩法简单化的发展迎合现阶段人们的生活方式</p>
+<h3 id="一、手机游戏的设计原则"><a href="#一、手机游戏的设计原则" class="headerlink" title="一、手机游戏的设计原则"></a>一、手机游戏的设计原则</h3><ul>
+<li>对现阶段手游市场的平台做了分析（Android、IOS 和 WP8）手机作为游戏的载体有一定的局限性，手机屏幕较小并且可以进行操作的空间较少，要对游戏的可操作性进行充分的设计，现阶段大多数的先进手机游戏都是建立在手机摇杆控制之上。<h3 id="二、手机游戏的美学环境"><a href="#二、手机游戏的美学环境" class="headerlink" title="二、手机游戏的美学环境"></a>二、手机游戏的美学环境</h3><h3 id="三、手机游戏的文化策略"><a href="#三、手机游戏的文化策略" class="headerlink" title="三、手机游戏的文化策略"></a>三、手机游戏的文化策略</h3>文化是一个特定群体的追求目标，能够体现人最基本的追求与习惯。快乐是人情绪构成最基本的元素并且追求快乐是每个人的目标，在手机游戏玩家用户的群体中，快乐是促使玩家进行游玩最重要的元素。迎合玩家碎片化的生活习惯。</li>
+</ul>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h2 id="《浅析基于玩家需求的游戏设计对传统文化元素的运用》"><a href="#《浅析基于玩家需求的游戏设计对传统文化元素的运用》" class="headerlink" title="《浅析基于玩家需求的游戏设计对传统文化元素的运用》"></a>《浅析基于玩家需求的游戏设计对传统文化元素的运用》</h2><p>本文基于当前青少年的游戏需求角度，通过分析相关游戏作品，探索中国传统文化元素与游戏设计的联结方式。游戏之所以吸引玩家，原因在于设计师在设计游戏过程中设置的竞技模式、或通过其他方式使玩家不断获得的满足感，犹如为身处柏拉图“洞穴理论”中的玩家提供假象满足。而这种为了获得这种假象满足，青少年玩家会投入大量的时间与精力。</p>
+<p>游戏需求分为三个维度特征：现实情感补偿与发泄、人际交往与团队归属感、成就体验。</p>
+<h3 id="一、现实情感补偿与发泄"><a href="#一、现实情感补偿与发泄" class="headerlink" title="一、现实情感补偿与发泄"></a>一、现实情感补偿与发泄</h3><ol>
+<li>主题背景：一款游戏所设定的主题背景是游戏设计的起点。主题背景的确定初步决定了整个游戏设计风格，也会对游戏机制的设定有着重要的影响。好的主题背景的设定常常是吸引玩家的一个重要因子。</li>
+<li>美术设计：主要道具（游戏故事背景中所涉及物件组成）、辅助道具（推动游戏进程）的解释说明及举例</li>
+</ol>
+<h3 id="二、成就体验"><a href="#二、成就体验" class="headerlink" title="二、成就体验"></a>二、成就体验</h3><p>游戏参与者的游戏时间更加碎片化。在游戏玩法上，需要一定程度的对抗性以保持游戏互动感和趣味性，另一方面也需要操作相对简单，上手比较容易。使玩家在相对碎片化的时间获得较强的游戏体验。</p>
+<blockquote>
+<p>MOBA：Multiplayer Online Battle Arena，缩写：MOBA，中文翻译：多人在线战术竞技游戏，如 LOL</p>
+</blockquote>
+<blockquote>
+<p>IO: 关于IO游戏其实大家都有着自己想法和认知，对于它的描述其实也不是很明确，但是大家都应该发现了IO游戏一般都具有以下特征，首先是画风会比较简约，游戏目的性很直接，而且一旦开始了就不会有角色可以自己站着不动的契机，再者就是IO游戏一般都是瞬间复活，在死亡的时间点立刻原地复活然后继续游戏。当然了，IO游戏最有趣的就是玩法上很硬核，虽然看起来比较简单，但是想要拿到高分或者闯到很后面的关卡，这还是很需要玩家的技术性以及注意力的集中的。那要怎样才能被定义为一款io游戏呢？这一点对于现在的市场来说并没有一个正确的答案，不过大家都普遍认为io类游戏就必须要是一款免费，并且在网页上才能玩到的多人线上游戏。接着就是io游戏的机制不能太复杂，基本上就是简单易懂，一进游戏不用教学就会玩的那种。（感觉像贪吃蛇 1024 这种就算是 io 游戏了）</p>
+</blockquote>
+<blockquote>
+<p>RPG: 一般指角色扮演游戏。 角色扮演游戏（Role-playing game），简称为RPG，是游戏类型的一种。在游戏中，玩家负责扮演这个角色在一个写实或虚构世界中活动。比如仙剑、原神</p>
+</blockquote>
+<p>如果说游戏体验偏重过程，那么成就感就来源于结果。为针对不同需求的玩家，在同一个游戏中可能会设定多个游戏玩法。</p>
+<h3 id="三、人际交往与团队归属"><a href="#三、人际交往与团队归属" class="headerlink" title="三、人际交往与团队归属"></a>三、人际交往与团队归属</h3><h2 id="虽然社交属性并不是游戏设计过程中最核心的部分，但是其对与游戏的分享传播起相当重要的作用。"><a href="#虽然社交属性并不是游戏设计过程中最核心的部分，但是其对与游戏的分享传播起相当重要的作用。" class="headerlink" title="虽然社交属性并不是游戏设计过程中最核心的部分，但是其对与游戏的分享传播起相当重要的作用。"></a>虽然社交属性并不是游戏设计过程中最核心的部分，但是其对与游戏的分享传播起相当重要的作用。</h2><h1 id="关于我寄几的毕设方案"><a href="#关于我寄几的毕设方案" class="headerlink" title="关于我寄几的毕设方案"></a>关于我寄几的毕设方案</h1></div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'true' || 'true' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

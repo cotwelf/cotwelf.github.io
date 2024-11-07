@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 记一次非常非常非常麻烦的浏览器兼容问题</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>记一次非常非常非常麻烦的浏览器兼容问题 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/兼容" style=color:#00bcd4>
+                    兼容
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/响应式" style=color:#ffa2c4>
+                    响应式
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="先说总结"><a href="#先说总结" class="headerlink" title="先说总结"></a>先说总结</h1><p>检查设计稿检查设计稿检查设计稿！！！（重要的事情说三遍！）</p>
+<p>如果设计说，【一屏显示，不允许滑动。】，那么拿到图之后：</p>
+<p>step1：<strong>看 web 设计稿尺寸是否是 1920 * 1080。</strong>是：转到 step2，否：计算下宽度，宽高比最好是 1.78 - 1.96 左右（<code>1920 * 978</code>），否则可能要考虑字体大小的问题；</p>
+<p>step2：<strong>检查页面上最小字体是否小于等于 14px。（小于等于 12px 可以怼更狠一点）</strong>是：转到 step4，否：转到 step3；</p>
+<p>step3：<strong>确认需求方是否要求适配最小屏幕（即显示器分辨率 1366 * 768）。</strong>如果需要兼容，可能需要修改字体大小。什么？你不知道改成多少？？你 tm 不是专业设计么？！</p>
+<p>step4：设计稿打回去，并大声问设计：你的电脑没有系统菜单栏吗？？？？？你的浏览器没有导航甚至收藏夹吗？？？？？？重做！重做！！重！！做！！！</p>
+<h1 id="故事的开始"><a href="#故事的开始" class="headerlink" title="故事的开始"></a>故事的开始</h1><p>一切痛苦的根源，是我最近接了个需求，设计说一屏展示，不允许滑动。设计稿尺寸 1920 * 1080，看了下页面最小字体是 14px。</p>
+<p><strong><code>聪明宝宝请在这个节点就打回设计稿，并狂怼设计！！</code></strong></p>
+<p>鸡汁的我想到了 rem。好么，我都用 rem，用户进来的时候先判断视口宽高，只要有宽小于 1920 或高小于 1080，我就等比缩放根节点的 font-size，优秀！不愧是我！！</p>
+<p>在做的过程中其实有意识到，为什么是严格按照设计稿比例转的 rem，为什么最小字体还是要比设计稿上的小呢？当时的我并没有很在意，以为是我屏幕分辨率不够优秀叭 orz（现在想想我真是个傻子qwq）</p>
+<p><strong><code>其实，能走到这一步，说明我已经不那么聪明了0.0</code></strong></p>
+<p>PR 通过 review（毕竟开发不会用超小屏为难自己人，不然看代码眼要瞎掉，所以 review 还是通过了的），提测之后，产品拿着图来找我，诶，大佬，我这里不对啊，文字出框了 qwq。。。为啥你那里效果这么好啊。。。</p>
+<p>当时我。。。</p>
+<p><img src="/images/face/zhenjing.jpeg"></p>
+<p>好么，那我给你放大点还不行么。于是相当于缩小了页面上下边距。但。。。。还是有问题。。。我就开始怀疑字体是不是已经超过 chrome 预设的 12px，啪，果然。</p>
+<p><strong><code>到这里，这只傻狍子还是没发现设计稿的问题，并坚信是自己适配做的不好（啪啪！）</code></strong></p>
+<p>于是傻狍子说服设计改成大屏一屏，小屏可滑动，随后更改了 js，比较根节点缩放后的 font-size 下，最小的那个 14px 会不会小于 12px，如果小了，那就缩放到 12px 停止；同时在 scss 里给每个容器设置了最小宽高。</p>
+<p>后来和大佬吐槽，大佬问，你们产品拿的多大的电脑看的？我说 <code>1366 * 786</code>，大佬直接笑了，说他们产品给他提 786 的 BUG 一概不修，现在哪里还有 786 啊哈哈哈。</p>
+<p><strong><code>直到今天。。。我看到群里设计和产品在说，需求方吐槽我没有精准实现设计稿，玻璃心的我抱着学习的心态，再次想看看自己的代码有什么需要改进的，才发现这个 BUG 的源头在设计稿。。。于是有了这篇文档</code></strong></p>
+<p><strong><code>好么，小丑竟是我寄几 QAQQAQQAQ</code></strong></p>
+<p>如果再遇到一屏展示，需要设计稿的同时，还要字体包（因为有些设备字体不同，不同字体可能会出现同 size 但大小不一的状况），不要用 rem 了，按设计稿来，多少 px 就多少 px，js 判断视口宽高 scale 缩放（字体小就小吧，设计稿就这样的（叉腰））</p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>

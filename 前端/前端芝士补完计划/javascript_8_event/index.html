@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="zh ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotwelf&#39;s Life || 前端芝士补完计划 之 JavaScript - 事件处理</title>
+    <meta name="author" content="Cotwelf">
+    <meta name="description" content="誰か聞こえますか。見えますか。 ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="//images/cover/77.jpeg">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="layout">
+      <transition name="into">
+          <div v-show="show_page" style="display: none;">
+            
+              <div id="menu_show">
+                 
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Cotwelf's Life</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>主页</span>
+        </a>
+        
+        <a href="/categories/前端/">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>时间轴</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于我</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Cotwelf's Life</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">主页</div>
+                </div>
+            </a>
+            
+            <a href="/categories/前端/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">时间轴</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于我</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+              </div>
+            
+              <div id="main">
+                  
+<link rel="stylesheet" href="/css/post-body.css">
+
+  <div class="article" id="article">
+    
+    <div>
+      <h1>前端芝士补完计划 之 JavaScript - 事件处理 </h1>
+    </div>
+    <div class="info">
+        
+        <span class="category">
+            <a href="/categories/前端">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                前端
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/基础" style=color:#ff7d73>
+                    基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#ff7d73>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-事件冒泡和事件捕获"><a href="#1-事件冒泡和事件捕获" class="headerlink" title="1. 事件冒泡和事件捕获"></a>1. 事件冒泡和事件捕获</h3><p>事件冒泡：即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
+<p>事件捕获：document 对象首先接收到 click 事件，然后事件沿 DOM 树依次向下，一直传播到事件的实际目标</p>
+<p>“DOM2级事件”规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。事件捕获为截获事件提供了机会，然后是实际的目标接收到事件，可以冒泡阶段对事件做出响应。</p>
+<p>关于冒泡和捕获，可以看 <a target="_blank" rel="noopener" href="https://www.runoob.com/try/try.php?filename=tryjsref_element_addeventlistener_capture">菜鸟教程的这个例子</a></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="2-事件处理"><a href="#2-事件处理" class="headerlink" title="2. 事件处理"></a>2. 事件处理</h3><p>假设有这样一个元素 <code>&lt;a id=&quot;a-node&quot;&gt;&lt;/a&gt;</code> 需要我们为它绑定事件</p>
+<pre><code class="javascript">// 阻止事件默认行为（如 a 标签的 href 重定向 url
+const preventDefaultFn = function(event) &#123;
+  event.preventDefault()
+&#125;
+// 阻止事件冒泡
+const stopPropagationFn = function(event) &#123;
+  event.stopPropagation()
+  console.log(`如果 event.currentTarget === event.target 说明该事件不是冒泡而来的`,event.currentTarget === event.target)
+&#125;
+const divNode = document.createElement(&#39;div&#39;)
+divNode.onclick = (event) =&gt; &#123;
+  // 如果不阻止事件冒泡，点击 a，父元素的事件也会被触发
+  console.log(`也许你只是想点击 $&#123;event.target.tagName&#125;，但它的父元素 $&#123;event.currentTarget.tagName&#125; 也被点了其实`)
+&#125;
+// 下面我们为 divNode 添加一个 a
+const divChildA = document.createElement(&#39;a&#39;)
+divChildA.innerText = &#39;click `div &gt; a`&#39;
+divChildA.setAttribute(&#39;href&#39;, &#39;https://cotwelf.github.io/about/&#39;)
+divChildA.addEventListener(&#39;click&#39;, preventDefaultFn)  // 阻止它的默认事件，它就不会打开链接
+divChildA.addEventListener(&#39;click&#39;, stopPropagationFn)  // 阻止事件冒泡，这样父元素的点击事件就不会触发
+divNode.appendChild(divChildA)
+document.body.appendChild(divNode)
+
+// divChildA.removeEventListener(&#39;click&#39;, stopPropagationFn)  // 可以用 removeEventListener 移除相应事件的绑定方法（这里只移除了 stopPropagationFn，但 preventDefaultFn 依旧生效）
+</code></pre>
+<blockquote>
+<p>注意，IE 的事件对象有所不同，如果用打包工具的话需要安装 babel-polyfill，可兼容 IE。但如果纯手写的话需要搜一下了，这里不做过多介绍因为不常用</p>
+</blockquote>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="3-常用事件"><a href="#3-常用事件" class="headerlink" title="3. 常用事件"></a>3. 常用事件</h3><p>load：当页面完全加载后在 window 上面触发，当所有框架都加载完毕时在框架集上面触发，<br>当图像加载完毕时在<img>元素上面触发，或者当嵌入的内容加载完毕时在<object>元素上面<br>触发。</p>
+<pre><code class="html">&lt;img src=&quot;smile.gif&quot; draggable=&quot;false&quot; onload=&quot;alert(&#39;Image loaded.&#39;)&quot;&gt;
+&lt;!-- draggable 元素是否可拖动 --&gt;
+&lt;!--
+  在创建新的&lt;img&gt;元素时，可以为其指定一个事件处理程序，以便图像加载完毕后给出提示。
+  此时，最重要的是要在指定 src 属性之前先指定事件，
+  因为新图像元素不一定要从添加到文档后才开始下载，只要设置了 src 属性就会开始下载
+--&gt;
+</code></pre>
+<pre><code class="javascript">window.onload = function () &#123;
+  // 页面加载完成后
+&#125;
+window.onunload = function () &#123;
+  /** 只要用户从一个页面切换到另一个页面，就会发生 unload 事件。
+   * 而利用这个事件最多的情况是清除引用，以避免内存泄漏。
+   * 既然 unload 事件是在一切都被卸载之后才触发，那么在页面加载后存在的那些对象，此时就不一定存在了。
+   * 此时，操作 DOM 节点或者元素的样式就会导致错误。**/
+&#125;
+window.onscroll = function () &#123; console.log(&#39;滚&#39;) &#125;
+window.onblur = function () &#123;
+  // 前提是上一个状态是获得焦点，如果上一个状态就在失去焦点，则不会触发
+  console.log(&#39;失去焦点&#39;)
+&#125;
+window.onfocus = function () &#123;
+  // 与 onblur 类似
+  console.log(&#39;获得焦点&#39;)
+&#125;
+
+document.body.addEventListener(&#39;click&#39;, function (event) &#123;
+  console.log(`距离浏览器视口顶部 $&#123;event.clientY&#125;, 距显示器顶部 $&#123;event.screenY&#125;`)
+&#125;)
+// HTML5 新增了 hashchange 事件，以便在 URL 的参数列表（及 URL 中“#”号后面的所有字符串）发生变化时通知开发人员。
+// *低版本浏览器不支持
+window.onhashchange = (event) =&gt; &#123;
+  // event 对象应该额外包含两个属性：oldURL 和 newURL
+  const oldUrl = new URL(event.oldURL)
+  const newUrl = new URL(event.newURL)
+  console.log(`当前 hash 是 $&#123;location.hash&#125;。旧的 hash 值是 $&#123;oldUrl.hash.split(&quot;#&quot;)[1]&#125;, 新的 hash 值是 $&#123;newUrl.hash.split(&quot;#&quot;)[1]&#125;`)
+&#125;
+
+// 只要用户改变了设备的查看模式，就会触发 orientationchange 事件（所有 iOS 设备都支持）。
+// 相关信息无法通过 event 获取，而是 window.orientation
+/** 移动 Safari 的 window.orientation 属性中可能包含 3 个值：
+ * 0 表示肖像模式;
+ * 90 表示向左旋转的横向模式（“主屏幕”按钮在右侧）;
+ * -90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）**/
+
+window.ondeviceorientation =  function(event)&#123;
+  var output = document.getElementById(&quot;output&quot;);
+  output.innerHTML = &quot;Alpha=&quot; + event.alpha + &quot;, Beta=&quot; + event.beta +
+  &quot;, Gamma=&quot; + event.gamma + &quot;&lt;br&gt;&quot;;
+&#125;
+visibilitychange
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="4-Event-Loop-的执行顺序"><a href="#4-Event-Loop-的执行顺序" class="headerlink" title="4. Event Loop 的执行顺序"></a>4. Event Loop 的执行顺序</h3><h4 id="宏任务：Task-Queue"><a href="#宏任务：Task-Queue" class="headerlink" title="宏任务：Task Queue"></a>宏任务：Task Queue</h4><ul>
+<li>setTimeout</li>
+<li>setInterval</li>
+<li>script</li>
+<li>setImmediate<h4 id="微任务：Job-Queue"><a href="#微任务：Job-Queue" class="headerlink" title="微任务：Job Queue"></a>微任务：Job Queue</h4></li>
+<li>浏览器：Promise</li>
+<li>Node.js：process.nextTick<h4 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h4></li>
+<li>首先执行同步代码，宏任务</li>
+<li>同步栈为空，查询是否有一部代码需要执行</li>
+<li>执行所有微任务</li>
+<li>执行完，是否需要渲染页面</li>
+<li>重新开始 Event Loop，执行宏任务中的异步代码</li>
+</ul>
+<h3 id="5-请封装一个注册事件函数，要求能跨浏览器运行。"><a href="#5-请封装一个注册事件函数，要求能跨浏览器运行。" class="headerlink" title="5. 请封装一个注册事件函数，要求能跨浏览器运行。"></a>5. 请封装一个注册事件函数，要求能跨浏览器运行。</h3><pre><code class="javascript">/**
+ * @param &#123;HtmlDom&#125; element 将要绑定事件的 dom
+ * @param &#123;string&#125; type 事件类型
+ * @param &#123;function&#125; handler 事件处理程序
+ *
+ * @return &#123;void&#125;
+ **/
+function addHandler(element, type, handler) &#123;
+  if (element.addEventListener) &#123; // 所有主流浏览器，除了 IE 8 及更早 IE版本
+    element.addEventListener(type, handler, false)
+    // 第三个参数可选，true：事件句柄在捕获阶段执行；false：默认，在冒泡阶段执行
+  &#125; else if (element.attachEvent) &#123; // IE 8 及更早 IE 版本
+    element.attachEvent(&#39;on&#39; + type, handler)
+  &#125; else &#123;
+    element[&#39;on&#39; + type] = handler
+  &#125;
+&#125;
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+<h3 id="6-visibility"><a href="#6-visibility" class="headerlink" title="6. visibility"></a>6. visibility</h3><p>判断页面是否最小化了，或者标签是否隐藏。比如轮询，是可以在页面隐藏期间停止的，这样可以一定程度上减小服务器的压力。（一下代码需要 babel 支持，否则需要针对事件监听写兼容）</p>
+<pre><code class="javascript">// 不同环境兼容
+/**
+ * 无前缀：新版本浏览器
+ * @ms IE older
+ * @webkit Chrome and Safari older
+ * @moz Firefox older
+ *
+ **/
+const getBrowserPrefix = () =&gt; &#123;
+  if (typeof document.hidden !== &#39;undefined&#39;) &#123;
+    return &#39;&#39;
+  &#125; else &#123;
+    const browserPrefixes = [&#39;moz&#39;, &#39;ms&#39;, &#39;o&#39;, &#39;webkit&#39;]
+    for (let i = 0; i &lt; browserPrefixes.length; i++) &#123;
+      if (typeof document[`$&#123;prefix&#125;Hidden`] !== undefined) &#123;
+        return prefix
+      &#125;
+    &#125;
+  &#125;
+&#125;
+
+// Get Browser Specific Hidden Property
+export function getHiddenProperty() &#123;
+  const prefix = getBrowserPrefix()
+  if (prefix) &#123;
+    return `$&#123;prefix&#125;Hidden`
+  &#125;
+  return &#39;hidden&#39;
+&#125;
+
+// Get Browser Specific Event
+export function getVisibilityEvent() &#123;
+  const prefix = getBrowserPrefix()
+  if (prefix) &#123;
+    return `$&#123;prefix&#125;visibilitychange`
+  &#125;
+  return &#39;visibilitychange&#39;
+&#125;
+
+const hidden = getHiddenProperty()
+const visibilitychange = getVisibilityEvent()
+dom.addEventListener(visibilitychange, function()&#123;
+  if (document[hidden]) &#123;
+    // 页面被隐藏了
+  &#125;
+&#125;)
+
+// 当 visibleStateState 属性的值转换为 hidden 时，Safari不会按预期触发 visibilitychange； 因此，在这种情况下，您还需要包含代码以侦听 pagehide 事件。
+</code></pre>
+<p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
+</div>
+      <div class="content" v-if="!release">
+        <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
+        <input id="release-value" placeholder="请输入通关密令" v-model="releaseVal" ref='releaseVal' v-on:focus="onReleaseValChange()"/>
+        <div class="release-err" v-if="releaseErr">{{ releaseErr }}</div>
+        <button id="release-btn" v-on:click="onRelease()">封印解除</button>
+        <div class="tips">友情提示：通关密令有效期只有 10 天。</div>
+      </div>
+
+      
+  </div>
+
+
+                  
+
+  <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2024 Cotwelf&#39;s Life
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Cotwelf
+        </div>
+        <div></div>
+        <!-- <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div> -->
+        
+    </div>
+    <br />
+  </footer>
+
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+
+              </div>
+          </div>
+      </transition>
+    </div>
+    <script>
+  var setRelease = function(status){
+    var release = {
+      status,
+      time: Math.floor(Date.now() / 1000)
+    }
+    try {
+      localStorage.setItem('release', JSON.stringify(release))
+    } catch {
+      // PASS
+    }
+  }
+  var getRelease = function() {
+    var result = null
+    try {
+      result = JSON.parse(localStorage.getItem('release'))
+    } catch {
+      // PASS
+    }
+    return result
+  }
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100,
+            release: false,
+            releaseVal: '',
+            releaseErr: '',
+            planList: [],
+        },
+        created: function () {
+            var that = this
+            var isPrivate = !!'' || '' === 'true'
+            var releaseObj = getRelease()
+            if (releaseObj && (Math.floor(Date.now() / 1000) - releaseObj.time > 24 * 36000)) {
+              localStorage.clear('release')
+            } else {
+              that.release = true
+            }
+            that.setPlanList('')
+            that.release = releaseObj && releaseObj.status || !isPrivate
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                    var scroll = document.documentElement.scrollTop
+                    document.documentElement.scrollTop = scroll - 300
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+          setPlanList: function (data) {
+            if(!data || typeof data !== 'string') {
+              return
+            }
+            var that = this
+            var currentData = JSON.parse(data).map(i => {
+              var duringDay = Math.ceil((new Date(i.end_at).getTime() - Date.now()) / 3600000 / 24)
+              i.duringDay = duringDay - 1
+              var currentItems = i.items.map(j => {
+                j.percent = Math.floor(j.done / j.total * 10000) / 100 + '%'
+                j.isDelay = j.start_at ? (j.total - j.done) / (duringDay / 7 * j.weekly) > j.per : false
+                j.currentPer = j.start_at ? Math.ceil((j.total - j.done) / (duringDay / 7 * j.weekly)) : 0
+                return j
+              })
+              return i
+            })
+            that.planList = currentData
+          },
+          home_click: function () {
+            window.scrollTo({
+              top: window.innerHeight - 80,
+              behavior: "smooth",
+            });
+          },
+          onRelease: function(e) {
+            var that = this
+            if (this.releaseVal === '修文世界第一可爱') {
+              that.release = true
+              setRelease(true)
+              that.releaseErr = ''
+            } else {
+              that.releaseErr = '嘟嘟噜~~ 通关密令不正确哟~'
+            }
+          },
+          onReleaseValChange: function() {
+            var that = this
+            that.releaseErr = ''
+          }
+        }
+    })
+</script>
+
+
+</body>
+
+</html>
