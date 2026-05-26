@@ -177,15 +177,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#879cff>
-                    JavaScript
+                <a href="/tags/基础" style=color:#879cff>
+                    基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ff7d73>
-                    基础
+                <a href="/tags/JavaScript" style=color:#ff7d73>
+                    JavaScript
                 </a>
             </span>
             
@@ -195,77 +195,105 @@
     
 
       <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="定义函数的方法"><a href="#定义函数的方法" class="headerlink" title="定义函数的方法"></a>定义函数的方法</h3><pre><code class="javascript">function fn() &#123;&#125;
-const fn = function() &#123;&#125;
+const fn = function () &#123;&#125;;
 </code></pre>
 <p>函数实际上也是对象，而函数名实际上是指向对象的指针</p>
 <blockquote>
 <p>怎样判断一个变量是否是对象，在我看来，可以 new 出来的都是对象</p>
 </blockquote>
-<h3 id="函数声明与函数表达式的区别"><a href="#函数声明与函数表达式的区别" class="headerlink" title="函数声明与函数表达式的区别"></a>函数声明与函数表达式的区别</h3><pre><code class="javascript">fn1() // 2233
-fn2() // Uncaught TypeError: fn2 is not a function
+<h3 id="函数声明与函数表达式的区别"><a href="#函数声明与函数表达式的区别" class="headerlink" title="函数声明与函数表达式的区别"></a>函数声明与函数表达式的区别</h3><pre><code class="javascript">fn1(); // 2233
+fn2(); // Uncaught TypeError: fn2 is not a function
 
-function fn1 () &#123;
-  console.log(&#39;fn1&#39;) // fn1
-  fn3() //fn3
+function fn1() &#123;
+  console.log(&quot;fn1&quot;); // fn1
+  fn3(); //fn3
 &#125;
 var fn2 = function () &#123;
-  console.log(&#39;fn2&#39;)
-&#125;
+  console.log(&quot;fn2&quot;);
+&#125;;
 function fn3() &#123;
-  console.log(&#39;fn3&#39;)
+  console.log(&quot;fn3&quot;);
 &#125;
 </code></pre>
 <p>在代码开始执行之前，解析器就已经通过一个名为 <code>函数声明提升（function declaration hoisting）</code> 的过程，读取并将函数声明添加到执行环境中。对代码求值时，JS 引擎在第一遍会声明函数并将它们放到源代码树的顶部，变量提升结束之后才会开始执行。执行到函数所在的语句之前，变量 fn2 中不会保存有对函数的引用。</p>
 <h3 id="apply-和-call"><a href="#apply-和-call" class="headerlink" title="apply() 和 call()"></a>apply() 和 call()</h3><p>都是在特定的作用域中调用函数，能够扩充函数赖以运行的作用域，好处是对象不需要与方法有任何耦合关系。</p>
-<pre><code class="javascript">window.color = &quot;red&quot;
-var o = &#123; color: &quot;blue&quot; &#125;
+<pre><code class="javascript">window.color = &quot;red&quot;;
+var o = &#123; color: &quot;blue&quot; &#125;;
 function sayColor() &#123;
-  console.log(this.color)
+  console.log(this.color);
 &#125;
 sayColor(); // red
-sayColor.call(this) // red
-sayColor.call(window) // red
-sayColor.call(o) // blue
+sayColor.call(this); // red
+sayColor.call(window); // red
+sayColor.call(o); // blue
 
 // bind() 方法会创建一个函数的实例，低版本浏览器不支持
-var objectSayColor = sayColor.bind(o)
-objectSayColor() // blue
+var objectSayColor = sayColor.bind(o);
+objectSayColor(); // blue
 </code></pre>
 <h3 id="函数绑定"><a href="#函数绑定" class="headerlink" title="函数绑定"></a>函数绑定</h3><p>创建一个函数，可以在特定的 this 环境中以指定参数调用另一个函数</p>
 <pre><code class="javascript">var handler = &#123;
   message: &quot;Event handled&quot;,
 
-  handleClick: function(event)&#123;
+  handleClick: function (event) &#123;
     alert(this.message + &quot;:&quot; + event.type);
-  &#125;
+  &#125;,
 &#125;;
 var btn = document.getElementById(&quot;my-btn&quot;);
-btn.addEventListener(&quot;click&quot;, handle.handleClick) // 这样调用 handleClick 的话，this 指向的是 btn，而不是 handle，所以 handle.handleClick 会是 undefined
+btn.addEventListener(&quot;click&quot;, handle.handleClick); // 这样调用 handleClick 的话，this 指向的是 btn，而不是 handle，所以 handle.handleClick 会是 undefined
 // 方法一：闭包
-btn.addEventListener(&quot;click&quot;, function(event) &#123;
-  handle.handleClick(event)
-&#125;)
-btn.addEventListener(&quot;click&quot;, handle.handleClick.bind(handler)) // 这样调用 handleClick 的话，this 指向的是 btn，而不是 handle
+btn.addEventListener(&quot;click&quot;, function (event) &#123;
+  handle.handleClick(event);
+&#125;);
+btn.addEventListener(&quot;click&quot;, handle.handleClick.bind(handler)); // 这样调用 handleClick 的话，this 指向的是 btn，而不是 handle
 </code></pre>
 <h3 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h3><p>编写一个 add() 函数，能正常执行下面的代码，并能在控制台输出注释中的数字</p>
-<pre><code class="javascript">var add = function()&#123;
-  let args = Array.prototype.slice.call(arguments)
-  let inner = function() &#123;
-    args.push(...arguments)
-    return inner
-  &#125;
+<pre><code class="javascript">var add = function () &#123;
+  let args = Array.prototype.slice.call(arguments);
+  let inner = function () &#123;
+    args.push(...arguments);
+    return inner;
+  &#125;;
   // inner.toString = function () &#123;
   //   return args.reduce(function(prev, cur) &#123;
   //     return prev + cur
   //   &#125;)
   // &#125;
-  return inner
-&#125;
-console.log(add(1, 2)) // 3
-console.log(add(1, 2, 3)) // 6
-console.log(add(1)(2)) // 3
+  return inner;
+&#125;;
+console.log(add(1, 2)); // 3
+console.log(add(1, 2, 3)); // 6
+console.log(add(1)(2)); // 3
 </code></pre>
 <p>柯里化（currying）也叫不完全函数，是一种部分求值的技术，能把一个完整的函数调用分解成多次函数调用，每次只传入部分函数，返回一个接受剩下参数的函数，如此循环往复，直将所有参数传递过去，最后得出结果。</p>
+<h3 id="ES6-class-和构造函数有什么区别？"><a href="#ES6-class-和构造函数有什么区别？" class="headerlink" title="ES6 class 和构造函数有什么区别？"></a>ES6 class 和构造函数有什么区别？</h3><p><strong>1. 开门见山：一句话概括</strong></p>
+<p>“class 是构造函数及其原型继承的语法糖，但增加了强制 new、自动严格模式、方法不可枚举、无提升等约束，使面向对象编程更安全、更规范。”</p>
+<p><strong>2. 分点对比（建议 3~5 个关键点，不要背课文）</strong><br>可以按照记忆口诀：“调、提、枚、严、静、继” 展开：</p>
+<p>调用方式：class 必须用 new，构造函数可当普通函数。</p>
+<p>提升：构造函数声明提升；class 不提升，存在 TDZ。</p>
+<p>枚举性：class 原型方法默认不可枚举；构造函数原型方法可枚举。</p>
+<p>严格模式：class 内部自动严格模式；构造函数不自动。</p>
+<p>静态方法：class 用 static 关键字；构造函数手动添加。</p>
+<p>继承语法：class 用 extends + super；构造函数需要手动设置原型链和调用父类构造函数。</p>
+<p><strong>3. 补充深层细节（显示你理解本质）</strong><br>new.target：两者都支持，但 class 中更常用于阻止直接实例化抽象类。</p>
+<p>原型对象可写性：class 的 .prototype 不可被重新赋值（只读属性），但可以修改其属性；构造函数的 .prototype 可重新覆盖。</p>
+<p>typeof 类名：仍然是 “function”，因为 class 本身就是一个构造函数包装器。</p>
+<p><strong>4. 指出“非语法糖”的部分（体现批判性思维）</strong><br>虽然大多数行为可以用 ES5 模拟，但方法不可枚举、内部标记 [[IsClassConstructor]] 导致必须 new 调用等特性，无法用纯 ES5 完全实现。因此 class 不仅仅是语法糖，而是一种新的、更严格的构建对象的方式。</p>
+<p><strong>5. 使用建议（加分项）</strong><br>“日常开发建议使用 class，因为它语法清晰、不易出错。但如果你需要兼容旧环境、或者需要动态修改原型链的高级技巧，构造函数仍然有用。另外，class 无法像函数那样被当作普通回调调用，有时在写高阶函数时需要注意。”</p>
+<h3 id="说几个你常用的-ES6-特性？"><a href="#说几个你常用的-ES6-特性？" class="headerlink" title="说几个你常用的 ES6+ 特性？"></a>说几个你常用的 ES6+ 特性？</h3><p>使用场景举例：</p>
+<ul>
+<li>可选链 <code>?.</code> — 安全访问深层嵌套的 API 返回数据（<code>res?.data?.list?.[0]</code>）</li>
+<li>空值合并 <code>??</code> — 只有 null&#x2F;undefined 时给默认值：<code>value ?? &#39;default&#39;</code>，替代大量 <code>&amp;&amp;</code> 判断</li>
+<li>解构赋值 — <code>const &#123; a, b: alias, ...rest &#125; = obj</code></li>
+<li>扩展运算符 … - 合并数组&#x2F;对象：<code>[...arr1, ...arr2]</code>、<code>&#123; ...obj1, ...obj2 &#125;</code></li>
+<li>Promise.allSettled &#x2F; Promise.any — 并发控制：allSettled 等待全部完成，any 只取最快成功的</li>
+<li>Array.at(-1) - 负索引访问数组末尾：<code>arr.at(-1)</code> 等同 <code>arr[arr.length-1]</code></li>
+<li>structuredClone() — <code>const copy = structuredClone(original)</code> 替代 <code>JSON.parse(JSON.stringify(original))</code> 做深拷贝，支持循环引用</li>
+<li>WeakMap &#x2F; WeakSet — 存对象关联数据且不阻碍垃圾回收（React Fiber 映射、DOM 元数据）</li>
+<li>Proxy + Reflect — Vue3 响应式的基础</li>
+<li>Symbol — 唯一标识符，用于对象私有属性、迭代器协议</li>
+<li>Generator&#x2F;Iterator — <code>function*</code>，配合 <code>for...of</code></li>
+</ul>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
@@ -284,7 +312,7 @@ console.log(add(1)(2)) // 3
   <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Cotwelf&#39;s Life
+            © 2022 - 2026 Cotwelf&#39;s Life
             <span class="footer-icon">
                 <a-icon type="flag" theme="filled" /></span>
             @Cotwelf

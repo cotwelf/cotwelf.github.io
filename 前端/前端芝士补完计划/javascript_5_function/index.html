@@ -177,15 +177,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#ff7d73>
-                    JavaScript
+                <a href="/tags/基础" style=color:#1bccbc>
+                    基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ff7d73>
-                    基础
+                <a href="/tags/JavaScript" style=color:#00bcd4>
+                    JavaScript
                 </a>
             </span>
             
@@ -194,19 +194,19 @@
     </div>
     
 
-      <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="定义函数的方式"><a href="#定义函数的方式" class="headerlink" title="定义函数的方式"></a>定义函数的方式</h3><pre><code class="javascript">fn1() // fn1, fn2
-fn3() // Uncaught TypeError: fn3 is not a function
+      <div class="content" v-if="release"><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="定义函数的方式"><a href="#定义函数的方式" class="headerlink" title="定义函数的方式"></a>定义函数的方式</h3><pre><code class="javascript">fn1(); // fn1, fn2
+fn3(); // Uncaught TypeError: fn3 is not a function
 // 函数声明：创建了名为 fn1 的函数，fn1.name === &#39;fn1&#39;
 function fn1() &#123;
-  console.log(`fn1, $&#123;fn2()&#125;`)
+  console.log(`fn1, $&#123;fn2()&#125;`);
 &#125;
 function fn2() &#123;
-  return &#39;fn2&#39;
+  return &quot;fn2&quot;;
 &#125;
 // 函数表达式：创建了个匿名函数(匿名函数.name === &#39;&#39;)赋值给变量 fn3, fn3.name === &#39;fn3&#39;
-var fn3 = function() &#123;
-  console.log(&#39;fn3&#39;)
-&#125;
+var fn3 = function () &#123;
+  console.log(&quot;fn3&quot;);
+&#125;;
 </code></pre>
 <p>函数实际上也是对象，而函数名实际上是指向对象的指针</p>
 <blockquote>
@@ -215,49 +215,50 @@ var fn3 = function() &#123;
 <p>函数声明与函数表达式的区别在于：<code>函数声明会提升，而函数表达式不会</code>。在代码开始执行之前，解析器就已经通过一个名为 <code>函数声明提升（function declaration hoisting）</code> 的过程，读取并将函数声明添加到执行环境中（函数声明提升会先于变量提升）。对代码求值时，JS 引擎在第一遍会声明函数并将它们放到源代码树的顶部，变量提升结束之后才会开始执行。执行到函数所在的语句之前，变量 fn3 中不会保存有对函数的引用。</p>
 <p>另外，由于代码执行之前函数声明会提升，以下做法在 ES 中是无效语法，会被 JS 引擎尝试修正，但不同浏览器修正后的结果可能会有差异</p>
 <pre><code class="javascript">//不要这样做！
-if(condition)&#123;
-  function sayHi()&#123;
+if (condition) &#123;
+  function sayHi() &#123;
     alert(&quot;Hi!&quot;);
   &#125;
 &#125; else &#123;
-  function sayHi()&#123;
+  function sayHi() &#123;
     alert(&quot;Yo!&quot;);
   &#125;
 &#125;
 //可以这样做
 var sayHi; // 注意，一定要先声明变量，否则在判断过程中定义和上面是一样的，毕竟代码执行前，变量声明会在函数声明后提升。
-if(condition)&#123;
-  sayHi = function()&#123;
+if (condition) &#123;
+  sayHi = function () &#123;
     alert(&quot;Hi!&quot;);
   &#125;;
 &#125; else &#123;
-  sayHi = function()&#123;
+  sayHi = function () &#123;
     alert(&quot;Yo!&quot;);
   &#125;;
 &#125;
 </code></pre>
 <h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>我自己调用自己。使用函数表达式，这种方法在严格模式和非严格模式都可以。下面看个🌰</p>
-<pre><code class="javascript">var fn1 = (function f(num)&#123; // 创建了一个名为 f() 的声明函数，然后将它赋值给变量 fn1
-  if (num &lt;= 1)&#123;
+<pre><code class="javascript">var fn1 = function f(num) &#123;
+  // 创建了一个名为 f() 的声明函数，然后将它赋值给变量 fn1
+  if (num &lt;= 1) &#123;
     return 1;
   &#125; else &#123;
-    return num * f(num-1);
+    return num * f(num - 1);
   &#125;
-&#125;);
+&#125;;
 // 即使 fn1 被修改，函数的名字 f 仍然有效，所以递归调用照样能正确完成
 </code></pre>
 <p>这样做的原因是：直接调用 fn1 自己递归会有风险（如 fn1 被赋值给另一个函数 fn2，fn1 被修改，但执行另一个函数 fn2 时，它的内部还是调用的 fn1，这时 fn1 已经改变了其实）；使用 arguments.callee 严格模式下会报错。（以下为了解释原因，如已理解可跳过）</p>
-<pre><code class="javascript">function fn1(num)&#123;
-  if (num &lt;= 1)&#123;
+<pre><code class="javascript">function fn1(num) &#123;
+  if (num &lt;= 1) &#123;
     return 1;
   &#125; else &#123;
-    return num * fn1(num-1);
+    return num * fn1(num - 1);
   &#125;
 &#125;
 // 但这样直接调用容易出问题，比如
 var fn2 = fn1;
 fn1 = null; // 罪魁祸首在这里，或者将 fn1 指针换成其他的引用对象，执行 fn2 的时候也会出问题
-fn2() // Uncaught TypeError: fn1 is not a function
+fn2(); // Uncaught TypeError: fn1 is not a function
 </code></pre>
 <p>arguments.callee 是一个指向正在执行的函数的指针，我们用它来代替直接调用 fn1</p>
 <pre><code class="diff">function fn1(num)&#123;
@@ -270,26 +271,31 @@ fn2() // Uncaught TypeError: fn1 is not a function
 &#125;
 </code></pre>
 <p>但在严格模式下，通过脚本访问 arguments.callee 会报错。</p>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数，创建闭包必须维护额外的作用域，所以过度使用它们可能会占用大量内存。</p>
 <pre><code class="javascript">function createFunctions() &#123;
   var result = new Array();
-  for (var i = 0; i &lt; 10; i++)&#123;
-    result[i] = function()&#123;
+  for (var i = 0; i &lt; 10; i++) &#123;
+    result[i] = function () &#123;
       return i;
     &#125;;
   &#125;
   return result;
 &#125;
 </code></pre>
-<p>这里 result 数组内所有的函数返回的都是 10，因为它们访问的是同一个 i。当 createFunctions() 执行结束后，result 是 <code>function()&#123; return i&#125;</code> 函数组成的数组，当函数调用时，会在作用域链上寻找 i，首先在 createFunctions 中找到了 i &#x3D; 10（for 循环已经在调用 createFunctions() 时执行结束，createFunctions()<a href="">0</a> 取到的是循环后的 i 值）。</p>
+<p>这段代码完全满足闭包的三个条件：</p>
+<p><strong>存在函数嵌套</strong><br>createFunctions 是外部函数，循环中定义的匿名函数是内部函数。</p>
+<p><strong>内部函数引用了外部函数的变量</strong><br>内部函数 function() { return i; } 引用了外部函数中的变量 i。</p>
+<p><strong>内部函数被外部访问</strong><br>外部函数最终返回 result 数组，数组中的每个元素都是内部函数，因此这些内部函数被暴露到了外部环境（比如调用 createFunctions() 后得到的数组可以在外部调用其中的函数）。</p>
+<p>所以，这确实是一个典型的闭包案例。但要注意，因为所有内部函数共享同一个 i 变量（var 声明的函数作用域），最终调用时都会返回 10，这常被称为“闭包陷阱”。</p>
+<p>这里 result 数组内所有的函数返回的都是 10，因为它们访问的是同一个 i。当 createFunctions() 执行结束后，result 是 <code>function()&#123; return i&#125;</code> 函数组成的数组，当函数调用时，会在<code>作用域链</code>上寻找 i(作用域链就是变量查找的链条，从当前作用于开始，依次向上查找父级作用域，直到找到变量或到全局作用域。闭包能访问外部变量，正是因为作用域链的存在。)，首先在 createFunctions 中找到了 i &#x3D; 10（for 循环已经在调用 createFunctions() 时执行结束，createFunctions()<a href="">0</a> 取到的是循环后的 i 值）。</p>
 <pre><code class="javascript">function createFunctions() &#123;
   var result = new Array();
-  for (let i = 0; i &lt; 10; i++)&#123;
-    result[i] = function(num)&#123;
-      return function()&#123;
+  for (let i = 0; i &lt; 10; i++) &#123;
+    result[i] = (function (num) &#123;
+      return function () &#123;
         return num;
-      &#125;
-    &#125;(i);
+      &#125;;
+    &#125;)(i);
   &#125;
   return result;
 &#125;
@@ -297,30 +303,93 @@ createFunctions()[3](); // 3
 </code></pre>
 <p>另外 var 定义的变量会提升，var 无法为块级作用域定义私有变量，const 和 let 可以（而且他俩定义的无法提升），所以也可以把 var 换成 let。</p>
 <p>创建闭包必须维护额外的作用域，所以过度使用它们可能会占用大量内存。</p>
+<p>实际应用：</p>
+<ul>
+<li>数据私有化（模块模式）</li>
+<li>函数柯里化</li>
+<li>防抖&#x2F;节流</li>
+<li>React Hooks（useState 的状态就是通过闭包保存的）</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>闭包会阻止 GC，大量使用可能导致内存泄漏</li>
+<li>循环中的闭包陷阱（经典 var + setTimeout 问题，用 let 或 IIFE 解决）</li>
+</ul>
+<blockquote>
+<p>这里的 GC 是 Garbage Collection（垃圾回收）的缩写，是编程语言自动管理内存的机制。它负责识别并释放不再被使用的内存空间，防止内存溢出。</p>
+</blockquote>
+<blockquote>
+<p>在 JavaScript 中，GC 通常基于“可达性”原则：如果一个对象仍然可以被代码访问到（例如通过引用链到达），则不会回收它。</p>
+</blockquote>
+<blockquote>
+<p>闭包之所以会“阻止 GC”，是因为内部函数持有了外部函数作用域中变量的引用，即使外部函数已经执行完毕，这些变量依然被认为是“可达的”（只要内部函数还存在），因此不会被回收。如果大量使用闭包或无意中长期保留闭包引用，就会导致本应释放的内存无法释放，最终可能造成内存泄漏（占用内存持续增长，影响性能甚至崩溃）。</p>
+</blockquote>
+<h3 id="说一下-var、let、const-的区别？"><a href="#说一下-var、let、const-的区别？" class="headerlink" title="说一下 var、let、const 的区别？"></a>说一下 var、let、const 的区别？</h3><p>A:</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>var</th>
+<th>let</th>
+<th>const</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作用域</td>
+<td>函数作用域</td>
+<td>块级作用域</td>
+<td>块级作用域</td>
+</tr>
+<tr>
+<td>变量提升</td>
+<td>提升并初始化为 undefined</td>
+<td>提升但不初始化（TDZ）</td>
+<td>提升但不初始化（TDZ）</td>
+</tr>
+<tr>
+<td>重复声明</td>
+<td>允许</td>
+<td>不允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>重新赋值</td>
+<td>允许</td>
+<td>允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>全局声明挂 window</td>
+<td>是</td>
+<td>否</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<p>TDZ（暂时性死区）：从块开始到 let&#x2F;const 声明语句之间，访问变量会抛 ReferenceError。</p>
 <h3 id="this-的指向"><a href="#this-的指向" class="headerlink" title="this 的指向"></a>this 的指向</h3><h4 id="函数被-new-修饰"><a href="#函数被-new-修饰" class="headerlink" title="函数被 new 修饰"></a>函数被 new 修饰</h4><p>this 绑定的是新创建的对象，例：<code>var bar = new foo()</code> 函数 foo 中的 this 就是一个叫 foo 的新创建的对象，然后将这个对象赋给 bar，这样的绑定方式叫【new 绑定】。</p>
 <h4 id="函数时使用-call-apply-bind-来调用的"><a href="#函数时使用-call-apply-bind-来调用的" class="headerlink" title="函数时使用 call, apply, bind 来调用的"></a>函数时使用 <code>call</code>, <code>apply</code>, <code>bind</code> 来调用的</h4><p>this 绑定的是 <code>call</code>, <code>apply</code>, <code>bind</code> 的第一个参数。例：<code>foo.call(obj)</code>, foo 中的 this 就是 obj，这样的绑定方式叫【显性绑定】。</p>
 <h4 id="函数时在某个【上下文对象】内被调用"><a href="#函数时在某个【上下文对象】内被调用" class="headerlink" title="函数时在某个【上下文对象】内被调用"></a>函数时在某个【上下文对象】内被调用</h4><p>this 绑定的是那个上下文对象，例：<code>var obj = &#123; foo: foo &#125;; obj.foo();</code> foo 中的 this 就是 obj，这样的绑定方式叫【隐性绑定】。</p>
 <h4 id="如果都不是，即使用【默认绑定】"><a href="#如果都不是，即使用【默认绑定】" class="headerlink" title="如果都不是，即使用【默认绑定】"></a>如果都不是，即使用【默认绑定】</h4><p>如: <code>function foo() &#123;...&#125;; foo()</code>，foo 中的 this 就是 window，严格模式下默认绑定到 <code>undefined</code></p>
 <pre><code class="javascript">var name = &quot;The Window&quot;;
 var object = &#123;
-  name : &quot;My Object&quot;,
-  getNameFunc : function()&#123;
+  name: &quot;My Object&quot;,
+  getNameFunc: function () &#123;
     var that = this; // 这里相当于把 object 的 this 赋值给 that（vue 就是这么操作的
-    return function()&#123;
-      console.log(this, &#39;this&#39;) // Window &#123;&#125;
-      console.log(that, &#39;that&#39;) // object &#123;&#125;
+    return function () &#123;
+      console.log(this, &quot;this&quot;); // Window &#123;&#125;
+      console.log(that, &quot;that&quot;); // object &#123;&#125;
       return that.name;
     &#125;;
-  &#125;
+  &#125;,
 &#125;;
 alert(object.getNameFunc()());
 </code></pre>
 <blockquote>
 <p>因为浏览器的垃圾处理机制不同，如果闭包的作用域链中保存着一个 HTML 元素，那么就意味着该元素有可能无法被销毁，将会导致内存泄露。只要匿名函数存在，element 的引用数至少也是 1，因此它所占用的内存就永远不会被回收。做法是在函数的最后将保存 HTML 指针的变量设置为 null</p>
 </blockquote>
-<h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h3><pre><code class="javascript">(function()&#123;
+<h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h3><pre><code class="javascript">(function () &#123;
   // 块级作用域
-&#125;)()
+&#125;)();
 </code></pre>
 <p>将函数声明包含在一对圆括号中，表示它实际上是一个函数表达式。而紧随其后的另一对圆括号会立即调用这个函数。在匿名函数中定义的任何变量，都会在执行结束时被销毁。这种技术经常在全局作用域中被用在函数外部，从而【限制向全局作用域中添加多余的变量和函数】。</p>
 <pre><code class="javascript">function()&#123;
@@ -328,43 +397,44 @@ alert(object.getNameFunc()());
 &#125;(); //出错！
 </code></pre>
 <p>这段代码会导致语法错误，是因为 JavaScript 将 function 关键字当作一个函数声明的开始，而函数声明后面不能跟圆括号。然而，函数表达式的后面可以跟圆括号。</p>
-<h3 id="静态私有变量"><a href="#静态私有变量" class="headerlink" title="*静态私有变量"></a>*静态私有变量</h3><pre><code class="javascript">(function()&#123;
-  var name = &#39;&#39;;
-  var PrivatePerson = function () &#123;&#125;
-  Person = function(value) &#123; // 没有用 var 声明的变量会创建一个全局变量（window
+<h3 id="静态私有变量"><a href="#静态私有变量" class="headerlink" title="*静态私有变量"></a>*静态私有变量</h3><pre><code class="javascript">(function () &#123;
+  var name = &quot;&quot;;
+  var PrivatePerson = function () &#123;&#125;;
+  Person = function (value) &#123;
+    // 没有用 var 声明的变量会创建一个全局变量（window
     name = value;
   &#125;;
-  Person.prototype.getName = function() &#123;
-    return name
+  Person.prototype.getName = function () &#123;
+    return name;
   &#125;;
-  Person.prototype.setName = function(value) &#123;
-    name = value
+  Person.prototype.setName = function (value) &#123;
+    name = value;
   &#125;;
-&#125;)()
-var privatePerson = new PrivatePerson(&#39;test&#39;) // Uncaught ReferenceError: PrivatePerson is not defined
-var person1 = new Person(&#39;cotwelf&#39;) // 因为 Person 是全局变量
-person1.name // undefined
-person1.getName() // &#39;cotwelf&#39;
-person1.setName(&#39;sylvia&#39;)
-person1.getName() // &#39;sylvia&#39;
+&#125;)();
+var privatePerson = new PrivatePerson(&quot;test&quot;); // Uncaught ReferenceError: PrivatePerson is not defined
+var person1 = new Person(&quot;cotwelf&quot;); // 因为 Person 是全局变量
+person1.name; // undefined
+person1.getName(); // &#39;cotwelf&#39;
+person1.setName(&quot;sylvia&quot;);
+person1.getName(); // &#39;sylvia&#39;
 
-var person2 = new Person(&#39;xiuxiuxiu&#39;)
-person1.getName() // &#39;xiuxiuxiu&#39;
+var person2 = new Person(&quot;xiuxiuxiu&quot;);
+person1.getName(); // &#39;xiuxiuxiu&#39;
 </code></pre>
 <h3 id="apply-和-call"><a href="#apply-和-call" class="headerlink" title="apply() 和 call()"></a>apply() 和 call()</h3><p>都是在特定的作用域中调用函数，能够扩充函数赖以运行的作用域，好处是对象不需要与方法有任何耦合关系。</p>
-<pre><code class="javascript">window.color = &quot;red&quot;
-var o = &#123; color: &quot;blue&quot; &#125;
+<pre><code class="javascript">window.color = &quot;red&quot;;
+var o = &#123; color: &quot;blue&quot; &#125;;
 function sayColor() &#123;
-  console.log(this.color)
+  console.log(this.color);
 &#125;
 sayColor(); // red
-sayColor.call(this) // red
-sayColor.call(window) // red
-sayColor.call(o) // blue
+sayColor.call(this); // red
+sayColor.call(window); // red
+sayColor.call(o); // blue
 
 // bind() 方法会创建一个函数的实例，低版本浏览器不支持
-var objectSayColor = sayColor.bind(o)
-objectSayColor() // blue
+var objectSayColor = sayColor.bind(o);
+objectSayColor(); // blue
 </code></pre>
 </div>
       <div class="content" v-if="!release">
@@ -384,7 +454,7 @@ objectSayColor() // blue
   <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Cotwelf&#39;s Life
+            © 2022 - 2026 Cotwelf&#39;s Life
             <span class="footer-icon">
                 <a-icon type="flag" theme="filled" /></span>
             @Cotwelf
