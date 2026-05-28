@@ -177,14 +177,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#879cff>
+                <a href="/tags/基础" style=color:#1bccbc>
                     基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#ff7d73>
+                <a href="/tags/JavaScript" style=color:#1bccbc>
                     JavaScript
                 </a>
             </span>
@@ -194,7 +194,7 @@
     </div>
     
 
-      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-对比-Cookie、LocalStorage、SessionStorage、Session、Token"><a href="#1-对比-Cookie、LocalStorage、SessionStorage、Session、Token" class="headerlink" title="1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token"></a>1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token</h3><table>
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="跨浏览器-tab-通信"><a href="#跨浏览器-tab-通信" class="headerlink" title="跨浏览器 tab 通信"></a>跨浏览器 tab 通信</h3><h3 id="1-对比-Cookie、LocalStorage、SessionStorage、Session、Token"><a href="#1-对比-Cookie、LocalStorage、SessionStorage、Session、Token" class="headerlink" title="1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token"></a>1. 对比 Cookie、LocalStorage、SessionStorage、Session、Token</h3><table>
 <thead>
 <tr>
 <th></th>
@@ -248,9 +248,9 @@
 </tbody></table>
 <h4 id="（1）Cookie"><a href="#（1）Cookie" class="headerlink" title="（1）Cookie"></a>（1）Cookie</h4><p>document.cookie 返回当前页面可用的（根据 cookie 的域、路径、失效时间和安全设置）所有 cookie 的字符串，一系列由分号隔开的名值对。所有名字和值都是经过 URL 编码的，所以必须使用 decodeURIComponent() 来解码。</p>
 <pre><code class="javascript">// get
-decodeURIComponent(document.cookie)
+decodeURIComponent(document.cookie);
 // set
-document.cookie =  `$&#123;encodeURIComponent(&quot;name&quot;)&#125;=$&#123;encodeURIComponent(&quot;Nicholas&quot;)&#125;; domain=cotwelf.com;`;
+document.cookie = `$&#123;encodeURIComponent(&quot;name&quot;)&#125;=$&#123;encodeURIComponent(&quot;Nicholas&quot;)&#125;; domain=cotwelf.com;`;
 </code></pre>
 <p>客户端每次向服务器发起请求的时候，都会发送这个 cookie，浏览器关闭的时候，它就会被删除。一定不要在 cookie 中存储重要和敏感的数据。cookie 数据并非存储在一个安全环境中，其中包含的任何数据都可以被他人访问。</p>
 <p>由于所有的 cookie 都会由浏览器作为请求头发送，所以在 cookie 中存储大量信息会影响到特定域的请求性能。cookie 信息越大，完成对服务器请求的时间也就越长。尽管浏览器对 cookie 进行了大小限制，不过最好还是尽可能在 cookie 中少存储信息，以避免影响性能。</p>
@@ -304,7 +304,11 @@ document.cookie =  `$&#123;encodeURIComponent(&quot;name&quot;)&#125;=$&#123;enc
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="2-indexedDB"><a href="#2-indexedDB" class="headerlink" title="2. indexedDB"></a>2. indexedDB</h3><p>Indexed Database API，是在浏览器中保存结构化数据的一种数据库。IndexedDB 最大的特色是使用对象保存数据，而不是使用表来保存数据。一个 IndexedDB 数据库，就是一组位于相同命名空间下的对象的集合。</p>
 <p>IndexedDB 设计的操作完全是异步进行的。因此，大多数操作会以请求方式进行，但这些操作会在后期执行，然后如果成功则返回结果，如果失败则返回错误。</p>
-<pre><code class="javascript">var indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB || window.webkitIndexedDB;
+<pre><code class="javascript">var indexedDB =
+  window.indexedDB ||
+  window.msIndexedDB ||
+  window.mozIndexedDB ||
+  window.webkitIndexedDB;
 </code></pre>
 </div>
       <div class="content" v-if="!release">

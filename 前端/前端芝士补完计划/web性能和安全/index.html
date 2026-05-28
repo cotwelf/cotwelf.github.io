@@ -184,7 +184,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/性能" style=color:#ffa2c4>
+                <a href="/tags/性能" style=color:#ff7d73>
                     性能
                 </a>
             </span>
@@ -195,47 +195,47 @@
     
 
       <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-请简单介绍一下图像的预加载和懒加载"><a href="#1-请简单介绍一下图像的预加载和懒加载" class="headerlink" title="1. 请简单介绍一下图像的预加载和懒加载"></a>1. 请简单介绍一下图像的预加载和懒加载</h3><h4 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h4><p><code>提前加载图像</code>，并将其缓存，当要访问时就能直接读取缓存中的图像。预加载不但能更流畅地展示网页，减少等待时间，还能<code>防止页面因图像太多而打开缓慢</code>甚至无法打开的情况发生。</p>
-<pre><code class="javascript">import picture from &#39;xxx&#39; // 引入一张图片，或者从接口请求到图片的 url
+<pre><code class="javascript">import picture from &quot;xxx&quot;; // 引入一张图片，或者从接口请求到图片的 url
 
-let img = new Image()
-img.setAttribute(&#39;crossOrigin&#39;, &#39;Anonymous&#39;) // 如果在 canvas 中用到图片，最好允许跨域，否则一些方法会报错（比如 canvas.toDataURL(&#39;image/png&#39;)
+let img = new Image();
+img.setAttribute(&quot;crossOrigin&quot;, &quot;Anonymous&quot;); // 如果在 canvas 中用到图片，最好允许跨域，否则一些方法会报错（比如 canvas.toDataURL(&#39;image/png&#39;)
 img.onload = () =&gt; &#123;
   // 图片加载完成后执行的一些逻辑
-&#125;
+&#125;;
 // 需要先定义 onload, 再赋值 src, 不然会出现资源返回，但是 onload 还没有挂载的情况。一个 img 是有了 src 之后才开始请求资源的。
-img.src = picture
+img.src = picture;
 // 然后再用 img 这张图片做其他的事情，绑定 jsx 的 src 鸭之类的
 </code></pre>
 <p>另外，我们的 css 一般都会放在头部，所以可以在 css 中用 background-image 给容器添加图片，来达到预加载的效果</p>
 <h4 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h4><p>也叫延迟加载，通常做法是当滚动条到达某个位置时（比如页面底部），再请求图像。这种方式能大大节约用户流量，并减轻服务器压力，提升用户体验。</p>
 <pre><code class="javascript">// 假设给 body 添加两个 img
 let createImg = () =&gt; &#123;
-  let img = document.createElement(&#39;img&#39;)
-  img.setAttribute(&#39;style&#39;, &#39;width: 300px; margin: 200px&#39;)
+  let img = document.createElement(&quot;img&quot;);
+  img.setAttribute(&quot;style&quot;, &quot;width: 300px; margin: 200px&quot;);
   // img.setAttribute(&#39;crossOrigin&#39;, &#39;&#39;)
-  img.setAttribute(&#39;crossOrigin&#39;, &#39;Anonymous&#39;)
+  img.setAttribute(&quot;crossOrigin&quot;, &quot;Anonymous&quot;);
   img.onload = () =&gt; &#123;
-    console.log(&#39;image loaded~&#39;)
-  &#125;
-  return img
-&#125;
-let img1 = createImg()
-let img2 = createImg()
-document.body.append(img1, img2)
+    console.log(&quot;image loaded~&quot;);
+  &#125;;
+  return img;
+&#125;;
+let img1 = createImg();
+let img2 = createImg();
+document.body.append(img1, img2);
 // 这时候可以滚动页面看一下，&#39;image loaded~&#39; 并没有被打印在控制台里。
-window.addEventListener(&#39;scroll&#39;, () =&gt; &#123;
+window.addEventListener(&quot;scroll&quot;, () =&gt; &#123;
   // 在标准w3c下，document.body.scrollTop 恒为 0，需要用 document.documentElement.scrollTop 来代替;
-  let A = document.documentElement.clientHeight // 视口高度
-  let img1Top = img1.offsetTop
-  let img2Top = img2.offsetTop
-  let C = document.documentElement.scrollTop // 滚动条滚动的距离（也就是 html 向上卷入不可见领域的高度
+  let A = document.documentElement.clientHeight; // 视口高度
+  let img1Top = img1.offsetTop;
+  let img2Top = img2.offsetTop;
+  let C = document.documentElement.scrollTop; // 滚动条滚动的距离（也就是 html 向上卷入不可见领域的高度
   if (img1Top - C &lt; A &amp;&amp; !img1.src) &#123;
-    img1.src = &#39;/images/cover/7.webp&#39;
+    img1.src = &quot;/images/cover/7.webp&quot;;
   &#125;
   if (img2Top - C &lt; A &amp;&amp; !img2.src) &#123;
-    img2.src = &#39;/images/cover/7777.webp&#39;
+    img2.src = &quot;/images/cover/7777.webp&quot;;
   &#125;
-&#125;)
+&#125;);
 </code></pre>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="2-CDN-是什么？"><a href="#2-CDN-是什么？" class="headerlink" title="2. CDN 是什么？"></a>2. CDN 是什么？</h3><p>CDN 部署策略</p>
@@ -321,21 +321,63 @@ window.addEventListener(&#39;scroll&#39;, () =&gt; &#123;
 <li><p>（6）异常监控，包括异常的提示信息、行数、列数和地址等。</p>
 </li>
 </ul>
+<p><strong>核心 Web 指标（Core Web Vitals）是什么？怎么优化？</strong></p>
+<p>A:</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+<th>好的标准</th>
+<th>优化方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LCP（Largest Contentful Paint）</td>
+<td>最大内容元素渲染时间</td>
+<td>&lt; 2.5s</td>
+<td>优化图片加载、减少阻塞资源、SSR</td>
+</tr>
+<tr>
+<td>INP（Interaction to Next Paint）</td>
+<td>交互到下一次绘制的延迟</td>
+<td>&lt; 200ms</td>
+<td>减少长任务、拆分 JS、用 Web Worker</td>
+</tr>
+<tr>
+<td>CLS（Cumulative Layout Shift）</td>
+<td>累计布局偏移</td>
+<td>&lt; 0.1</td>
+<td>图片设置宽高、字体 font-display: swap</td>
+</tr>
+</tbody></table>
+<p>其他重要指标：</p>
+<ul>
+<li>FCP（First Contentful Paint）— 首次内容绘制</li>
+<li>TTFB（Time to First Byte）— 首字节时间</li>
+<li>TTI（Time to Interactive）— 可交互时间</li>
+</ul>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="5-请简单解释一下-CSRF-的攻击原理和防御手段。"><a href="#5-请简单解释一下-CSRF-的攻击原理和防御手段。" class="headerlink" title="5. 请简单解释一下 CSRF 的攻击原理和防御手段。"></a>5. 请简单解释一下 CSRF 的攻击原理和防御手段。</h3><p>CSRF（Cross Site Request Forgery）即跨站点请求伪造，攻击者伪装成正常用户，对服务器发起请求，让服务器执行某些操作。例如用户正常登录某个网站，然后在未退出的情况下访问攻击者事先准备好的页面，此时攻击者就有可能获取到保存在 Cookie 中的登录凭据或登录信息，然后攻击者就能伪装成该用户，与服务器进行通信。</p>
 <p>CSRF的防御手段如下所列：</p>
 <ul>
 <li>（1）让用户与网站交互才能完成请求，例如在表单中添加验证码（这是对抗 CSRF 最简洁有效的方式）；</li>
-<li>（2）检查请求是否来自合法源，例如发起请求的页面是否合法，用户想要发起“删除声音”这个操作，一定是在【我的主页】下的声音 tab，如果 Referer 的值不是这个页面，甚至不是网站域名，很有可能是 CSRF 攻击，但缺点是出于隐私或安全考虑，浏览器可能不发送 referer（比如从 https 跳转到 http），服务器有可能获取不到；</li>
+<li>（2）检查请求是否来自合法源（检查 Origin&#x2F;Referer 头），例如发起请求的页面是否合法，用户想要发起“删除声音”这个操作，一定是在【我的主页】下的声音 tab，如果 Referer 的值不是这个页面，甚至不是网站域名，很有可能是 CSRF 攻击，但缺点是出于隐私或安全考虑，浏览器可能不发送 referer（比如从 https 跳转到 http），服务器有可能获取不到；</li>
 <li>（3）在每个请求中添加一个 Token 参数（Anti CSRF Token），这是一个随机数，可以在进入页面时生成，然后保存在 Session 中，服务器在接收到 Token 参数时进行校验，只有校验成功后菜执行后续操作。</li>
 </ul>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
-<h3 id="6-XSS-是什么？对这种攻击有哪些防范办法？"><a href="#6-XSS-是什么？对这种攻击有哪些防范办法？" class="headerlink" title="6. XSS 是什么？对这种攻击有哪些防范办法？"></a>6. XSS 是什么？对这种攻击有哪些防范办法？</h3><p>XSS（Cross Site Script）即跨站脚本攻击，它将恶意脚本注入到目标网页中，用户在访问该页面时，有可能造成信息泄露、用户行为被劫持、感染并传播蠕虫病毒等危害。</p>
-<p>防范办法如下：</p>
+<h3 id="6-XSS-是什么？对这种攻击有哪些防范办法？"><a href="#6-XSS-是什么？对这种攻击有哪些防范办法？" class="headerlink" title="6. XSS 是什么？对这种攻击有哪些防范办法？"></a>6. XSS 是什么？对这种攻击有哪些防范办法？</h3><p>XSS（跨站脚本攻击）：</p>
 <ul>
-<li>（1）为 Cookie 添加 HttpOnly 标记，使客户端不能通过 JS 读取 Cookie 信息</li>
-<li>（2）对提交到服务器中的信息做输入校验，例如白名单过滤、把字符编码成 HTML 实体等（HTMLescape）。</li>
-<li>（3）对输入到页面中的信息做输出检查，检查方式和第二种类似。</li>
+<li>存储型 — 恶意脚本存入数据库，其他用户访问时执行</li>
+<li>反射型 — 恶意脚本在 URL 参数中，服务端返回时嵌入页面</li>
+<li>DOM 型 — 前端 JS 直接将不可信数据插入 DOM</li>
+</ul>
+<p>防御：</p>
+<ul>
+<li>输出编码 — 对用户输入进行 HTML 实体编码（<code>&lt;</code> → <code>&amp;lt;</code>）</li>
+<li>CSP（Content Security Policy）— 限制可执行脚本的来源</li>
+<li>HttpOnly Cookie — 防止 JS 读取 Cookie</li>
+<li>使用框架的安全 API（React 的 JSX 默认转义，避免 dangerouslySetInnerHTML）</li>
 </ul>
 <p><a href="#%E7%9B%AE%E5%BD%95">&gt;&gt; 返回目录</a></p>
 <h3 id="7-什么叫点击劫持？对这种攻击有什么解决办法？"><a href="#7-什么叫点击劫持？对这种攻击有什么解决办法？" class="headerlink" title="7. 什么叫点击劫持？对这种攻击有什么解决办法？"></a>7. 什么叫点击劫持？对这种攻击有什么解决办法？</h3><p>点击劫持（clickJacking）是一种视觉上的欺骗，攻击者把一个透明的 iframe 覆盖在目标网页的某个位置，这个位置可以使一个按钮、一段文字或一张图像等，诱使用户点击。</p>
