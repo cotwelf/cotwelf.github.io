@@ -177,15 +177,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/React" style=color:#00bcd4>
-                    React
+                <a href="/tags/基础" style=color:#879cff>
+                    基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/基础" style=color:#ff7d73>
-                    基础
+                <a href="/tags/React" style=color:#ff7d73>
+                    React
                 </a>
             </span>
             
@@ -194,24 +194,184 @@
     </div>
     
 
-      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-React-中使用-useEffect-如何清除副作用"><a href="#1-React-中使用-useEffect-如何清除副作用" class="headerlink" title="1. React 中使用 useEffect 如何清除副作用"></a>1. React 中使用 useEffect 如何清除副作用</h3><p>在 useEffect 中返回一个函数</p>
+      <div class="content" v-if="release"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="1-React-中使用-useEffect-如何清除副作用"><a href="#1-React-中使用-useEffect-如何清除副作用" class="headerlink" title="1. React 中使用 useEffect 如何清除副作用"></a>1. React 中使用 useEffect 如何清除副作用</h2><p>在 useEffect 中返回一个函数</p>
 <pre><code class="javascript">// 例如我们在组件销毁时清除 setTimeout
 const Component = () =&gt; &#123;
-  const [name, setName] = useState(&#39;&#39;)
-  let timer = null
+  const [name, setName] = useState(&quot;&quot;);
+  let timer = null;
   useEffect(() =&gt; &#123;
     timer = setTimeout(() =&gt; &#123;
-      setName(&#39;cotwelf&#39;)
-    &#125;, 1000)
+      setName(&quot;cotwelf&quot;);
+    &#125;, 1000);
     return () =&gt; &#123;
-      clearTimeout(timer)
-      timer = null
-      console.log(&#39;cleared&#39;)
-    &#125;
-  &#125;, [])
-  return &lt;div&gt;&#123;name&#125;&lt;/div&gt;
-&#125;
+      clearTimeout(timer);
+      timer = null;
+      console.log(&quot;cleared&quot;);
+    &#125;;
+  &#125;, []);
+  return &lt;div&gt;&#123;name&#125;&lt;/div&gt;;
+&#125;;
 </code></pre>
+<h2 id="2-为什么-React-useCallback-能减少渲染？"><a href="#2-为什么-React-useCallback-能减少渲染？" class="headerlink" title="2. 为什么 React useCallback 能减少渲染？"></a>2. 为什么 React useCallback 能减少渲染？</h2><h3 id="重点总结"><a href="#重点总结" class="headerlink" title="重点总结"></a>重点总结</h3><p>useCallback 通过缓存函数引用，使其在依赖不变时保持引用稳定，从而在配合 React.memo 时避免子组件因 props 引用变化导致的无意义重新渲染。</p>
+<p>useCallback 本身不会“减少渲染”，它只是“减少函数引用变化”，从而在特定条件下减少子组件的重新渲染。</p>
+<p>在 React 中，父组件重新渲染时，内部定义的函数会重新创建（新内存地址）。</p>
+<hr>
+<h3 id="useCallback-做了什么？"><a href="#useCallback-做了什么？" class="headerlink" title="useCallback 做了什么？"></a>useCallback 做了什么？</h3><pre><code class="js">const memoFn = useCallback(() =&gt; &#123;
+  doSomething();
+&#125;, [deps]);
+</code></pre>
+<p>本质是：</p>
+<blockquote>
+<p>在依赖不变的情况下，返回同一个函数引用</p>
+</blockquote>
+<p>也就是说：</p>
+<blockquote>
+<p>每次组件 re-render</p>
+</blockquote>
+<blockquote>
+<p>普通函数：都会重新创建（新引用）</p>
+</blockquote>
+<blockquote>
+<p>useCallback：依赖没变 → 还是同一个引用</p>
+</blockquote>
+<hr>
+<h3 id="为什么“函数引用变化”会导致渲染？"><a href="#为什么“函数引用变化”会导致渲染？" class="headerlink" title="为什么“函数引用变化”会导致渲染？"></a>为什么“函数引用变化”会导致渲染？</h3><p>React 的组件 props 比较是 <code>浅比较（reference compare）</code></p>
+<pre><code class="js">&lt;Child onClick=&#123;fn&#125; /&gt;
+</code></pre>
+<p>如果：</p>
+<blockquote>
+<p>fn 是新函数（引用变了）</p>
+</blockquote>
+<blockquote>
+<p>React 会认为 props 变了</p>
+</blockquote>
+<blockquote>
+<p>即使逻辑没变，也可能触发 Child re-render</p>
+</blockquote>
+<hr>
+<h3 id="useCallback-如何“间接减少渲染”？"><a href="#useCallback-如何“间接减少渲染”？" class="headerlink" title="useCallback 如何“间接减少渲染”？"></a>useCallback 如何“间接减少渲染”？</h3><p>它的作用是：</p>
+<blockquote>
+<p>配合 React.memo &#x2F; PureComponent，避免子组件因函数 props 变化而重复渲染</p>
+</blockquote>
+<p>例子：</p>
+<pre><code class="js">const Child = React.memo((&#123; onClick &#125;) =&gt; &#123;
+  console.log(&quot;child render&quot;);
+  return &lt;button onClick=&#123;onClick&#125;&gt;click&lt;/button&gt;;
+&#125;);
+
+const Parent = () =&gt; &#123;
+  const handleClick = useCallback(() =&gt; &#123;
+    console.log(&quot;click&quot;);
+  &#125;, []);
+
+  return &lt;Child onClick=&#123;handleClick&#125; /&gt;;
+&#125;;
+</code></pre>
+<p>对比：</p>
+<p>❌ 不用 useCallback</p>
+<ul>
+<li>Parent re-render → handleClick 重新创建</li>
+<li>Child props 变化 → Child re-render</li>
+</ul>
+<p>✅ 用 useCallback</p>
+<ul>
+<li>Parent re-render</li>
+<li>handleClick 引用不变</li>
+<li>Child props 没变 → Child 不 re-render</li>
+</ul>
+<hr>
+<h3 id="什么时候需要用-useCallback"><a href="#什么时候需要用-useCallback" class="headerlink" title="什么时候需要用 useCallback"></a>什么时候需要用 useCallback</h3><p>useCallback 的使用前提是“函数的引用变化会导致额外的渲染或副作用触发”，典型场景包括 React.memo 子组件的 props 稳定性、useEffect 依赖稳定性，以及高频渲染场景下避免函数引用变化导致的渲染扩散。否则它只是增加代码复杂度，没有实际收益。</p>
+<p>①作为 React.memo 子组件的 props（最核心）</p>
+<p>②作为 useEffect &#x2F; useMemo 依赖（防止 effect 重跑）</p>
+<pre><code class="js">const fetchData = useCallback(() =&gt; &#123;
+  api.getData();
+&#125;, [id]);
+
+useEffect(() =&gt; &#123;
+  fetchData();
+&#125;, [fetchData]);
+</code></pre>
+<p>如果不用 useCallback：</p>
+<p>fetchData 每次 render 都变<br>→ effect 每次都触发<br>→ 变成“无限重复逻辑风险”</p>
+<p>👉 本质：稳定依赖</p>
+<p>③高频场景 + 大量子组件依赖（性能扩散控制）</p>
+<ul>
+<li>列表（100～1000+ items）</li>
+</ul>
+<pre><code class="js">items.map((item) =&gt; &lt;Row onClick=&#123;handleClick&#125; /&gt;);
+</code></pre>
+<ul>
+<li>WebSocket &#x2F; 实时数据 UI</li>
+<li>drag &#x2F; scroll &#x2F; animation 交互</li>
+<li>大型复杂组件树（dashboard &#x2F; editor）</li>
+</ul>
+<p>👉 关键不是“函数创建”，而是：<br>避免一个函数变化 → 导致 N 个子组件连锁 re-render</p>
+<hr>
+<p>Q1：useCallback 能减少自己组件的 render 吗？</p>
+<p>❌ 不能<br>它不控制 render，只控制“函数引用是否变化”</p>
+<p>Q2：什么时候用 useCallback 没意义？</p>
+<ul>
+<li>子组件没用 React.memo。<br>如果子组件没用 React.memo，就等于：👉 你即使把函数缓存住了，子组件也还是会照常 re-render</li>
+<li>函数没作为 props 传下去</li>
+<li>渲染成本本身很低</li>
+</ul>
+<p>👉 用了反而增加复杂度</p>
+<h2 id="3-useCallback-依赖项是深比较还是浅比较？"><a href="#3-useCallback-依赖项是深比较还是浅比较？" class="headerlink" title="3. useCallback 依赖项是深比较还是浅比较？"></a>3. useCallback 依赖项是深比较还是浅比较？</h2><p>useCallback 依赖项 &#x3D; 逐个 Object.is 的浅比较(shallow comparison)，不做深比较，也不追踪对象内部变化。</p>
+<p>内部使用的是 Object.is 算法进行严格相等比较。如果依赖项是对象或数组，它只比较<code>内存引用</code>是否改变，不会递归比较<code>对象内部属性</code>。</p>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><pre><code class="js">useCallback(fn, [1, 2]);
+</code></pre>
+<p>1 &#x3D;&#x3D;&#x3D; 1 ✔</p>
+<p>2 &#x3D;&#x3D;&#x3D; 2 ✔</p>
+<p>👉 不触发更新</p>
+<h3 id="❗-引用类型（重点）"><a href="#❗-引用类型（重点）" class="headerlink" title="❗ 引用类型（重点）"></a>❗ 引用类型（重点）</h3><pre><code class="js">const obj = &#123; a: 1 &#125;;
+useCallback(fn, [obj]);
+</code></pre>
+<p>即使：</p>
+<pre><code class="js">obj.a = 2;
+</code></pre>
+<p>👉 只要引用没变：</p>
+<p>❌ 不会触发更新</p>
+<p>但如果：</p>
+<pre><code class="js">setObj(&#123; a: 2 &#125;);
+</code></pre>
+<p>👉 新对象引用：</p>
+<p>✔ 触发更新</p>
+<p>警告：如果依赖项是 { a: 1 }，即使 a 没变，但父组件每次渲染都新建这个对象，useCallback 依然会认为依赖变了，导致缓存失效。所以依赖项最好传基本类型（string, number, boolean）或useState返回的稳定setter。</p>
+<hr>
+<p>为什么不是深比较？</p>
+<p>如果是深比较，每次 render 都需要递归遍历对象结构，会显著增加 render 阶段的计算开销。浅比较是为了避免深比较带来的性能开销，同时也符合 React 的设计理念——依赖变化由引用变化来表达，因此对象或数组依赖需要开发者自行保证引用稳定性。</p>
+<hr>
+<p>一个经典坑（面试高频）</p>
+<p>❌ 错误写法</p>
+<pre><code class="js">useCallback(fn, [&#123; a: 1 &#125;]);
+</code></pre>
+<p>你以为：</p>
+<p>👉 a 变了会触发</p>
+<p>但实际上：每次 render 都是新对象，每次都触发 callback 更新</p>
+<p>✔ 正确写法</p>
+<pre><code class="js">const &#123; a &#125; = obj;
+
+useCallback(fn, [a]);
+</code></pre>
+<h2 id="4-useCallback-和-useMemo-比较的是什么？（本质区别）"><a href="#4-useCallback-和-useMemo-比较的是什么？（本质区别）" class="headerlink" title="4. useCallback 和 useMemo 比较的是什么？（本质区别）"></a>4. useCallback 和 useMemo 比较的是什么？（本质区别）</h2><p>useCallback 和 useMemo 的依赖项比较方式是相同的，都是通过 Object.is 对依赖数组逐项进行浅比较。它们并不比较函数或返回值本身，而是通过依赖是否变化来决定是否重新计算或重新创建函数。其中 useMemo 缓存的是计算结果，而 useCallback 缓存的是函数引用。</p>
+<table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>缓存的是什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>useMemo</td>
+<td>“计算结果（value）”</td>
+</tr>
+<tr>
+<td>useCallback</td>
+<td>“函数（function）”</td>
+</tr>
+</tbody></table>
+<p>useCallback(fn, deps) 在实现上等价于 useMemo(() &#x3D;&gt; fn, deps)，本质都是基于依赖数组的浅比较决定是否返回缓存值。但两者在语义上不同：useMemo 用于缓存计算结果，而 useCallback 用于缓存函数引用，以提高代码可读性和表达意图。</p>
+<p>一句话总结：useCallback 保证函数地址不变；useMemo 保证计算出的值不变（跳过重复计算）。</p>
 </div>
       <div class="content" v-if="!release">
         <div class="release-tip">肥肠抱歉！！这是一个只有主银才能看的文档哦 _(:з」∠)_</div>
